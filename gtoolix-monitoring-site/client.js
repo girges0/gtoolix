@@ -135,11 +135,62 @@
         }
     }
 
+    let cachedCountry = null;
+
+    // Helper: Resolve real IP-based country with fallbacks
+    async function resolveCountry() {
+        if (cachedCountry) return cachedCountry;
+        try {
+            // 1. Try ipapi.co (timeout 2.5s)
+            const controller1 = typeof AbortController !== 'undefined' ? new AbortController() : null;
+            const t1 = controller1 ? setTimeout(() => controller1.abort(), 2500) : null;
+            try {
+                const res1 = await fetch('https://ipapi.co/json/', { signal: controller1 ? controller1.signal : undefined });
+                if (t1) clearTimeout(t1);
+                if (res1.ok) {
+                    const data1 = await res1.json();
+                    const code1 = data1.country_code || data1.country_name;
+                    if (code1 && typeof code1 === 'string') {
+                        cachedCountry = code1;
+                        return cachedCountry;
+                    }
+                }
+            } catch (e1) {
+                if (t1) clearTimeout(t1);
+            }
+
+            // 2. Fallback: ipwho.is (timeout 2.5s)
+            const controller2 = typeof AbortController !== 'undefined' ? new AbortController() : null;
+            const t2 = controller2 ? setTimeout(() => controller2.abort(), 2500) : null;
+            try {
+                const res2 = await fetch('https://ipwho.is/', { signal: controller2 ? controller2.signal : undefined });
+                if (t2) clearTimeout(t2);
+                if (res2.ok) {
+                    const data2 = await res2.json();
+                    const code2 = data2.country_code || data2.country;
+                    if (code2 && typeof code2 === 'string') {
+                        cachedCountry = code2;
+                        return cachedCountry;
+                    }
+                }
+            } catch (e2) {
+                if (t2) clearTimeout(t2);
+            }
+        } catch (err) {
+            // Fail silently
+        }
+
+        // 3. Fallback: browser language prefixed with lang:
+        cachedCountry = 'lang:' + (navigator.language || 'ar-EG');
+        return cachedCountry;
+    }
+
     // Ensure current session exists in DB
     async function ensureSession() {
         currentVisitorId = getVisitorId();
         currentSessionId = getSessionId();
 
+        const initialCountry = cachedCountry || ('lang:' + (navigator.language || 'ar-EG'));
         const devInfo = getDeviceInfo();
         const sessionPayload = {
             id: currentSessionId,
@@ -148,7 +199,7 @@
             device_type: devInfo.deviceType,
             browser: devInfo.browser,
             os: devInfo.os,
-            country: navigator.language || 'Unknown',
+            country: initialCountry,
             ip_masked: 'anonymized',
             created_at: new Date().toISOString(),
             last_seen_at: new Date().toISOString()
@@ -166,6 +217,24 @@
         }
 
         startHeartbeat();
+
+        // Asynchronously resolve real IP-based country in background once per session
+        if (!cachedCountry || cachedCountry.startsWith('lang:')) {
+            resolveCountry().then(async (resolved) => {
+                if (resolved && !resolved.startsWith('lang:')) {
+                    try {
+                        const sbClient = initSupabase();
+                        if (sbClient) {
+                            await sbClient.from('sessions').update({ country: resolved }).eq('id', currentSessionId);
+                        } else {
+                            await directRestUpdate('sessions', 'id', currentSessionId, { country: resolved });
+                        }
+                    } catch (e) {
+                        // Fail silently
+                    }
+                }
+            });
+        }
     }
 
     // Heartbeat mechanism (runs every 30s when tab is visible)

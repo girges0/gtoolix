@@ -84,7 +84,9 @@ curl -X POST 'https://YOUR_PROJECT_ID.supabase.co/rest/v1/page_views' \
 ## 🌐 Technical Limitations & Disclaimers
 
 - **IP Address & Geolocation**: Client-side JavaScript running in the user's browser has **no access to raw visitor IP addresses**. The client script records `ip_masked: 'anonymized'`.
-- **Country Identification**: The `country` column is populated from `navigator.language` (e.g. `ar-EG`). This is a **browser language approximation**, not verified server IP-based geolocation. Real IP geolocation requires a Supabase Edge Function reading HTTP request headers server-side.
+- **Country Identification & Geolocation**: Country is resolved via a client-side call to `ipapi.co` (with `ipwho.is` as fallback), which reveals the visitor's public IP to that third-party service (the raw IP is not stored in GToolix's database — only the resolved country string, e.g. `'EG'`, is stored).
+- **Fallback Mechanism**: If both geolocation service calls fail, time out, or are blocked (e.g., by ad-blockers), the system falls back to browser language (`navigator.language`) prefixed with `lang:` (e.g. `'lang:ar-EG'`), visually flagging estimated entries in stored data.
+- **Service Rate Limits**: Note free-tier daily request caps of these services (`ipapi.co`: 1,000 requests/day free; `ipwho.is`: 10,000 requests/month free).
 
 ---
 
