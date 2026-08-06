@@ -139,6 +139,61 @@
     }
     </script>
 
+    <!-- Additional Structured Data for Gemini Watermark Remover (SoftwareApplication & FAQPage) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Gemini Watermark Remover",
+      "applicationCategory": "PhotoEditingApplication",
+      "operatingSystem": "Any (Web Browser)",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Free online tool to remove the Google Gemini watermark from AI-generated images directly in your browser, with 100% local privacy and no quality loss.",
+      "url": "https://gtoolix.com/gemini-watermark-remover"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does removing the watermark affect image quality?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, the processing is designed to preserve the original image quality with no distortion or loss of clarity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my images uploaded to any external server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, all processing happens entirely inside your browser — no image is ever uploaded to any server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the tool completely free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can remove watermarks from unlimited images at no cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to install software or create an account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, the tool works directly in your browser with no installation or sign-up required."
+          }
+        }
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="/static/css/main.css">
     <script src="/static/js/theme.js"></script>
     <script>/* Theme init — prevent FOUC */
@@ -174,7 +229,7 @@
             <a href="/youtube-thumbnail-downloader" data-page="thumb" data-i18n="common.navThumb">تحميل صور اليوتيوب
                 المصغرة</a>
             <a href="/gemini-watermark-remover" data-page="gemini" data-i18n="common.navGemini">مزيل علامة جيميناي</a>
-            <a href="/screen-recorder-studio" data-page="recorder" data-i18n="common.navRecorder">مسجل الشاشة Studio</a>
+            <a href="/screen-recorder-studio" data-page="recorder" data-i18n="common.navRecorder">مسجل الشاشة الاحترافي</a>
         </nav>
         <div class="site-nav__right">
             <div class="lang-switcher">
@@ -497,7 +552,7 @@
                             <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                         </svg>
                     </div>
-                    <h3 data-i18n="home.cardRecorderTitle">مسجل الشاشة Studio</h3>
+                    <h3 data-i18n="home.cardRecorderTitle">مسجل الشاشة الاحترافي</h3>
                     <p data-i18n="home.cardRecorderDesc">سجّل شاشتك، كاميرا الويب، والصوت بجودة عالية مباشرة في متصفحك — 100% خاص وبدون تسجيل.</p>
                     <span class="tool-card__cta">
                         <span data-i18n="home.cardCta">فتح الأداة</span>
@@ -585,24 +640,19 @@
 
     <!-- ===================== QR CODE ===================== -->
     <div id="page-qr" class="page-view">
-        <div class="container">
-            <nav class="breadcrumbs" aria-label="Breadcrumb">
-                <a data-page="home" data-i18n="common.breadcrumbHome">Home</a> / <span
-                    data-i18n="qr.breadcrumbCurrent">QR Code Generator</span>
-            </nav>
-
-            <header class="header">
-                <div class="logo-icon" aria-hidden="true">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="3" width="7" height="7" rx="1.5" />
-                        <rect x="14" y="3" width="7" height="7" rx="1.5" />
-                        <rect x="3" y="14" width="7" height="7" rx="1.5" />
-                        <path d="M14 14h3v3h-3zM17 17h3v3h-3zM14 17v3M20 14v3" />
-                    </svg>
+        <div class="tool-view">
+            <header class="tool-header reveal">
+                <nav class="tool-breadcrumbs">
+                    <a data-page="home" data-i18n="common.breadcrumbHome">الرئيسية</a>
+                    <span class="sep">/</span>
+                    <span data-i18n="qr.breadcrumbCurrent">مولد كود QR</span>
+                </nav>
+                <div class="tool-header__badge">
+                    <span class="pulse-dot"></span>
+                    <span data-i18n="qr.badgeText">توليد محلي 100% • بدون رفع للسيرفر</span>
                 </div>
-                <h1 data-i18n="qr.h1">Free QR Code Generator</h1>
-                <p class="tagline" data-i18n="qr.tagline">Create custom, high-resolution QR codes for links, Wi-Fi,
-                    text, and contacts — free, instant, no watermark.</p>
+                <h1 data-i18n="qr.h1">مولد كود QR مجاني أونلاين</h1>
+                <p class="tagline" data-i18n="qr.tagline">أنشئ أكواد QR مخصصة عالية الدقة للروابط، الواي فاي، بطاقات vCard، الرسائل النصية، والمواقع — مجاني 100%، معاينة فورية، وبدون علامات مائية.</p>
             </header>
 
             <!-- Ad Unit 1: Below QR Page Introduction -->
@@ -1122,7 +1172,7 @@
                             </a>
                             <a href="/screen-recorder-studio" data-page="recorder" class="related-tool-card">
                                 <div class="related-tool-text">
-                                    <span class="related-tool-title" data-i18n="common.navRecorder">مسجل الشاشة Studio</span>
+                                    <span class="related-tool-title" data-i18n="common.navRecorder">مسجل الشاشة الاحترافي</span>
                                     <span class="related-tool-sub" data-i18n="common.subRecorder">شاشة + كاميرا</span>
                                 </div>
                                 <div class="related-tool-icon-box icon-rec" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.3)); color: #EF4444;">
@@ -1143,23 +1193,19 @@
 
     <!-- ===================== YOUTUBE THUMBNAIL ===================== -->
     <div id="page-thumb" class="page-view">
-        <div class="container">
-            <nav class="breadcrumbs">
-                <a data-page="home" data-i18n="common.breadcrumbHome">Home</a> / <span
-                    data-i18n="thumb.breadcrumbCurrent">YouTube Thumbnail Downloader</span>
-            </nav>
-
-            <header class="header">
-                <div class="logo-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="3" width="18" height="18" rx="3" />
-                        <circle cx="8.5" cy="8.5" r="1.5" />
-                        <path d="M21 15l-5-5L5 21" />
-                    </svg>
+        <div class="tool-view">
+            <header class="tool-header reveal">
+                <nav class="tool-breadcrumbs">
+                    <a data-page="home" data-i18n="common.breadcrumbHome">الرئيسية</a>
+                    <span class="sep">/</span>
+                    <span data-i18n="thumb.breadcrumbCurrent">تحميل صور اليوتيوب المصغرة</span>
+                </nav>
+                <div class="tool-header__badge">
+                    <span class="pulse-dot"></span>
+                    <span data-i18n="thumb.badgeText">معالجة محلية 100% • استخراج فوري</span>
                 </div>
-                <h1 data-i18n="thumb.h1">YouTube Thumbnail Downloader</h1>
-                <p class="tagline" data-i18n="thumb.tagline">Grab any YouTube video's thumbnail in 4K, HD, or SD
-                    resolution — free, instant, no signup.</p>
+                <h1 data-i18n="thumb.h1">تحميل صور اليوتيوب المصغرة HD و 4K مجاناً</h1>
+                <p class="tagline" data-i18n="thumb.tagline">استخرج وحمّل صور أغلفة فيديوهات يوتيوب والشورتس بجودات 4K و Full HD و SD فورياً — مجاني 100%، معاينة مباشرة، وبدون علامة مائية.</p>
             </header>
 
             <!-- Ad Unit 1: Below Thumbnail Page Introduction -->
@@ -1436,7 +1482,7 @@
                             </a>
                             <a href="/screen-recorder-studio" data-page="recorder" class="related-tool-card">
                                 <div class="related-tool-text">
-                                    <span class="related-tool-title" data-i18n="common.navRecorder">مسجل الشاشة Studio</span>
+                                    <span class="related-tool-title" data-i18n="common.navRecorder">مسجل الشاشة الاحترافي</span>
                                     <span class="related-tool-sub" data-i18n="common.subRecorder">شاشة + كاميرا</span>
                                 </div>
                                 <div class="related-tool-icon-box icon-rec" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.3)); color: #EF4444;">
@@ -1766,7 +1812,7 @@
                             </a>
                             <a href="/screen-recorder-studio" data-page="recorder" class="related-tool-card">
                                 <div class="related-tool-text">
-                                    <span class="related-tool-title" data-i18n="common.navRecorder">مسجل الشاشة Studio</span>
+                                    <span class="related-tool-title" data-i18n="common.navRecorder">مسجل الشاشة الاحترافي</span>
                                     <span class="related-tool-sub" data-i18n="common.subRecorder">شاشة + كاميرا</span>
                                 </div>
                                 <div class="related-tool-icon-box icon-rec" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.3)); color: #EF4444;">
@@ -2236,7 +2282,7 @@
                         <a href="/qr-code-generator" data-page="qr" data-i18n="common.navQr">مولد كود QR</a>
                         <a href="/youtube-thumbnail-downloader" data-page="thumb" data-i18n="common.navThumb">تحميل صور اليوتيوب المصغرة</a>
                         <a href="/gemini-watermark-remover" data-page="gemini" data-i18n="common.navGemini">مزيل علامة جيميناي</a>
-                        <a href="/screen-recorder-studio" data-page="recorder" data-i18n="common.navRecorder">مسجل الشاشة Studio</a>
+                        <a href="/screen-recorder-studio" data-page="recorder" data-i18n="common.navRecorder">مسجل الشاشة الاحترافي</a>
                     </nav>
                 </div>
 
@@ -2272,7 +2318,7 @@
         const translations = {
             en: {
                 common: {
-                    navQr: "QR Code Generator", navThumb: "YouTube Thumbnail Downloader", navGemini: "Gemini Watermark Remover", navRecorder: "Screen Recorder Studio",
+                    navQr: "QR Code Generator", navThumb: "YouTube Thumbnail Downloader", navGemini: "Gemini Watermark Remover", navRecorder: "Screen Studio Recorder",
                     subQr: "Instant & Free", subThumb: "HD & 4K Quality", subGemini: "Ultra Fast ⚡", subRecorder: "Screen + Cam",
                     relatedToolsTitle: "Try Our Other Tools",
                     breadcrumbHome: "Home", backLink: "← Back to all tools",
@@ -2289,7 +2335,7 @@
                     heroLead: "Generate QR codes, grab YouTube thumbnails, and remove Gemini watermarks in seconds. Free, fast, and built to feel like nothing else you've used.",
                     heroCtaPrimary: "Explore the tools",
                     heroCtaSecondary: "Gemini Watermark Remover",
-                    heroCtaRecorder: "Screen Recorder Studio",
+                    heroCtaRecorder: "Screen Studio Recorder",
                     scrollCue: "Scroll",
                     orbitThumb: "Thumbnail Grabber", orbitQr: "QR Generator", orbitAudio: "Gemini Watermark Remover", orbitFast: "Ultra Fast ⚡",
                     statDownloads: "Operations Today", statSpeed: "Avg Speed", statFree: "Free & No Signup", statQuality: "Max Resolution",
@@ -2303,7 +2349,7 @@
                     cardGeminiTitle: "Gemini Watermark Remover",
                     cardGeminiDesc: "Remove Google Gemini AI watermarks from images instantly in browser — 100% private with no quality loss.",
                     badgeRecorder: "100% Client-Side",
-                    cardRecorderTitle: "Screen Recorder Studio",
+                    cardRecorderTitle: "Screen Studio Recorder",
                     cardRecorderDesc: "Record screen, webcam overlay, and audio in high quality right in browser — 100% private, no signup.",
                     whyKicker: "Why GToolix", whyTitle: "Built to stay out of your way",
                     featPrivateTitle: "No accounts", featPrivateDesc: "Nothing to sign up for and nothing to remember. Open a tool and use it.",
@@ -2313,6 +2359,7 @@
                 },
                 qr: {
                     breadcrumbCurrent: "QR Code Generator",
+                    badgeText: "100% Local Processing • Zero Upload",
                     h1: "Free QR Code Generator Online – Custom Barcodes with PNG & SVG Download",
                     tagline: "Create custom, high-resolution QR codes for website links, Wi-Fi, vCards, SMS, text, and social profiles — 100% free, instant preview, zero watermark.",
                     scrollHint: "👈 Swipe or use arrows to view all options (URL, WiFi, vCard, Location...) 👉",
@@ -2385,6 +2432,7 @@
                 },
                 thumb: {
                     breadcrumbCurrent: "YouTube Thumbnail Downloader",
+                    badgeText: "Direct Fetching • Zero Server Storage",
                     h1: "Free YouTube Thumbnail Downloader – Download 4K & HD Cover Images",
                     tagline: "Extract and download any YouTube video or Shorts thumbnail in 4K, 1080p HD, or SD resolution — 100% free, instant preview, zero watermark.",
                     inputPlaceholder: "Paste YouTube video or Shorts URL (e.g. https://www.youtube.com/watch?v=...)",
@@ -2542,9 +2590,9 @@
                     ]
                 },
                 rec: {
-                    breadcrumbCurrent: "Screen Recorder Studio",
-                    h1: "Screen Recorder Studio",
-                    tagline: "Record screen, webcam, and audio in high quality right from your browser — 100% private, zero upload, no signup.",
+                    breadcrumbCurrent: "Screen Studio Recorder",
+                    h1: "Screen Studio Recorder — Record Your Screen, Camera & Audio Right in Your Browser",
+                    tagline: "Record your screen, camera, and audio directly in your browser in high quality — free, no install, no upload, no account. 100% private, local recording.",
                     privacyBadge: "Your recording stays on your device • 100% Client-Side Privacy",
                     noticeBrowserText: "Your browser does not support full MediaRecorder capture. Please use desktop Google Chrome, Microsoft Edge, or Brave for best results.",
                     camPermissionDenied: "Camera access was denied or device is busy. Recording can continue with screen only.",
@@ -2615,20 +2663,19 @@
                     feat4Title: "High Quality & 60 FPS", feat4Desc: "Record crisp screen captures up to 60 FPS and high bitrates supported by hardware acceleration.",
                     feat5Title: "Free Without Watermarks", feat5Desc: "Unlimited recording length and zero forced watermarks, logos, or forced user registrations.",
                     feat6Title: "Zero Software Installs", feat6Desc: "Runs instantly in standard web browsers without needing Chrome extensions or desktop apps.",
-                    whyTitle: "Why Choose GToolix Screen Recorder Studio?",
-                    whyP1: "Traditional screen recording software requires heavy desktop installs, paid monthly subscriptions, or uploads your screen captures to remote servers with strict limits. GToolix Screen Recorder Studio provides a 100% browser-native studio experience. Capture tutorials, demos, presentations, and gaming sessions with zero server latency and absolute privacy.",
-                    howTitle: "How to Record Screen & Webcam in 4 Easy Steps",
+                    whyTitle: "Why 100% Local Recording Is More Private",
+                    whyP1: "Traditional screen recording software requires heavy desktop installs, paid monthly subscriptions, or uploads your screen captures to remote servers with strict limits. Screen Studio Recorder provides a 100% browser-native experience. Capture tutorials, demos, presentations, and gaming sessions with zero server latency and absolute privacy.",
+                    howTitle: "Record Your Screen in 3 Simple Steps",
                     step1Title: "Configure Sources & Devices", step1Desc: "Choose webcam, microphone, camera position, shape, and audio settings in the left control panel.",
                     step2Title: "Click Start & Select Screen", step2Desc: "Click Start Recording and choose whether to capture your full monitor, application window, or browser tab.",
                     step3Title: "Record & Control", step3Desc: "Use Pause/Resume controls or live audio activity indicators while recording your presentation.",
                     step4Title: "Preview & Save", step4Desc: "Stop recording to preview your video immediately and download the high-quality WebM/MP4 file.",
-                    faqTitle: "Frequently Asked Questions (FAQ)",
+                    faqTitle: "Frequently Asked Questions",
                     faqs: [
-                        { q: "Is Screen Recorder Studio free to use?", a: "Yes, it is 100% free with unlimited recording time and zero forced watermarks." },
-                        { q: "Are my screen recordings uploaded to any server?", a: "Never! All stream compositing, audio mixing, and video encoding happen locally inside your web browser." },
-                        { q: "Can I record system audio and microphone audio simultaneously?", a: "Yes, GToolix mixes system audio from getDisplayMedia and microphone audio using Web Audio API into a single track." },
-                        { q: "Can I customize the webcam overlay position and shape?", a: "Yes, you can select camera placement (top-left, top-right, bottom-left, bottom-right), shape (circle, rounded, rectangle), size, and margin." },
-                        { q: "What video formats are supported for download?", a: "Videos are saved in WebM format (using VP9/VP8 video and Opus audio codecs) or MP4 depending on browser support." }
+                        { q: "Does this tool upload my recording anywhere?", a: "No, recording happens entirely inside your browser — nothing is uploaded to any server." },
+                        { q: "Do I need to install software or create an account?", a: "No, the tool works directly in your browser with no installation or sign-up required." },
+                        { q: "Can I record my screen, camera, and audio at the same time?", a: "Yes, you can enable screen, camera, microphone, and system audio recording simultaneously." },
+                        { q: "What quality does the recording produce?", a: "The tool supports high-quality recording directly from your browser with no quality loss." }
                     ]
                 },
                 showcase: {
@@ -2639,7 +2686,7 @@
             },
             ar: {
                 common: {
-                    navQr: "مولد كود QR", navThumb: "تحميل صور اليوتيوب المصغرة", navGemini: "مزيل علامة جيميناي", navRecorder: "مسجل الشاشة Studio",
+                    navQr: "مولد كود QR", navThumb: "تحميل صور اليوتيوب المصغرة", navGemini: "مزيل علامة جيميناي", navRecorder: "مسجل الشاشة الاحترافي",
                     subQr: "فوري ومجاني", subThumb: "جودة HD و 4K", subGemini: "فائق السرعة ⚡", subRecorder: "شاشة + كاميرا",
                     relatedToolsTitle: "جرب أدواتنا الأخرى",
                     breadcrumbHome: "الرئيسية", backLink: "← العودة لكل الأدوات",
@@ -2685,6 +2732,7 @@
                 },
                 qr: {
                     breadcrumbCurrent: "مولد كود QR",
+                    badgeText: "توليد محلي 100% • بدون رفع للسيرفر",
                     h1: "مولد كود QR مجاني أونلاين | إنشاء باركود QR وتحميل PNG و SVG",
                     tagline: "أنشئ أكواد QR مخصصة عالية الدقة للروابط، الواي فاي، بطاقات vCard، الرسائل النصية، والمواقع — مجاني 100%، معاينة فورية، وبدون علامات مائية.",
                     scrollHint: "👈 اسحب أو اضغط الأسهم لرؤية باقي الخيارات (هاتف، بريد، واي فاي، vCard، موقع...) 👉",
@@ -2757,6 +2805,7 @@
                 },
                 thumb: {
                     breadcrumbCurrent: "تحميل صور اليوتيوب المصغرة",
+                    badgeText: "معالجة محلية 100% • استخراج فوري",
                     h1: "تحميل صور اليوتيوب المصغرة HD و 4K مجاناً | مستخرج الصور",
                     tagline: "استخرج وحمّل صور أغلفة فيديوهات يوتيوب والشورتس بجودات 4K و Full HD و SD فورياً — مجاني 100%، معاينة مباشرة، وبدون علامة مائية.",
                     inputPlaceholder: "الصق رابط فيديو يوتيوب أو الشورتس (مثال: https://www.youtube.com/watch?v=...)",
@@ -2878,8 +2927,13 @@
                     privacyP1: "خصوصيتك غير قابلة للمساومة. تتم معالجة الصور محلياً في ذاكرة جهازك مباشرة، ولن يتم نقل أي بكسل عبر الإنترنت أو تخزينه في أي خادم نهائياً.",
                     synthTitle: "الشفافية التقنية وتوضيح علامة SynthID",
                     synthP1: "تزيل أداة GToolix شعار نجمة Gemini المائية الشفافة المرئية رياضياً. يرجى العلم أن علامة SynthID الإحصائية غير المرئية المضمنة في طبقات الضوضاء بواسطة Google DeepMind لا يتم إزالتها. نحن نلتزم بالشفافية التقنية التامة.",
-                    faqTitle: "الأسئلة الشائعة (FAQ)",
+                    faqTitle: "الأسئلة الشائعة حول إزالة علامة Gemini",
                     faqs: [
+                        { q: "هل الأداة تحذف علامة Gemini المائية بدون التأثير على جودة الصورة؟", a: "نعم، المعالجة تتم بدقة للحفاظ على جودة الصورة الأصلية دون أي تشويه أو فقدان وضوح." },
+                        { q: "هل يتم رفع صوري على أي سيرفر خارجي؟", a: "لا، المعالجة تتم بالكامل داخل متصفحك محليًا، ولا تُرفع أي صورة لأي خادم خارجي." },
+                        { q: "هل الأداة مجانية بالكامل؟", a: "نعم، يمكنك إزالة العلامة المائية من عدد غير محدود من الصور مجانًا." },
+                        { q: "هل تعمل الأداة مع كل الصور المولدة من Gemini؟", a: "نعم، الأداة مصممة خصيصًا للتعرف على علامة Google Gemini المائية وإزالتها من الصور المولدة بواسطته." },
+                        { q: "هل أحتاج إلى تثبيت برنامج أو إنشاء حساب؟", a: "لا، الأداة تعمل مباشرة من المتصفح بدون أي تثبيت أو تسجيل دخول." },
                         { q: "ما هي العلامة المائية لـ Gemini؟", a: "تضيف منصة Google Gemini علامة مائية شفافة على شكل نجمة في أسفل الزاوية للصور المنشأة بالذكاء الاصطناعي للإشارة إلى مصدرها." },
                         { q: "كيف أزيل العلامة المائية من صور جيميناي مجاناً؟", a: "ما عليك سوى سحب وإفلات صورتك في الأداة أو الضغط على Ctrl+V للصقها. تقوم خوارزميتنا بالكشف التلقائي عن العلامة المائية وإزالتها فورا عبر تقنية المعاكسة الرياضية للشفافية." },
                         { q: "هل هذه الأداة مجانية بالكامل بدون حدود؟", a: "نعم، تقدم منصة GToolix إزالة علامات مائية غير محدودة مجاناً بالكامل 100%، بدون رسوم مخفية أو اشتراكات أو نظام نقاط." },
@@ -2913,9 +2967,9 @@
                     ]
                 },
                 rec: {
-                    breadcrumbCurrent: "مسجل الشاشة Studio",
-                    h1: "مسجل الشاشة Studio",
-                    tagline: "سجّل شاشة جهازك والكاميرا والصوت بجودة عالية مباشرة من متصفحك — 100% خاص، بدون رفع، وبدون تسجيل حساب.",
+                    breadcrumbCurrent: "مسجل الشاشة الاحترافي",
+                    h1: "مسجل الشاشة الاحترافي — تسجيل شاشتك وكاميرتك وصوتك مباشرة من المتصفح",
+                    tagline: "سجّل شاشتك وصوتك وكاميرا جهازك مباشرة من المتصفح بجودة عالية ومجانًا. بدون تثبيت برامج، بدون رفع ملفات، وبدون تسجيل حساب — خصوصية 100% محليًا داخل متصفحك.",
                     privacyBadge: "تسجيلك يبقى على جهازك • خصوصية محليّة 100% داخل المتصفح",
                     noticeBrowserText: "متصفحك الحالي لا يدعم كامل تقنيات MediaRecorder للتسجيل. يرجى استخدام متصفح Google Chrome أو Microsoft Edge أو Brave على الكمبيوتر للحصول على أفضل نتيجة.",
                     camPermissionDenied: "تعذّر الوصول للكاميرا أو هي مشغولة حالياً. يمكنك المتابعة بتسجيل الشاشة فقط.",
@@ -2986,20 +3040,19 @@
                     feat4Title: "دعم 60 إطار ودقة فائقة", feat4Desc: "تسجيل مقاطع سلسة بدقة 1080p و 4K ومعدل 60 إطاراً في الثانية بتسريع العتاد.",
                     feat5Title: "مجاني وبدون علامة مائية", feat5Desc: "مدة تسجيل غير محدودة مجاناً بالكامل 100% وبدون إدراج أي شعارات أو علامات مائية.",
                     feat6Title: "بدون برامج أو تثبيت", feat6Desc: "يعمل فورياً عبر المتصفح دون الحاجة لتنزيل تطبيقات أو إضافات خارجية.",
-                    whyTitle: "لماذا تختار أداة مسجل الشاشة Studio من GToolix؟",
-                    whyP1: "على عكس برامج تسجيل الشاشة التقليدية التي تطلب رسوم اشتراكات شهرية أو ترفع الفيديو لسيرفرات خارجية بحدود زمنية ضيقة، يقدم GToolix استوديو تسجيل متكامل 100% داخل المتصفح وبدون أي قيود أو مخاوف تتعلق بالخصوصية.",
-                    howTitle: "كيف تسجل الشاشة والكاميرا في 4 خطوات سهلة؟",
+                    whyTitle: "لماذا يُعد التسجيل المحلي 100% أكثر أمانًا؟",
+                    whyP1: "على عكس برامج تسجيل الشاشة التقليدية التي تطلب رسوم اشتراكات شهرية أو ترفع الفيديو لسيرفرات خارجية بحدود زمنية ضيقة، يقدم مسجل الشاشة الاحترافي استوديو تسجيل متكامل 100% داخل المتصفح وبدون أي قيود أو مخاوف تتعلق بالخصوصية.",
+                    howTitle: "خطوات تسجيل الشاشة في 3 دقائق",
                     step1Title: "اضبط المصادر والأجهزة", step1Desc: "اختر الكاميرا، الميكروفون، موضع وشكل الكاميرا العائمة، وجودة الفيديو من اللوحة الجانبية.",
                     step2Title: "اضغط ابدأ واختر الشاشة", step2Desc: "اضغط على ابدأ التسجيل واختر النافذة أو الشاشة الكاملة أو تبويب المتصفح الذي تريد تسجيله.",
                     step3Title: "سجّل وتحكّم بالصوت", step3Desc: "استخدم زر الإيقاف المؤقت أو تابع المؤشرات الصوتية أثناء الشرح والتقديم.",
                     step4Title: "عاين وحمّل الفيديو", step4Desc: "أوقف التسجيل لمعاينة مقطع الفيديو فورياً ثم تنزيل ملف WebM/MP4 بجودته الكاملة.",
-                    faqTitle: "الأسئلة الشائعة (FAQ)",
+                    faqTitle: "الأسئلة الشائعة حول مسجل الشاشة",
                     faqs: [
-                        { q: "هل مسجل الشاشة في GToolix مجاني بالكامل؟", a: "نعم، الأداة مجانية 100% وبدون أي حدود لزمن التسجيل أو علامات مائية." },
-                        { q: "هل يتم رفع تسجيلي إلى أي سيرفر خارجي؟", a: "لا إطلاقاً! جميع عمليات التسجيل والدمج وتصدير الفيديو تتم محلياً 100% داخل جهازك وفي متصفحك فقط." },
-                        { q: "هل يمكن تسجيل صوت النظام والميكروفون معاً؟", a: "نعم، تتيح الأداة دمج صوت الميكروفون والصوت الداخلي للشاشة أو التبويب في مسار صوتي نقي." },
-                        { q: "هل يمكنني تغيير شكل وموقع الكاميرا فوق الشاشة؟", a: "نعم، يمكنك اختيار موقع الكاميرا (أعلى اليمين، أعلى اليسار، إلخ)، وشكلها (دائري، مستطيل، زوايا دائرية)، وحجمها بحرية." },
-                        { q: "ما هي صيغة الفيديو المنزّل؟", a: "يتم حفظ الفيديو بصيغة WebM عالية الدقة (بكودك VP9/VP8 وصوت Opus) المقبولة عالمياً على منصات الفيديو ومحاميل التشغيل." }
+                        { q: "هل مسجل الشاشة يرفع الفيديو على الإنترنت؟", a: "لا، التسجيل يتم بالكامل محليًا داخل متصفحك، ولا يُرفع أي ملف إلى أي سيرفر." },
+                        { q: "هل أحتاج إلى تثبيت برنامج أو إنشاء حساب؟", a: "لا، الأداة تعمل مباشرة من المتصفح بدون أي تثبيت أو تسجيل." },
+                        { q: "هل يمكنني تسجيل الشاشة والكاميرا والصوت معًا؟", a: "نعم، يمكنك تفعيل تسجيل الشاشة، الكاميرا، الميكروفون، وصوت النظام في نفس الوقت." },
+                        { q: "ما هي جودة الفيديو الناتج؟", a: "الأداة تدعم التسجيل بجودة عالية مباشرة من متصفحك دون فقدان في الجودة." }
                     ]
                 }
             }
@@ -3126,11 +3179,11 @@
         // ===================================================================
         const PAGE_IDS = { home: 'page-home', qr: 'page-qr', thumb: 'page-thumb', gemini: 'page-gemini', recorder: 'page-recorder' };
         const PAGE_TITLES = {
-            home: 'GToolix – Free Online Tools: QR Code Generator, YouTube Thumbnail Grabber, Gemini Watermark Remover, Screen Recorder Studio',
+            home: 'GToolix – Free Online Tools: QR Code Generator, YouTube Thumbnail Grabber, Gemini Watermark Remover, Screen Studio Recorder',
             qr: 'Free QR Code Generator Online – No Signup, Instant Download | GToolix',
             thumb: 'YouTube Thumbnail Downloader – Download HD & 4K Thumbnails Free | GToolix',
             gemini: 'Gemini Watermark Remover – Clean AI-Generated Images Free | GToolix',
-            recorder: 'Screen Recorder Studio – Online Screen & Webcam Recorder Free | GToolix'
+            recorder: 'Screen Studio Recorder | Free Online Screen & Camera Recorder - GToolix'
         };
         const HASH_TO_PAGE = { '': 'home', '#': 'home', '#home': 'home', '#qr-code': 'qr', '#youtube-thumbnail': 'thumb', '#gemini-watermark': 'gemini', '#screen-recorder': 'recorder' };
         const PAGE_TO_PATH = { home: '/', qr: '/qr-code-generator', thumb: '/youtube-thumbnail-downloader', gemini: '/gemini-watermark-remover', recorder: '/screen-recorder-studio' };
