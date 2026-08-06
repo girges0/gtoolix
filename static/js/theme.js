@@ -213,7 +213,7 @@
             'common.navQr': 'مولد كود QR',
             'common.navThumb': 'تحميل صور اليوتيوب المصغرة',
             'common.navGemini': 'مزيل علامة جيميناي',
-            'common.navRecorder': 'مسجل الشاشة Studio',
+            'common.navRecorder': 'مسجل الشاشة الاحترافي',
             'common.footerTrustTitle': 'عن المنصة والثقة',
             'common.linkAbout': 'عن المنصة',
             'common.linkContact': 'اتصل بنا',

@@ -45,11 +45,11 @@
         content="Generate QR codes, grab YouTube thumbnails in 4K, and remove Gemini AI watermarks — free, instant, no signup.">
     <meta name="twitter:image" content="https://gtoolix.com/static/img/logo.png">
 
-    <!-- ===================== Performance: Preconnect Hints & Web Fonts ===================== -->
+    <!-- ===================== Performance: Preconnect Hints & Non-blocking Web Fonts ===================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800&display=swap">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800&display=swap"></noscript>
 
     <!-- ===================== SEO: Global JSON-LD Schema ===================== -->
     <script type="application/ld+json">
@@ -194,7 +194,22 @@
     }
     </script>
 
-    <link rel="stylesheet" href="/static/css/main.css">
+    <!-- Critical Inline Styles (Above-the-fold fast paint) -->
+    <style>
+        :root{--bg:#020817;--bg-secondary:#0F172A;--card:#111827;--border:#1E293B;--glass-border:rgba(255,255,255,0.08);--glass:rgba(255,255,255,0.04);--primary:#2563EB;--primary-hover:#3B82F6;--accent:#06B6D4;--text:#F8FAFC;--text-secondary:#94A3B8;--radius-full:9999px;--radius-md:1rem;--nav-bg:rgba(2,8,23,0.82)}
+        [data-theme="light"]{--bg:#F8FAFC;--bg-secondary:#F1F5F9;--card:#FFFFFF;--border:#E2E8F0;--glass-border:rgba(0,0,0,0.06);--glass:rgba(255,255,255,0.7);--primary:#2563EB;--text:#0F172A;--text-secondary:#475569;--nav-bg:rgba(248,250,252,0.85)}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;overflow-x:clip;width:100%;-webkit-text-size-adjust:100%}
+        body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background-color:var(--bg);color:var(--text);line-height:1.6;overflow-x:clip;width:100%;min-height:100svh;position:relative;-webkit-font-smoothing:antialiased}
+        html[dir="rtl"] body{font-family:'Cairo','Inter',-apple-system,sans-serif}
+        .site-nav{position:sticky;top:0.75rem;z-index:10000;display:flex;align-items:center;justify-content:space-between;gap:0.75rem;padding:0.45rem 0.85rem;margin:0.5rem auto 1.5rem;max-width:1180px;width:min(100% - 2rem,1180px);background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glass-border);border-radius:var(--radius-full);min-height:56px}
+        .site-nav__brand{display:flex;align-items:center;direction:ltr;gap:0.6rem;font-weight:700;font-size:1.1rem;color:var(--text);text-decoration:none;background:none;border:none;min-height:44px;cursor:pointer}
+        .site-nav__logo-img{width:40px;height:40px;object-fit:contain;border-radius:9px;display:block}
+        .page-view{display:none;position:relative;z-index:1}
+        .page-view.active{display:block}
+    </style>
+    <link rel="preload" as="style" href="/static/css/main.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/static/css/main.css"></noscript>
     <script src="/static/js/theme.js"></script>
     <script>/* Theme init — prevent FOUC */
         window.seoPageType = "";
@@ -220,7 +235,7 @@
     <header class="site-nav">
         <button class="site-nav__brand" data-page="home">
             <span class="site-nav__brand-mark">
-                <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img">
+                <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40" loading="eager" fetchpriority="high">
             </span>
             <span>GToolix</span>
         </button>
@@ -2269,7 +2284,7 @@
                 <div class="footer-col footer-col--brand">
                     <a class="footer-brand" href="/" data-page="home">
                         <span class="site-nav__brand-mark">
-                            <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img">
+                            <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40" loading="lazy">
                         </span>
                         <span>GToolix</span>
                     </a>
@@ -3189,6 +3204,33 @@
         const PAGE_TO_PATH = { home: '/', qr: '/qr-code-generator', thumb: '/youtube-thumbnail-downloader', gemini: '/gemini-watermark-remover', recorder: '/screen-recorder-studio' };
         const PATH_TO_PAGE = { '/': 'home', '/gemini-watermark-remover': 'gemini', '/qr-code-generator': 'qr', '/youtube-thumbnail-downloader': 'thumb', '/screen-recorder-studio': 'recorder', '/tools/qr/': 'qr', '/tools/thumbnail/': 'thumb', '/tools/gemini/': 'gemini', '/tools/screen-recorder/': 'recorder' };
 
+        const loadedToolScripts = {};
+        function loadToolScript(src) {
+            if (loadedToolScripts[src]) return Promise.resolve();
+            return new Promise((resolve, reject) => {
+                const s = document.createElement('script');
+                s.src = src;
+                s.onload = () => { loadedToolScripts[src] = true; resolve(); };
+                s.onerror = reject;
+                document.body.appendChild(s);
+            });
+        }
+
+        function ensureToolScripts(page) {
+            if (page === 'qr') {
+                return loadToolScript('/static/js/qrcode.min.js').then(() => loadToolScript('/static/js/qr-tool.js'));
+            } else if (page === 'thumb') {
+                return loadToolScript('/static/js/thumb-tool.js');
+            } else if (page === 'gemini') {
+                return loadToolScript('/static/js/gemini-watermark-remover.js');
+            } else if (page === 'recorder') {
+                return loadToolScript('/static/js/screen-recorder-tool.js').then(() => {
+                    if (window.ScreenRecorderTool) window.ScreenRecorderTool.onPageActivated();
+                });
+            }
+            return Promise.resolve();
+        }
+
         function showPage(page, { skipScroll, updateUrl = true } = {}) {
             if (!PAGE_IDS[page]) page = 'home';
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
@@ -3207,14 +3249,15 @@
             }
             if (!skipScroll) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
 
-            // Screen Recorder lifecycle hooks
-            if (window.ScreenRecorderTool) {
-                if (page === 'recorder') {
-                    window.ScreenRecorderTool.onPageActivated();
-                } else {
-                    window.ScreenRecorderTool.onPageDeactivated();
+            ensureToolScripts(page).then(() => {
+                if (window.ScreenRecorderTool) {
+                    if (page === 'recorder') {
+                        window.ScreenRecorderTool.onPageActivated();
+                    } else {
+                        window.ScreenRecorderTool.onPageDeactivated();
+                    }
                 }
-            }
+            });
         }
 
         document.addEventListener('click', (e) => {
@@ -3237,7 +3280,7 @@
         });
 
         // ===================================================================
-        // Home page: 3D motion system + 3D cursor tilt + counters
+        // Home page: Self-pausing 3D motion system + 3D cursor tilt
         // ===================================================================
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -3255,6 +3298,7 @@
 
             let targetProgress = 0, progress = 0;
             let tx = 0, ty = 0, px = 0, py = 0;
+            let animId = null;
 
             function measureScroll() {
                 const heroEl = document.getElementById('hero');
@@ -3262,6 +3306,7 @@
                 const rect = heroEl.getBoundingClientRect();
                 const total = heroEl.offsetHeight || 1;
                 targetProgress = Math.min(Math.max(-rect.top / (total * 0.9), 0), 1);
+                scheduleApply();
             }
 
             if (canHover && hero) {
@@ -3269,11 +3314,16 @@
                     const rect = hero.getBoundingClientRect();
                     tx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
                     ty = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-                });
-                hero.addEventListener('mouseleave', () => { tx = 0; ty = 0; });
+                    scheduleApply();
+                }, { passive: true });
+                hero.addEventListener('mouseleave', () => { tx = 0; ty = 0; scheduleApply(); });
             }
 
             function apply() {
+                const dp = Math.abs(targetProgress - progress);
+                const dpx = Math.abs(tx - px);
+                const dpy = Math.abs(ty - py);
+
                 progress = lerp(progress, targetProgress, 0.08);
                 px = lerp(px, tx, 0.06);
                 py = lerp(py, ty, 0.06);
@@ -3289,30 +3339,48 @@
                     layers.content.style.opacity = String(Math.max(0, 1 - p * 1.15));
                 }
 
-                requestAnimationFrame(apply);
+                if (dp > 0.0001 || dpx > 0.0001 || dpy > 0.0001) {
+                    animId = requestAnimationFrame(apply);
+                } else {
+                    animId = null;
+                }
+            }
+
+            function scheduleApply() {
+                if (!animId) animId = requestAnimationFrame(apply);
             }
 
             window.addEventListener('scroll', measureScroll, { passive: true });
-            window.addEventListener('resize', measureScroll);
+            window.addEventListener('resize', measureScroll, { passive: true });
             measureScroll();
-            requestAnimationFrame(apply);
+            scheduleApply();
         })();
 
-        // 3D Card Interactive Light Tilt
+        // Throttled 3D Card Interactive Light Tilt
         (function cardTilt() {
             if (reduceMotion || !canHover) return;
             document.querySelectorAll('.tool-card, .tiktok-showcase-card, .tool-chip-card').forEach(card => {
+                let rect = null;
+                let ticking = false;
+                card.addEventListener('mouseenter', () => { rect = card.getBoundingClientRect(); });
                 card.addEventListener('mousemove', (e) => {
-                    const r = card.getBoundingClientRect();
-                    const px = (e.clientX - r.left) / r.width;
-                    const py = (e.clientY - r.top) / r.height;
-                    const rx = (0.5 - py) * 8;
-                    const ry = (px - 0.5) * 10;
-                    card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
-                    card.style.setProperty('--mx', (px * 100) + '%');
-                    card.style.setProperty('--my', (py * 100) + '%');
-                });
+                    if (!rect) rect = card.getBoundingClientRect();
+                    if (!ticking) {
+                        ticking = true;
+                        requestAnimationFrame(() => {
+                            const px = (e.clientX - rect.left) / rect.width;
+                            const py = (e.clientY - rect.top) / rect.height;
+                            const rx = (0.5 - py) * 8;
+                            const ry = (px - 0.5) * 10;
+                            card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+                            card.style.setProperty('--mx', (px * 100) + '%');
+                            card.style.setProperty('--my', (py * 100) + '%');
+                            ticking = false;
+                        });
+                    }
+                }, { passive: true });
                 card.addEventListener('mouseleave', () => {
+                    rect = null;
                     card.style.transform = '';
                 });
             });
@@ -3357,18 +3425,12 @@
             showPage(initPage, { skipScroll: true, updateUrl: false });
         });
     </script>
-    <script src="/static/js/qrcode.min.js"></script>
-    <script src="/static/js/qr-tool.js"></script>
-    <script src="/static/js/thumb-tool.js"></script>
-    <script src="/static/js/gemini-engine.bundle.js"></script>
-    <script src="/static/js/gemini-watermark-remover.js"></script>
-    <script src="/static/js/screen-recorder-tool.js"></script>
     <script src="/static/js/theme.js"></script>
     <script>
         window.GTOOLIX_SUPABASE_URL = 'YOUR_SUPABASE_URL';
         window.GTOOLIX_SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
     </script>
-    <script src="/static/js/client.js"></script>
+    <script src="/static/js/client.js" defer></script>
     <script src="/static/js/ad-analytics.js" async></script>
 </body>
 
