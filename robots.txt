@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /monitoring/
 
 # AI Search Engine Crawlers
 User-agent: GPTBot
