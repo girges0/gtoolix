@@ -3311,8 +3311,11 @@
     <script src="/static/js/gemini-watermark-remover.js"></script>
     <script src="/static/js/screen-recorder-tool.js"></script>
     <script src="/static/js/theme.js"></script>
-    <script src="/monitoring/config.js"></script>
-    <script src="/monitoring/client.js"></script>
+    <script>
+        window.GTOOLIX_SUPABASE_URL = 'YOUR_SUPABASE_URL';
+        window.GTOOLIX_SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    </script>
+    <script src="/static/js/client.js"></script>
     <script src="/static/js/ad-analytics.js" async></script>
 </body>
 

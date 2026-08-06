@@ -1,14 +1,15 @@
 // =====================================================================
 // GToolix Monitoring Module — Client SDK (Fail-Safe Tracking API)
+// Hosted on main site static assets to report tracking telemetry.
 // =====================================================================
 (function () {
     'use strict';
 
-    if (window.GToolixMonitor) return; // Prevent double init
+    if (window.GToolixMonitor) return; // Prevent duplicate init
 
     const CONFIG = window.GTOOLIX_MONITORING_CONFIG || {
-        SUPABASE_URL: 'https://xyzcompany.supabase.co',
-        SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        SUPABASE_URL: window.GTOOLIX_SUPABASE_URL || 'YOUR_SUPABASE_URL',
+        SUPABASE_ANON_KEY: window.GTOOLIX_SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY',
         HEARTBEAT_INTERVAL_MS: 30000
     };
 
@@ -78,12 +79,16 @@
         return { deviceType, browser, os, userAgent: ua.substring(0, 250) };
     }
 
-    // Initialize Supabase client dynamically if needed
+    // Initialize Supabase client dynamically if available
     function initSupabase() {
         if (supabaseClient) return supabaseClient;
         if (window.supabase && typeof window.supabase.createClient === 'function') {
-            supabaseClient = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY);
-            return supabaseClient;
+            try {
+                supabaseClient = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_ANON_KEY);
+                return supabaseClient;
+            } catch (e) {
+                return null;
+            }
         }
         return null;
     }
@@ -91,6 +96,7 @@
     // REST fallback insert if supabase-js library is not loaded
     async function directRestInsert(table, data) {
         try {
+            if (!CONFIG.SUPABASE_URL || CONFIG.SUPABASE_URL === 'YOUR_SUPABASE_URL') return false;
             const url = `${CONFIG.SUPABASE_URL}/rest/v1/${table}`;
             const response = await fetch(url, {
                 method: 'POST',
@@ -111,6 +117,7 @@
     // REST fallback update (for session heartbeats)
     async function directRestUpdate(table, filterCol, filterVal, data) {
         try {
+            if (!CONFIG.SUPABASE_URL || CONFIG.SUPABASE_URL === 'YOUR_SUPABASE_URL') return false;
             const url = `${CONFIG.SUPABASE_URL}/rest/v1/${table}?${filterCol}=eq.${filterVal}`;
             const response = await fetch(url, {
                 method: 'PATCH',
@@ -161,11 +168,11 @@
         startHeartbeat();
     }
 
-    // Heartbeat mechanism
+    // Heartbeat mechanism (runs every 30s when tab is visible)
     function startHeartbeat() {
         if (heartbeatTimer) clearInterval(heartbeatTimer);
         heartbeatTimer = setInterval(async () => {
-            if (document.hidden) return; // Save bandwidth when tab inactive
+            if (document.hidden) return; // Tab inactive, pause heartbeat
             try {
                 const nowStr = new Date().toISOString();
                 const sb = initSupabase();
@@ -180,7 +187,7 @@
         }, CONFIG.HEARTBEAT_INTERVAL_MS || 30000);
     }
 
-    // Public SDK API
+    // Public SDK API (Fail-Silent Guarantee)
     const SDK = {
         async trackPageView(path) {
             try {
@@ -261,7 +268,7 @@
         }
     };
 
-    // Global Error Listeners
+    // Global Error Handlers
     window.addEventListener('error', function (evt) {
         if (evt.error) {
             SDK.trackError(evt.error, { type: 'uncaught_error', filename: evt.filename, lineno: evt.lineno });
@@ -279,6 +286,6 @@
         document.addEventListener('DOMContentLoaded', ensureSession);
     }
 
-    // Expose Global
+    // Expose Global SDK
     window.GToolixMonitor = SDK;
 })();
