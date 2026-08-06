@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- Security & Privacy: Block Search Engines from Indexing Standalone Monitoring Site -->
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>لوحة التحكم والمراقبة – GToolix Monitor</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://gtoolix.com/static/img/icon-192.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    
+    <!-- Standalone Self-Contained Stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Supabase JS Client Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+    <!-- Admin Authentication Overlay -->
+    <div id="adminLoginOverlay" class="admin-login-overlay">
+        <div class="admin-login-card">
+            <h2 class="admin-login-title">تسجيل الدخول - الإدارة</h2>
+            <p class="admin-login-sub">الرجاء إدخال بيانات حساب المسؤول للوصول إلى لوحة المراقبة</p>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label class="form-label" for="adminEmail">البريد الإلكتروني</label>
+                    <input type="email" id="adminEmail" class="form-input" placeholder="admin@gtoolix.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="adminPassword">كلمة المرور</label>
+                    <input type="password" id="adminPassword" class="form-input" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary" id="loginBtn">دخول اللوحة</button>
+                <div id="loginErrorMsg" class="login-error-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Application Container -->
+    <div class="dash-container">
+        <!-- Header Bar -->
+        <header class="dash-header">
+            <div class="dash-brand">
+                <span class="dash-brand-title">
+                    🛡️ لوحة مراقبة GToolix
+                </span>
+                <span class="dash-badge">Supabase Standalone</span>
+            </div>
+            <div class="dash-header-actions">
+                <button id="themeToggleBtn" class="theme-toggle-btn" type="button" title="تبديل المظهر">🌙</button>
+                <span id="userBadge" class="user-badge">جاري التحقق...</span>
+                <button id="logoutBtn" class="btn-secondary" style="display:none;">خروج</button>
+            </div>
+        </header>
+
+        <!-- Stats Overview Cards (Top 4 Metrics) -->
+        <section class="dash-stats-grid">
+            <!-- 1. حالة الموقع -->
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <span class="dash-card-title">🌐 حالة الموقع</span>
+                    <span class="stat-live-dot" id="systemStatusDot"></span>
+                </div>
+                <div class="stat-value" id="systemStatusText">ممتازة</div>
+                <div class="stat-desc" id="systemLatencyText">زمن الاستجابة: -- ms</div>
+            </div>
+
+            <!-- 2. الزوار اليوم -->
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <span class="dash-card-title">📊 الزوار اليوم</span>
+                    <span style="font-size: 1.2rem;">👥</span>
+                </div>
+                <div class="stat-value" id="todayVisitorsCount">0</div>
+                <div class="stat-desc" id="todayViewsCount">0 مشاهدة صفحة</div>
+            </div>
+
+            <!-- 3. الزوار المباشرون -->
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <span class="dash-card-title">🟢 الزوار المباشرون</span>
+                    <span class="stat-live-dot"></span>
+                </div>
+                <div class="stat-value" id="liveVisitorsCount">0</div>
+                <div class="stat-desc">نشطون الآن في الموقع</div>
+            </div>
+
+            <!-- 4. الأخطاء النشطة -->
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <span class="dash-card-title">⚠️ الأخطاء (اليوم)</span>
+                    <span style="font-size: 1.2rem;">🚨</span>
+                </div>
+                <div class="stat-value" id="todayErrorsCount" style="color: var(--error);">0</div>
+                <div class="stat-desc">مشاكل برمجية مسجلة</div>
+            </div>
+        </section>
+
+        <!-- Main Content Grids -->
+        <div class="dash-main-grid">
+            <!-- 5. أكثر الأدوات استخداماً (Col 6) -->
+            <div class="dash-card col-6">
+                <div class="dash-card-header">
+                    <span class="dash-card-title">🛠️ أكثر الأدوات استخداماً</span>
+                </div>
+                <div id="topToolsList">
+                    <div style="color: var(--text-muted); font-size: 0.9rem; padding: 1rem 0;">جاري تحميل البيانات...</div>
+                </div>
+            </div>
+
+            <!-- 6. الأداء والتصفح (Col 6) -->
+            <div class="dash-card col-6">
+                <div class="dash-card-header">
+                    <span class="dash-card-title">⚡ أداء الموقع والأجهزة</span>
+                </div>
+                <div id="performanceMetricsList">
+                    <div class="tool-item">
+                        <div class="tool-info">
+                            <span class="tool-name">متوسط تحميل الصفحات</span>
+                        </div>
+                        <span class="tool-count" id="avgLoadTimeText">-- ms</span>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-info">
+                            <span class="tool-name">متصفح الكروم (Chrome)</span>
+                        </div>
+                        <span class="tool-count" id="chromeUsageText">--%</span>
+                    </div>
+                    <div class="tool-item">
+                        <div class="tool-info">
+                            <span class="tool-name">أجهزة الهواتف المحمولة</span>
+                        </div>
+                        <span class="tool-count" id="mobileUsageText">--%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. سجل الأخطاء الأخير (Col 12) -->
+            <div class="dash-card col-12">
+                <div class="dash-card-header">
+                    <span class="dash-card-title">🐞 سجل الأخطاء البرمجية</span>
+                    <button class="btn-secondary" id="refreshErrorsBtn" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;">تحديث</button>
+                </div>
+                <div class="dash-table-wrapper">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>الوقت</th>
+                                <th>رسالة الخطأ</th>
+                                <th>الصفحة / السياق</th>
+                                <th>معرف الجلسة</th>
+                            </tr>
+                        </thead>
+                        <tbody id="errorsTableBody">
+                            <tr>
+                                <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 1.5rem;">لا توجد أخطاء مسجلة مؤخراً</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 8. الإشعارات وحالة قاعدة البيانات (Col 6) -->
+            <div class="dash-card col-6">
+                <div class="dash-card-header">
+                    <span class="dash-card-title">💾 حالة قاعدة البيانات والحدود</span>
+                </div>
+                <div style="font-size: 0.9rem; line-height: 1.8; color: var(--text-secondary);">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>إجمالي مشاهدات الصفحات المخزنة:</span>
+                        <strong id="dbTotalViews" style="color: var(--text);">0</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>خطة Supabase:</span>
+                        <strong style="color: var(--success);">Free Tier (500MB)</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <span>فترة الاستبقاء التلقائي:</span>
+                        <strong style="color: var(--warning);">30 يومًا</strong>
+                    </div>
+                    <button class="btn-secondary" id="triggerCleanupBtn" style="width: 100%; font-size: 0.85rem;">
+                        🗑️ تنظيف البيانات القديمة (أكبر من 30 يومًا)
+                    </button>
+                </div>
+            </div>
+
+            <!-- 9. سجل النشاط الحالي (Col 6) -->
+            <div class="dash-card col-6">
+                <div class="dash-card-header">
+                    <span class="dash-card-title">📜 سجل النشاط المباشر</span>
+                </div>
+                <div id="activityLogList" style="max-height: 220px; overflow-y: auto; font-size: 0.85rem;">
+                    <div style="color: var(--text-muted); text-align: center; padding: 1rem;">جاري استقبال التحديثات...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Standalone Scripts -->
+    <script src="/config.js"></script>
+    <script src="/client.js"></script>
+    <script src="/app.js"></script>
+</body>
+
+</html>
