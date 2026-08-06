@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>404 - الصفحة غير موجودة | Page Not Found | GToolix</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="author" content="GToolix">
+    <meta name="theme-color" content="#F8FAFC">
+    <link rel="icon" type="image/png" href="/static/img/icon-192.png">
+    <link rel="alternate icon" href="/favicon.ico">
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script src="/static/js/theme.js"></script>
+    <script>
+        (function () { var t = localStorage.getItem('theme'); if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light' } document.documentElement.setAttribute('data-theme', t) })();
+    </script>
+</head>
+
+<body>
+    <header class="site-nav">
+        <a class="site-nav__brand" href="/">
+            <span class="site-nav__brand-mark">
+                <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img">
+            </span>
+            <span>GToolix</span>
+        </a>
+        <nav class="site-nav__links" id="site-nav-links">
+            <a href="/qr-code-generator" data-i18n="common.navQr">مولد كود QR</a>
+            <a href="/youtube-thumbnail-downloader" data-i18n="common.navThumb">تحميل صور اليوتيوب المصغرة</a>
+            <a href="/gemini-watermark-remover" data-i18n="common.navGemini">مزيل علامة جيميناي</a>
+            <a href="/screen-recorder-studio" data-i18n="common.navRecorder">مسجل الشاشة Studio</a>
+        </nav>
+        <div class="site-nav__right">
+            <div class="lang-switcher">
+                <button class="lang-btn" id="lang-en-btn" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn active" id="lang-ar-btn" onclick="setLanguage('ar')">AR</button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+
+    <div class="background-gradient"></div>
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <main>
+        <div class="container" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; padding: 4rem 1rem;">
+            <div class="card glass-card" style="max-width: 600px; width: 100%; text-align: center; padding: 3rem 2rem;">
+                <div style="font-size: 5rem; font-weight: 800; line-height: 1; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">
+                    404
+                </div>
+                <h1 id="error-title" style="font-size: 1.75rem; margin-bottom: 0.75rem;">الصفحة غير موجودة</h1>
+                <p id="error-desc" style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1rem;">
+                    عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يمكنك العودة إلى الصفحة الرئيسية واستكشاف جميع الأدوات.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/" class="btn btn-primary" id="error-btn-home">الرئيسية</a>
+                    <a href="/qr-code-generator" class="btn btn-ghost">مولد كود QR</a>
+                    <a href="/youtube-thumbnail-downloader" class="btn btn-ghost">تحميل الصور المصغرة</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+                    <a class="footer-brand" href="/">
+                        <span class="site-nav__brand-mark">
+                            <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img">
+                        </span>
+                        <span>GToolix</span>
+                    </a>
+                    <p class="footer-note" data-i18n="common.footerNote">GToolix مخصص للاستخدام الشخصي مع محتوى تملك حقوقه أو مرخّص للاستخدام العام.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title" data-i18n="common.footerToolsTitle">الأدوات المميزة</h4>
+                    <nav class="footer-links">
+                        <a href="/qr-code-generator" data-i18n="common.navQr">مولد كود QR</a>
+                        <a href="/youtube-thumbnail-downloader" data-i18n="common.navThumb">تحميل صور اليوتيوب المصغرة</a>
+                        <a href="/gemini-watermark-remover" data-i18n="common.navGemini">مزيل علامة جيميناي</a>
+                        <a href="/screen-recorder-studio" data-i18n="common.navRecorder">مسجل الشاشة Studio</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title" data-i18n="common.footerTrustTitle">عن المنصة والثقة</h4>
+                    <nav class="footer-links">
+                        <a href="/about/" data-i18n="common.linkAbout">عن المنصة</a>
+                        <a href="/faq/" data-i18n="common.linkFaq">الأسئلة الشائعة</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title" data-i18n="common.footerLegalTitle">الخصوصية والشروط</h4>
+                    <nav class="footer-links">
+                        <a href="/privacy-policy/" data-i18n="common.linkPrivacy">سياسة الخصوصية</a>
+                        <a href="/terms-of-service/" data-i18n="common.linkTerms">الشروط والأحكام</a>
+                        <a href="/cookies-policy/" data-i18n="common.linkCookies">سياسة الكوكيز</a>
+                        <a href="/disclaimer/" data-i18n="common.linkDisclaimer">إخلاء المسؤولية</a>
+                        <a href="/dmca/" data-i18n="common.linkDmca">حقوق النشر (DMCA)</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <p data-i18n="common.footerCopyright">&copy; 2026 GToolix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = localStorage.getItem('siteLang') || 'ar';
+        function applyLang(lang) {
+            currentLang = lang;
+            const isEn = lang === 'en';
+            document.documentElement.lang = lang;
+            document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+            document.getElementById('error-title').textContent = isEn ? "Page Not Found" : "الصفحة غير موجودة";
+            document.getElementById('error-desc').textContent = isEn
+                ? "Sorry, the page you are looking for does not exist or has been moved. Return home to explore our free tools."
+                : "عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يمكنك العودة إلى الصفحة الرئيسية واستكشاف جميع الأدوات.";
+            document.getElementById('error-btn-home').textContent = isEn ? "Back to Home" : "الرئيسية";
+            const enBtn = document.getElementById('lang-en-btn');
+            const arBtn = document.getElementById('lang-ar-btn');
+            if (enBtn) enBtn.classList.toggle('active', isEn);
+            if (arBtn) arBtn.classList.toggle('active', !isEn);
+
+            if (window.updateFooterI18n) window.updateFooterI18n(lang);
+        }
+        function setLanguage(lang) { localStorage.setItem('siteLang', lang); applyLang(lang); }
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            if (!links || !btn) return;
+            const shouldOpen = forceClose === true ? false : !links.classList.contains('is-open');
+            links.classList.toggle('is-open', shouldOpen);
+        }
+        document.addEventListener('DOMContentLoaded', () => applyLang(currentLang));
+    </script>
+    <script src="/static/js/theme.js"></script>
+</body>
+
+</html>

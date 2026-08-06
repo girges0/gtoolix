@@ -1,0 +1,16 @@
+{
+  "name": "GToolix – Online Toolbox",
+  "short_name": "GToolix",
+  "description": "Free Online Tools: QR Code Generator, YouTube Thumbnail Grabber, Gemini AI Watermark Remover",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020817",
+  "theme_color": "#6366F1",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

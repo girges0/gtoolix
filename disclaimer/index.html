@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>إخلاء المسؤولية والتنبيه القانوني | GToolix</title>
+    <meta name="description" content="إخلاء المسؤولية القانوني لمنصة GToolix: توضيح استقلالية المنصة وعدم التبعية لـ Google أو YouTube ومسؤولية المستخدم الكاملة.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="GToolix">
+    <meta name="theme-color" content="#F8FAFC">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://example.com/disclaimer" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GToolix">
+    <meta property="og:title" content="إخلاء المسؤولية والتنبيه القانوني | GToolix">
+    <meta property="og:description" content="إخلاء المسؤولية القانوني لمنصة GToolix واستقلالية الخدمات عن الشركات العلامات التجارية.">
+    <meta property="og:url" content="https://example.com/disclaimer">
+    <meta property="og:image" content="https://example.com/static/img/og-default.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="إخلاء المسؤولية | GToolix">
+    <meta name="twitter:description" content="إخلاء المسؤولية والتنبيه القانوني لمنصة GToolix.">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://example.com/" },
+            { "@type": "ListItem", "position": 2, "name": "إخلاء المسؤولية", "item": "https://example.com/disclaimer" }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "name": "إخلاء المسؤولية | GToolix",
+          "url": "https://example.com/disclaimer",
+          "description": "إخلاء المسؤولية القانوني والتنبيهات الخاصة بمنصة GToolix."
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script src="/static/js/theme.js"></script>
+    <script>
+        (function () { var t = localStorage.getItem('theme'); if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light' } document.documentElement.setAttribute('data-theme', t) })();
+    </script>
+</head>
+
+<body>
+    <header class="site-nav">
+        <a class="site-nav__brand" href="/">
+            <span class="site-nav__brand-mark">
+                <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img">
+            </span>
+            <span>GToolix</span>
+        </a>
+        <nav class="site-nav__links" id="site-nav-links">
+            <a href="/qr-code-generator" data-i18n="common.navQr">مولد كود QR</a>
+            <a href="/youtube-thumbnail-downloader" data-i18n="common.navThumb">تحميل صور اليوتيوب المصغرة</a>
+            <a href="/gemini-watermark-remover" data-i18n="common.navGemini">مزيل علامة جيميناي</a>
+            <a href="/screen-recorder-studio" data-i18n="common.navRecorder">مسجل الشاشة Studio</a>
+        </nav>
+        <div class="site-nav__right">
+            <div class="lang-switcher">
+                <button class="lang-btn" id="lang-en-btn" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn active" id="lang-ar-btn" onclick="setLanguage('ar')">AR</button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"
+                aria-controls="site-nav-links" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+
+    <main>
+        <div class="legal-page">
+            <div class="container">
+                <nav class="breadcrumbs">
+                    <a href="/" data-i18n="common.breadcrumbHome">الرئيسية</a> / <span id="legal-breadcrumb">إخلاء المسؤولية</span>
+                </nav>
+
+                <div class="legal-hero">
+                    <h1 id="legal-h1">إخلاء المسؤولية والتنبيه القانوني</h1>
+                    <p class="lead" id="legal-lead">توضح هذه الصفحة حدود مسؤولية منصة GToolix واستقلالية خدمات الويب المتاحة عليها بدون أي ضمانات صريحة أو ضمنية.</p>
+                </div>
+
+                <main class="legal-content-wrapper">
+                    <article class="card legal-card">
+                        <div id="legal-sections-container"></div>
+                    </article>
+
+                    <div class="ad-slot-wrapper" data-ad-slot-id="legal-content-bottom" style="min-height: 250px;">
+                        <div class="ad-label-bar">
+                            <span class="ad-label">إعلان • ADVERTISEMENT</span>
+                        </div>
+                        <div class="ad-container-inner">
+                            <div class="ad-skeleton" aria-hidden="true"><div class="ad-skeleton-pulse"></div></div>
+                            <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-0000000000000000" data-ad-slot="4000000001" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+                    <a class="footer-brand" href="/">
+                        <span class="site-nav__brand-mark">
+                            <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img">
+                        </span>
+                        <span>GToolix</span>
+                    </a>
+                    <p class="footer-note" data-i18n="common.footerNote">GToolix مخصص للاستخدام الشخصي مع محتوى تملك حقوقه أو مرخّص للاستخدام العام.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title" data-i18n="common.footerToolsTitle">الأدوات المميزة</h4>
+                    <nav class="footer-links">
+                        <a href="/qr-code-generator" data-i18n="common.navQr">مولد كود QR</a>
+                        <a href="/youtube-thumbnail-downloader" data-i18n="common.navThumb">تحميل صور اليوتيوب المصغرة</a>
+                        <a href="/gemini-watermark-remover" data-i18n="common.navGemini">مزيل علامة جيميناي</a>
+                        <a href="/screen-recorder-studio" data-i18n="common.navRecorder">مسجل الشاشة Studio</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title" data-i18n="common.footerTrustTitle">عن المنصة والثقة</h4>
+                    <nav class="footer-links">
+                        <a href="/about/" data-i18n="common.linkAbout">عن المنصة</a>
+                        <a href="/faq/" data-i18n="common.linkFaq">الأسئلة الشائعة</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title" data-i18n="common.footerLegalTitle">الخصوصية والشروط</h4>
+                    <nav class="footer-links">
+                        <a href="/privacy-policy/" data-i18n="common.linkPrivacy">سياسة الخصوصية</a>
+                        <a href="/terms-of-service/" data-i18n="common.linkTerms">الشروط والأحكام</a>
+                        <a href="/cookies-policy/" data-i18n="common.linkCookies">سياسة الكوكيز</a>
+                        <a href="/disclaimer/" data-i18n="common.linkDisclaimer">إخلاء المسؤولية</a>
+                        <a href="/dmca/" data-i18n="common.linkDmca">حقوق النشر (DMCA)</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <p data-i18n="common.footerCopyright">&copy; 2026 GToolix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const LEGAL_DATA = {
+            title_ar: "إخلاء المسؤولية والتنبيه القانوني | GToolix",
+            title_en: "Disclaimer & Legal Notice | GToolix",
+            meta_desc_ar: "إخلاء المسؤولية القانوني لمنصة GToolix: توضيح استقلالية المنصة وعدم التبعية لـ Google أو YouTube ومسؤولية المستخدم الكاملة.",
+            meta_desc_en: "GToolix Disclaimer detailing non-affiliation with Google or YouTube, tool usage disclaimers, and user content legal boundaries.",
+            h1_ar: "إخلاء المسؤولية والتنبيه القانوني",
+            h1_en: "Disclaimer & Legal Notice",
+            lead_ar: "توضح هذه الصفحة حدود مسؤولية منصة GToolix واستقلالية خدمات الويب المتاحة عليها بدون أي ضمانات صريحة أو ضمنية.",
+            lead_en: "This page details GToolix's disclaimer of warranties, platform independence, and trademark non-affiliation policy.",
+            sections_ar: [
+                { title: '1. تقديم الأدوات بدون ضمانات ("كما هي")', content: 'جميع الأدوات المتاحة على GToolix (مولد أكواد QR، استخراج مصغرات اليوتيوب، ومزيل علامة جيميناي) تُقدم مجاناً وأدوات مساعدة "كما هي" (As-Is) دون أي ضمانات صريحة أو ضمنية بالدقة الكاملة أو الاستمرارية غير المنقطعة.' },
+                { title: '2. عدم التبعية والتبرؤ من العلامات التجارية', content: 'GToolix موقع مستقل تماماً. نحن غير تابعين ولا ترعينا ولا تربطنا أي شراكة رسمية بشبكة Google LLC أو YouTube أو Alphabet Inc. أو أي شركة تجارية أخرى. جميع العلامات والشعارات المذكورة هي ملك لأصحابها الأصليين.' },
+                { title: '3. مسؤولية استخدام الأكواد والصور', content: 'يتحمل المستخدم وحده المسئولية الكاملة عن محتوى الرابط المضمن في كود الـ QR، وعن استخدام الصور المصغرة المأخوذة من يوتيوب أو الصور المنظفة عبر أداة جيميناي. يجب احترام حقوق الملكية الفكرية وتراخيص النشر.' },
+                { title: '4. الروابط الخارجية والإعلانات', content: 'قد يحتوي موقعنا على إعلانات شبكات طرف ثالث مثل Google AdSense. لا نتحمل المسؤولية عن محتوى الروابط الخارجية أو الخدمات والمعاملات المنجزة من خلال الإعلانات.' }
+            ],
+            sections_en: [
+                { title: '1. Tools Provided "As Is"', content: 'All services on GToolix (QR Code Generator, YouTube Thumbnail Extractor, Gemini Watermark Remover) are provided free of charge on an "As Is" basis without warranties of uninterrupted performance.' },
+                { title: '2. Non-Affiliation & Trademark Disclaimer', content: 'GToolix is an independent utility platform. We are NOT affiliated, endorsed, associated, or certified by Google LLC, YouTube, Alphabet Inc., or any third-party corporate entity. All trademarks belong to their respective copyright holders.' },
+                { title: '3. User Content & Usage Responsibility', content: 'Users hold 100% legal responsibility for the destinations embedded inside generated QR codes and the intellectual property compliance of fetched YouTube thumbnails or processed images.' },
+                { title: '4. External Links & Ads Disclaimer', content: 'GToolix displays programmatic third-party ads. We do not inspect, endorse, or assume responsibility for external web content linked via advertising partners.' }
+            ]
+        };
+
+        let currentLang = localStorage.getItem('siteLang') || 'ar';
+
+        function updateLegalLanguage(lang) {
+            currentLang = lang;
+            const isEn = lang === 'en';
+            document.documentElement.lang = lang;
+            document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+
+            document.title = isEn ? LEGAL_DATA.title_en : LEGAL_DATA.title_ar;
+            const metaDescEl = document.querySelector('meta[name="description"]');
+            if (metaDescEl) metaDescEl.setAttribute('content', isEn ? LEGAL_DATA.meta_desc_en : LEGAL_DATA.meta_desc_ar);
+
+            document.getElementById('legal-h1').textContent = isEn ? LEGAL_DATA.h1_en : LEGAL_DATA.h1_ar;
+            document.getElementById('legal-lead').textContent = isEn ? LEGAL_DATA.lead_en : LEGAL_DATA.lead_ar;
+            document.getElementById('legal-breadcrumb').textContent = isEn ? LEGAL_DATA.h1_en : LEGAL_DATA.h1_ar;
+
+            const container = document.getElementById('legal-sections-container');
+            if (container) {
+                const sections = isEn ? LEGAL_DATA.sections_en : LEGAL_DATA.sections_ar;
+                container.innerHTML = sections.map(sec => `
+                    <section class="legal-section">
+                        <h2 class="legal-section-title">${sec.title}</h2>
+                        <div class="legal-section-body">${sec.content.replace(/\n/g, '<br>')}</div>
+                    </section>
+                `).join('');
+            }
+
+            const enBtn = document.getElementById('lang-en-btn');
+            const arBtn = document.getElementById('lang-ar-btn');
+            if (enBtn) enBtn.classList.toggle('active', isEn);
+            if (arBtn) arBtn.classList.toggle('active', !isEn);
+
+            if (window.updateFooterI18n) window.updateFooterI18n(lang);
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('siteLang', lang);
+            updateLegalLanguage(lang);
+        }
+
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            const backdrop = document.getElementById('nav-backdrop');
+            if (!links || !btn) return;
+            const shouldOpen = forceClose === true ? false : !links.classList.contains('is-open');
+            links.classList.toggle('is-open', shouldOpen);
+            if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+            document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateLegalLanguage(currentLang);
+        });
+    </script>
+    <script src="/static/js/theme.js"></script>
+    <script src="/static/js/ad-analytics.js" async></script>
+</body>
+
+</html>

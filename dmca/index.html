@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>سياسة حقوق النشر (DMCA) والملكية الفكرية | GToolix</title>
+    <meta name="description" content="سياسة حقوق النشر وطريقة تقديم إخطارات DMCA لمنصة GToolix. توضيح التعامل مع حقوق الصور المصغرة والعلامات التجارية وإجراءات الإخطار الإشعار المضاد.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="GToolix">
+    <meta name="theme-color" content="#F8FAFC">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://example.com/dmca" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GToolix">
+    <meta property="og:title" content="سياسة حقوق النشر (DMCA) والملكية الفكرية | GToolix">
+    <meta property="og:description" content="سياسة حقوق النشر وطريقة تقديم إخطارات DMCA لمنصة GToolix وحماية ملكية الصور.">
+    <meta property="og:url" content="https://example.com/dmca">
+    <meta property="og:image" content="https://example.com/static/img/og-default.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="حقوق النشر (DMCA) | GToolix">
+    <meta name="twitter:description" content="سياسة حقوق النشر وطريقة تقديم إخطارات DMCA لمنصة GToolix.">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://example.com/" },
+            { "@type": "ListItem", "position": 2, "name": "حقوق النشر DMCA", "item": "https://example.com/dmca" }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "name": "سياسة حقوق النشر (DMCA) | GToolix",
+          "url": "https://example.com/dmca",
+          "description": "سياسة إخطارات حقوق النشر والتأليف لـ DMCA على منصة GToolix."
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script src="/static/js/theme.js"></script>
+    <script>
+        (function () { var t = localStorage.getItem('theme'); if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light' } document.documentElement.setAttribute('data-theme', t) })();
+    </script>
+</head>
+
+<body>
+    <header class="site-nav">
+        <a class="site-nav__brand" href="/">
+            <span class="site-nav__brand-mark">
+                <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img">
+            </span>
+            <span>GToolix</span>
+        </a>
+        <nav class="site-nav__links" id="site-nav-links">
+            <a href="/qr-code-generator" data-i18n="common.navQr">مولد كود QR</a>
+            <a href="/youtube-thumbnail-downloader" data-i18n="common.navThumb">تحميل صور اليوتيوب المصغرة</a>
+            <a href="/gemini-watermark-remover" data-i18n="common.navGemini">مزيل علامة جيميناي</a>
+            <a href="/screen-recorder-studio" data-i18n="common.navRecorder">مسجل الشاشة Studio</a>
+        </nav>
+        <div class="site-nav__right">
+            <div class="lang-switcher">
+                <button class="lang-btn" id="lang-en-btn" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn active" id="lang-ar-btn" onclick="setLanguage('ar')">AR</button>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"
+                aria-controls="site-nav-links" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+
+    <main>
+        <div class="legal-page">
+            <div class="container">
+                <nav class="breadcrumbs">
+                    <a href="/" data-i18n="common.breadcrumbHome">الرئيسية</a> / <span id="legal-breadcrumb">حقوق النشر DMCA</span>
+                </nav>
+
+                <div class="legal-hero">
+                    <h1 id="legal-h1">سياسة حقوق النشر (DMCA) والملكية الفكرية</h1>
+                    <p class="lead" id="legal-lead">تلتزم منصة GToolix باحترام حقوق الملكية الفكرية والامتثال لعدالة قانون الألفية الرقمية لحقوق الطبع والنشر (DMCA).</p>
+                </div>
+
+                <main class="legal-content-wrapper">
+                    <article class="card legal-card">
+                        <div id="legal-sections-container"></div>
+                    </article>
+
+                    <div class="ad-slot-wrapper" data-ad-slot-id="legal-content-bottom" style="min-height: 250px;">
+                        <div class="ad-label-bar">
+                            <span class="ad-label">إعلان • ADVERTISEMENT</span>
+                        </div>
+                        <div class="ad-container-inner">
+                            <div class="ad-skeleton" aria-hidden="true"><div class="ad-skeleton-pulse"></div></div>
+                            <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-0000000000000000" data-ad-slot="4000000001" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+                    <a class="footer-brand" href="/">
+                        <span class="site-nav__brand-mark">
+                            <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img">
+                        </span>
+                        <span>GToolix</span>
+                    </a>
+                    <p class="footer-note" data-i18n="common.footerNote">GToolix مخصص للاستخدام الشخصي مع محتوى تملك حقوقه أو مرخّص للاستخدام العام.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title" data-i18n="common.footerToolsTitle">الأدوات المميزة</h4>
+                    <nav class="footer-links">
+                        <a href="/qr-code-generator" data-i18n="common.navQr">مولد كود QR</a>
+                        <a href="/youtube-thumbnail-downloader" data-i18n="common.navThumb">تحميل صور اليوتيوب المصغرة</a>
+                        <a href="/gemini-watermark-remover" data-i18n="common.navGemini">مزيل علامة جيميناي</a>
+                        <a href="/screen-recorder-studio" data-i18n="common.navRecorder">مسجل الشاشة Studio</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title" data-i18n="common.footerTrustTitle">عن المنصة والثقة</h4>
+                    <nav class="footer-links">
+                        <a href="/about/" data-i18n="common.linkAbout">عن المنصة</a>
+                        <a href="/faq/" data-i18n="common.linkFaq">الأسئلة الشائعة</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title" data-i18n="common.footerLegalTitle">الخصوصية والشروط</h4>
+                    <nav class="footer-links">
+                        <a href="/privacy-policy/" data-i18n="common.linkPrivacy">سياسة الخصوصية</a>
+                        <a href="/terms-of-service/" data-i18n="common.linkTerms">الشروط والأحكام</a>
+                        <a href="/cookies-policy/" data-i18n="common.linkCookies">سياسة الكوكيز</a>
+                        <a href="/disclaimer/" data-i18n="common.linkDisclaimer">إخلاء المسؤولية</a>
+                        <a href="/dmca/" data-i18n="common.linkDmca">حقوق النشر (DMCA)</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <p data-i18n="common.footerCopyright">&copy; 2026 GToolix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const LEGAL_DATA = {
+            title_ar: "سياسة حقوق النشر (DMCA) والملكية الفكرية | GToolix",
+            title_en: "DMCA Copyright Policy & Intellectual Property | GToolix",
+            meta_desc_ar: "سياسة حقوق النشر وطريقة تقديم إخطارات DMCA لمنصة GToolix. توضيح التعامل مع حقوق الصور المصغرة والعلامات التجارية وإجراءات الإخطار الإشعار المضاد.",
+            meta_desc_en: "GToolix DMCA Copyright Policy detailing complaint reporting procedures for copyrighted images, trademark notices, and counter-notification process.",
+            h1_ar: "سياسة حقوق النشر (DMCA)",
+            h1_en: "DMCA Copyright Policy",
+            lead_ar: "تلتزم منصة GToolix باحترام حقوق الملكية الفكرية والامتثال لعدالة قانون الألفية الرقمية لحقوق الطبع والنشر (DMCA).",
+            lead_en: "GToolix respects the intellectual property of content owners and complies with the Digital Millennium Copyright Act (DMCA).",
+            sections_ar: [
+                { title: '1. طبيعة الأدوات والالتزام بحقوق الملكية', content: 'GToolix لا تستضيف ولا تخزن ولا تنزل وسائط أو فيديوهات أو ملفات محمية بحقوق الطبع والنشر على خوادمها. تنحصر خدمات الموقع في أدوات تحويل وتوليد محلية (مولد QR، معالج صور جيميناي المحلي)، بالإضافة إلى استخراج رابط الصورة المصغرة المتاحة علنياً من خوادم YouTube.' },
+                { title: '2. شكاوى حقوق الصور والعلامات التجارية', content: 'إذا كنت مالكاً لحقوق طبع ونشر أو علامة تجارية أو وكيلاً معتمداً وتعتقد أن أي صورة أو رابط متاح عبر أدواتنا ينتهك حقوقك، يمكنك ارسال إخطار انتهاك رسمي وسنقوم بمعالجة طلبك فورياً.' },
+                { title: '3. متطلبات تقديم إخطار الانتهاك (DMCA Takedown Notice)', content: 'يجب أن يتضمن إخطار الانتهاك البيانات التالية: (1) توقيع إلكتروني أو فعلي لمالك الحقوق، (2) وصف دقيق للعمل المحمي المستهدف، (3) الرابط المباشر (URL) للصفحة محل النزاع على موقعنا، (4) بيانات الاتصال بالمدعي (البريد، الهاتف)، و(5) إقرار بحسن النية.' },
+                { title: '4. إجراءات الإخطار المضاد (Counter-Notice)', content: 'في حال تلقينا إخطاراً مضاداً مطابقاً للشروط القانونية من مستخدم ينفي الانتهاك، سنتخذ الإجراءات المنصوص عليها في قانون DMCA لإخطار صاحب الشكوى الأول بالرد.' }
+            ],
+            sections_en: [
+                { title: '1. Platform Boundaries & Copyright Commitment', content: 'GToolix does not host, store, or stream copyrighted video, audio, or media files. Our tools run locally in the browser (QR Generator, Gemini Image Processing) or display publicly accessible thumbnail image URLs from YouTube servers.' },
+                { title: '2. Copyrighted Images & Trademark Complaints', content: 'If you are a copyright owner, trademark holder, or authorized agent and believe that content accessible via our platform infringes your intellectual property, you may submit a formal notification.' },
+                { title: '3. Formal DMCA Notice Requirements', content: 'A valid DMCA takedown notice must include: (1) Physical or electronic signature of the authorized copyright owner, (2) Description of the copyrighted work claimed to be infringed, (3) Exact URL of the disputed content on our site, (4) Contact details of the claimant, and (5) A statement of good faith belief.' },
+                { title: '4. Counter-Notification Procedure', content: 'If a user believes content was mistakenly flagged, they may submit a counter-notice adhering to statutory DMCA requirements.' }
+            ]
+        };
+
+        let currentLang = localStorage.getItem('siteLang') || 'ar';
+
+        function updateLegalLanguage(lang) {
+            currentLang = lang;
+            const isEn = lang === 'en';
+            document.documentElement.lang = lang;
+            document.documentElement.dir = isEn ? 'ltr' : 'rtl';
+
+            document.title = isEn ? LEGAL_DATA.title_en : LEGAL_DATA.title_ar;
+            const metaDescEl = document.querySelector('meta[name="description"]');
+            if (metaDescEl) metaDescEl.setAttribute('content', isEn ? LEGAL_DATA.meta_desc_en : LEGAL_DATA.meta_desc_ar);
+
+            document.getElementById('legal-h1').textContent = isEn ? LEGAL_DATA.h1_en : LEGAL_DATA.h1_ar;
+            document.getElementById('legal-lead').textContent = isEn ? LEGAL_DATA.lead_en : LEGAL_DATA.lead_ar;
+            document.getElementById('legal-breadcrumb').textContent = isEn ? LEGAL_DATA.h1_en : LEGAL_DATA.h1_ar;
+
+            const container = document.getElementById('legal-sections-container');
+            if (container) {
+                const sections = isEn ? LEGAL_DATA.sections_en : LEGAL_DATA.sections_ar;
+                container.innerHTML = sections.map(sec => `
+                    <section class="legal-section">
+                        <h2 class="legal-section-title">${sec.title}</h2>
+                        <div class="legal-section-body">${sec.content.replace(/\n/g, '<br>')}</div>
+                    </section>
+                `).join('');
+            }
+
+            const enBtn = document.getElementById('lang-en-btn');
+            const arBtn = document.getElementById('lang-ar-btn');
+            if (enBtn) enBtn.classList.toggle('active', isEn);
+            if (arBtn) arBtn.classList.toggle('active', !isEn);
+
+            if (window.updateFooterI18n) window.updateFooterI18n(lang);
+        }
+
+        function setLanguage(lang) {
+            localStorage.setItem('siteLang', lang);
+            updateLegalLanguage(lang);
+        }
+
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            const backdrop = document.getElementById('nav-backdrop');
+            if (!links || !btn) return;
+            const shouldOpen = forceClose === true ? false : !links.classList.contains('is-open');
+            links.classList.toggle('is-open', shouldOpen);
+            if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+            document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateLegalLanguage(currentLang);
+        });
+    </script>
+    <script src="/static/js/theme.js"></script>
+    <script src="/static/js/ad-analytics.js" async></script>
+</body>
+
+</html>
