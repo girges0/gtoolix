@@ -3519,15 +3519,23 @@ a {
     .showcase-card__footer {
         padding-top: 0.6rem;
         gap: 0.4rem;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
     }
 
     .showcase-cta-main {
         font-size: 0.85rem;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
     }
 
     .showcase-cta-sub {
         font-size: 0.7rem;
+        width: 100%;
+        text-align: center;
     }
 
     /* Sections & Grids */
@@ -5774,13 +5782,30 @@ html[dir="ltr"] a:hover .cta-arrow {
 
     html[dir="ltr"] .hero-actions .btn,
     html[lang="en"] .hero-actions .btn {
+        position: relative !important;
         width: 100% !important;
-        display: inline-flex !important;
+        display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         text-align: center !important;
         margin-left: auto !important;
         margin-right: auto !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+
+    html[dir="ltr"] .hero-actions .btn > span,
+    html[lang="en"] .hero-actions .btn > span {
+        width: 100% !important;
+        text-align: center !important;
+        display: block !important;
+    }
+
+    html[dir="ltr"] .hero-actions .btn .btn-arrow,
+    html[lang="en"] .hero-actions .btn .btn-arrow {
+        position: absolute !important;
+        right: 1.25rem !important;
+        margin: 0 !important;
     }
 }
 
