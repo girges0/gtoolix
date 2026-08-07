@@ -3,7 +3,7 @@
  * SaaS-grade UI/UX, 3 Resolutions (4K, HD, SD), Mobile-first & Fully Responsive
  * 100% Client-Side Engine (No Backend Server Required)
  */
-const ThumbTool = (function () {
+var ThumbTool = (function () {
     let currentVideoId = null;
 
     function extractVideoId(url) {
@@ -351,8 +351,14 @@ const ThumbTool = (function () {
     };
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('page-thumb')) {
+function autoInitThumb() {
+    if (document.getElementById('page-thumb') || document.getElementById('thumb-url-input')) {
         ThumbTool.init();
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', autoInitThumb);
+} else {
+    autoInitThumb();
+}

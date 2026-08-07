@@ -4,7 +4,7 @@
 // Real-time live preview, custom colors & sizes, PNG/SVG exports
 // ===================================================================
 
-const QRTool = (function () {
+var QRTool = (function () {
     let currentTab = 'url';
     let debounceTimer = null;
     let renderFrame = null;
@@ -428,8 +428,14 @@ const QRTool = (function () {
     };
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('page-qr')) {
+function autoInitQR() {
+    if (document.getElementById('page-qr') || document.getElementById('qr-tabs') || document.getElementById('qr-input')) {
         QRTool.init();
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', autoInitQR);
+} else {
+    autoInitQR();
+}

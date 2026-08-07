@@ -4,7 +4,7 @@
 // Zero Runtime External Dependencies - 100% Private Local Processing
 // ===================================================================
 
-const GeminiWatermarkTool = (function () {
+var GeminiWatermarkTool = (function () {
     // -----------------------------------------------------------------
     // Embedded Alpha Maps (Base64 Encoded Float32 Arrays)
     // Embedded locally to guarantee 0% dependency on external files
