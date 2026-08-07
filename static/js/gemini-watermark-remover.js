@@ -471,7 +471,8 @@ var GeminiWatermarkTool = (function () {
                 : '<span>ℹ</span> <span data-i18n="gemini.notFoundText">No Gemini Watermark Found</span>';
         }
 
-        const isRtl = document.documentElement.dir === 'rtl';
+        const siteLang = localStorage.getItem('siteLang') || document.documentElement.lang || 'ar';
+        const isRtl = document.documentElement.dir === 'rtl' || siteLang === 'ar';
         if (statusText) statusText.textContent = isWatermarkDetected ? (isRtl ? 'تم الاكتشاف' : 'Detected') : (isRtl ? 'نظيف' : 'Clean');
         if (posText) posText.textContent = isRtl ? 'أسفل اليمين' : 'Bottom-Right';
         if (resText && originalImage) resText.textContent = `${originalImage.width} × ${originalImage.height} px`;

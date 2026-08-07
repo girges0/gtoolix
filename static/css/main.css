@@ -5751,6 +5751,39 @@ html[dir="ltr"] a:hover .cta-arrow {
 
 
 /* LTR Specific Refined Layout Adjustments */
+@media (max-width: 1023px) {
+    html[dir="ltr"] .hero-content,
+    html[lang="en"] .hero-content {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    html[dir="ltr"] .hero-actions,
+    html[lang="en"] .hero-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        max-width: 360px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center !important;
+        gap: 0.75rem !important;
+    }
+
+    html[dir="ltr"] .hero-actions .btn,
+    html[lang="en"] .hero-actions .btn {
+        width: 100% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
 html[dir="ltr"] .site-nav {
     padding: 0.45rem 0.85rem;
 }
