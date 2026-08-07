@@ -208,9 +208,9 @@
         .page-view{display:none;position:relative;z-index:1}
         .page-view.active{display:block}
     </style>
-    <link rel="preload" as="style" href="/static/css/main.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/main.css" id="gtoolix-main-css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="/static/css/main.css"></noscript>
-    <script src="/static/js/theme.js"></script>
     <script>/* Theme init — prevent FOUC */
         window.seoPageType = "";
         (function () { var t = localStorage.getItem('theme'); if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light' } document.documentElement.setAttribute('data-theme', t) })();
