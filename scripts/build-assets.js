@@ -30,7 +30,11 @@ jsFiles.forEach(file => {
     execSync(`npx esbuild "${file}" --minify --outfile="${outFile}"`, { stdio: 'inherit' });
 });
 
-console.log('Building Gemini core engine bundle from reference source...');
-execSync('npx esbuild gemini-watermark-remover-main/src/sdk/index.js --bundle --format=iife --global-name=GeminiEngine --minify --outfile=static/js/gemini-engine.bundle.js', { stdio: 'inherit' });
+if (fs.existsSync('gemini-watermark-remover-main/src/sdk/index.js')) {
+    console.log('Building Gemini core engine bundle from reference source...');
+    execSync('npx esbuild gemini-watermark-remover-main/src/sdk/index.js --bundle --format=iife --global-name=GeminiEngine --minify --outfile=static/js/gemini-engine.bundle.js', { stdio: 'inherit' });
+} else {
+    console.log('Using pre-bundled Gemini core engine (static/js/gemini-engine.bundle.js)');
+}
 
 console.log('Asset minification complete!');
