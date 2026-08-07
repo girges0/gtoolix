@@ -3708,7 +3708,7 @@
         // ===================================================================
         document.addEventListener('DOMContentLoaded', () => {
             const pc = document.getElementById('particles');
-            if (pc && !reduceMotion) {
+            if (pc && !reduceMotion && window.innerWidth > 1023) {
                 for (let i = 0; i < 35; i++) {
                     const p = document.createElement('div'); p.className = 'particle';
                     p.style.left = Math.random() * 100 + '%'; p.style.animationDelay = Math.random() * 8 + 's'; p.style.animationDuration = (Math.random() * 8 + 8) + 's';
