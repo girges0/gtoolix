@@ -1089,6 +1089,7 @@
         let isDragging = false;
         let startX = 0, startY = 0;
         let startLeft = 0, startTop = 0;
+        let maxLeft = 0, maxTop = 0;
 
         function onStart(e) {
             if (e.target.closest('#rec-btn-exit-fullscreen')) return;
