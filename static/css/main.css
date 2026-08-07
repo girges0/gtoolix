@@ -6109,7 +6109,7 @@ html[dir="rtl"] .tool-chip-card {
 
 
 /* Mobile Reveal Fallback Safeguard */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
     .reveal {
         opacity: 1 !important;
         transform: none !important;

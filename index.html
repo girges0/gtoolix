@@ -3528,6 +3528,9 @@
             if (targetEl) {
                 targetEl.classList.add('active');
                 targetEl.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+                if (page === 'home' && typeof window.resetHeroVisibility === 'function') {
+                    window.resetHeroVisibility();
+                }
             }
             document.querySelectorAll('.site-nav__links a[data-page]').forEach(a => {
                 a.classList.toggle('active', a.getAttribute('data-page') === page);
@@ -3589,36 +3592,39 @@
             let targetProgress = 0, progress = 0;
             let tx = 0, ty = 0, px = 0, py = 0;
             let animId = null;
-            let cachedHeroRect = null;
             let cachedHeroTotal = 1;
 
             function updateHeroDimensions() {
                 const heroEl = document.getElementById('hero');
                 if (!heroEl) return;
-                cachedHeroRect = heroEl.getBoundingClientRect();
                 cachedHeroTotal = heroEl.offsetHeight || 1;
             }
 
             function measureScroll() {
-                if (!cachedHeroRect) updateHeroDimensions();
-                if (!cachedHeroRect) return;
-                targetProgress = Math.min(Math.max(-cachedHeroRect.top / (cachedHeroTotal * 0.9), 0), 1);
+                const heroEl = document.getElementById('hero');
+                if (!heroEl) return;
+                const rect = heroEl.getBoundingClientRect();
+                if (rect.height) cachedHeroTotal = rect.height;
+                targetProgress = Math.min(Math.max(-rect.top / (cachedHeroTotal * 0.9), 0), 1);
                 scheduleApply();
             }
 
             if (canHover && hero) {
                 hero.addEventListener('mouseenter', updateHeroDimensions, { passive: true });
                 hero.addEventListener('mousemove', (e) => {
-                    if (!cachedHeroRect) updateHeroDimensions();
-                    if (!cachedHeroRect) return;
-                    tx = ((e.clientX - cachedHeroRect.left) / cachedHeroRect.width - 0.5) * 2;
-                    ty = ((e.clientY - cachedHeroRect.top) / cachedHeroRect.height - 0.5) * 2;
+                    const heroEl = document.getElementById('hero');
+                    if (!heroEl) return;
+                    const rect = heroEl.getBoundingClientRect();
+                    if (!rect.width || !rect.height) return;
+                    tx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+                    ty = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
                     scheduleApply();
                 }, { passive: true });
-                hero.addEventListener('mouseleave', () => { tx = 0; ty = 0; cachedHeroRect = null; scheduleApply(); });
+                hero.addEventListener('mouseleave', () => { tx = 0; ty = 0; scheduleApply(); });
             }
 
             function apply() {
+                const isDesktop = window.innerWidth > 1023 && canHover;
                 const dp = Math.abs(targetProgress - progress);
                 const dpx = Math.abs(tx - px);
                 const dpy = Math.abs(ty - py);
@@ -3628,14 +3634,35 @@
                 py = lerp(py, ty, 0.06);
                 const p = progress;
 
-                if (layers.glow) layers.glow.style.transform = `translate3d(0, ${p * 40}px, 0) scale(${1 + p * 0.08})`;
-                if (layers.grid) layers.grid.style.transform = `translate3d(0, ${p * 90}px, 0) rotateX(${72 + p * 6}deg) translateZ(-260px)`;
-                if (layers.orbit && canHover) {
-                    layers.orbit.style.transform = `translate3d(${px * 16}px, ${p * -40 + py * 12}px, 0) rotateX(${p * -4}deg) translateZ(${p * 30}px)`;
+                if (layers.glow) {
+                    if (isDesktop) {
+                        layers.glow.style.transform = `translate3d(0, ${p * 40}px, 0) scale(${1 + p * 0.08})`;
+                    } else {
+                        layers.glow.style.transform = '';
+                    }
+                }
+                if (layers.grid) {
+                    if (isDesktop) {
+                        layers.grid.style.transform = `translate3d(0, ${p * 90}px, 0) rotateX(${72 + p * 6}deg) translateZ(-260px)`;
+                    } else {
+                        layers.grid.style.transform = '';
+                    }
+                }
+                if (layers.orbit) {
+                    if (isDesktop) {
+                        layers.orbit.style.transform = `translate3d(${px * 16}px, ${p * -40 + py * 12}px, 0) rotateX(${p * -4}deg) translateZ(${p * 30}px)`;
+                    } else {
+                        layers.orbit.style.transform = '';
+                    }
                 }
                 if (layers.content) {
-                    layers.content.style.transform = `translate3d(0, ${p * 50}px, 0) scale(${1 - p * 0.05}) rotateX(${py * -2.5}deg) rotateY(${px * 2.5}deg)`;
-                    layers.content.style.opacity = String(Math.max(0, 1 - p * 1.15));
+                    if (isDesktop) {
+                        layers.content.style.transform = `translate3d(0, ${p * 50}px, 0) scale(${1 - p * 0.05}) rotateX(${py * -2.5}deg) rotateY(${px * 2.5}deg)`;
+                        layers.content.style.opacity = String(Math.max(0, 1 - p * 1.15));
+                    } else {
+                        layers.content.style.transform = '';
+                        layers.content.style.opacity = '1';
+                    }
                 }
 
                 if (dp > 0.0001 || dpx > 0.0001 || dpy > 0.0001) {
@@ -3653,6 +3680,16 @@
             window.addEventListener('resize', () => { updateHeroDimensions(); measureScroll(); }, { passive: true });
             measureScroll();
             scheduleApply();
+
+            window.resetHeroVisibility = function () {
+                targetProgress = 0;
+                progress = 0;
+                if (layers.content) {
+                    layers.content.style.opacity = '1';
+                    layers.content.style.transform = '';
+                }
+                scheduleApply();
+            };
         })();
 
         // Throttled 3D Card Interactive Light Tilt
