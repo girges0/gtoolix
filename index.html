@@ -1720,13 +1720,17 @@
                         <div class="gemini-loader-spinner-wrapper">
                             <div class="gemini-loader-orbit"></div>
                             <div class="gemini-loader-core">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="gemini-sparkle-icon">
-                                    <path d="M12 3c0 4.5-3.5 8-8 8 4.5 0 8 3.5 8 8 0-4.5 3.5-8 8-8-4.5 0-8-3.5-8-8z"/>
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="gemini-sparkle-icon">
+                                    <path d="M12 3c0 4.5-3.5 8-8 8 4.5 0 8 3.5 8 8 0-4.5 3.5-8 8-8-4.5 0-8-3.5-8-8z" />
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="gemini-loader-title" id="gemini-loader-title" data-i18n="gemini.processingTitle">جاري تحليل وترميم الصورة...</h3>
-                        <p class="gemini-loader-desc" id="gemini-loader-desc" data-i18n="gemini.processingDesc">يتم استخدام الذكاء الاصطناعي المحلي لإزالة علامات جيميناي بدقة فائقة</p>
+                        <h3 class="gemini-loader-title" id="gemini-loader-title" data-i18n="gemini.processingTitle">جاري
+                            تحليل وترميم الصورة...</h3>
+                        <p class="gemini-loader-desc" id="gemini-loader-desc" data-i18n="gemini.processingDesc">يتم
+                            استخدام الذكاء الاصطناعي المحلي لإزالة علامات جيميناي بدقة فائقة</p>
                         <div class="gemini-loader-progress-bar">
                             <div class="gemini-loader-progress-fill" id="gemini-loader-progress-fill"></div>
                         </div>
@@ -1780,9 +1784,10 @@
                         <div class="stage-footer-bar">
                             <div class="image-meta-info">
                                 <span class="meta-item">📏 <span id="gemini-res-text">-- × --</span></span>
-                                <span class="meta-item">📍 <span id="gemini-pos-text">أسفل اليمين</span></span>
-                                <span class="meta-item">✨ <span id="gemini-size-text">معالجة تلقائية
-                                        بالكامل</span></span>
+                                <span class="meta-item">📍 <span id="gemini-pos-text" data-i18n="gemini.posText">أسفل
+                                        اليمين</span></span>
+                                <span class="meta-item">✨ <span id="gemini-size-text"
+                                        data-i18n="gemini.autoProcessing">معالجة تلقائية بالكامل</span></span>
                             </div>
                         </div>
                     </div>
@@ -2791,6 +2796,8 @@
                     tag3: "💎 4K Ultra Resolution",
                     detectedText: "Watermark Removed Automatically",
                     notFoundText: "No Gemini Watermark Found",
+                    posText: "Bottom-Right",
+                    autoProcessing: "Automatic Processing",
                     processingTitle: "Analyzing & Processing Image...",
                     processingDesc: "Local AI engine is scanning and removing Gemini watermark in high precision",
                     stepReading: "Reading & Analyzing Image...",
@@ -3174,6 +3181,8 @@
                     tag3: "💎 دقة فائقة 4K",
                     detectedText: "تمت إزالة العلامة المائية تلقائياً",
                     notFoundText: "لم يتم العثور على علامة جيميناي",
+                    posText: "أسفل اليمين",
+                    autoProcessing: "معالجة تلقائية بالكامل",
                     processingTitle: "جاري تحليل وترميم الصورة...",
                     processingDesc: "محرك الذكاء الاصطناعي المحلي يزيل علامة جيميناي بدقة فائقة",
                     stepReading: "جاري قراءة وتحليل الصورة...",
@@ -3427,6 +3436,10 @@
                 QRTool.render();
             }
 
+            if (typeof GeminiWatermarkTool !== 'undefined' && typeof GeminiWatermarkTool.updateDetectionUI === 'function') {
+                GeminiWatermarkTool.updateDetectionUI();
+            }
+
             if (window.updateFooterI18n) window.updateFooterI18n(currentLang);
         }
 
@@ -3488,13 +3501,20 @@
 
         function ensureToolScripts(page) {
             if (page === 'qr') {
-                return loadToolScript('/static/js/qrcode.min.js').then(() => loadToolScript('/static/js/qr-tool.js'));
+                if (window.QRTool) return Promise.resolve();
+                return loadToolScript('/static/js/qrcode.min.js').then(() => loadToolScript('/static/js/qr-tool.min.js'));
             } else if (page === 'thumb') {
-                return loadToolScript('/static/js/thumb-tool.js');
+                if (window.ThumbTool) return Promise.resolve();
+                return loadToolScript('/static/js/thumb-tool.min.js');
             } else if (page === 'gemini') {
-                return loadToolScript('/static/js/gemini-watermark-remover.js');
+                if (window.GeminiWatermarkTool) return Promise.resolve();
+                return loadToolScript('/static/js/gemini-watermark-remover.min.js');
             } else if (page === 'recorder') {
-                return loadToolScript('/static/js/screen-recorder-tool.js').then(() => {
+                if (window.ScreenRecorderTool) {
+                    window.ScreenRecorderTool.onPageActivated();
+                    return Promise.resolve();
+                }
+                return loadToolScript('/static/js/screen-recorder-tool.min.js').then(() => {
                     if (window.ScreenRecorderTool) window.ScreenRecorderTool.onPageActivated();
                 });
             }

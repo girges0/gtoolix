@@ -519,29 +519,33 @@ var GeminiWatermarkTool = (function () {
         hideLoadingUI();
     }
 
+    let isUpdatingDetection = false;
     function updateDetectionUI() {
-        const badge = document.getElementById('gemini-detection-badge');
-        const statusText = document.getElementById('gemini-status-text');
-        const posText = document.getElementById('gemini-pos-text');
-        const resText = document.getElementById('gemini-res-text');
-        const sizeText = document.getElementById('gemini-size-text');
+        if (isUpdatingDetection) return;
+        isUpdatingDetection = true;
+        try {
+            const badge = document.getElementById('gemini-detection-badge');
+            const statusText = document.getElementById('gemini-status-text');
+            const posText = document.getElementById('gemini-pos-text');
+            const resText = document.getElementById('gemini-res-text');
+            const sizeText = document.getElementById('gemini-size-text');
 
-        if (badge) {
-            badge.className = 'detection-badge ' + (isWatermarkDetected ? 'badge-detected' : 'badge-clean');
-            badge.innerHTML = isWatermarkDetected
-                ? '<span>✔</span> <span data-i18n="gemini.detectedText">Gemini Watermark Detected</span>'
-                : '<span>ℹ</span> <span data-i18n="gemini.notFoundText">No Gemini Watermark Found</span>';
+            if (badge) {
+                badge.className = 'detection-badge ' + (isWatermarkDetected ? 'badge-detected' : 'badge-clean');
+                badge.innerHTML = isWatermarkDetected
+                    ? '<span>✔</span> <span data-i18n="gemini.detectedText">Gemini Watermark Detected</span>'
+                    : '<span>ℹ</span> <span data-i18n="gemini.notFoundText">No Gemini Watermark Found</span>';
+            }
+
+            const siteLang = localStorage.getItem('siteLang') || document.documentElement.lang || 'ar';
+            const isRtl = document.documentElement.dir === 'rtl' || siteLang === 'ar';
+            if (statusText) statusText.textContent = isWatermarkDetected ? (isRtl ? 'تم الاكتشاف' : 'Detected') : (isRtl ? 'نظيف' : 'Clean');
+            if (posText) posText.textContent = isRtl ? 'أسفل اليمين' : 'Bottom-Right';
+            if (resText && originalImage) resText.textContent = `${originalImage.width} × ${originalImage.height} px`;
+            if (sizeText) sizeText.textContent = isRtl ? 'معالجة تلقائية بالكامل' : 'Automatic Processing';
+        } finally {
+            isUpdatingDetection = false;
         }
-
-        const siteLang = localStorage.getItem('siteLang') || document.documentElement.lang || 'ar';
-        const isRtl = document.documentElement.dir === 'rtl' || siteLang === 'ar';
-        if (statusText) statusText.textContent = isWatermarkDetected ? (isRtl ? 'تم الاكتشاف' : 'Detected') : (isRtl ? 'نظيف' : 'Clean');
-        if (posText) posText.textContent = isRtl ? 'أسفل اليمين' : 'Bottom-Right';
-        if (resText && originalImage) resText.textContent = `${originalImage.width} × ${originalImage.height} px`;
-        if (sizeText) sizeText.textContent = isRtl ? 'معالجة تلقائية بالكامل' : 'Automatic Processing';
-
-        // Apply translations if available
-        if (typeof applyTranslations === 'function') applyTranslations();
     }
 
     function syncControlUI() {
@@ -858,7 +862,8 @@ var GeminiWatermarkTool = (function () {
         init,
         render: scheduleRender,
         clearImage,
-        download: downloadResult
+        download: downloadResult,
+        updateDetectionUI
     };
 })();
 
