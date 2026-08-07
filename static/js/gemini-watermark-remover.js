@@ -286,7 +286,10 @@ var GeminiWatermarkTool = (function () {
     // -----------------------------------------------------------------
     // Controller Lifecycle & Events
     // -----------------------------------------------------------------
+    let initialized = false;
     function init() {
+        if (initialized) return;
+        initialized = true;
         bindEvents();
     }
 
@@ -788,9 +791,14 @@ var GeminiWatermarkTool = (function () {
         if (fileInput) fileInput.value = '';
     }
 
+    let isDownloading = false;
     function downloadResult(mimeType, ext) {
+        if (isDownloading) return;
+        isDownloading = true;
+
         const rawCanvas = processedCanvas || originalCanvas;
         if (!rawCanvas) {
+            isDownloading = false;
             alert(document.documentElement.dir === 'rtl' ? 'يرجى اختيار صورة أولاً معالجتها.' : 'Please upload an image first.');
             return;
         }
@@ -800,11 +808,14 @@ var GeminiWatermarkTool = (function () {
         const fileName = `gemini_cleaned_${dateStr}.${ext || 'png'}`;
         const targetMime = mimeType || 'image/png';
 
+        const unlock = () => { setTimeout(() => { isDownloading = false; }, 800); };
+
         try {
             if (canvas && typeof canvas.toBlob === 'function') {
                 canvas.toBlob((blob) => {
                     if (!blob) {
                         fallbackDataURLDownload(canvas, targetMime, fileName);
+                        unlock();
                         return;
                     }
                     try {
@@ -816,16 +827,20 @@ var GeminiWatermarkTool = (function () {
                         link.click();
                         document.body.removeChild(link);
                         setTimeout(() => URL.revokeObjectURL(url), 10000);
+                        unlock();
                     } catch (e) {
                         fallbackDataURLDownload(canvas, targetMime, fileName);
+                        unlock();
                     }
                 }, targetMime, 1.0);
             } else {
                 fallbackDataURLDownload(canvas, targetMime, fileName);
+                unlock();
             }
         } catch (err) {
             console.error('Download error:', err);
             fallbackDataURLDownload(canvas, targetMime, fileName);
+            unlock();
         }
     }
 
