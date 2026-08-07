@@ -932,7 +932,7 @@ canvas {
     justify-content: center;
     perspective: 1400px;
     overflow: hidden;
-    padding: clamp(3rem, 8vw, 6rem) 1.25rem 3.5rem;
+    padding: clamp(6.5rem, 9vw, 8.5rem) 1.25rem 3.5rem;
 }
 
 .scene-layer {
@@ -1080,14 +1080,14 @@ canvas {
 html[dir="rtl"] .orbit-node--a {
     left: 7%;
     right: auto;
-    top: 8%;
+    top: 14%;
     animation-delay: 0s;
 }
 
 html[dir="rtl"] .orbit-node--b {
     right: 6%;
     left: auto;
-    top: 6%;
+    top: 12%;
     animation-delay: 1.5s;
 }
 
@@ -1108,14 +1108,14 @@ html[dir="rtl"] .orbit-node--d {
 html[dir="ltr"] .orbit-node--a {
     left: 2%;
     right: auto;
-    top: 8%;
+    top: 14%;
     animation-delay: 0s;
 }
 
 html[dir="ltr"] .orbit-node--b {
     right: 2%;
     left: auto;
-    top: 6%;
+    top: 12%;
     animation-delay: 1.5s;
 }
 
@@ -1151,7 +1151,7 @@ html[dir="ltr"] .orbit-node--d {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        padding-top: 3.5rem !important;
+        padding-top: 5.5rem !important;
         padding-bottom: 2rem !important;
         min-height: auto !important;
     }
@@ -1227,10 +1227,7 @@ html[dir="ltr"] .orbit-node--d {
     }
 
     .hero-showcase {
-        display: block !important;
-        width: 100% !important;
-        max-width: 540px !important;
-        margin: 1.5rem auto 0 !important;
+        display: none !important;
     }
 
     .scroll-cue {
@@ -3393,7 +3390,7 @@ a {
 
     /* Hero section tuning */
     .hero {
-        padding: 1.85rem 1rem 2.5rem !important;
+        padding: 6.25rem 1rem 2.5rem !important;
         min-height: auto !important;
         overflow: hidden !important;
         width: 100% !important;
@@ -5390,7 +5387,7 @@ html[dir="rtl"] .thumb-input-box {
 .tool-view {
     max-width: 1080px;
     margin: 0 auto;
-    padding: 2rem 1.25rem 4rem;
+    padding: 6rem 1.25rem 4rem;
     width: 100%;
 }
 
@@ -5459,7 +5456,7 @@ html[dir="rtl"] .thumb-input-box {
 
 @media (max-width: 768px) {
     .tool-view {
-        padding: 1.25rem 1rem 3rem;
+        padding: 5.5rem 1rem 3rem;
     }
 
     .tool-header {
