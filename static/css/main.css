@@ -4892,6 +4892,154 @@ html[dir="rtl"] .thumb-input-box {
     text-align: center;
 }
 
+/* Gemini Watermark Remover Professional Loading Overlay */
+.gemini-loading-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3.5rem 1.5rem;
+    min-height: 360px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl, 24px);
+    box-shadow: var(--shadow-2xl);
+    position: relative;
+    overflow: hidden;
+    animation: geminiFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-theme="light"] .gemini-loading-card {
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.gemini-loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 420px;
+    text-align: center;
+    width: 100%;
+}
+
+.gemini-loader-spinner-wrapper {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.gemini-loader-orbit {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #2563eb;
+    border-right-color: #38bdf8;
+    border-bottom-color: #a855f7;
+    animation: geminiOrbitSpin 1.1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.6));
+}
+
+.gemini-loader-core {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(168, 85, 247, 0.25));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #60a5fa;
+    animation: geminiPulseCore 1.5s ease-in-out infinite alternate;
+}
+
+.gemini-sparkle-icon {
+    animation: geminiSparkleRot 3s linear infinite;
+    color: #38bdf8;
+}
+
+.gemini-loader-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.gemini-loader-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.gemini-loader-progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 0.5rem;
+}
+
+[data-theme="light"] .gemini-loader-progress-bar {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.gemini-loader-progress-fill {
+    height: 100%;
+    width: 15%;
+    background: linear-gradient(90deg, #2563eb, #38bdf8, #a855f7);
+    border-radius: 999px;
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+}
+
+.gemini-loader-file-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.95rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+[data-theme="light"] .gemini-loader-file-info {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+@keyframes geminiOrbitSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes geminiPulseCore {
+    0% { transform: scale(0.92); opacity: 0.8; }
+    100% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes geminiSparkleRot {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.15); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes geminiFadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+
 .gemini-drop-zone {
     display: flex;
     flex-direction: column;

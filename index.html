@@ -1714,6 +1714,29 @@
                     </label>
                 </div>
 
+                <!-- Professional Gemini AI Processing Loading State -->
+                <div class="card gemini-loading-card" id="gemini-loading-box" style="display: none;">
+                    <div class="gemini-loader-content">
+                        <div class="gemini-loader-spinner-wrapper">
+                            <div class="gemini-loader-orbit"></div>
+                            <div class="gemini-loader-core">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="gemini-sparkle-icon">
+                                    <path d="M12 3c0 4.5-3.5 8-8 8 4.5 0 8 3.5 8 8 0-4.5 3.5-8 8-8-4.5 0-8-3.5-8-8z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="gemini-loader-title" id="gemini-loader-title" data-i18n="gemini.processingTitle">جاري تحليل وترميم الصورة...</h3>
+                        <p class="gemini-loader-desc" id="gemini-loader-desc" data-i18n="gemini.processingDesc">يتم استخدام الذكاء الاصطناعي المحلي لإزالة علامات جيميناي بدقة فائقة</p>
+                        <div class="gemini-loader-progress-bar">
+                            <div class="gemini-loader-progress-fill" id="gemini-loader-progress-fill"></div>
+                        </div>
+                        <div class="gemini-loader-file-info" id="gemini-loader-file-info">
+                            <span class="gemini-loader-file-icon">🖼️</span>
+                            <span id="gemini-loader-filename">image.png</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Workspace Area (shown when image is loaded) -->
                 <div class="gemini-workspace-grid" id="gemini-workspace-box" style="display:none;">
                     <!-- Workspace Stage (Comparison Slider & Automatic Results) -->
@@ -2768,6 +2791,11 @@
                     tag3: "💎 4K Ultra Resolution",
                     detectedText: "Watermark Removed Automatically",
                     notFoundText: "No Gemini Watermark Found",
+                    processingTitle: "Analyzing & Processing Image...",
+                    processingDesc: "Local AI engine is scanning and removing Gemini watermark in high precision",
+                    stepReading: "Reading & Analyzing Image...",
+                    stepScanning: "Scanning for Gemini Watermarks...",
+                    stepRemoving: "Removing Watermark & Restoring Pixels...",
                     btnNew: "Upload Another Image",
                     exportTitle: "Download Full Resolution Image",
                     exportNote: "Saved in 100% original full resolution without quality compression.",
@@ -3146,6 +3174,11 @@
                     tag3: "💎 دقة فائقة 4K",
                     detectedText: "تمت إزالة العلامة المائية تلقائياً",
                     notFoundText: "لم يتم العثور على علامة جيميناي",
+                    processingTitle: "جاري تحليل وترميم الصورة...",
+                    processingDesc: "محرك الذكاء الاصطناعي المحلي يزيل علامة جيميناي بدقة فائقة",
+                    stepReading: "جاري قراءة وتحليل الصورة...",
+                    stepScanning: "جاري الكشف عن علامات جيميناي...",
+                    stepRemoving: "جاري إزالة العلامة وترميم الصورة...",
                     btnNew: "رفع صورة أخرى",
                     exportTitle: "تنزيل الصورة بحجمها وجودتها الأصلية",
                     exportNote: "تُحفظ بالدقة الأصلية الكاملة 100% بدون ضغط الجودة.",

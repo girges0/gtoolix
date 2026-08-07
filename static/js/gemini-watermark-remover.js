@@ -408,24 +408,86 @@ var GeminiWatermarkTool = (function () {
         setupWorkspaceInteractions();
     }
 
+    function showLoadingUI(file) {
+        const uploadBox = document.getElementById('gemini-upload-box');
+        const workspaceBox = document.getElementById('gemini-workspace-box');
+        const loadingBox = document.getElementById('gemini-loading-box');
+        const fileNameEl = document.getElementById('gemini-loader-filename');
+        const progressFill = document.getElementById('gemini-loader-progress-fill');
+        const loaderTitle = document.getElementById('gemini-loader-title');
+        const loaderDesc = document.getElementById('gemini-loader-desc');
+
+        if (uploadBox) uploadBox.style.display = 'none';
+        if (workspaceBox) workspaceBox.style.display = 'none';
+        if (loadingBox) loadingBox.style.display = 'flex';
+
+        if (fileNameEl && file) {
+            const sizeMb = (file.size / (1024 * 1024)).toFixed(1);
+            fileNameEl.textContent = `${file.name} (${sizeMb} MB)`;
+        }
+
+        if (progressFill) progressFill.style.width = '15%';
+        const siteLang = localStorage.getItem('siteLang') || document.documentElement.lang || 'ar';
+        const isRtl = document.documentElement.dir === 'rtl' || siteLang === 'ar';
+
+        if (loaderTitle) loaderTitle.textContent = isRtl ? 'جاري قراءة وتحليل الصورة...' : 'Reading & Analyzing Image...';
+        if (loaderDesc) loaderDesc.textContent = isRtl ? 'محرك الذكاء الاصطناعي المحلي يزيل علامة جيميناي بدقة فائقة' : 'Local AI engine is scanning and removing Gemini watermark';
+    }
+
+    function updateLoadingProgress(percent, text) {
+        const progressFill = document.getElementById('gemini-loader-progress-fill');
+        const loaderTitle = document.getElementById('gemini-loader-title');
+        if (progressFill) progressFill.style.width = percent + '%';
+        if (loaderTitle && text) loaderTitle.textContent = text;
+    }
+
+    function hideLoadingUI() {
+        const uploadBox = document.getElementById('gemini-upload-box');
+        const workspaceBox = document.getElementById('gemini-workspace-box');
+        const loadingBox = document.getElementById('gemini-loading-box');
+        const progressFill = document.getElementById('gemini-loader-progress-fill');
+
+        if (progressFill) progressFill.style.width = '100%';
+
+        setTimeout(() => {
+            if (loadingBox) loadingBox.style.display = 'none';
+            if (uploadBox) uploadBox.style.display = 'none';
+            if (workspaceBox) workspaceBox.style.display = 'grid';
+        }, 250);
+    }
+
     function handleFileSelect(file) {
         if (!file.type.match(/^image\/(png|jpeg|jpg|webp)$/i)) {
             alert('Please select a valid image file (PNG, JPG, JPEG, WEBP).');
             return;
         }
 
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const img = new Image();
-            img.onload = function () {
-                loadImage(img);
+        showLoadingUI(file);
+
+        const siteLang = localStorage.getItem('siteLang') || document.documentElement.lang || 'ar';
+        const isRtl = document.documentElement.dir === 'rtl' || siteLang === 'ar';
+
+        setTimeout(() => {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                updateLoadingProgress(45, isRtl ? 'جاري الكشف عن علامات جيميناي...' : 'Scanning for Gemini Watermarks...');
+
+                const img = new Image();
+                img.onload = function () {
+                    setTimeout(() => {
+                        updateLoadingProgress(75, isRtl ? 'جاري إزالة العلامة وترميم الصورة...' : 'Removing Watermark & Restoring Pixels...');
+                        setTimeout(async () => {
+                            await loadImage(img);
+                        }, 50);
+                    }, 50);
+                };
+                img.src = e.target.result;
             };
-            img.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
+        }, 50);
     }
 
-    function loadImage(img) {
+    async function loadImage(img) {
         originalImage = img;
 
         // Construct master offscreen canvas for exact 100% resolution
@@ -447,14 +509,11 @@ var GeminiWatermarkTool = (function () {
         // Update detection status UI
         updateDetectionUI();
 
-        // Render result
-        render();
+        // Render result asynchronously
+        await render();
 
-        // Reveal workspace
-        const uploadBox = document.getElementById('gemini-upload-box');
-        const workspaceBox = document.getElementById('gemini-workspace-box');
-        if (uploadBox) uploadBox.style.display = 'none';
-        if (workspaceBox) workspaceBox.style.display = 'grid';
+        // Hide loading and reveal workspace
+        hideLoadingUI();
     }
 
     function updateDetectionUI() {
@@ -701,8 +760,10 @@ var GeminiWatermarkTool = (function () {
         processedCanvas = null;
         const uploadBox = document.getElementById('gemini-upload-box');
         const workspaceBox = document.getElementById('gemini-workspace-box');
+        const loadingBox = document.getElementById('gemini-loading-box');
         if (uploadBox) uploadBox.style.display = 'block';
         if (workspaceBox) workspaceBox.style.display = 'none';
+        if (loadingBox) loadingBox.style.display = 'none';
 
         const fileInput = document.getElementById('gemini-file-input');
         if (fileInput) fileInput.value = '';
