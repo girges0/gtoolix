@@ -808,7 +808,7 @@ var GeminiWatermarkTool = (function () {
         const fileName = `gemini_cleaned_${dateStr}.${ext || 'png'}`;
         const targetMime = mimeType || 'image/png';
 
-        const unlock = () => { setTimeout(() => { isDownloading = false; }, 800); };
+        const unlock = () => { setTimeout(() => { isDownloading = false; }, 1500); };
 
         try {
             if (canvas && typeof canvas.toBlob === 'function') {
@@ -823,9 +823,7 @@ var GeminiWatermarkTool = (function () {
                         const link = document.createElement('a');
                         link.download = fileName;
                         link.href = url;
-                        document.body.appendChild(link);
                         link.click();
-                        document.body.removeChild(link);
                         setTimeout(() => URL.revokeObjectURL(url), 10000);
                         unlock();
                     } catch (e) {
@@ -850,9 +848,7 @@ var GeminiWatermarkTool = (function () {
             const link = document.createElement('a');
             link.download = fileName;
             link.href = dataUrl;
-            document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
         } catch (e) {
             alert(document.documentElement.dir === 'rtl' ? 'حدث خطأ أثناء تنزيل الصورة.' : 'Failed to download image.');
         }
