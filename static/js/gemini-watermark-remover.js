@@ -770,20 +770,60 @@ var GeminiWatermarkTool = (function () {
     }
 
     function downloadResult(mimeType, ext) {
-        if (!processedCanvas) return;
-        const link = document.createElement('a');
+        const canvas = processedCanvas || originalCanvas;
+        if (!canvas) {
+            alert(document.documentElement.dir === 'rtl' ? 'يرجى اختيار صورة أولاً معالجتها.' : 'Please upload an image first.');
+            return;
+        }
+
         const dateStr = new Date().toISOString().slice(0, 10);
-        link.download = `gemini_cleaned_${dateStr}.${ext}`;
-        link.href = processedCanvas.toDataURL(mimeType, 1.0);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const fileName = `gemini_cleaned_${dateStr}.${ext || 'png'}`;
+        const targetMime = mimeType || 'image/png';
+
+        try {
+            if (canvas.toBlob) {
+                canvas.toBlob((blob) => {
+                    if (!blob) {
+                        fallbackDataURLDownload(canvas, targetMime, fileName);
+                        return;
+                    }
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.download = fileName;
+                    link.href = url;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    setTimeout(() => URL.revokeObjectURL(url), 10000);
+                }, targetMime, 1.0);
+            } else {
+                fallbackDataURLDownload(canvas, targetMime, fileName);
+            }
+        } catch (err) {
+            console.error('Download error:', err);
+            fallbackDataURLDownload(canvas, targetMime, fileName);
+        }
+    }
+
+    function fallbackDataURLDownload(canvas, mimeType, fileName) {
+        try {
+            const dataUrl = canvas.toDataURL(mimeType, 1.0);
+            const link = document.createElement('a');
+            link.download = fileName;
+            link.href = dataUrl;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } catch (e) {
+            alert(document.documentElement.dir === 'rtl' ? 'حدث خطأ أثناء تنزيل الصورة.' : 'Failed to download image.');
+        }
     }
 
     return {
         init,
         render: scheduleRender,
-        clearImage
+        clearImage,
+        download: downloadResult
     };
 })();
 

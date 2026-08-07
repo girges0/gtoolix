@@ -1796,13 +1796,13 @@
                                 مائية</span>
                         </div>
                         <div class="export-buttons-grid">
-                            <button type="button" class="btn btn-primary export-btn" id="gemini-btn-png">
+                            <button type="button" class="btn btn-primary export-btn" id="gemini-btn-png" onclick="if(window.GeminiWatermarkTool) GeminiWatermarkTool.download('image/png','png')">
                                 <span>📥</span> <span data-i18n="gemini.btnPng">تنزيل PNG</span>
                             </button>
-                            <button type="button" class="btn btn-ghost export-btn" id="gemini-btn-webp">
+                            <button type="button" class="btn btn-ghost export-btn" id="gemini-btn-webp" onclick="if(window.GeminiWatermarkTool) GeminiWatermarkTool.download('image/webp','webp')">
                                 <span>🌐</span> <span data-i18n="gemini.btnWebp">تنزيل WEBP</span>
                             </button>
-                            <button type="button" class="btn btn-ghost export-btn" id="gemini-btn-jpeg">
+                            <button type="button" class="btn btn-ghost export-btn" id="gemini-btn-jpeg" onclick="if(window.GeminiWatermarkTool) GeminiWatermarkTool.download('image/jpeg','jpg')">
                                 <span>🖼️</span> <span data-i18n="gemini.btnJpeg">تنزيل JPG</span>
                             </button>
                         </div>
