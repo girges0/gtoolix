@@ -610,12 +610,15 @@ const GeminiWatermarkTool = (function () {
         const handle = document.getElementById('gemini-slider-handle');
 
         if (container) {
+            let cachedRect = null;
+            const updateRect = () => { cachedRect = container.getBoundingClientRect(); };
+
             const onMove = (clientX) => {
                 if (!isDraggingSlider || isSideBySide) return;
-                const rect = container.getBoundingClientRect();
-                let x = clientX - rect.left;
-                x = Math.max(0, Math.min(rect.width, x));
-                let pct = (x / rect.width) * 100;
+                if (!cachedRect) updateRect();
+                let x = clientX - cachedRect.left;
+                x = Math.max(0, Math.min(cachedRect.width, x));
+                let pct = (x / cachedRect.width) * 100;
                 if (document.documentElement.dir === 'rtl') {
                     pct = 100 - pct;
                 }
@@ -625,14 +628,16 @@ const GeminiWatermarkTool = (function () {
 
             const startDrag = (e) => {
                 isDraggingSlider = true;
+                updateRect();
                 onMove(e.clientX || (e.touches && e.touches[0].clientX));
             };
 
-            const stopDrag = () => { isDraggingSlider = false; };
+            const stopDrag = () => { isDraggingSlider = false; cachedRect = null; };
 
             if (handle) handle.addEventListener('mousedown', startDrag);
             if (handle) handle.addEventListener('touchstart', startDrag, { passive: true });
 
+            window.addEventListener('resize', updateRect, { passive: true });
             window.addEventListener('mousemove', (e) => { if (isDraggingSlider) onMove(e.clientX); });
             window.addEventListener('touchmove', (e) => { if (isDraggingSlider && e.touches[0]) onMove(e.touches[0].clientX); }, { passive: true });
             window.addEventListener('mouseup', stopDrag);
@@ -720,8 +725,14 @@ const GeminiWatermarkTool = (function () {
     };
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('page-gemini')) {
+function autoInitGemini() {
+    if (document.getElementById('page-gemini') || document.getElementById('gemini-upload-box') || document.getElementById('gemini-file-input')) {
         GeminiWatermarkTool.init();
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', autoInitGemini);
+} else {
+    autoInitGemini();
+}

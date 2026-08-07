@@ -1106,6 +1106,8 @@
 
             startLeft = overlayRect.left - wrapperRect.left;
             startTop = overlayRect.top - wrapperRect.top;
+            maxLeft = wrapperRect.width - overlayRect.width;
+            maxTop = wrapperRect.height - overlayRect.height;
 
             document.addEventListener('mousemove', onMove, { passive: false });
             document.addEventListener('touchmove', onMove, { passive: false });
@@ -1122,12 +1124,6 @@
 
             const deltaX = clientX - startX;
             const deltaY = clientY - startY;
-
-            const wrapperRect = wrapper.getBoundingClientRect();
-            const overlayRect = overlay.getBoundingClientRect();
-
-            const maxLeft = wrapperRect.width - overlayRect.width;
-            const maxTop = wrapperRect.height - overlayRect.height;
 
             let newLeft = startLeft + deltaX;
             let newTop = startTop + deltaY;
