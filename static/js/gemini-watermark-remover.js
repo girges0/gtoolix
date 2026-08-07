@@ -577,6 +577,23 @@ var GeminiWatermarkTool = (function () {
         return enginePromise;
     }
 
+    function ensureHTMLCanvas(sourceCanvas) {
+        if (!sourceCanvas) return null;
+        if (typeof sourceCanvas.toDataURL === 'function' && typeof sourceCanvas.toBlob === 'function') {
+            return sourceCanvas;
+        }
+        try {
+            const htmlCanvas = document.createElement('canvas');
+            htmlCanvas.width = sourceCanvas.width;
+            htmlCanvas.height = sourceCanvas.height;
+            const ctx = htmlCanvas.getContext('2d');
+            ctx.drawImage(sourceCanvas, 0, 0);
+            return htmlCanvas;
+        } catch (e) {
+            return sourceCanvas;
+        }
+    }
+
     let isProcessing = false;
     async function render() {
         if (!originalCanvas || isProcessing) return;
@@ -586,16 +603,18 @@ var GeminiWatermarkTool = (function () {
 
         try {
             const engine = await getEngine();
+            let rawCanvas = null;
             if (engine) {
-                processedCanvas = await engine.removeWatermarkFromImage(originalCanvas, {
+                rawCanvas = await engine.removeWatermarkFromImage(originalCanvas, {
                     adaptiveMode: 'accurate'
                 });
             } else {
-                processedCanvas = executeRemovalDirect(ctx, originalCanvas.width, originalCanvas.height, detectedConfig, userControls);
+                rawCanvas = executeRemovalDirect(ctx, originalCanvas.width, originalCanvas.height, detectedConfig, userControls);
             }
+            processedCanvas = ensureHTMLCanvas(rawCanvas);
         } catch (err) {
             console.warn('Engine pipeline fallback:', err);
-            processedCanvas = executeRemovalDirect(ctx, originalCanvas.width, originalCanvas.height, detectedConfig, userControls);
+            processedCanvas = ensureHTMLCanvas(executeRemovalDirect(ctx, originalCanvas.width, originalCanvas.height, detectedConfig, userControls));
         } finally {
             isProcessing = false;
         }
@@ -770,31 +789,36 @@ var GeminiWatermarkTool = (function () {
     }
 
     function downloadResult(mimeType, ext) {
-        const canvas = processedCanvas || originalCanvas;
-        if (!canvas) {
+        const rawCanvas = processedCanvas || originalCanvas;
+        if (!rawCanvas) {
             alert(document.documentElement.dir === 'rtl' ? 'يرجى اختيار صورة أولاً معالجتها.' : 'Please upload an image first.');
             return;
         }
 
+        const canvas = ensureHTMLCanvas(rawCanvas);
         const dateStr = new Date().toISOString().slice(0, 10);
         const fileName = `gemini_cleaned_${dateStr}.${ext || 'png'}`;
         const targetMime = mimeType || 'image/png';
 
         try {
-            if (canvas.toBlob) {
+            if (canvas && typeof canvas.toBlob === 'function') {
                 canvas.toBlob((blob) => {
                     if (!blob) {
                         fallbackDataURLDownload(canvas, targetMime, fileName);
                         return;
                     }
-                    const url = URL.createObjectURL(blob);
-                    const link = document.createElement('a');
-                    link.download = fileName;
-                    link.href = url;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    setTimeout(() => URL.revokeObjectURL(url), 10000);
+                    try {
+                        const url = URL.createObjectURL(blob);
+                        const link = document.createElement('a');
+                        link.download = fileName;
+                        link.href = url;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        setTimeout(() => URL.revokeObjectURL(url), 10000);
+                    } catch (e) {
+                        fallbackDataURLDownload(canvas, targetMime, fileName);
+                    }
                 }, targetMime, 1.0);
             } else {
                 fallbackDataURLDownload(canvas, targetMime, fileName);
