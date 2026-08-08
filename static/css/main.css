@@ -515,6 +515,8 @@ canvas {
         border: 1px solid transparent;
         text-align: inherit;
         white-space: normal;
+        min-height: 38px;
+        box-sizing: border-box;
     }
 
     [data-theme="light"] .site-nav__links a {
@@ -983,6 +985,8 @@ canvas {
     align-items: center;
     gap: 0.75rem;
     padding: 0.65rem 1rem;
+    min-height: 54px;
+    box-sizing: border-box;
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -1146,6 +1150,7 @@ html[dir="ltr"] .orbit-node--d {
 
 /* Mobile responsive tools grid (< 1024px) */
 @media (max-width: 1023px) {
+
     .background-gradient,
     .ambient-orbs,
     .particles {
@@ -1365,6 +1370,7 @@ html[dir="ltr"] .orbit-node--d {
     width: 100%;
     display: flex;
     justify-content: center;
+    will-change: transform;
 }
 
 .tiktok-showcase-card {
@@ -1385,6 +1391,7 @@ html[dir="ltr"] .orbit-node--d {
     box-shadow: var(--shadow-card);
     transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     animation: heroFloat 6s ease-in-out infinite;
+    will-change: transform;
     cursor: pointer;
     overflow: hidden;
 }
@@ -1461,7 +1468,9 @@ html[dir="ltr"] .orbit-node--d {
     border-radius: inherit;
 }
 
-.showcase-card__title-group h3 {
+.showcase-card__title-group h3,
+.showcase-card__title-group .showcase-card__title {
+    display: block;
     font-size: 1.15rem;
     font-weight: 700;
     margin-bottom: 0.2rem;
@@ -3564,7 +3573,8 @@ a {
         border-radius: 10px;
     }
 
-    .showcase-card__title-group h3 {
+    .showcase-card__title-group h3,
+    .showcase-card__title-group .showcase-card__title {
         font-size: 1rem;
     }
 
@@ -4559,7 +4569,7 @@ html[dir="rtl"] .thumb-input-box {
 .ad-container-inner {
     position: relative;
     width: 100%;
-    min-height: 200px;
+    min-height: 280px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -5057,24 +5067,51 @@ html[dir="rtl"] .thumb-input-box {
 }
 
 @keyframes geminiOrbitSpin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes geminiPulseCore {
-    0% { transform: scale(0.92); opacity: 0.8; }
-    100% { transform: scale(1.08); opacity: 1; }
+    0% {
+        transform: scale(0.92);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
 }
 
 @keyframes geminiSparkleRot {
-    0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.15); }
-    100% { transform: rotate(360deg) scale(1); }
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.15);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
 }
 
 @keyframes geminiFadeIn {
-    from { opacity: 0; transform: scale(0.97); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .gemini-drop-zone {
@@ -6018,6 +6055,7 @@ html[dir="ltr"] a:hover .cta-arrow {
 
 /* LTR Specific Refined Layout Adjustments — Matches Arabic layout 1:1 */
 @media (max-width: 1023px) {
+
     html[dir="ltr"] .hero-content,
     html[lang="en"] .hero-content {
         align-items: center !important;
