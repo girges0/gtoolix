@@ -355,11 +355,18 @@
         SDK.trackError(evt.reason || 'Unhandled Promise Rejection', { type: 'unhandled_rejection' });
     });
 
-    // Auto-init on page load
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        setTimeout(ensureSession, 500);
+    // Auto-init on idle after page load
+    const runSessionInit = function () {
+        if (typeof window.requestIdleCallback === 'function') {
+            window.requestIdleCallback(ensureSession, { timeout: 3000 });
+        } else {
+            setTimeout(ensureSession, 1500);
+        }
+    };
+    if (document.readyState === 'complete') {
+        runSessionInit();
     } else {
-        document.addEventListener('DOMContentLoaded', ensureSession);
+        window.addEventListener('load', runSessionInit);
     }
 
     // Expose Global SDK

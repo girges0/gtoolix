@@ -10,12 +10,14 @@ const cssFiles = [
 
 const jsFiles = [
     'static/js/theme.js',
+    'static/js/app-init.js',
     'static/js/client.js',
     'static/js/ad-analytics.js',
     'static/js/gemini-watermark-remover.js',
     'static/js/screen-recorder-tool.js',
     'static/js/qr-tool.js',
-    'static/js/thumb-tool.js'
+    'static/js/thumb-tool.js',
+    'static/js/qrcode.js'
 ];
 
 cssFiles.forEach(file => {

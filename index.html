@@ -321,7 +321,7 @@
         }
     </style>
     <link rel="preload" as="style" href="/static/css/main.min.css">
-    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="/static/css/main.min.css">
     </noscript>
@@ -3507,8 +3507,8 @@
                 if (window.ThumbTool) return Promise.resolve();
                 return loadToolScript('/static/js/thumb-tool.min.js');
             } else if (page === 'gemini') {
-                if (window.GeminiWatermarkTool) return Promise.resolve();
-                return loadToolScript('/static/js/gemini-watermark-remover.min.js');
+                if (window.GeminiWatermarkTool && window.GeminiEngine) return Promise.resolve();
+                return loadToolScript('/static/js/gemini-engine.bundle.js').then(() => loadToolScript('/static/js/gemini-watermark-remover.min.js'));
             } else if (page === 'recorder') {
                 if (window.ScreenRecorderTool) {
                     window.ScreenRecorderTool.onPageActivated();
@@ -3601,6 +3601,7 @@
             }
 
             function measureScroll() {
+                if (window.innerWidth <= 1023 || !canHover) return;
                 const heroEl = document.getElementById('hero');
                 if (!heroEl) return;
                 const rect = heroEl.getBoundingClientRect();
@@ -3612,6 +3613,7 @@
             if (canHover && hero) {
                 hero.addEventListener('mouseenter', updateHeroDimensions, { passive: true });
                 hero.addEventListener('mousemove', (e) => {
+                    if (window.innerWidth <= 1023) return;
                     const heroEl = document.getElementById('hero');
                     if (!heroEl) return;
                     const rect = heroEl.getBoundingClientRect();
@@ -3746,11 +3748,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             const pc = document.getElementById('particles');
             if (pc && !reduceMotion && window.innerWidth > 1023) {
+                const fragment = document.createDocumentFragment();
                 for (let i = 0; i < 35; i++) {
                     const p = document.createElement('div'); p.className = 'particle';
                     p.style.left = Math.random() * 100 + '%'; p.style.animationDelay = Math.random() * 8 + 's'; p.style.animationDuration = (Math.random() * 8 + 8) + 's';
-                    pc.appendChild(p);
+                    fragment.appendChild(p);
                 }
+                pc.appendChild(fragment);
             }
             applyTranslations();
             const pageFromPath = PATH_TO_PAGE[location.pathname];
@@ -3761,12 +3765,6 @@
             showPage(initPage, { skipScroll: true, updateUrl: false });
         });
     </script>
-    <script src="/static/js/qrcode.min.js" defer></script>
-    <script src="/static/js/qr-tool.min.js" defer></script>
-    <script src="/static/js/thumb-tool.min.js" defer></script>
-    <script src="/static/js/gemini-engine.bundle.js" defer></script>
-    <script src="/static/js/gemini-watermark-remover.min.js" defer></script>
-    <script src="/static/js/screen-recorder-tool.min.js" defer></script>
     <script src="/static/js/theme.min.js" defer></script>
     <script>
         window.GTOOLIX_SUPABASE_URL = 'YOUR_SUPABASE_URL';

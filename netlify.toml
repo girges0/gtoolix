@@ -1,4 +1,5 @@
 [build]
+  command = "node scripts/build-assets.js"
   publish = "."
 
 [build.processing]
