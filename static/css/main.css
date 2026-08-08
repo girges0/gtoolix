@@ -164,11 +164,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Theme transition — smooth color changes */
-body,
-body *,
-body *::before,
-body *::after {
+/* Theme transition — smooth color changes only during active theme toggling */
+html.theme-transitioning body,
+html.theme-transitioning body *,
+html.theme-transitioning body *::before,
+html.theme-transitioning body *::after {
     transition-property: background-color, color, border-color, box-shadow, fill, stroke;
     transition-duration: 300ms;
     transition-timing-function: var(--ease-out);
@@ -1754,6 +1754,7 @@ html[dir="rtl"] .tiktok-showcase-card:hover .cta-arrow {
     opacity: 0;
     transform: translateY(28px);
     transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    will-change: transform, opacity;
 }
 
 .reveal.in-view {
@@ -1816,9 +1817,27 @@ html[dir="rtl"] .tiktok-showcase-card:hover .cta-arrow {
     cursor: pointer;
     height: 100%;
     box-shadow: var(--shadow-card);
-    transition: transform var(--transition-base),
-        box-shadow var(--transition-base),
-        border-color var(--transition-base);
+    transition: transform var(--transition-base);
+    will-change: transform;
+}
+
+.tool-card::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    border: 1px solid rgba(37, 99, 235, 0.4);
+    box-shadow: var(--shadow-card-hover);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    will-change: opacity;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.tool-card:hover::after,
+.tool-card:focus-visible::after {
+    opacity: 1;
 }
 
 .tool-card::before {
@@ -1829,6 +1848,7 @@ html[dir="rtl"] .tiktok-showcase-card:hover .cta-arrow {
     background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(37, 99, 235, 0.08) 0%, transparent 60%);
     opacity: 0;
     transition: opacity var(--transition-base);
+    will-change: opacity;
     pointer-events: none;
 }
 
@@ -1838,9 +1858,7 @@ html[dir="rtl"] .tiktok-showcase-card:hover .cta-arrow {
 
 .tool-card:hover,
 .tool-card:focus-visible {
-    border-color: rgba(37, 99, 235, 0.35);
     transform: translateY(-4px);
-    box-shadow: var(--shadow-card-hover);
 }
 
 .tool-card__icon {
@@ -1911,7 +1929,26 @@ html[dir="rtl"] .tiktok-showcase-card:hover .cta-arrow {
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 1.5rem;
-    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+    position: relative;
+    transition: transform var(--transition-base);
+    will-change: transform;
+}
+
+.feature-card::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    border: 1px solid rgba(37, 99, 235, 0.35);
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    will-change: opacity;
+    pointer-events: none;
+}
+
+.feature-card:hover::after {
+    opacity: 1;
 }
 
 [data-theme="light"] .feature-card {
@@ -1921,8 +1958,6 @@ html[dir="rtl"] .tiktok-showcase-card:hover .cta-arrow {
 
 .feature-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(37, 99, 235, 0.3);
-    box-shadow: var(--shadow-md);
 }
 
 .feature-card .feature-icon {
@@ -5642,7 +5677,31 @@ html[dir="rtl"] .img-floating-close-btn {
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     text-decoration: none;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+    position: relative;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+.related-tool-card::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    will-change: opacity;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .related-tool-card::after {
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.related-tool-card:hover::after {
+    opacity: 1;
 }
 
 [data-theme="dark"] .related-tool-card {
@@ -5653,13 +5712,6 @@ html[dir="rtl"] .img-floating-close-btn {
 
 .related-tool-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
-    border-color: rgba(0, 0, 0, 0.15);
-}
-
-[data-theme="dark"] .related-tool-card:hover {
-    border-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
 }
 
 .related-tool-text {

@@ -48,9 +48,13 @@
      * Toggle theme state
      */
     function toggleTheme() {
+        document.documentElement.classList.add('theme-transitioning');
         const current = document.documentElement.getAttribute('data-theme') || LIGHT;
         const next = current === DARK ? LIGHT : DARK;
         applyTheme(next, true);
+        setTimeout(() => {
+            document.documentElement.classList.remove('theme-transitioning');
+        }, 350);
     }
 
     /**

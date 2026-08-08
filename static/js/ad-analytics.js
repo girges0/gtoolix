@@ -82,10 +82,18 @@
         }
     }
 
-    // Initialize on DOM ready
+    // Initialize on main thread idle
+    function scheduleInit() {
+        if (typeof window.requestIdleCallback === 'function') {
+            window.requestIdleCallback(initAdObserver, { timeout: 2500 });
+        } else {
+            setTimeout(initAdObserver, 1000);
+        }
+    }
+
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initAdObserver);
+        document.addEventListener('DOMContentLoaded', scheduleInit);
     } else {
-        initAdObserver();
+        scheduleInit();
     }
 })();
