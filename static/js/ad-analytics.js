@@ -43,7 +43,7 @@
 
         try {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
-            
+
             // Monitor when ad container fills content to hide skeleton loader
             const insEl = wrapper.querySelector('.adsbygoogle');
             if (insEl) {
@@ -82,18 +82,10 @@
         }
     }
 
-    // Initialize on main thread idle
-    function scheduleInit() {
-        if (typeof window.requestIdleCallback === 'function') {
-            window.requestIdleCallback(initAdObserver, { timeout: 2500 });
-        } else {
-            setTimeout(initAdObserver, 1000);
-        }
-    }
-
+    // Initialize on DOM ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', scheduleInit);
+        document.addEventListener('DOMContentLoaded', initAdObserver);
     } else {
-        scheduleInit();
+        initAdObserver();
     }
 })();
