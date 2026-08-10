@@ -107,6 +107,9 @@
     /**
      * Safe HTML injection into an iframe to cleanly render an Adsterra iframe banner
      */
+    /**
+     * Safe HTML injection into an iframe to cleanly render an Adsterra iframe banner
+     */
     function renderIframeAdUnit(containerEl, unit) {
         if (!containerEl || !unit) return;
         containerEl.innerHTML = '';
@@ -122,13 +125,7 @@
         iframe.setAttribute('title', 'Advertisement');
         iframe.setAttribute('loading', 'lazy');
 
-        containerEl.appendChild(iframe);
-
-        try {
-            const doc = iframe.contentWindow || iframe.contentDocument;
-            const iframeDoc = doc.document || doc;
-
-            const html = `<!DOCTYPE html>
+        const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -137,7 +134,7 @@
 </style>
 </head>
 <body>
-<script>
+<script type="text/javascript">
   atOptions = {
     'key' : '${unit.key}',
     'format' : 'iframe',
@@ -146,13 +143,23 @@
     'params' : {}
   };
 </script>
-<script src="${unit.scriptUrl}"></script>
+<script type="text/javascript" src="${unit.scriptUrl}"></script>
 </body>
 </html>`;
 
-            iframeDoc.open();
-            iframeDoc.write(html);
-            iframeDoc.close();
+        containerEl.appendChild(iframe);
+
+        try {
+            if ('srcdoc' in iframe) {
+                iframe.srcdoc = html;
+            }
+            const doc = iframe.contentWindow || iframe.contentDocument;
+            if (doc) {
+                const iframeDoc = doc.document || doc;
+                iframeDoc.open();
+                iframeDoc.write(html);
+                iframeDoc.close();
+            }
         } catch (err) {
             console.warn('AdManager: Error writing iframe ad content', err);
         }
@@ -170,7 +177,6 @@
         nativeWrapper.className = 'adsterra-native-inner';
         containerEl.appendChild(nativeWrapper);
 
-        // Append script tag if not present or create script inside container
         const script = document.createElement('script');
         script.async = true;
         script.setAttribute('data-cfasync', 'false');
@@ -191,7 +197,7 @@
         if (skeleton) {
             setTimeout(() => {
                 skeleton.style.display = 'none';
-            }, 600);
+            }, 500);
         }
 
         const adBody = containerEl.querySelector('.ad-container-inner') || containerEl;
@@ -204,21 +210,34 @@
     }
 
     /**
-     * Render 2 Primary Ads based on current device (Mobile vs Desktop)
+     * Render Primary Ads scoped to active page view
      */
     function renderPrimaryAds(activePageId) {
         if (!AD_CONFIG.enabled) return;
+
+        let scopeEl = document;
+        if (activePageId) {
+            const pageIdStr = String(activePageId).replace(/^page-/, '');
+            const targetEl = document.getElementById('page-' + pageIdStr);
+            if (targetEl) {
+                scopeEl = targetEl;
+            }
+        } else {
+            const activePageEl = document.querySelector('.page-view.active');
+            if (activePageEl) scopeEl = activePageEl;
+        }
 
         const mobile = isMobile();
         const slot1Key = mobile ? '320x50_1' : '728x90_1';
         const slot2Key = mobile ? 'NativeBanner_1' : '300x250_1';
 
-        // Select primary ad slot elements on current page view
-        const primarySlots = document.querySelectorAll('.ad-slot--primary');
+        const primarySlots = scopeEl.querySelectorAll('.ad-slot--primary');
         primarySlots.forEach((slot, index) => {
+            if (slot.getAttribute('data-ad-rendered') === 'true') return;
+            slot.setAttribute('data-ad-rendered', 'true');
             if (index === 0) {
                 renderAdUnit(slot, slot1Key);
-            } else if (index === 1) {
+            } else {
                 renderAdUnit(slot, slot2Key);
             }
         });
@@ -230,11 +249,11 @@
     function renderConditionalAd(toolId) {
         if (!AD_CONFIG.enabled) return;
 
-        const conditionalSlots = document.querySelectorAll('.ad-slot--conditional');
+        const activePageEl = document.querySelector('.page-view.active') || document;
+        const conditionalSlots = activePageEl.querySelectorAll('.ad-slot--conditional');
         if (!conditionalSlots.length) return;
 
         const mobile = isMobile();
-        // Choose native banner or 300x250 for conditional ad
         const adUnitKey = mobile ? 'NativeBanner_1' : '300x250_1';
 
         conditionalSlots.forEach(slot => {
