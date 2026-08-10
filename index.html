@@ -3771,6 +3771,9 @@
                 if (page === 'home' && typeof window.resetHeroVisibility === 'function') {
                     window.resetHeroVisibility();
                 }
+                if (window.AdManager && typeof window.AdManager.renderPrimaryAds === 'function') {
+                    window.AdManager.renderPrimaryAds(page);
+                }
             }
             document.querySelectorAll('.site-nav__links a[data-page]').forEach(a => {
                 a.classList.toggle('active', a.getAttribute('data-page') === page);
@@ -3811,6 +3814,10 @@
             const p = HASH_TO_PAGE[location.hash] || 'home';
             showPage(p, { skipScroll: true });
         });
+
+        // Trigger initial active page view & primary ads on load
+        const initPage = PATH_TO_PAGE[location.pathname] || HASH_TO_PAGE[location.hash] || 'home';
+        showPage(initPage, { skipScroll: true, updateUrl: false });
 
         // ===================================================================
         // Home page: Self-pausing 3D motion system + 3D cursor tilt
