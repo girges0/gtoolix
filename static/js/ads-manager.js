@@ -178,7 +178,7 @@
 <meta charset="UTF-8">
 <style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style>
 <script type="text/javascript">
-  window.onerror = function(msg) { return true; };
+  window.onerror = function() { return true; };
 </script>
 </head>
 <body>
@@ -193,9 +193,21 @@
 <meta charset="UTF-8">
 <style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style>
 <script type="text/javascript">
-  window.onerror = function(msg) {
-    if (msg && (msg.indexOf('atOptions') !== -1 || msg.indexOf('delete') !== -1 || msg.indexOf('Forbidden') !== -1)) return true;
+  window.onerror = function(msg, url, line, col, error) {
+    var str = typeof msg === 'string' ? msg : (msg && msg.message) || '';
+    if (error && error.message) str += ' ' + error.message;
+    if (!str || str.indexOf('atOptions') !== -1 || str.indexOf('delete') !== -1 || str.indexOf('Forbidden') !== -1 || str.indexOf('invoke') !== -1) {
+      return true;
+    }
   };
+  window.addEventListener('error', function(e) {
+    var str = (e && (e.message || (e.error && e.error.message))) || '';
+    if (!str || str.indexOf('atOptions') !== -1 || str.indexOf('delete') !== -1 || str.indexOf('Forbidden') !== -1 || str.indexOf('invoke') !== -1) {
+      if (e.preventDefault) e.preventDefault();
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+      return true;
+    }
+  }, true);
   (function() {
     var _opts = {
       'key' : '${unit.key}',
