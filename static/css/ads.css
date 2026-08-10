@@ -17,6 +17,18 @@
     justify-content: center;
 }
 
+/* Fail-safe empty/failed ad container collapsing */
+.ad-slot-wrapper.ad-failed,
+.ad-slot-wrapper.is-empty,
+.ad-slot-wrapper[data-ad-collapsed="true"] {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
 /* Primary Mobile Banner (320x50) */
 .ad-slot--primary-mobile {
     min-height: 50px;

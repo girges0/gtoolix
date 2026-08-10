@@ -155,7 +155,13 @@
      * Generic ad unit loader router
      */
     function renderAdUnit(containerEl, unitKey) {
-        if (!AD_CONFIG.enabled || !containerEl) return;
+        if (!AD_CONFIG.enabled || !containerEl) {
+            if (containerEl) {
+                containerEl.style.display = 'none';
+                containerEl.classList.add('ad-failed');
+            }
+            return;
+        }
         const unit = AD_CONFIG.adUnits[unitKey];
         if (!unit) return;
 
@@ -176,15 +182,43 @@
         script2.type = 'text/javascript';
         script2.src = `https://www.highperformanceformat.com/${unit.key}/invoke.js`;
 
+        // Handle network load failures (403 Forbidden, 404, AdBlock)
+        script2.onerror = function () {
+            containerEl.style.display = 'none';
+            containerEl.classList.add('ad-failed');
+            containerEl.setAttribute('data-ad-collapsed', 'true');
+        };
+
         adBody.appendChild(script1);
         adBody.appendChild(script2);
+
+        // Safety fallback timer to hide container if iframe fails to expand/fill
+        setTimeout(() => {
+            const iframe = adBody.querySelector('iframe');
+            if (!iframe || iframe.offsetHeight < 10 || iframe.offsetWidth < 10) {
+                containerEl.style.display = 'none';
+                containerEl.classList.add('ad-failed');
+                containerEl.setAttribute('data-ad-collapsed', 'true');
+            }
+        }, 2200);
     }
 
     /**
      * Render Primary Ads scoped to active visible page view
      */
     function renderPrimaryAds(activePageId) {
-        if (!AD_CONFIG.enabled) return;
+        // Sync global feature flag override if present
+        if (typeof window !== 'undefined' && typeof window.GTOOLIX_ADS_ENABLED !== 'undefined') {
+            AD_CONFIG.enabled = !!window.GTOOLIX_ADS_ENABLED;
+        }
+
+        if (!AD_CONFIG.enabled) {
+            document.querySelectorAll('.ad-slot-wrapper').forEach(slot => {
+                slot.style.display = 'none';
+                slot.classList.add('ad-failed');
+            });
+            return;
+        }
 
         let scopeEl = document;
         if (activePageId) {

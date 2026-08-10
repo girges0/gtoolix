@@ -1,11 +1,84 @@
 // ===================================================================
-// GToolix — Enterprise AdSense Lazy Loading & Impression Analytics
-// Provides CLS-free lazy loading via IntersectionObserver and
-// privacy-focused viewability tracking without blocking rendering.
+// GToolix — Enterprise Ad Analytics & Fail-Safe Auto-Collapser
+// Provides CLS-free lazy loading via IntersectionObserver, auto-collapse
+// of empty/failed ad containers (403 Forbidden / AdBlock), and impression tracking.
 // ===================================================================
 
 (function () {
     'use strict';
+
+    /**
+     * Check all ad slot wrappers and hide any that failed to render or are empty.
+     */
+    function collapseFailedAdSlots() {
+        const adUnits = document.querySelectorAll('.ad-slot-wrapper');
+        adUnits.forEach(wrapper => {
+            // Check if ads are explicitly disabled globally
+            if (window.GTOOLIX_ADS_ENABLED === false) {
+                wrapper.style.display = 'none';
+                wrapper.classList.add('ad-failed');
+                return;
+            }
+
+            const inner = wrapper.querySelector('.ad-container-inner') || wrapper;
+            const iframes = inner.querySelectorAll('iframe');
+            const insTags = inner.querySelectorAll('.adsbygoogle');
+
+            let hasContent = false;
+
+            // Check iframe dimensions
+            iframes.forEach(iframe => {
+                try {
+                    const h = iframe.offsetHeight || iframe.clientHeight;
+                    const w = iframe.offsetWidth || iframe.clientWidth;
+                    if (h > 15 && w > 15) {
+                        hasContent = true;
+                    }
+                } catch (e) { }
+            });
+
+            // Check Google AdSense status
+            insTags.forEach(ins => {
+                const status = ins.getAttribute('data-ad-status');
+                if (status === 'filled' || ins.clientHeight > 20 || ins.children.length > 0) {
+                    hasContent = true;
+                }
+            });
+
+            // If ad container has no rendered content, hide it completely to preserve UI
+            if (!hasContent) {
+                wrapper.style.display = 'none';
+                wrapper.classList.add('ad-failed');
+                wrapper.setAttribute('data-ad-collapsed', 'true');
+            } else {
+                wrapper.style.display = '';
+                wrapper.classList.remove('ad-failed');
+            }
+        });
+    }
+
+    /**
+     * Listen for network/script errors on ad delivery CDNs (403, 404, blocked)
+     */
+    function attachAdErrorListeners() {
+        window.addEventListener('error', function (e) {
+            const target = e.target;
+            if (target && (target.tagName === 'SCRIPT' || target.tagName === 'IFRAME')) {
+                const src = target.src || '';
+                if (src.includes('highperformanceformat.com') ||
+                    src.includes('spendsdetachment.com') ||
+                    src.includes('zoologyfibre.com') ||
+                    src.includes('googlesyndication.com')) {
+                    const wrapper = target.closest('.ad-slot-wrapper');
+                    if (wrapper) {
+                        wrapper.style.display = 'none';
+                        wrapper.classList.add('ad-failed');
+                        wrapper.setAttribute('data-ad-collapsed', 'true');
+                    }
+                }
+            }
+        }, true);
+    }
 
     /**
      * Initialize lazy loading and observer for AdSense units
@@ -57,15 +130,15 @@
                     }
                 }, 300);
 
-                // Timeout safety fallback after 4 seconds
+                // Timeout safety fallback after 3 seconds
                 setTimeout(() => {
                     clearInterval(checkStatus);
                     const skeleton = wrapper.querySelector('.ad-skeleton');
                     if (skeleton) skeleton.style.opacity = '0.3';
-                }, 4000);
+                }, 3000);
             }
         } catch (err) {
-            console.warn('AdSense unit load warning:', err);
+            console.warn('Ad unit load warning:', err);
         }
     }
 
@@ -82,13 +155,19 @@
         }
     }
 
-    // Initialize on main thread idle
+    // Schedule fail-safe checks at multiple stages to guarantee zero empty boxes
     function scheduleInit() {
+        attachAdErrorListeners();
+
         if (typeof window.requestIdleCallback === 'function') {
             window.requestIdleCallback(initAdObserver, { timeout: 2500 });
         } else {
             setTimeout(initAdObserver, 1000);
         }
+
+        // Run auto-collapse check after initial load and after render attempts
+        setTimeout(collapseFailedAdSlots, 1200);
+        setTimeout(collapseFailedAdSlots, 3000);
     }
 
     if (document.readyState === 'loading') {
@@ -96,4 +175,10 @@
     } else {
         scheduleInit();
     }
+
+    // Expose utility globally
+    window.GToolixAdUtils = {
+        collapseFailedAdSlots: collapseFailedAdSlots
+    };
 })();
+
