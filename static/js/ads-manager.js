@@ -106,7 +106,7 @@
 
     /**
      * Render Adsterra iframe banner inside an isolated iframe document
-     * Isolates window.atOptions per unit to prevent key collision & 403 Forbidden errors
+     * Uses srcdoc for clean isolation and zero global variable collision
      */
     function renderIframeAdUnit(containerEl, unit) {
         if (!containerEl || !unit) return;
@@ -123,14 +123,8 @@
         iframe.setAttribute('title', 'Advertisement');
         iframe.setAttribute('loading', 'lazy');
 
-        containerEl.appendChild(iframe);
-
-        try {
-            const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
-            if (doc) {
-                doc.open();
-                doc.write(`<!DOCTYPE html>
-<html>
+        const html = `<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style>
@@ -147,7 +141,18 @@
 </script>
 <script type="text/javascript" src="https://www.highperformanceformat.com/${unit.key}/invoke.js"></script>
 </body>
-</html>`);
+</html>`;
+
+        if ('srcdoc' in iframe) {
+            iframe.srcdoc = html;
+        }
+        containerEl.appendChild(iframe);
+
+        try {
+            const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
+            if (doc && !('srcdoc' in iframe)) {
+                doc.open();
+                doc.write(html);
                 doc.close();
             }
         } catch (e) {
@@ -195,7 +200,7 @@
     }
 
     /**
-     * Render Primary Ads scoped to active page view
+     * Render Primary Ads scoped to active visible page view
      */
     function renderPrimaryAds(activePageId) {
         if (!AD_CONFIG.enabled) return;
@@ -204,9 +209,7 @@
         if (activePageId) {
             const pageIdStr = String(activePageId).replace(/^page-/, '');
             const targetEl = document.getElementById('page-' + pageIdStr);
-            if (targetEl) {
-                scopeEl = targetEl;
-            }
+            if (targetEl) scopeEl = targetEl;
         } else {
             const activePageEl = document.querySelector('.page-view.active');
             if (activePageEl) scopeEl = activePageEl;
@@ -218,7 +221,10 @@
 
         const primarySlots = scopeEl.querySelectorAll('.ad-slot--primary');
         primarySlots.forEach((slot, index) => {
+            // Only render if element is currently visible in DOM layout
+            if (slot.offsetParent === null) return;
             if (slot.getAttribute('data-ad-rendered') === 'true') return;
+
             slot.setAttribute('data-ad-rendered', 'true');
             if (index === 0) {
                 renderAdUnit(slot, slot1Key);
