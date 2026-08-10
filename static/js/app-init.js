@@ -68,7 +68,7 @@
         });
         document.title = PAGE_TITLES[page] || PAGE_TITLES.home;
 
-        if (options.updateUrl !== false && PAGE_TO_PATH[page] && location.pathname !== PAGE_TO_PATH[page]) {
+        if (options.updateUrl !== false && PAGE_TO_PATH[page] && (location.pathname !== PAGE_TO_PATH[page] || location.hash !== '')) {
             history.pushState({ page }, '', PAGE_TO_PATH[page]);
         }
         if (!options.skipScroll) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });

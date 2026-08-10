@@ -16,7 +16,7 @@
 
     // Central Config & Feature Flag
     const AD_CONFIG = {
-        enabled: true, // Feature flag: Set to false to instantly disable all ads
+        enabled: false, // Set to false to disable broken Adsterra ad keys and stop all 403 Forbidden console errors & crashes
         storageKey: 'gtoolix_ad_usage',
         triggerThreshold: 3, // Display conditional ad every 3 successful uses
 
@@ -96,6 +96,38 @@
     }
 
     /**
+     * Helper to verify if an iframe contains actual rendered ad elements (img, a, canvas, etc.)
+     */
+    function checkIframeHasAd(iframe) {
+        if (!iframe) return false;
+        try {
+            const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
+            if (!doc || !doc.body) return false;
+            
+            // Check for interactive/visual ad tags injected by Adsterra
+            const adNodes = doc.body.querySelectorAll('a[href], img[src], iframe, video, canvas, svg, ins, .ad-content, div > a');
+            if (adNodes.length > 0) {
+                for (let i = 0; i < adNodes.length; i++) {
+                    const rect = adNodes[i].getBoundingClientRect();
+                    if (rect.height > 10 || rect.width > 10 || adNodes[i].offsetHeight > 10) {
+                        return true;
+                    }
+                }
+            }
+
+            // Check if body has active scroll height / non-script child nodes
+            const nonScriptChildren = Array.from(doc.body.children).filter(c => c.tagName !== 'SCRIPT');
+            if (nonScriptChildren.length > 0 && doc.body.scrollHeight > 20) {
+                return true;
+            }
+        } catch (e) {
+            // Cross-origin iframe populated by third-party ad server
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Render Adsterra iframe banner inside an isolated iframe document
      * Uses srcdoc for clean isolation and zero global variable collision
      */
@@ -122,7 +154,7 @@
 </head>
 <body>
 <script type="text/javascript">
-  var atOptions = {
+  window.atOptions = {
     'key' : '${unit.key}',
     'format' : 'iframe',
     'height' : ${unit.height},
@@ -155,36 +187,71 @@
      * Generic ad unit loader router
      */
     function renderAdUnit(containerEl, unitKey) {
-        if (!AD_CONFIG.enabled || !containerEl) return;
+        if (!AD_CONFIG.enabled || !containerEl) {
+            if (containerEl) {
+                containerEl.classList.remove('is-loaded');
+                containerEl.classList.add('ad-failed');
+                containerEl.style.display = 'none';
+            }
+            return;
+        }
         const unit = AD_CONFIG.adUnits[unitKey];
         if (!unit) return;
 
         const adBody = containerEl.querySelector('.ad-container-inner') || containerEl;
-        adBody.innerHTML = '';
 
-        const script1 = document.createElement('script');
-        script1.type = 'text/javascript';
-        script1.text = `atOptions = {
-            'key' : '${unit.key}',
-            'format' : 'iframe',
-            'height' : ${unit.height},
-            'width' : ${unit.width},
-            'params' : {}
-        };`;
+        // Render inside isolated iframe srcdoc to avoid 'Cannot delete property atOptions' global crash
+        renderIframeAdUnit(adBody, unit);
 
-        const script2 = document.createElement('script');
-        script2.type = 'text/javascript';
-        script2.src = `https://www.highperformanceformat.com/${unit.key}/invoke.js`;
-
-        adBody.appendChild(script1);
-        adBody.appendChild(script2);
+        // Verify if the ad iframe actually filled with valid ad content after load attempt
+        setTimeout(() => {
+            const iframe = adBody.querySelector('iframe');
+            if (iframe && checkIframeHasAd(iframe)) {
+                containerEl.classList.add('is-loaded');
+                containerEl.classList.remove('ad-failed');
+                containerEl.style.display = 'flex';
+            } else {
+                // If primary unit fails, try fallback to 300x250_1 if unit was 728x90_1
+                if (unitKey === '728x90_1' && AD_CONFIG.adUnits['300x250_1']) {
+                    renderIframeAdUnit(adBody, AD_CONFIG.adUnits['300x250_1']);
+                    setTimeout(() => {
+                        const fallbackIframe = adBody.querySelector('iframe');
+                        if (fallbackIframe && checkIframeHasAd(fallbackIframe)) {
+                            containerEl.classList.add('is-loaded');
+                            containerEl.classList.remove('ad-failed');
+                            containerEl.style.display = 'flex';
+                            return;
+                        }
+                        containerEl.classList.remove('is-loaded');
+                        containerEl.classList.add('ad-failed');
+                        containerEl.style.display = 'none';
+                    }, 1800);
+                } else {
+                    containerEl.classList.remove('is-loaded');
+                    containerEl.classList.add('ad-failed');
+                    containerEl.style.display = 'none';
+                }
+            }
+        }, 1800);
     }
 
     /**
      * Render Primary Ads scoped to active visible page view
      */
     function renderPrimaryAds(activePageId) {
-        if (!AD_CONFIG.enabled) return;
+        // Sync global feature flag override if present
+        if (typeof window !== 'undefined' && typeof window.GTOOLIX_ADS_ENABLED !== 'undefined') {
+            AD_CONFIG.enabled = !!window.GTOOLIX_ADS_ENABLED;
+        }
+
+        if (!AD_CONFIG.enabled) {
+            document.querySelectorAll('.ad-slot-wrapper').forEach(slot => {
+                slot.style.display = 'none';
+                slot.classList.add('ad-failed');
+                slot.classList.remove('is-loaded');
+            });
+            return;
+        }
 
         let scopeEl = document;
         if (activePageId) {
@@ -197,7 +264,7 @@
         }
 
         const mobile = isMobile();
-        const slot1Key = mobile ? '300x250_1' : '728x90_1';
+        const slot1Key = mobile ? '300x250_1' : '300x250_1'; // Use working 300x250 banner on both Mobile and PC
         const slot2Key = '300x250_1';
 
         const primarySlots = scopeEl.querySelectorAll('.ad-slot--primary');

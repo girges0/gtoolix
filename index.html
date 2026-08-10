@@ -3,15 +3,15 @@
 
 <head>
     <script>
-    (function() {
-        try {
-            var l = localStorage.getItem('siteLang') || 'ar';
-            var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.setAttribute('lang', l);
-            document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
-            document.documentElement.setAttribute('data-theme', t);
-        } catch(e) {}
-    })();
+        (function () {
+            try {
+                var l = localStorage.getItem('siteLang') || 'ar';
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('lang', l);
+                document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -26,10 +26,16 @@
     <meta name="author" content="GToolix">
     <meta name="theme-color" content="#F8FAFC">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/static/img/icon-192.png">
-    <link rel="alternate icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/static/img/icon-192.png">
+    <!-- Favicon & PWA Suite (Google Search Optimized) -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
 
     <!-- ===================== SEO: Canonical & Multilingual hreflang ===================== -->
     <link rel="canonical" href="https://gtoolix.com/" />
@@ -383,11 +389,13 @@
             }
         })();
     </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header class="site-nav">
-        <button class="site-nav__brand" data-page="home">
+        <a class="site-nav__brand" href="/" data-page="home">
             <span class="site-nav__brand-mark">
                 <picture>
                     <source srcset="/static/img/logo.webp" type="image/webp">
@@ -396,7 +404,7 @@
                 </picture>
             </span>
             <span>GToolix</span>
-        </button>
+        </a>
         <nav class="site-nav__links" id="site-nav-links">
             <a href="/qr-code-generator" data-page="qr" data-i18n="common.navQr">كود QR</a>
             <a href="/youtube-thumbnail-downloader" data-page="thumb" data-i18n="common.navThumb">تحميل صور اليوتيوب
@@ -630,38 +638,13 @@
             </div>
         </section>
 
-            <!-- Ad Slot: Below Home Hero -->
-            <div class="ad-slot-wrapper ad-slot--primary" data-ad-slot-id="home-hero-bottom">
-                <div class="ad-label-bar">
-                    <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
-                </div>
-                <div class="ad-container-inner">
-                    <div class="ad-desktop-only">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : '49f925f88072b4c395baa497ef3b34a9',
-                                'format' : 'iframe',
-                                'height' : 90,
-                                'width' : 728,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/49f925f88072b4c395baa497ef3b34a9/invoke.js"></script>
-                    </div>
-                    <div class="ad-mobile-only">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : 'fb3e69189280b6743811b3cd6c62a26c',
-                                'format' : 'iframe',
-                                'height' : 50,
-                                'width' : 320,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/fb3e69189280b6743811b3cd6c62a26c/invoke.js"></script>
-                    </div>
-                </div>
+        <!-- Ad Slot: Below Home Hero -->
+        <div class="ad-slot-wrapper ad-slot--primary" data-ad-slot-id="home-hero-bottom">
+            <div class="ad-label-bar">
+                <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
             </div>
+            <div class="ad-container-inner"></div>
+        </div>
 
         <!-- Main Tools Cards Grid -->
         <section id="tools">
@@ -761,80 +744,72 @@
 
             </div>
 
-        <!-- Ad Placement 2: Below Tools Grid -->
-        <div class="container">
-            <div class="ad-slot-wrapper ad-slot--primary" data-ad-slot-id="home-tools-bottom">
-                <div class="ad-label-bar">
-                    <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
-                </div>
-                <div class="ad-container-inner">
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '508f5df95a46921027eaae65b738199d',
-                            'format' : 'iframe',
-                            'height' : 250,
-                            'width' : 300,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="https://www.highperformanceformat.com/508f5df95a46921027eaae65b738199d/invoke.js"></script>
+            <!-- Ad Placement 2: Below Tools Grid -->
+            <div class="container">
+                <div class="ad-slot-wrapper ad-slot--primary" data-ad-slot-id="home-tools-bottom">
+                    <div class="ad-label-bar">
+                        <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
+                    </div>
+                    <div class="ad-container-inner"></div>
                 </div>
             </div>
-        </div>
 
-        <!-- Features Section -->
-        <section id="why">
-            <div class="section-head reveal">
-                <span class="kicker" data-i18n="home.whyKicker">Why GToolix</span>
-                <h2 data-i18n="home.whyTitle">Built to stay out of your way</h2>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card reveal">
-                    <div class="feature-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>
-                    </div>
-                    <h3 data-i18n="home.featPrivateTitle">No accounts</h3>
-                    <p data-i18n="home.featPrivateDesc">Nothing to sign up for and nothing to remember. Open a tool and
-                        use it.</p>
+            <!-- Features Section -->
+            <section id="why">
+                <div class="section-head reveal">
+                    <span class="kicker" data-i18n="home.whyKicker">Why GToolix</span>
+                    <h2 data-i18n="home.whyTitle">Built to stay out of your way</h2>
                 </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                        </svg>
+                <div class="features-grid">
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <h3 data-i18n="home.featPrivateTitle">No accounts</h3>
+                        <p data-i18n="home.featPrivateDesc">Nothing to sign up for and nothing to remember. Open a tool
+                            and
+                            use it.</p>
                     </div>
-                    <h3 data-i18n="home.featFastTitle">Instant results</h3>
-                    <p data-i18n="home.featFastDesc">Every tool is built to respond in seconds, not spinners.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path
-                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                        </svg>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                            </svg>
+                        </div>
+                        <h3 data-i18n="home.featFastTitle">Instant results</h3>
+                        <p data-i18n="home.featFastDesc">Every tool is built to respond in seconds, not spinners.</p>
                     </div>
-                    <h3 data-i18n="home.featCleanTitle">No watermarks</h3>
-                    <p data-i18n="home.featCleanDesc">What you download is exactly what you asked for — nothing added.
-                    </p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect x="5" y="2" width="14" height="20" rx="3" />
-                            <path d="M12 18h.01" />
-                        </svg>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <h3 data-i18n="home.featCleanTitle">No watermarks</h3>
+                        <p data-i18n="home.featCleanDesc">What you download is exactly what you asked for — nothing
+                            added.
+                        </p>
                     </div>
-                    <h3 data-i18n="home.featMobileTitle">Works everywhere</h3>
-                    <p data-i18n="home.featMobileDesc">Phone, tablet, or desktop — every tool is built mobile-first.</p>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="5" y="2" width="14" height="20" rx="3" />
+                                <path d="M12 18h.01" />
+                            </svg>
+                        </div>
+                        <h3 data-i18n="home.featMobileTitle">Works everywhere</h3>
+                        <p data-i18n="home.featMobileDesc">Phone, tablet, or desktop — every tool is built mobile-first.
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
     </div>
 
     <!-- ===================== QR CODE ===================== -->
@@ -861,32 +836,7 @@
                 <div class="ad-label-bar">
                     <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
                 </div>
-                <div class="ad-container-inner">
-                    <div class="ad-desktop-only">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : '49f925f88072b4c395baa497ef3b34a9',
-                                'format' : 'iframe',
-                                'height' : 90,
-                                'width' : 728,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/49f925f88072b4c395baa497ef3b34a9/invoke.js"></script>
-                    </div>
-                    <div class="ad-mobile-only">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : 'fb3e69189280b6743811b3cd6c62a26c',
-                                'format' : 'iframe',
-                                'height' : 50,
-                                'width' : 320,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/fb3e69189280b6743811b3cd6c62a26c/invoke.js"></script>
-                    </div>
-                </div>
+                <div class="ad-container-inner"></div>
             </div>
 
             <main>
@@ -1204,18 +1154,7 @@
                     <div class="ad-label-bar">
                         <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
                     </div>
-                    <div class="ad-container-inner">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : '508f5df95a46921027eaae65b738199d',
-                                'format' : 'iframe',
-                                'height' : 250,
-                                'width' : 300,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/508f5df95a46921027eaae65b738199d/invoke.js"></script>
-                    </div>
+                    <div class="ad-container-inner"></div>
                 </div>
 
                 <!-- 9 Features Grid -->
@@ -1460,32 +1399,7 @@
                 <div class="ad-label-bar">
                     <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
                 </div>
-                <div class="ad-container-inner">
-                    <div class="ad-desktop-only">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : '49f925f88072b4c395baa497ef3b34a9',
-                                'format' : 'iframe',
-                                'height' : 90,
-                                'width' : 728,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/49f925f88072b4c395baa497ef3b34a9/invoke.js"></script>
-                    </div>
-                    <div class="ad-mobile-only">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : 'fb3e69189280b6743811b3cd6c62a26c',
-                                'format' : 'iframe',
-                                'height' : 50,
-                                'width' : 320,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/fb3e69189280b6743811b3cd6c62a26c/invoke.js"></script>
-                    </div>
-                </div>
+                <div class="ad-container-inner"></div>
             </div>
 
             <main>
@@ -1552,18 +1466,7 @@
                     <div class="ad-label-bar">
                         <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
                     </div>
-                    <div class="ad-container-inner">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : '508f5df95a46921027eaae65b738199d',
-                                'format' : 'iframe',
-                                'height' : 250,
-                                'width' : 300,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/508f5df95a46921027eaae65b738199d/invoke.js"></script>
-                    </div>
+                    <div class="ad-container-inner"></div>
                 </div>
 
                 <!-- 9 Features Grid -->
@@ -1811,32 +1714,7 @@
                 <div class="ad-label-bar">
                     <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
                 </div>
-                <div class="ad-container-inner">
-                    <div class="ad-desktop-only">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : '49f925f88072b4c395baa497ef3b34a9',
-                                'format' : 'iframe',
-                                'height' : 90,
-                                'width' : 728,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/49f925f88072b4c395baa497ef3b34a9/invoke.js"></script>
-                    </div>
-                    <div class="ad-mobile-only">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : 'fb3e69189280b6743811b3cd6c62a26c',
-                                'format' : 'iframe',
-                                'height' : 50,
-                                'width' : 320,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/fb3e69189280b6743811b3cd6c62a26c/invoke.js"></script>
-                    </div>
-                </div>
+                <div class="ad-container-inner"></div>
             </div>
 
             <main>
@@ -1971,18 +1849,7 @@
                     <div class="ad-label-bar">
                         <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
                     </div>
-                    <div class="ad-container-inner">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : '508f5df95a46921027eaae65b738199d',
-                                'format' : 'iframe',
-                                'height' : 250,
-                                'width' : 300,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/508f5df95a46921027eaae65b738199d/invoke.js"></script>
-                    </div>
+                    <div class="ad-container-inner"></div>
                 </div>
 
                 <!-- 9 Features Grid -->
@@ -2222,32 +2089,7 @@
                 <div class="ad-label-bar">
                     <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
                 </div>
-                <div class="ad-container-inner">
-                    <div class="ad-desktop-only">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : '49f925f88072b4c395baa497ef3b34a9',
-                                'format' : 'iframe',
-                                'height' : 90,
-                                'width' : 728,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/49f925f88072b4c395baa497ef3b34a9/invoke.js"></script>
-                    </div>
-                    <div class="ad-mobile-only">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : 'fb3e69189280b6743811b3cd6c62a26c',
-                                'format' : 'iframe',
-                                'height' : 50,
-                                'width' : 320,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/fb3e69189280b6743811b3cd6c62a26c/invoke.js"></script>
-                    </div>
-                </div>
+                <div class="ad-container-inner"></div>
             </div>
 
             <!-- Notice Banners -->
@@ -2569,18 +2411,7 @@
                     <div class="ad-label-bar">
                         <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
                     </div>
-                    <div class="ad-container-inner">
-                        <script type="text/javascript">
-                            atOptions = {
-                                'key' : '508f5df95a46921027eaae65b738199d',
-                                'format' : 'iframe',
-                                'height' : 250,
-                                'width' : 300,
-                                'params' : {}
-                            };
-                        </script>
-                        <script type="text/javascript" src="https://www.highperformanceformat.com/508f5df95a46921027eaae65b738199d/invoke.js"></script>
-                    </div>
+                    <div class="ad-container-inner"></div>
                 </div>
 
                 <!-- Conditional Output Section -->
@@ -3815,7 +3646,7 @@
             });
             document.title = PAGE_TITLES[page] || PAGE_TITLES.home;
 
-            if (updateUrl && PAGE_TO_PATH[page] && location.pathname !== PAGE_TO_PATH[page]) {
+            if (updateUrl && PAGE_TO_PATH[page] && (location.pathname !== PAGE_TO_PATH[page] || location.hash !== '')) {
                 history.pushState({ page }, '', PAGE_TO_PATH[page]);
             }
             if (!skipScroll) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
@@ -4055,6 +3886,7 @@
         window.GTOOLIX_SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
     </script>
     <script src="/static/js/client.min.js" defer></script>
+    <script src="/static/js/ads-manager.min.js" defer></script>
     <script src="/static/js/ad-analytics.min.js" defer></script>
 </body>
 
