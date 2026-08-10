@@ -60,6 +60,14 @@
                 width: 728,
                 height: 90,
                 key: '49f925f88072b4c395baa497ef3b34a9'
+            },
+            'native_1': {
+                id: 'container-cf72ae0eecb6564d752d90fbaf702aa9',
+                type: 'native',
+                width: 300,
+                height: 250,
+                key: 'cf72ae0eecb6564d752d90fbaf702aa9',
+                scriptSrc: 'https://pl30780212.effectivecpmnetwork.com/cf72ae0eecb6564d752d90fbaf702aa9/invoke.js'
             }
         }
     };
@@ -162,7 +170,24 @@
         iframe.setAttribute('title', 'Advertisement');
         iframe.setAttribute('loading', 'lazy');
 
-        const html = `<!DOCTYPE html>
+        let html = '';
+        if (unit.type === 'native') {
+            html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style>
+<script type="text/javascript">
+  window.onerror = function(msg) { return true; };
+</script>
+</head>
+<body>
+<div id="${unit.id}"></div>
+<script async="async" data-cfasync="false" src="${unit.scriptSrc}"></script>
+</body>
+</html>`;
+        } else {
+            html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -202,6 +227,7 @@
 <script type="text/javascript" src="https://www.highperformanceformat.com/${unit.key}/invoke.js"></script>
 </body>
 </html>`;
+        }
 
         if ('srcdoc' in iframe) {
             iframe.srcdoc = html;
@@ -221,7 +247,7 @@
     }
 
     /**
-     * Generic ad unit loader router
+     * Generic ad unit loader router with multi-level fallback cascade
      */
     function renderAdUnit(containerEl, unitKey) {
         if (!AD_CONFIG.enabled || !containerEl) {
@@ -232,15 +258,13 @@
             }
             return;
         }
-        const unit = AD_CONFIG.adUnits[unitKey];
+        const unit = AD_CONFIG.adUnits[unitKey] || AD_CONFIG.adUnits['native_1'] || AD_CONFIG.adUnits['300x250_1'];
         if (!unit) return;
 
         const adBody = containerEl.querySelector('.ad-container-inner') || containerEl;
 
-        // Render inside isolated iframe srcdoc to avoid 'Cannot delete property atOptions' global crash
         renderIframeAdUnit(adBody, unit);
 
-        // Verify if the ad iframe actually filled with valid ad content after load attempt
         setTimeout(() => {
             const iframe = adBody.querySelector('iframe');
             if (iframe && checkIframeHasAd(iframe)) {
@@ -248,9 +272,9 @@
                 containerEl.classList.remove('ad-failed');
                 containerEl.style.display = 'flex';
             } else {
-                // If primary unit fails, try fallback to 300x250_1 if unit was 728x90_1
-                if (unitKey === '728x90_1' && AD_CONFIG.adUnits['300x250_1']) {
-                    renderIframeAdUnit(adBody, AD_CONFIG.adUnits['300x250_1']);
+                // Fallback Level 1: Native Banner
+                if (unitKey !== 'native_1' && AD_CONFIG.adUnits['native_1']) {
+                    renderIframeAdUnit(adBody, AD_CONFIG.adUnits['native_1']);
                     setTimeout(() => {
                         const fallbackIframe = adBody.querySelector('iframe');
                         if (fallbackIframe && checkIframeHasAd(fallbackIframe)) {
@@ -259,9 +283,26 @@
                             containerEl.style.display = 'flex';
                             return;
                         }
-                        containerEl.classList.remove('is-loaded');
-                        containerEl.classList.add('ad-failed');
-                        containerEl.style.display = 'none';
+                        // Fallback Level 2: 300x250 Banner
+                        if (unitKey !== '300x250_1' && AD_CONFIG.adUnits['300x250_1']) {
+                            renderIframeAdUnit(adBody, AD_CONFIG.adUnits['300x250_1']);
+                            setTimeout(() => {
+                                const f2Iframe = adBody.querySelector('iframe');
+                                if (f2Iframe && checkIframeHasAd(f2Iframe)) {
+                                    containerEl.classList.add('is-loaded');
+                                    containerEl.classList.remove('ad-failed');
+                                    containerEl.style.display = 'flex';
+                                    return;
+                                }
+                                containerEl.classList.remove('is-loaded');
+                                containerEl.classList.add('ad-failed');
+                                containerEl.style.display = 'none';
+                            }, 1800);
+                        } else {
+                            containerEl.classList.remove('is-loaded');
+                            containerEl.classList.add('ad-failed');
+                            containerEl.style.display = 'none';
+                        }
                     }, 1800);
                 } else {
                     containerEl.classList.remove('is-loaded');
@@ -301,8 +342,8 @@
         }
 
         const mobile = isMobile();
-        const slot1Key = mobile ? '300x250_1' : '300x250_1'; // Use working 300x250 banner on both Mobile and PC
-        const slot2Key = '300x250_1';
+        const slot1Key = mobile ? '300x250_1' : '728x90_1';
+        const slot2Key = mobile ? '320x50_1' : 'native_1';
 
         const primarySlots = scopeEl.querySelectorAll('.ad-slot--primary');
         primarySlots.forEach((slot, index) => {
