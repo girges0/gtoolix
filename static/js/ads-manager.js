@@ -152,59 +152,66 @@
     }
 
     /**
-     * Render Adsterra ad tag directly in the main DOM container
-     * Ensures Adsterra server sees the origin domain (qtoolix.com) instead of about:srcdoc
+     * Render Adsterra ad tag inside iframe document stream (doc.open/write/close)
+     * Allows synchronous document.write calls inside invoke.js while maintaining qtoolix.com origin
      */
     function renderDirectAdUnit(containerEl, unit) {
         if (!containerEl || !unit) return;
         containerEl.innerHTML = '';
 
-        if (unit.type === 'native') {
-            const div = document.createElement('div');
-            div.id = unit.id;
-            containerEl.appendChild(div);
+        const iframe = document.createElement('iframe');
+        iframe.style.width = '100%';
+        iframe.style.height = unit.height + 'px';
+        iframe.style.maxWidth = unit.width + 'px';
+        iframe.style.border = 'none';
+        iframe.style.overflow = 'hidden';
+        iframe.style.display = 'block';
+        iframe.style.margin = '0 auto';
+        iframe.setAttribute('title', 'Advertisement');
 
-            const script = document.createElement('script');
-            script.async = true;
-            script.setAttribute('data-cfasync', 'false');
-            script.src = unit.scriptSrc;
-            containerEl.appendChild(script);
-        } else {
-            // Assign global atOptions for current unit
-            try {
-                var opts = {
-                    'key': unit.key,
-                    'format': 'iframe',
-                    'height': unit.height,
-                    'width': unit.width,
-                    'params': {}
-                };
-                Object.defineProperty(window, 'atOptions', {
-                    get: function() { return opts; },
-                    set: function(val) { opts = val; },
-                    configurable: true,
-                    enumerable: true
-                });
-                Object.defineProperty(Object.prototype, 'atOptions', {
-                    get: function() { return opts; },
-                    set: function(val) { opts = val; },
-                    configurable: true,
-                    enumerable: true
-                });
-            } catch (e) {
-                window.atOptions = {
-                    'key': unit.key,
-                    'format': 'iframe',
-                    'height': unit.height,
-                    'width': unit.width,
-                    'params': {}
-                };
+        containerEl.appendChild(iframe);
+
+        try {
+            const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
+            if (doc) {
+                doc.open();
+                if (unit.type === 'native') {
+                    doc.write(`<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style>
+</head>
+<body>
+<div id="${unit.id}"></div>
+<script async="async" data-cfasync="false" src="${unit.scriptSrc}"></script>
+</body>
+</html>`);
+                } else {
+                    doc.write(`<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style>
+<script type="text/javascript">
+  atOptions = {
+    'key' : '${unit.key}',
+    'format' : 'iframe',
+    'height' : ${unit.height},
+    'width' : ${unit.width},
+    'params' : {}
+  };
+</script>
+<script type="text/javascript" src="https://www.highperformanceformat.com/${unit.key}/invoke.js"></script>
+</head>
+<body>
+</body>
+</html>`);
+                }
+                doc.close();
             }
-
-            const script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = `https://www.highperformanceformat.com/${unit.key}/invoke.js`;
-            containerEl.appendChild(script);
+        } catch (e) {
+            console.warn('AdManager doc.write error:', e);
         }
     }
 
