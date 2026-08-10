@@ -113,6 +113,8 @@
         iframe.style.margin = '0 auto';
         iframe.setAttribute('title', 'Advertisement');
         iframe.setAttribute('loading', 'lazy');
+        // Sandbox Security Shield: Allows banner display and clickthroughs while blocking top-level redirects/popunders
+        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups-to-escape-sandbox');
 
         const html = `<!DOCTYPE html>
 <html lang="en">
