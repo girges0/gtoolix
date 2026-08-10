@@ -361,6 +361,7 @@
         }
     </style>
     <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css">
+    <link rel="stylesheet" href="/static/css/ads.min.css" id="gtoolix-ads-css">
     <script>/* Theme init — prevent FOUC */
         window.seoPageType = "";
         (function () { var t = localStorage.getItem('theme'); if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light' } document.documentElement.setAttribute('data-theme', t) })();
@@ -389,8 +390,7 @@
             }
         })();
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456"
-        crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -1215,6 +1215,11 @@
                     </div>
                 </div>
 
+                <!-- Conditional 3-Use Ad Slot: QR Tool -->
+                <div class="ad-slot-wrapper ad-slot--conditional" data-ad-slot-id="qr-conditional">
+                    <div class="ad-container-inner"></div>
+                </div>
+
                 <!-- Dedicated Primary Ad Slot: Directly Below QR Code Workspace -->
                 <div class="ad-slot-wrapper ad-slot--primary" data-ad-slot-id="qr-workspace-bottom">
                     <div class="ad-label-bar">
@@ -1382,7 +1387,7 @@
                     </p>
 
                     <!-- Ad Placement 3: Before FAQ Section -->
-                    <div class="ad-slot-wrapper" data-ad-slot-id="home-pre-faq" style="min-height: 250px;">
+                    <div class="ad-slot-wrapper ad-slot--primary" data-ad-slot-id="home-pre-faq">
                         <div class="ad-label-bar">
                             <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
                         </div>
@@ -1390,9 +1395,6 @@
                             <div class="ad-skeleton" aria-hidden="true">
                                 <div class="ad-skeleton-pulse"></div>
                             </div>
-                            <ins class="adsbygoogle" style="display:block; text-align:center;"
-                                data-ad-client="ca-pub-0000000000000000" data-ad-slot="1000000003" data-ad-format="auto"
-                                data-full-width-responsive="true"></ins>
                         </div>
                     </div>
 
@@ -1566,6 +1568,11 @@
                     <div id="thumb-grid" class="thumb-grid" style="display: none;"></div>
                 </div>
 
+                <!-- Conditional 3-Use Ad Slot: Thumbnail Tool -->
+                <div class="ad-slot-wrapper ad-slot--conditional" data-ad-slot-id="thumb-conditional">
+                    <div class="ad-container-inner"></div>
+                </div>
+
                 <!-- Dedicated Primary Ad Slot: Directly Below Thumbnail Workspace -->
                 <div class="ad-slot-wrapper ad-slot--primary" data-ad-slot-id="thumb-workspace-bottom">
                     <div class="ad-label-bar">
@@ -1733,7 +1740,7 @@
                         لا تقوم المنصة بتخزين أي صور أو الاحتفاظ بسجل الروابط التي قمت بالبحث عنها نهائياً.</p>
 
                     <!-- Ad Unit 3: Before Thumbnail FAQ Section -->
-                    <div class="ad-slot-wrapper" data-ad-slot-id="thumb-pre-faq" style="min-height: 250px;">
+                    <div class="ad-slot-wrapper ad-slot--primary" data-ad-slot-id="thumb-pre-faq">
                         <div class="ad-label-bar">
                             <span class="ad-label" data-i18n="common.adLabel">إعلان • ADVERTISEMENT</span>
                         </div>
@@ -1741,9 +1748,6 @@
                             <div class="ad-skeleton" aria-hidden="true">
                                 <div class="ad-skeleton-pulse"></div>
                             </div>
-                            <ins class="adsbygoogle" style="display:block; text-align:center;"
-                                data-ad-client="ca-pub-0000000000000000" data-ad-slot="1000000007" data-ad-format="auto"
-                                data-full-width-responsive="true"></ins>
                         </div>
                     </div>
 
@@ -1986,6 +1990,11 @@
                             </button>
                         </div>
                     </div>
+                </div>
+
+                <!-- Conditional 3-Use Ad Slot: Gemini Tool -->
+                <div class="ad-slot-wrapper ad-slot--conditional" data-ad-slot-id="gemini-conditional">
+                    <div class="ad-container-inner"></div>
                 </div>
 
                 <!-- Dedicated Primary Ad Slot: Directly Below Gemini Watermark Workspace -->
@@ -2587,6 +2596,11 @@
                             </button>
                         </div>
                     </div>
+                </div>
+
+                <!-- Conditional 3-Use Ad Slot: Recorder Tool -->
+                <div class="ad-slot-wrapper ad-slot--conditional" data-ad-slot-id="recorder-conditional">
+                    <div class="ad-container-inner"></div>
                 </div>
 
                 <!-- Dedicated Primary Ad Slot: Directly Below Recorder Controls & Workspace -->
@@ -4081,6 +4095,7 @@
         window.GTOOLIX_SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
     </script>
     <script src="/static/js/client.min.js" defer></script>
+    <script src="/static/js/ads-manager.min.js" defer></script>
     <script src="/static/js/ad-analytics.min.js" defer></script>
 </body>
 

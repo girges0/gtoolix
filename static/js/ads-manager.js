@@ -101,7 +101,12 @@
      */
     function renderIframeAdUnit(containerEl, unit) {
         if (!containerEl || !unit) return;
-        containerEl.innerHTML = '';
+        
+        // Hide skeleton if present
+        const sk = containerEl.querySelector('.ad-skeleton');
+        if (sk) {
+            sk.style.display = 'none';
+        }
 
         const iframe = document.createElement('iframe');
         iframe.style.width = '100%';
@@ -152,7 +157,7 @@
     }
 
     /**
-     * Generic ad unit loader router
+     * Generic ad unit loader router — isolated via iframe
      */
     function renderAdUnit(containerEl, unitKey) {
         if (!AD_CONFIG.enabled || !containerEl) return;
@@ -161,30 +166,14 @@
 
         const adBody = containerEl.querySelector('.ad-container-inner') || containerEl;
         adBody.innerHTML = '';
-
-        const script1 = document.createElement('script');
-        script1.type = 'text/javascript';
-        script1.text = `atOptions = {
-            'key' : '${unit.key}',
-            'format' : 'iframe',
-            'height' : ${unit.height},
-            'width' : ${unit.width},
-            'params' : {}
-        };`;
-
-        const script2 = document.createElement('script');
-        script2.type = 'text/javascript';
-        script2.src = `https://www.highperformanceformat.com/${unit.key}/invoke.js`;
-
-        adBody.appendChild(script1);
-        adBody.appendChild(script2);
+        renderIframeAdUnit(adBody, unit);
     }
 
     /**
      * Render Primary Ads scoped to active visible page view
      */
     function renderPrimaryAds(activePageId) {
-        if (!AD_CONFIG.enabled) return;
+        if (!AD_CONFIG.enabled || typeof document === 'undefined') return;
 
         let scopeEl = document;
         if (activePageId) {
@@ -217,7 +206,7 @@
      * Render the conditional 3rd ad after 3 successful uses
      */
     function renderConditionalAd(toolId) {
-        if (!AD_CONFIG.enabled) return;
+        if (!AD_CONFIG.enabled || typeof document === 'undefined') return;
 
         const activePageEl = document.querySelector('.page-view.active') || document;
         const conditionalSlots = activePageEl.querySelectorAll('.ad-slot--conditional');
@@ -313,7 +302,7 @@
      * Initialize AdManager
      */
     function init() {
-        if (!AD_CONFIG.enabled) return;
+        if (!AD_CONFIG.enabled || typeof document === 'undefined') return;
 
         // Automatically render primary ads when DOM ready
         if (document.readyState === 'loading') {
@@ -321,6 +310,11 @@
         } else {
             renderPrimaryAds();
         }
+    }
+
+    // Auto initialize if in browser context
+    if (typeof window !== 'undefined') {
+        init();
     }
 
     // Return Public API
