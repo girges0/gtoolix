@@ -152,114 +152,64 @@
     }
 
     /**
-     * Render Adsterra iframe banner inside an isolated iframe document
-     * Uses srcdoc for clean isolation and zero global variable collision
+     * Render Adsterra ad tag directly in the main DOM container
+     * Ensures Adsterra server sees the origin domain (qtoolix.com) instead of about:srcdoc
      */
-    function renderIframeAdUnit(containerEl, unit) {
+    function renderDirectAdUnit(containerEl, unit) {
         if (!containerEl || !unit) return;
         containerEl.innerHTML = '';
 
-        const iframe = document.createElement('iframe');
-        iframe.style.width = '100%';
-        iframe.style.height = unit.height + 'px';
-        iframe.style.maxWidth = unit.width + 'px';
-        iframe.style.border = 'none';
-        iframe.style.overflow = 'hidden';
-        iframe.style.display = 'block';
-        iframe.style.margin = '0 auto';
-        iframe.setAttribute('title', 'Advertisement');
-        iframe.setAttribute('loading', 'lazy');
-
-        let html = '';
         if (unit.type === 'native') {
-            html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style>
-<script type="text/javascript">
-  window.onerror = function() { return true; };
-</script>
-</head>
-<body>
-<div id="${unit.id}"></div>
-<script async="async" data-cfasync="false" src="${unit.scriptSrc}"></script>
-</body>
-</html>`;
+            const div = document.createElement('div');
+            div.id = unit.id;
+            containerEl.appendChild(div);
+
+            const script = document.createElement('script');
+            script.async = true;
+            script.setAttribute('data-cfasync', 'false');
+            script.src = unit.scriptSrc;
+            containerEl.appendChild(script);
         } else {
-            html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style>
-<script type="text/javascript">
-  window.onerror = function(msg, url, line, col, error) {
-    var str = typeof msg === 'string' ? msg : (msg && msg.message) || '';
-    if (error && error.message) str += ' ' + error.message;
-    if (!str || str.indexOf('atOptions') !== -1 || str.indexOf('delete') !== -1 || str.indexOf('Forbidden') !== -1 || str.indexOf('invoke') !== -1) {
-      return true;
-    }
-  };
-  window.addEventListener('error', function(e) {
-    var str = (e && (e.message || (e.error && e.error.message))) || '';
-    if (!str || str.indexOf('atOptions') !== -1 || str.indexOf('delete') !== -1 || str.indexOf('Forbidden') !== -1 || str.indexOf('invoke') !== -1) {
-      if (e.preventDefault) e.preventDefault();
-      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
-      return true;
-    }
-  }, true);
-  (function() {
-    var _opts = {
-      'key' : '${unit.key}',
-      'format' : 'iframe',
-      'height' : ${unit.height},
-      'width' : ${unit.width},
-      'params' : {}
-    };
-    try {
-      Object.defineProperty(window, 'atOptions', {
-        get: function() { return _opts; },
-        set: function(val) { _opts = val; },
-        configurable: true,
-        enumerable: true
-      });
-      Object.defineProperty(Object.prototype, 'atOptions', {
-        get: function() { return _opts; },
-        set: function(val) { _opts = val; },
-        configurable: true,
-        enumerable: true
-      });
-    } catch(e) {
-      window.atOptions = _opts;
-    }
-  })();
-</script>
-</head>
-<body>
-<script type="text/javascript" src="https://www.highperformanceformat.com/${unit.key}/invoke.js"></script>
-</body>
-</html>`;
-        }
-
-        if ('srcdoc' in iframe) {
-            iframe.srcdoc = html;
-        }
-        containerEl.appendChild(iframe);
-
-        try {
-            const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
-            if (doc && !('srcdoc' in iframe)) {
-                doc.open();
-                doc.write(html);
-                doc.close();
+            // Assign global atOptions for current unit
+            try {
+                var opts = {
+                    'key': unit.key,
+                    'format': 'iframe',
+                    'height': unit.height,
+                    'width': unit.width,
+                    'params': {}
+                };
+                Object.defineProperty(window, 'atOptions', {
+                    get: function() { return opts; },
+                    set: function(val) { opts = val; },
+                    configurable: true,
+                    enumerable: true
+                });
+                Object.defineProperty(Object.prototype, 'atOptions', {
+                    get: function() { return opts; },
+                    set: function(val) { opts = val; },
+                    configurable: true,
+                    enumerable: true
+                });
+            } catch (e) {
+                window.atOptions = {
+                    'key': unit.key,
+                    'format': 'iframe',
+                    'height': unit.height,
+                    'width': unit.width,
+                    'params': {}
+                };
             }
-        } catch (e) {
-            console.warn('AdManager iframe write error:', e);
+
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = `https://www.highperformanceformat.com/${unit.key}/invoke.js`;
+            containerEl.appendChild(script);
         }
     }
 
     /**
-     * Generic ad unit loader router with multi-level fallback cascade
+     * Generic ad unit loader router
      */
     function renderAdUnit(containerEl, unitKey) {
         if (!containerEl) return;
@@ -270,44 +220,7 @@
         if (!unit) return;
 
         const adBody = containerEl.querySelector('.ad-container-inner') || containerEl;
-
-        renderIframeAdUnit(adBody, unit);
-
-        setTimeout(() => {
-            const iframe = adBody.querySelector('iframe');
-            if (iframe && checkIframeHasAd(iframe)) {
-                containerEl.classList.add('is-loaded');
-                containerEl.style.display = 'flex';
-            } else {
-                // Fallback Level 1: Native Banner
-                if (unitKey !== 'native_1' && AD_CONFIG.adUnits['native_1']) {
-                    renderIframeAdUnit(adBody, AD_CONFIG.adUnits['native_1']);
-                    setTimeout(() => {
-                        const fallbackIframe = adBody.querySelector('iframe');
-                        if (fallbackIframe && checkIframeHasAd(fallbackIframe)) {
-                            containerEl.classList.add('is-loaded');
-                            containerEl.style.display = 'flex';
-                            return;
-                        }
-                        // Fallback Level 2: 300x250 Banner
-                        if (unitKey !== '300x250_1' && AD_CONFIG.adUnits['300x250_1']) {
-                            renderIframeAdUnit(adBody, AD_CONFIG.adUnits['300x250_1']);
-                            setTimeout(() => {
-                                const f2Iframe = adBody.querySelector('iframe');
-                                if (f2Iframe && checkIframeHasAd(f2Iframe)) {
-                                    containerEl.classList.add('is-loaded');
-                                }
-                                containerEl.style.display = 'flex';
-                            }, 1800);
-                        } else {
-                            containerEl.style.display = 'flex';
-                        }
-                    }, 1800);
-                } else {
-                    containerEl.style.display = 'flex';
-                }
-            }
-        }, 1800);
+        renderDirectAdUnit(adBody, unit);
     }
 
     /**
