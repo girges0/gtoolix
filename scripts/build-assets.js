@@ -1,11 +1,12 @@
-const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const esbuild = require('esbuild');
 
-console.log('Building minified assets with esbuild...');
+console.log('Building minified assets with esbuild JS API...');
 
 const cssFiles = [
-    'static/css/main.css'
+    'static/css/main.css',
+    'static/css/ads.css'
 ];
 
 const jsFiles = [
@@ -13,6 +14,7 @@ const jsFiles = [
     'static/js/app-init.js',
     'static/js/client.js',
     'static/js/ad-analytics.js',
+    'static/js/ads-manager.js',
     'static/js/gemini-watermark-remover.js',
     'static/js/screen-recorder-tool.js',
     'static/js/qr-tool.js',
@@ -21,20 +23,40 @@ const jsFiles = [
 ];
 
 cssFiles.forEach(file => {
-    const ext = path.extname(file);
-    const outFile = file.replace(ext, '.min' + ext);
-    execSync(`npx esbuild "${file}" --minify --outfile="${outFile}"`, { stdio: 'inherit' });
+    if (fs.existsSync(file)) {
+        const ext = path.extname(file);
+        const outFile = file.replace(ext, '.min' + ext);
+        esbuild.buildSync({
+            entryPoints: [file],
+            outfile: outFile,
+            minify: true,
+            loader: { '.css': 'css' }
+        });
+    }
 });
 
 jsFiles.forEach(file => {
-    const ext = path.extname(file);
-    const outFile = file.replace(ext, '.min' + ext);
-    execSync(`npx esbuild "${file}" --minify --outfile="${outFile}"`, { stdio: 'inherit' });
+    if (fs.existsSync(file)) {
+        const ext = path.extname(file);
+        const outFile = file.replace(ext, '.min' + ext);
+        esbuild.buildSync({
+            entryPoints: [file],
+            outfile: outFile,
+            minify: true
+        });
+    }
 });
 
 if (fs.existsSync('gemini-watermark-remover-main/src/sdk/index.js')) {
     console.log('Building Gemini core engine bundle from reference source...');
-    execSync('npx esbuild gemini-watermark-remover-main/src/sdk/index.js --bundle --format=iife --global-name=GeminiEngine --minify --outfile=static/js/gemini-engine.bundle.js', { stdio: 'inherit' });
+    esbuild.buildSync({
+        entryPoints: ['gemini-watermark-remover-main/src/sdk/index.js'],
+        bundle: true,
+        format: 'iife',
+        globalName: 'GeminiEngine',
+        minify: true,
+        outfile: 'static/js/gemini-engine.bundle.js'
+    });
 } else {
     console.log('Using pre-bundled Gemini core engine (static/js/gemini-engine.bundle.js)');
 }
