@@ -105,35 +105,54 @@
     }
 
     /**
-     * Safe HTML injection into an iframe to cleanly render an Adsterra iframe banner
-     */
-    /**
-     * Render Adsterra iframe banner directly into container DOM
-     * Guarantees window.location.hostname matches gtoolix.com
+     * Render Adsterra iframe banner inside an isolated iframe document
+     * Isolates window.atOptions per unit to prevent key collision & 403 Forbidden errors
      */
     function renderIframeAdUnit(containerEl, unit) {
         if (!containerEl || !unit) return;
         containerEl.innerHTML = '';
 
-        const wrapper = document.createElement('div');
-        wrapper.className = 'adsterra-banner-inner';
-        wrapper.style.display = 'flex';
-        wrapper.style.justifyContent = 'center';
-        wrapper.style.alignItems = 'center';
-        wrapper.style.width = '100%';
-        wrapper.style.minHeight = unit.height + 'px';
+        const iframe = document.createElement('iframe');
+        iframe.style.width = '100%';
+        iframe.style.height = unit.height + 'px';
+        iframe.style.maxWidth = unit.width + 'px';
+        iframe.style.border = 'none';
+        iframe.style.overflow = 'hidden';
+        iframe.style.display = 'block';
+        iframe.style.margin = '0 auto';
+        iframe.setAttribute('title', 'Advertisement');
+        iframe.setAttribute('loading', 'lazy');
 
-        const optScript = document.createElement('script');
-        optScript.type = 'text/javascript';
-        optScript.text = `atOptions = { 'key': '${unit.key}', 'format': 'iframe', 'height': ${unit.height}, 'width': ${unit.width}, 'params': {} };`;
+        containerEl.appendChild(iframe);
 
-        const invokeScript = document.createElement('script');
-        invokeScript.type = 'text/javascript';
-        invokeScript.src = `https://www.highperformanceformat.com/${unit.key}/invoke.js`;
-
-        wrapper.appendChild(optScript);
-        wrapper.appendChild(invokeScript);
-        containerEl.appendChild(wrapper);
+        try {
+            const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
+            if (doc) {
+                doc.open();
+                doc.write(`<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style>
+</head>
+<body>
+<script type="text/javascript">
+  var atOptions = {
+    'key' : '${unit.key}',
+    'format' : 'iframe',
+    'height' : ${unit.height},
+    'width' : ${unit.width},
+    'params' : {}
+  };
+</script>
+<script type="text/javascript" src="https://www.highperformanceformat.com/${unit.key}/invoke.js"></script>
+</body>
+</html>`);
+                doc.close();
+            }
+        } catch (e) {
+            console.warn('AdManager iframe write error:', e);
+        }
     }
 
     /**

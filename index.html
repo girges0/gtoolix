@@ -3946,6 +3946,8 @@
                     if (!ticking) {
                         ticking = true;
                         requestAnimationFrame(() => {
+                            if (!rect) rect = card.getBoundingClientRect();
+                            if (!rect) return;
                             const px = (e.clientX - rect.left) / rect.width;
                             const py = (e.clientY - rect.top) / rect.height;
                             const rx = (0.5 - py) * 8;
