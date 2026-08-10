@@ -113,8 +113,8 @@
         iframe.style.margin = '0 auto';
         iframe.setAttribute('title', 'Advertisement');
         iframe.setAttribute('loading', 'lazy');
-        // Sandbox Security Shield: Allows banner display and clickthroughs while blocking top-level redirects/popunders
-        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups-to-escape-sandbox');
+        // Strict Sandbox Security Shield: Completely blocks all popups, new windows, and redirects
+        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms');
 
         const html = `<!DOCTYPE html>
 <html lang="en">
@@ -182,7 +182,7 @@
         }
 
         const mobile = isMobile();
-        const slot1Key = mobile ? '320x50_1' : '728x90_1';
+        const slot1Key = mobile ? '300x250_1' : '728x90_1';
         const slot2Key = '300x250_1';
 
         const primarySlots = scopeEl.querySelectorAll('.ad-slot--primary');
