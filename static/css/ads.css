@@ -3,18 +3,24 @@
    Responsive, CLS-free, Dark/Light & RTL Compatible Ad Containers
    ===================================================================== */
 
-/* Base Ad Container */
+/* Base Ad Container — Hidden by default, displayed ONLY when an ad is successfully filled */
 .ad-slot-wrapper {
     position: relative;
     width: 100%;
-    margin: 1.5rem auto;
+    margin: 0 auto;
     text-align: center;
     clear: both;
     box-sizing: border-box;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+/* Active & Loaded Ad Slots */
+.ad-slot-wrapper.is-loaded {
+    display: flex !important;
+    margin: 1.5rem auto;
 }
 
 /* Fail-safe empty/failed ad container collapsing */

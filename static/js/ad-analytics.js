@@ -47,12 +47,14 @@
 
             // If ad container has no rendered content, hide it completely to preserve UI
             if (!hasContent) {
-                wrapper.style.display = 'none';
+                wrapper.classList.remove('is-loaded');
                 wrapper.classList.add('ad-failed');
                 wrapper.setAttribute('data-ad-collapsed', 'true');
+                wrapper.style.display = 'none';
             } else {
-                wrapper.style.display = '';
+                wrapper.classList.add('is-loaded');
                 wrapper.classList.remove('ad-failed');
+                wrapper.style.display = '';
             }
         });
     }

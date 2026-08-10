@@ -157,8 +157,9 @@
     function renderAdUnit(containerEl, unitKey) {
         if (!AD_CONFIG.enabled || !containerEl) {
             if (containerEl) {
-                containerEl.style.display = 'none';
+                containerEl.classList.remove('is-loaded');
                 containerEl.classList.add('ad-failed');
+                containerEl.style.display = 'none';
             }
             return;
         }
@@ -166,41 +167,23 @@
         if (!unit) return;
 
         const adBody = containerEl.querySelector('.ad-container-inner') || containerEl;
-        adBody.innerHTML = '';
 
-        const script1 = document.createElement('script');
-        script1.type = 'text/javascript';
-        script1.text = `atOptions = {
-            'key' : '${unit.key}',
-            'format' : 'iframe',
-            'height' : ${unit.height},
-            'width' : ${unit.width},
-            'params' : {}
-        };`;
+        // Render inside isolated iframe srcdoc to avoid 'Cannot delete property atOptions' global crash
+        renderIframeAdUnit(adBody, unit);
 
-        const script2 = document.createElement('script');
-        script2.type = 'text/javascript';
-        script2.src = `https://www.highperformanceformat.com/${unit.key}/invoke.js`;
-
-        // Handle network load failures (403 Forbidden, 404, AdBlock)
-        script2.onerror = function () {
-            containerEl.style.display = 'none';
-            containerEl.classList.add('ad-failed');
-            containerEl.setAttribute('data-ad-collapsed', 'true');
-        };
-
-        adBody.appendChild(script1);
-        adBody.appendChild(script2);
-
-        // Safety fallback timer to hide container if iframe fails to expand/fill
+        // Check if the ad iframe rendered content successfully after load attempt
         setTimeout(() => {
             const iframe = adBody.querySelector('iframe');
-            if (!iframe || iframe.offsetHeight < 10 || iframe.offsetWidth < 10) {
-                containerEl.style.display = 'none';
+            if (iframe && iframe.offsetHeight > 15 && iframe.offsetWidth > 15) {
+                containerEl.classList.add('is-loaded');
+                containerEl.classList.remove('ad-failed');
+                containerEl.style.display = '';
+            } else {
+                containerEl.classList.remove('is-loaded');
                 containerEl.classList.add('ad-failed');
-                containerEl.setAttribute('data-ad-collapsed', 'true');
+                containerEl.style.display = 'none';
             }
-        }, 2200);
+        }, 1800);
     }
 
     /**
