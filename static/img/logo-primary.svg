@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="gGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="45%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="sparkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F1F5F9"/>
+    </linearGradient>
+    <linearGradient id="subGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon Section -->
+  <g transform="translate(10, 10)">
+    <rect x="10" y="10" width="160" height="160" rx="40" fill="url(#bgGrad)"/>
+    <rect x="10" y="10" width="160" height="160" rx="40" fill="none" stroke="url(#gGrad)" stroke-width="3" stroke-opacity="0.5"/>
+    <g transform="translate(90, 90) scale(0.35)">
+      <path d="M 85,-110 C 25,-145 -65,-135 -115,-80 C -160,-30 -165,55 -125,110 C -80,165 30,165 85,120 C 130,85 140,25 140,-10 L 10,-10 C 0,-10 -5,0 -5,10 L -5,15 C -5,35 10,48 30,48 L 72,48 C 70,72 45,95 10,98 C -35,102 -90,75 -95,15 C -100,-45 -50,-90 10,-95 C 45,-98 70,-85 85,-70" fill="url(#gGrad)"/>
+      <path d="M -15,-40 L 45,-120 L 25,-40 L 75,-40 L -5,40 L 10,-20 Z" fill="url(#sparkGrad)"/>
+    </g>
+  </g>
+
+  <!-- Typography Section -->
+  <text x="210" y="118" font-family="'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif" font-weight="700" font-size="78" fill="url(#textGrad)" letter-spacing="-1.5">GTool<tspan fill="url(#gGrad)">ix</tspan></text>
+  <text x="215" y="152" font-family="'Inter', system-ui, sans-serif" font-weight="600" font-size="18" fill="url(#subGrad)" letter-spacing="4">ONLINE TOOLS PLATFORM</text>
+</svg>
