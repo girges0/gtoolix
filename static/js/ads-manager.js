@@ -101,12 +101,7 @@
      */
     function renderIframeAdUnit(containerEl, unit) {
         if (!containerEl || !unit) return;
-        
-        // Hide skeleton if present
-        const sk = containerEl.querySelector('.ad-skeleton');
-        if (sk) {
-            sk.style.display = 'none';
-        }
+        containerEl.innerHTML = '';
 
         const iframe = document.createElement('iframe');
         iframe.style.width = '100%';
@@ -127,28 +122,26 @@
 </head>
 <body>
 <script type="text/javascript">
-  Object.defineProperty(window, 'atOptions', {
-    value: {
-      'key' : '${unit.key}',
-      'format' : 'iframe',
-      'height' : ${unit.height},
-      'width' : ${unit.width},
-      'params' : {}
-    },
-    configurable: true,
-    writable: true,
-    enumerable: true
-  });
+  var atOptions = {
+    'key' : '${unit.key}',
+    'format' : 'iframe',
+    'height' : ${unit.height},
+    'width' : ${unit.width},
+    'params' : {}
+  };
 </script>
 <script type="text/javascript" src="https://www.highperformanceformat.com/${unit.key}/invoke.js"></script>
 </body>
 </html>`;
 
+        if ('srcdoc' in iframe) {
+            iframe.srcdoc = html;
+        }
         containerEl.appendChild(iframe);
 
         try {
             const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
-            if (doc) {
+            if (doc && !('srcdoc' in iframe)) {
                 doc.open();
                 doc.write(html);
                 doc.close();
@@ -159,7 +152,7 @@
     }
 
     /**
-     * Generic ad unit loader router — isolated via iframe
+     * Generic ad unit loader router
      */
     function renderAdUnit(containerEl, unitKey) {
         if (!AD_CONFIG.enabled || !containerEl) return;
@@ -168,14 +161,30 @@
 
         const adBody = containerEl.querySelector('.ad-container-inner') || containerEl;
         adBody.innerHTML = '';
-        renderIframeAdUnit(adBody, unit);
+
+        const script1 = document.createElement('script');
+        script1.type = 'text/javascript';
+        script1.text = `atOptions = {
+            'key' : '${unit.key}',
+            'format' : 'iframe',
+            'height' : ${unit.height},
+            'width' : ${unit.width},
+            'params' : {}
+        };`;
+
+        const script2 = document.createElement('script');
+        script2.type = 'text/javascript';
+        script2.src = `https://www.highperformanceformat.com/${unit.key}/invoke.js`;
+
+        adBody.appendChild(script1);
+        adBody.appendChild(script2);
     }
 
     /**
      * Render Primary Ads scoped to active visible page view
      */
     function renderPrimaryAds(activePageId) {
-        if (!AD_CONFIG.enabled || typeof document === 'undefined') return;
+        if (!AD_CONFIG.enabled) return;
 
         let scopeEl = document;
         if (activePageId) {
@@ -208,7 +217,7 @@
      * Render the conditional 3rd ad after 3 successful uses
      */
     function renderConditionalAd(toolId) {
-        if (!AD_CONFIG.enabled || typeof document === 'undefined') return;
+        if (!AD_CONFIG.enabled) return;
 
         const activePageEl = document.querySelector('.page-view.active') || document;
         const conditionalSlots = activePageEl.querySelectorAll('.ad-slot--conditional');
@@ -304,7 +313,7 @@
      * Initialize AdManager
      */
     function init() {
-        if (!AD_CONFIG.enabled || typeof document === 'undefined') return;
+        if (!AD_CONFIG.enabled) return;
 
         // Automatically render primary ads when DOM ready
         if (document.readyState === 'loading') {
@@ -312,11 +321,6 @@
         } else {
             renderPrimaryAds();
         }
-    }
-
-    // Auto initialize if in browser context
-    if (typeof window !== 'undefined') {
-        init();
     }
 
     // Return Public API
