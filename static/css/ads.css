@@ -3,15 +3,15 @@
    Responsive, CLS-free, Dark/Light & RTL Compatible Ad Containers
    ===================================================================== */
 
-/* Base Ad Container — Hidden by default, displayed ONLY when an ad is successfully filled */
+/* Base Ad Container — Always visible */
 .ad-slot-wrapper {
     position: relative;
     width: 100%;
-    margin: 0 auto;
+    margin: 1.5rem auto;
     text-align: center;
     clear: both;
     box-sizing: border-box;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -21,18 +21,6 @@
 .ad-slot-wrapper.is-loaded {
     display: flex !important;
     margin: 1.5rem auto;
-}
-
-/* Fail-safe empty/failed ad container collapsing */
-.ad-slot-wrapper.ad-failed,
-.ad-slot-wrapper.is-empty,
-.ad-slot-wrapper[data-ad-collapsed="true"] {
-    display: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    min-height: 0 !important;
-    height: 0 !important;
-    overflow: hidden !important;
 }
 
 /* Primary Mobile Banner (320x50) */

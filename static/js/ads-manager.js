@@ -250,14 +250,10 @@
      * Generic ad unit loader router with multi-level fallback cascade
      */
     function renderAdUnit(containerEl, unitKey) {
-        if (!AD_CONFIG.enabled || !containerEl) {
-            if (containerEl) {
-                containerEl.classList.remove('is-loaded');
-                containerEl.classList.add('ad-failed');
-                containerEl.style.display = 'none';
-            }
-            return;
-        }
+        if (!containerEl) return;
+        containerEl.style.display = 'flex';
+        if (!AD_CONFIG.enabled) return;
+
         const unit = AD_CONFIG.adUnits[unitKey] || AD_CONFIG.adUnits['native_1'] || AD_CONFIG.adUnits['300x250_1'];
         if (!unit) return;
 
@@ -269,7 +265,6 @@
             const iframe = adBody.querySelector('iframe');
             if (iframe && checkIframeHasAd(iframe)) {
                 containerEl.classList.add('is-loaded');
-                containerEl.classList.remove('ad-failed');
                 containerEl.style.display = 'flex';
             } else {
                 // Fallback Level 1: Native Banner
@@ -279,7 +274,6 @@
                         const fallbackIframe = adBody.querySelector('iframe');
                         if (fallbackIframe && checkIframeHasAd(fallbackIframe)) {
                             containerEl.classList.add('is-loaded');
-                            containerEl.classList.remove('ad-failed');
                             containerEl.style.display = 'flex';
                             return;
                         }
@@ -290,24 +284,15 @@
                                 const f2Iframe = adBody.querySelector('iframe');
                                 if (f2Iframe && checkIframeHasAd(f2Iframe)) {
                                     containerEl.classList.add('is-loaded');
-                                    containerEl.classList.remove('ad-failed');
-                                    containerEl.style.display = 'flex';
-                                    return;
                                 }
-                                containerEl.classList.remove('is-loaded');
-                                containerEl.classList.add('ad-failed');
-                                containerEl.style.display = 'none';
+                                containerEl.style.display = 'flex';
                             }, 1800);
                         } else {
-                            containerEl.classList.remove('is-loaded');
-                            containerEl.classList.add('ad-failed');
-                            containerEl.style.display = 'none';
+                            containerEl.style.display = 'flex';
                         }
                     }, 1800);
                 } else {
-                    containerEl.classList.remove('is-loaded');
-                    containerEl.classList.add('ad-failed');
-                    containerEl.style.display = 'none';
+                    containerEl.style.display = 'flex';
                 }
             }
         }, 1800);

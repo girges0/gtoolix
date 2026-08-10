@@ -8,59 +8,18 @@
     'use strict';
 
     /**
-     * Check all ad slot wrappers and hide any that failed to render or are empty.
+     * Check all ad slot wrappers and ensure they remain visible.
      */
     function collapseFailedAdSlots() {
         const adUnits = document.querySelectorAll('.ad-slot-wrapper');
         adUnits.forEach(wrapper => {
-            // Check if ads are explicitly disabled globally
-            if (window.GTOOLIX_ADS_ENABLED === false) {
-                wrapper.style.display = 'none';
-                wrapper.classList.add('ad-failed');
-                return;
-            }
-
-            const inner = wrapper.querySelector('.ad-container-inner') || wrapper;
-            const iframes = inner.querySelectorAll('iframe');
-            const insTags = inner.querySelectorAll('.adsbygoogle');
-
-            let hasContent = false;
-
-            // Check iframe dimensions
-            iframes.forEach(iframe => {
-                try {
-                    const h = iframe.offsetHeight || iframe.clientHeight;
-                    const w = iframe.offsetWidth || iframe.clientWidth;
-                    if (h > 15 && w > 15) {
-                        hasContent = true;
-                    }
-                } catch (e) { }
-            });
-
-            // Check Google AdSense status
-            insTags.forEach(ins => {
-                const status = ins.getAttribute('data-ad-status');
-                if (status === 'filled' || ins.clientHeight > 20 || ins.children.length > 0) {
-                    hasContent = true;
-                }
-            });
-
-            // If ad container has no rendered content, hide it completely to preserve UI
-            if (!hasContent) {
-                wrapper.classList.remove('is-loaded');
-                wrapper.classList.add('ad-failed');
-                wrapper.setAttribute('data-ad-collapsed', 'true');
-                wrapper.style.display = 'none';
-            } else {
-                wrapper.classList.add('is-loaded');
-                wrapper.classList.remove('ad-failed');
-                wrapper.style.display = '';
-            }
+            if (window.GTOOLIX_ADS_ENABLED === false) return;
+            wrapper.style.display = 'flex';
         });
     }
 
     /**
-     * Listen for network/script errors on ad delivery CDNs (403, 404, blocked)
+     * Listen for network/script errors on ad delivery CDNs
      */
     function attachAdErrorListeners() {
         const prevOnError = window.onerror;
@@ -77,24 +36,6 @@
             if (e.message && (e.message.includes('atOptions') || e.message.includes('invoke.js') || e.message.includes('Cannot delete property'))) {
                 e.preventDefault();
                 return true;
-            }
-            const target = e.target;
-            if (target && (target.tagName === 'SCRIPT' || target.tagName === 'IFRAME')) {
-                const src = target.src || '';
-                if (src.includes('highperformanceformat.com') ||
-                    src.includes('spendsdetachment.com') ||
-                    src.includes('zoologyfibre.com') ||
-                    src.includes('kettledroopingcontin') ||
-                    src.includes('workdeadlinededicate') ||
-                    src.includes('realizationnewestfan') ||
-                    src.includes('googlesyndication.com')) {
-                    const wrapper = target.closest('.ad-slot-wrapper');
-                    if (wrapper) {
-                        wrapper.style.display = 'none';
-                        wrapper.classList.add('ad-failed');
-                        wrapper.setAttribute('data-ad-collapsed', 'true');
-                    }
-                }
             }
         }, true);
     }
