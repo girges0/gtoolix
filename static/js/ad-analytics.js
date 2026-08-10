@@ -63,13 +63,30 @@
      * Listen for network/script errors on ad delivery CDNs (403, 404, blocked)
      */
     function attachAdErrorListeners() {
+        const prevOnError = window.onerror;
+        window.onerror = function (msg, url, line, col, error) {
+            if (msg && typeof msg === 'string' && (msg.includes('atOptions') || msg.includes('invoke.js') || msg.includes('Cannot delete property'))) {
+                return true; // suppress console error for third-party ad script bug
+            }
+            if (prevOnError) {
+                return prevOnError.apply(this, arguments);
+            }
+        };
+
         window.addEventListener('error', function (e) {
+            if (e.message && (e.message.includes('atOptions') || e.message.includes('invoke.js') || e.message.includes('Cannot delete property'))) {
+                e.preventDefault();
+                return true;
+            }
             const target = e.target;
             if (target && (target.tagName === 'SCRIPT' || target.tagName === 'IFRAME')) {
                 const src = target.src || '';
                 if (src.includes('highperformanceformat.com') ||
                     src.includes('spendsdetachment.com') ||
                     src.includes('zoologyfibre.com') ||
+                    src.includes('kettledroopingcontin') ||
+                    src.includes('workdeadlinededicate') ||
+                    src.includes('realizationnewestfan') ||
                     src.includes('googlesyndication.com')) {
                     const wrapper = target.closest('.ad-slot-wrapper');
                     if (wrapper) {
