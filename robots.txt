@@ -1,21 +1,11 @@
-
 User-agent: Mediapartners-Google
 Disallow:
+
 Disallow: /search
-Disallow: /p/sitemap.html
-Disallow: /p/image.html
-Disallow: /p/terms-of-use.html
-Disallow: /p/about-us-lorem-ipsum-is-simply-dummy.html
-Disallow: /p/contact-us.html
-Disallow: /p/privacy-policy.html
-Disallow: /error_page.html
-Disallow: /search/label/
-Disallow: /search?updated-max=
-Disallow: /search?updated-min=
+
 User-agent: *
 Disallow: /search
 Allow: /
 Allow: /ads.txt
 
 Sitemap: https://gtoolix.com/sitemap.xml
-
