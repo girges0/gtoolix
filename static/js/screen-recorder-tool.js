@@ -30,6 +30,7 @@
         countdownActive: false,
 
         // Settings
+        recordingMode: 'screen-cam', // 'screen-cam', 'screen-only', 'camera-only'
         webcamEnabled: true,
         micEnabled: true,
         systemAudioEnabled: true,
@@ -54,6 +55,7 @@
     };
 
     const DEFAULT_SETTINGS = {
+        recordingMode: 'screen-cam',
         webcamEnabled: true,
         micEnabled: true,
         systemAudioEnabled: true,
@@ -76,6 +78,7 @@
     function saveSettings() {
         try {
             const toSave = {
+                recordingMode: state.recordingMode,
                 webcamEnabled: state.webcamEnabled,
                 micEnabled: state.micEnabled,
                 systemAudioEnabled: state.systemAudioEnabled,
@@ -116,6 +119,7 @@
     }
 
     function applyStateToUI() {
+        if (elements.selectMode) elements.selectMode.value = state.recordingMode;
         if (elements.toggleWebcam) elements.toggleWebcam.checked = state.webcamEnabled;
         if (elements.toggleMic) elements.toggleMic.checked = state.micEnabled;
         if (elements.toggleSystemAudio) elements.toggleSystemAudio.checked = state.systemAudioEnabled;
@@ -125,6 +129,23 @@
         if (elements.selectQuality) elements.selectQuality.value = state.selectedQuality;
         if (elements.selectFps) elements.selectFps.value = state.selectedFps;
         if (elements.selectShape) elements.selectShape.value = state.webcamShape;
+
+        // Visual adjustment for selected mode
+        if (state.recordingMode === 'camera-only') {
+            if (elements.btnSelectScreen) elements.btnSelectScreen.style.display = 'none';
+            if (elements.rowWebcam) elements.rowWebcam.style.opacity = '0.5';
+        } else if (state.recordingMode === 'screen-only') {
+            if (elements.btnSelectScreen) elements.btnSelectScreen.style.display = 'inline-flex';
+            if (elements.rowWebcam) elements.rowWebcam.style.opacity = '0.5';
+        } else {
+            if (elements.btnSelectScreen) elements.btnSelectScreen.style.display = 'inline-flex';
+            if (elements.rowWebcam) elements.rowWebcam.style.opacity = '1';
+        }
+
+        const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (elements.mobileScreenNotice) {
+            elements.mobileScreenNotice.style.display = isMobileDevice ? 'block' : 'none';
+        }
 
         if (elements.sliderSize) {
             elements.sliderSize.value = state.webcamSizePct;
@@ -151,6 +172,11 @@
 
     function initElements() {
         elements = {
+            selectMode: document.getElementById('rec-select-mode'),
+            btnSelectScreen: document.getElementById('rec-btn-select-screen'),
+            mobileScreenNotice: document.getElementById('rec-mobile-screen-notice'),
+            rowWebcam: document.getElementById('rec-row-webcam'),
+
             toggleWebcam: document.getElementById('rec-opt-webcam'),
             toggleMic: document.getElementById('rec-opt-mic'),
             toggleSystemAudio: document.getElementById('rec-opt-sys-audio'),
@@ -203,6 +229,7 @@
             metaRes: document.getElementById('rec-meta-res'),
 
             noticeBrowser: document.getElementById('rec-notice-browser'),
+            noticeMobile: document.getElementById('rec-notice-mobile'),
             noticePermission: document.getElementById('rec-notice-permission'),
             noticePermissionText: document.getElementById('rec-notice-permission-text')
         };
@@ -232,12 +259,16 @@
         const hasDisplayMedia = !!(navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia);
         const hasUserMedia = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
         const hasRecorder = typeof window.MediaRecorder !== 'undefined';
-        const hasCanvasCapture = typeof HTMLCanvasElement !== 'undefined' && 'captureStream' in HTMLCanvasElement.prototype;
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (!hasDisplayMedia && hasUserMedia);
 
-        const isSupported = hasDisplayMedia && hasUserMedia && hasRecorder && hasCanvasCapture;
+        // Recording is supported if MediaRecorder is available and either screen capture or camera capture works
+        const isSupported = (hasDisplayMedia || hasUserMedia) && hasRecorder;
 
         if (elements.noticeBrowser) {
-            elements.noticeBrowser.style.display = isSupported ? 'none' : 'block';
+            elements.noticeBrowser.style.display = (!isSupported) ? 'block' : 'none';
+        }
+        if (elements.noticeMobile) {
+            elements.noticeMobile.style.display = (isSupported && isMobile) ? 'block' : 'none';
         }
         if (elements.btnStart) {
             elements.btnStart.disabled = !isSupported;
@@ -668,6 +699,62 @@
     }
 
     // -----------------------------------------------------------------
+    // Interactive Screen Picker
+    // -----------------------------------------------------------------
+    async function selectScreenInteractive() {
+        if (state.isRecording || state.countdownActive) return;
+
+        if (!navigator.mediaDevices || typeof navigator.mediaDevices.getDisplayMedia !== 'function') {
+            alert(getI18nString('rec.noDisplayMediaMobile', 'Your mobile browser lacks direct screen capture API (getDisplayMedia). Camera mode will be used, or use Chrome on PC for full screen recording.'));
+            return;
+        }
+
+        try {
+            if (state.screenStream) {
+                state.screenStream.getTracks().forEach(t => t.stop());
+                state.screenStream = null;
+            }
+
+            const displayConstraints = {
+                video: {
+                    displaySurface: 'monitor',
+                    frameRate: { ideal: state.selectedFps, max: 60 }
+                },
+                audio: state.systemAudioEnabled ? { echoCancellation: true, noiseSuppression: true } : false
+            };
+
+            state.screenStream = await navigator.mediaDevices.getDisplayMedia(displayConstraints);
+
+            const screenTrack = state.screenStream.getVideoTracks()[0];
+            if (screenTrack) {
+                screenTrack.onended = () => {
+                    if (state.isRecording) {
+                        stopRecording();
+                    }
+                };
+            }
+
+            state.screenVideo = document.createElement('video');
+            state.screenVideo.srcObject = state.screenStream;
+            state.screenVideo.autoplay = true;
+            state.screenVideo.muted = true;
+            state.screenVideo.playsInline = true;
+            await state.screenVideo.play().catch(() => { });
+
+            const settings = screenTrack && screenTrack.getSettings ? screenTrack.getSettings() : {};
+            const screenW = settings.width || (state.screenVideo ? state.screenVideo.videoWidth : 0) || 1280;
+            const screenH = settings.height || (state.screenVideo ? state.screenVideo.videoHeight : 0) || 720;
+
+            startCanvasCompositing(screenW, screenH);
+            showPermissionNotice('rec.screenSelectedSuccess', true);
+        } catch (e) {
+            if (e.name !== 'NotAllowedError' && e.name !== 'PermissionDeniedError') {
+                console.warn('Interactive screen selection error:', e);
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------
     // Core Recording Workflow
     // -----------------------------------------------------------------
     async function startRecordingWorkflow() {
@@ -691,18 +778,73 @@
         }
 
         try {
-            // 1. Request Screen Capture
-            const displayConstraints = {
-                video: {
-                    displaySurface: 'monitor',
-                    frameRate: { ideal: state.selectedFps, max: 60 }
-                },
-                audio: state.systemAudioEnabled ? { echoCancellation: true, noiseSuppression: true } : false
-            };
+            let isScreenCapture = false;
 
-            state.screenStream = await navigator.mediaDevices.getDisplayMedia(displayConstraints);
+            // Mode 1: Camera Only
+            if (state.recordingMode === 'camera-only') {
+                state.webcamEnabled = false;
+                try {
+                    state.screenStream = await getWebcamStream(state.selectedCameraId);
+                } catch (camErr) {
+                    showPermissionNotice('rec.camPermissionDenied', true);
+                    alert(getI18nString('rec.camPermissionDenied', 'Camera access was denied or device is busy.'));
+                    return;
+                }
+                isScreenCapture = false;
+            }
+            // Mode 2 & 3: Screen Only or Screen + Camera
+            else {
+                if (state.recordingMode === 'screen-only') {
+                    state.webcamEnabled = false;
+                }
 
-            // Listen for user stopping share via native browser bar
+                // If screen stream not acquired yet
+                if (!state.screenStream || state.screenStream.getVideoTracks().length === 0 || !state.screenStream.getVideoTracks()[0].enabled) {
+                    if (navigator.mediaDevices && typeof navigator.mediaDevices.getDisplayMedia === 'function') {
+                        try {
+                            const displayConstraints = {
+                                video: {
+                                    displaySurface: 'monitor',
+                                    frameRate: { ideal: state.selectedFps, max: 60 }
+                                },
+                                audio: state.systemAudioEnabled ? { echoCancellation: true, noiseSuppression: true } : false
+                            };
+                            state.screenStream = await navigator.mediaDevices.getDisplayMedia(displayConstraints);
+                            isScreenCapture = true;
+                        } catch (e) {
+                            if (e.name === 'NotAllowedError' || e.name === 'PermissionDeniedError') {
+                                console.warn('User cancelled displayMedia selection:', e);
+                                return;
+                            }
+                            console.warn('getDisplayMedia failed or unsupported on this device, falling back to camera stream:', e);
+                        }
+                    }
+                } else {
+                    isScreenCapture = true;
+                }
+
+                // Fallback for mobile / devices where getDisplayMedia is missing or failed:
+                if (!state.screenStream) {
+                    showPermissionNotice('rec.camNotice', true);
+                    try {
+                        state.screenStream = await navigator.mediaDevices.getUserMedia({
+                            video: { facingMode: 'user' },
+                            audio: state.micEnabled ? { echoCancellation: true, noiseSuppression: true } : false
+                        });
+                    } catch (camErr) {
+                        try {
+                            state.screenStream = await getWebcamStream(state.selectedCameraId);
+                        } catch (e2) {
+                            console.error('Camera fallback failed:', e2);
+                            showPermissionNotice('rec.camPermissionDenied', true);
+                            alert(getI18nString('rec.camPermissionDenied', 'Camera access was denied or device is busy.'));
+                            return;
+                        }
+                    }
+                }
+            }
+
+            // Listen for stream track ending
             const screenTrack = state.screenStream.getVideoTracks()[0];
             if (screenTrack) {
                 screenTrack.onended = () => {
@@ -712,8 +854,8 @@
                 };
             }
 
-            // 2. Request Webcam Capture if enabled
-            if (state.webcamEnabled) {
+            // 2. Request Webcam Capture if enabled AND primary stream is Screen Capture
+            if (isScreenCapture && state.webcamEnabled && state.recordingMode === 'screen-cam') {
                 try {
                     state.webcamStream = await getWebcamStream(state.selectedCameraId);
                 } catch (e) {
@@ -721,10 +863,12 @@
                     showPermissionNotice('rec.camNotice', true);
                     state.webcamEnabled = false;
                 }
+            } else if (!isScreenCapture || state.recordingMode !== 'screen-cam') {
+                state.webcamStream = null;
             }
 
-            // 3. Request Microphone Capture if enabled
-            if (state.micEnabled) {
+            // 3. Request Microphone Capture if enabled AND not already captured in primary stream
+            if (state.micEnabled && (!state.screenStream || state.screenStream.getAudioTracks().length === 0)) {
                 try {
                     state.micStream = await getMicStream(state.selectedMicId);
                     setupAudioMeter(state.micStream);
@@ -733,6 +877,8 @@
                     showPermissionNotice('rec.micNotice', true);
                     state.micEnabled = false;
                 }
+            } else if (state.screenStream && state.screenStream.getAudioTracks().length > 0) {
+                setupAudioMeter(state.screenStream);
             }
 
             // Countdown Option (Studio Animating Ring & Number Pop)
@@ -777,9 +923,9 @@
             }
 
             // Get Captured Screen Resolution
-            const settings = screenTrack.getSettings();
-            const screenW = settings.width || 1920;
-            const screenH = settings.height || 1080;
+            const settings = screenTrack && screenTrack.getSettings ? screenTrack.getSettings() : {};
+            const screenW = settings.width || (state.screenVideo ? state.screenVideo.videoWidth : 0) || 1280;
+            const screenH = settings.height || (state.screenVideo ? state.screenVideo.videoHeight : 0) || 720;
 
             // Prepare Record Video Stream (Canvas compositing for continuous live stage preview)
             startCanvasCompositing(screenW, screenH);
@@ -792,30 +938,34 @@
             }
 
             // 4. Mix Audio Tracks via AudioContext
-            state.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            state.audioDestination = state.audioContext.createMediaStreamDestination();
+            try {
+                state.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                state.audioDestination = state.audioContext.createMediaStreamDestination();
 
-            // Add Screen/System Audio track if available
-            const systemAudioTracks = state.screenStream.getAudioTracks();
-            if (systemAudioTracks.length > 0) {
-                const sysSource = state.audioContext.createMediaStreamSource(new MediaStream([systemAudioTracks[0]]));
-                sysSource.connect(state.audioDestination);
-            }
+                // Add Screen/System/Camera Audio track if available
+                const systemAudioTracks = state.screenStream.getAudioTracks();
+                if (systemAudioTracks.length > 0) {
+                    const sysSource = state.audioContext.createMediaStreamSource(new MediaStream([systemAudioTracks[0]]));
+                    sysSource.connect(state.audioDestination);
+                }
 
-            // Add Microphone Audio track if available
-            if (state.micStream && state.micStream.getAudioTracks().length > 0) {
-                const micSource = state.audioContext.createMediaStreamSource(state.micStream);
-                micSource.connect(state.audioDestination);
+                // Add Microphone Audio track if available and separate
+                if (state.micStream && state.micStream.getAudioTracks().length > 0) {
+                    const micSource = state.audioContext.createMediaStreamSource(state.micStream);
+                    micSource.connect(state.audioDestination);
+                }
+            } catch (audioErr) {
+                console.warn('Web Audio Context initialization warning:', audioErr);
             }
 
             // Build Final Combined Stream for MediaRecorder
-            const combinedVideoTrack = recordVideoStream.getVideoTracks()[0];
-            const combinedAudioTrack = state.audioDestination.stream.getAudioTracks()[0];
+            const combinedVideoTrack = recordVideoStream ? recordVideoStream.getVideoTracks()[0] : (state.screenStream ? state.screenStream.getVideoTracks()[0] : null);
+            const combinedAudioTrack = (state.audioDestination && state.audioDestination.stream.getAudioTracks().length > 0) ? state.audioDestination.stream.getAudioTracks()[0] : (state.screenStream ? state.screenStream.getAudioTracks()[0] : null);
 
-            const tracks = [combinedVideoTrack];
-            if (combinedAudioTrack) {
-                tracks.push(combinedAudioTrack);
-            }
+            const tracks = [];
+            if (combinedVideoTrack) tracks.push(combinedVideoTrack);
+            if (combinedAudioTrack) tracks.push(combinedAudioTrack);
+
             state.combinedStream = new MediaStream(tracks);
 
             // Determine Bitrate Quality
@@ -830,7 +980,17 @@
                 audioBitsPerSecond: 128000
             };
 
-            state.mediaRecorder = new MediaRecorder(state.combinedStream, recorderOptions);
+            try {
+                state.mediaRecorder = new MediaRecorder(state.combinedStream, recorderOptions);
+            } catch (eBitrate) {
+                console.warn('MediaRecorder with bitrates failed, trying with mimeType only:', eBitrate);
+                try {
+                    state.mediaRecorder = new MediaRecorder(state.combinedStream, { mimeType: mimeType });
+                } catch (eMime) {
+                    console.warn('MediaRecorder with mimeType failed, trying default MediaRecorder:', eMime);
+                    state.mediaRecorder = new MediaRecorder(state.combinedStream);
+                }
+            }
 
             state.mediaRecorder.ondataavailable = (event) => {
                 if (event.data && event.data.size > 0) {
@@ -969,10 +1129,21 @@
     }
 
     function resetWorkflow() {
+        // Stop & reset video player playback immediately if active
+        if (elements.finalVideoPlayer) {
+            try {
+                elements.finalVideoPlayer.pause();
+                elements.finalVideoPlayer.currentTime = 0;
+                elements.finalVideoPlayer.removeAttribute('src');
+                elements.finalVideoPlayer.load();
+            } catch (e) { }
+        }
+
         stopRecording();
         cleanUpStreams();
         stopWebcamPreview();
 
+        // Completely discard recorded video data (no download saved)
         if (state.recordedUrl) {
             URL.revokeObjectURL(state.recordedUrl);
             state.recordedUrl = null;
@@ -1170,6 +1341,27 @@
     // Event Listeners & Binding
     // -----------------------------------------------------------------
     function bindEvents() {
+        if (elements.selectMode) {
+            elements.selectMode.addEventListener('change', (e) => {
+                state.recordingMode = e.target.value;
+                if (state.recordingMode === 'camera-only' || state.recordingMode === 'screen-only') {
+                    state.webcamEnabled = (state.recordingMode !== 'screen-only');
+                } else if (state.recordingMode === 'screen-cam') {
+                    state.webcamEnabled = true;
+                }
+                saveSettings();
+                applyStateToUI();
+                if (state.webcamEnabled) startWebcamPreview();
+                else stopWebcamPreview();
+            });
+        }
+
+        if (elements.btnSelectScreen) {
+            elements.btnSelectScreen.addEventListener('click', () => {
+                selectScreenInteractive();
+            });
+        }
+
         const tabBtns = document.querySelectorAll('.rec-tab-btn');
         if (tabBtns.length > 0) {
             tabBtns.forEach(btn => {
@@ -1379,6 +1571,11 @@
 
     // Called by SPA router when navigating away from the recorder page
     function onPageDeactivated() {
+        if (elements.finalVideoPlayer) {
+            try {
+                elements.finalVideoPlayer.pause();
+            } catch (e) { }
+        }
         stopWebcamPreview();
         stopAudioMeter();
     }

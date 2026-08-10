@@ -18,6 +18,16 @@
 
 # Route Redirects
 [[redirects]]
+  from = "/monitoring/*"
+  to = "/gtoolix-monitoring-site/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/monitoring"
+  to = "/gtoolix-monitoring-site/"
+  status = 200
+
+[[redirects]]
   from = "/qr-code-generator"
   to = "/tools/qr/"
   status = 200
@@ -83,7 +93,7 @@
   to = "/404.html"
   status = 404
 
-# Performance & Security Headers
+# Hardened Security & Privacy Headers
 [[headers]]
   for = "/*"
   [headers.values]
@@ -92,6 +102,9 @@
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(self), camera=(self)"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://*.supabase.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://get.geojs.io https://api.country.is https://ipapi.co https://ipwho.is https://*.google.com https://*.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://*.google.com; frame-ancestors 'none'; object-src 'none';"
 
 [[headers]]
   for = "/static/*"

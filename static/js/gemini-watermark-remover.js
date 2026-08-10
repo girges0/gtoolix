@@ -100,6 +100,15 @@ var GeminiWatermarkTool = (function () {
 
     // Zoom & Pan & Comparison state
     let zoomLevel = 1.0;
+    let panX = 0;
+    let panY = 0;
+    let isPanning = false;
+    let panStartX = 0;
+    let panStartY = 0;
+    let initialPanX = 0;
+    let initialPanY = 0;
+    let pinchStartDist = 0;
+    let initialPinchZoom = 1.0;
     let isSideBySide = false;
     let sliderPos = 50; // percentage
     let isDraggingSlider = false;
@@ -692,6 +701,7 @@ var GeminiWatermarkTool = (function () {
     }
 
     function setupWorkspaceInteractions() {
+        const viewport = document.getElementById('gemini-viewport');
         const container = document.getElementById('gemini-comparison-wrapper');
         const handle = document.getElementById('gemini-slider-handle');
 
@@ -725,9 +735,104 @@ var GeminiWatermarkTool = (function () {
 
             window.addEventListener('resize', updateRect, { passive: true });
             window.addEventListener('mousemove', (e) => { if (isDraggingSlider) onMove(e.clientX); });
-            window.addEventListener('touchmove', (e) => { if (isDraggingSlider && e.touches[0]) onMove(e.touches[0].clientX); }, { passive: true });
+            window.addEventListener('touchmove', (e) => { if (isDraggingSlider && e.touches && e.touches[0]) onMove(e.touches[0].clientX); }, { passive: true });
             window.addEventListener('mouseup', stopDrag);
             window.addEventListener('touchend', stopDrag);
+        }
+
+        // Panning & Pinch-to-Zoom handling on viewport for Desktop & Mobile
+        if (viewport) {
+            const startPan = (clientX, clientY) => {
+                isPanning = true;
+                panStartX = clientX;
+                panStartY = clientY;
+                initialPanX = panX;
+                initialPanY = panY;
+                applyZoomAndPan();
+            };
+
+            const movePan = (clientX, clientY) => {
+                if (!isPanning) return;
+                const dx = clientX - panStartX;
+                const dy = clientY - panStartY;
+                panX = initialPanX + dx;
+                panY = initialPanY + dy;
+                applyZoomAndPan();
+            };
+
+            const stopPan = () => {
+                if (isPanning) {
+                    isPanning = false;
+                    applyZoomAndPan();
+                }
+            };
+
+            // Mouse Panning (Desktop)
+            viewport.addEventListener('mousedown', (e) => {
+                if (e.target.closest('#gemini-btn-close-floating') || e.target.closest('#gemini-slider-handle')) {
+                    return;
+                }
+                if (zoomLevel > 1.0 || e.button === 0) {
+                    startPan(e.clientX, e.clientY);
+                }
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (isPanning) {
+                    movePan(e.clientX, e.clientY);
+                }
+            });
+
+            window.addEventListener('mouseup', () => stopPan());
+
+            // Touch Panning & Pinch Zooming (Mobile)
+            viewport.addEventListener('touchstart', (e) => {
+                if (e.target.closest('#gemini-btn-close-floating') || e.target.closest('#gemini-slider-handle')) {
+                    return;
+                }
+
+                if (e.touches.length === 1) {
+                    startPan(e.touches[0].clientX, e.touches[0].clientY);
+                } else if (e.touches.length === 2) {
+                    isPanning = false;
+                    pinchStartDist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    initialPinchZoom = zoomLevel;
+                }
+            }, { passive: true });
+
+            viewport.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isPanning) {
+                    movePan(e.touches[0].clientX, e.touches[0].clientY);
+                } else if (e.touches.length === 2 && pinchStartDist > 0) {
+                    const dist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    const factor = dist / pinchStartDist;
+                    setZoom(initialPinchZoom * factor);
+                }
+            }, { passive: true });
+
+            viewport.addEventListener('touchend', (e) => {
+                if (e.touches.length < 2) {
+                    pinchStartDist = 0;
+                }
+                if (e.touches.length === 0) {
+                    stopPan();
+                }
+            }, { passive: true });
+
+            // Mouse Wheel Zooming over Viewport
+            viewport.addEventListener('wheel', (e) => {
+                if (e.ctrlKey || e.metaKey || zoomLevel > 1.0) {
+                    e.preventDefault();
+                    const delta = e.deltaY < 0 ? 0.2 : -0.2;
+                    setZoom(zoomLevel + delta);
+                }
+            }, { passive: false });
         }
 
         // Side by side toggle button
@@ -747,7 +852,11 @@ var GeminiWatermarkTool = (function () {
 
         if (btnZoomIn) btnZoomIn.addEventListener('click', () => setZoom(zoomLevel + 0.25));
         if (btnZoomOut) btnZoomOut.addEventListener('click', () => setZoom(zoomLevel - 0.25));
-        if (btnZoomReset) btnZoomReset.addEventListener('click', () => setZoom(1.0));
+        if (btnZoomReset) btnZoomReset.addEventListener('click', () => {
+            panX = 0;
+            panY = 0;
+            setZoom(1.0);
+        });
 
         // Fullscreen Toggle
         const btnFullscreen = document.getElementById('gemini-btn-fullscreen');
@@ -757,11 +866,46 @@ var GeminiWatermarkTool = (function () {
     }
 
     function setZoom(level) {
-        zoomLevel = Math.max(0.5, Math.min(3.0, level));
+        zoomLevel = Math.max(0.5, Math.min(4.0, Math.round(level * 100) / 100));
+        if (zoomLevel <= 1.0 && !isPanning) {
+            panX = 0;
+            panY = 0;
+        }
+        applyZoomAndPan();
+    }
+
+    function applyZoomAndPan() {
         const wrapper = document.getElementById('gemini-comparison-wrapper');
+        const viewport = document.getElementById('gemini-viewport');
         const zoomText = document.getElementById('gemini-zoom-text');
-        if (wrapper) wrapper.style.transform = `scale(${zoomLevel})`;
-        if (zoomText) zoomText.textContent = Math.round(zoomLevel * 100) + '%';
+
+        if (zoomText) {
+            zoomText.textContent = Math.round(zoomLevel * 100) + '%';
+        }
+
+        if (!wrapper) return;
+
+        if (zoomLevel > 1.0 && viewport) {
+            const vpRect = viewport.getBoundingClientRect();
+            const maxPanX = (vpRect.width * (zoomLevel - 0.7)) / 2;
+            const maxPanY = (vpRect.height * (zoomLevel - 0.7)) / 2;
+            panX = Math.max(-maxPanX, Math.min(maxPanX, panX));
+            panY = Math.max(-maxPanY, Math.min(maxPanY, panY));
+        } else if (zoomLevel <= 1.0 && !isPanning) {
+            panX = 0;
+            panY = 0;
+        }
+
+        wrapper.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${zoomLevel})`;
+        wrapper.style.transformOrigin = 'center center';
+
+        if (viewport) {
+            if (zoomLevel > 1.0) {
+                viewport.style.cursor = isPanning ? 'grabbing' : 'grab';
+            } else {
+                viewport.style.cursor = '';
+            }
+        }
     }
 
     function toggleFullscreen() {

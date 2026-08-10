@@ -324,18 +324,67 @@ var ThumbTool = (function () {
         }
 
         if (pasteBtn && input) {
-            pasteBtn.addEventListener('click', async () => {
-                try {
-                    const text = await navigator.clipboard.readText();
-                    if (text) {
-                        input.value = text.trim();
-                        updateClearButtonVisibility();
-                        processInput();
-                    }
-                } catch (e) {
-                    input.focus();
+            let lastHandled = 0;
+            const handlePaste = async (e) => {
+                if (e) {
+                    if (e.cancelable) e.preventDefault();
+                    e.stopPropagation();
                 }
-            });
+                const now = Date.now();
+                if (now - lastHandled < 300) return;
+                lastHandled = now;
+
+                let pastedText = '';
+                let success = false;
+
+                // 1. Try Clipboard Web API
+                if (navigator.clipboard && typeof navigator.clipboard.readText === 'function') {
+                    try {
+                        const clipText = await navigator.clipboard.readText();
+                        if (clipText && clipText.trim().length > 0) {
+                            pastedText = clipText.trim();
+                            success = true;
+                        }
+                    } catch (err) {
+                        console.warn('navigator.clipboard.readText blocked or denied:', err);
+                    }
+                }
+
+                // 2. Try execCommand fallback if clipboard API was denied
+                if (!success) {
+                    try {
+                        input.focus();
+                        input.select();
+                        if (document.execCommand && document.execCommand('paste')) {
+                            if (input.value && input.value.trim().length > 0) {
+                                pastedText = input.value.trim();
+                                success = true;
+                            }
+                        }
+                    } catch (err) {
+                        console.warn('execCommand paste failed:', err);
+                    }
+                }
+
+                if (success && pastedText) {
+                    input.value = pastedText;
+                    updateClearButtonVisibility();
+                    processInput();
+                    showToast(getStr('toastPasted') || (document.documentElement.dir === 'rtl' ? '📋 تم لصق الرابط بنجاح!' : '📋 Link pasted successfully!'));
+                } else {
+                    // Mobile Fallback: Focus input field and select all text to trigger phone clipboard bar
+                    input.focus();
+                    try {
+                        input.setSelectionRange(0, input.value.length);
+                    } catch (err) {}
+                    showToast(getStr('toastPasteHint') || (document.documentElement.dir === 'rtl' ? '💡 اضغط ضغطة مطولة داخل الحقل ثم اختر "لصق"' : '💡 Tap & hold inside field to paste'));
+                }
+            };
+
+            pasteBtn.addEventListener('click', handlePaste);
+            pasteBtn.addEventListener('touchend', (e) => {
+                handlePaste(e);
+            }, { passive: false });
         }
     }
 

@@ -50,7 +50,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800&display=optional">
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=optional">
 
     <!-- ===================== SEO: Global JSON-LD Schema ===================== -->
     <script type="application/ld+json">
@@ -108,30 +108,58 @@
           "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1250", "bestRating": "5", "worstRating": "1" }
         },
         {
+          "@type": "SoftwareApplication",
+          "@id": "https://gtoolix.com/screen-recorder-studio#software",
+          "name": "Professional Screen Recorder",
+          "alternateName": "مسجل الشاشة الاحترافي",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "Any (Web Browser)",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "description": "Free browser-based tool to record screen, camera, and audio simultaneously in high quality, with 100% local processing and no upload.",
+          "url": "https://gtoolix.com/screen-recorder-studio",
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1420", "bestRating": "5", "worstRating": "1" }
+        },
+        {
           "@type": "FAQPage",
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "هل جميع أدوات GToolix مجانية بالكامل؟ / Are all GToolix tools free?",
+              "name": "Is my recording uploaded to any server? / هل التسجيل بيترفع على أي سيرفر؟",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "نعم، جميع الأدوات المتاحة على المنصة (منشئ QR، تحميل الصور المصغرة، وإزالة العلامة المائية لـ Gemini) مجانية 100% بدون أي رسوم أو الحاجة لإنشاء حساب."
+                "text": "No, recording happens entirely inside your browser — nothing is ever uploaded or stored externally. / لا، التسجيل بالكامل محلي داخل متصفحك، ولا يُرفع أو يُخزَّن على أي سيرفر خارجي."
               }
             },
             {
               "@type": "Question",
-              "name": "هل يتم تخزين أو رفع الصور على السيرفر؟ / Is content stored on servers?",
+              "name": "Can I record screen, camera, and system audio together? / هل أقدر أسجل الشاشة والكاميرا وصوت النظام مع بعض؟",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "لا، تتم المعالجة بسرعة وأمان مع احترام خصوصيتك بالكامل. أداة إزالة العلامة المائية لـ Gemini على سبيل المثال تعمل محلياً 100% داخل متصفحك."
+                "text": "Yes, all sources can be enabled simultaneously, each independently controllable. / نعم، الأداة بتسمح بتفعيل كل المصادر دي في نفس الوقت، وتتحكم في كل واحد لوحده."
               }
             },
             {
               "@type": "Question",
-              "name": "هل تعمل الأدوات على الهواتف الذكية والأجهزة المحمولة؟ / Do tools work on mobile?",
+              "name": "Is there a maximum recording length? / هل فيه حد أقصى لمدة التسجيل؟",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "نعم، تم تصميم الموقع بكامله ليكون متوافقاً ومتجاوباً 100% مع كافة أجهزة الأندرويد، الآيفون، الأجهزة اللوحية، والكمبيوتر."
+                "text": "There's no artificial limit — duration depends only on your device's capability and available storage. / لا يوجد حد مصطنع، المدة بتعتمد بس على إمكانيات جهازك ومساحة التخزين المتاحة."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the exported video have a watermark? / هل الفيديو الناتج فيه علامة مائية؟",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No, the final video is completely clean, with no watermark or logo. / لا، الفيديو النهائي نظيف تمامًا بدون أي علامة مائية أو شعار."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need to install anything or create an account? / هل محتاج أثبّت برنامج أو أعمل حساب؟",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No, the tool runs directly in your browser with no installation or sign-up required. / لا، الأداة بتشتغل مباشرة من المتصفح بدون أي تثبيت أو تسجيل دخول."
               }
             }
           ]
@@ -256,7 +284,7 @@
         }
 
         html[dir="rtl"] body {
-            font-family: 'Cairo', 'Inter', -apple-system, sans-serif
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif
         }
 
         .site-nav {
@@ -315,11 +343,7 @@
             display: block
         }
     </style>
-    <link rel="preload" as="style" href="/static/css/main.min.css">
-    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="/static/css/main.min.css">
-    </noscript>
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css">
     <script>/* Theme init — prevent FOUC */
         window.seoPageType = "";
         (function () { var t = localStorage.getItem('theme'); if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light' } document.documentElement.setAttribute('data-theme', t) })();
@@ -477,7 +501,8 @@
                         </span>
                     </div>
                     <h1 data-i18n="home.heroTitle">كل أداة تحتاجها فعلاً — في مكان واحد يطفو بسلاسة.</h1>
-                    <p class="lead" data-i18n="home.heroLead">أنشئ أكواد QR، احصل على صور يوتيوب المصغرة، وأزل علامات جيمناي المائية خلال ثوانٍ. مجاني، سريع، ومصمم بإحساس مختلف تمامًا.</p>
+                    <p class="lead" data-i18n="home.heroLead">أنشئ أكواد QR، احصل على صور يوتيوب المصغرة، وأزل علامات
+                        جيمناي المائية خلال ثوانٍ. مجاني، سريع، ومصمم بإحساس مختلف تمامًا.</p>
                     <div class="hero-actions">
                         <a href="#tools" class="btn btn-primary">
                             <span data-i18n="home.heroCtaPrimary">استكشف الأدوات</span>
@@ -510,7 +535,8 @@
                                     </svg>
                                 </div>
                                 <div class="showcase-card__title-group">
-                                    <span class="showcase-card__title" data-i18n="home.cardGeminiTitle">Gemini Watermark Remover</span>
+                                    <span class="showcase-card__title" data-i18n="home.cardGeminiTitle">Gemini Watermark
+                                        Remover</span>
                                     <span class="status-indicator">
                                         <span class="status-pulse"></span>
                                         <span data-i18n="gemini.badgeText">100% Local • Zero Uploads</span>
@@ -2073,16 +2099,36 @@
                                 <span class="setting-group__title">🎥 <span data-i18n="rec.grpSources">Capture
                                         Sources</span></span>
 
-                                <div class="setting-row">
-                                    <span class="setting-label">📺 <span data-i18n="rec.lblScreen">Record
-                                            Screen</span></span>
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" id="rec-opt-screen" checked disabled>
-                                        <span class="toggle-slider"></span>
-                                    </label>
+                                <!-- Recording Mode Selector -->
+                                <div class="input-group" style="margin-bottom: 0.65rem;">
+                                    <label class="input-label" for="rec-select-mode" data-i18n="rec.lblRecMode">🎬
+                                        Recording Mode</label>
+                                    <select id="rec-select-mode" class="input-field" style="font-weight: 700;">
+                                        <option value="screen-cam" selected data-i18n="rec.modeScreenCam">🖥️+📷 Screen
+                                            + Camera Overlay</option>
+                                        <option value="screen-only" data-i18n="rec.modeScreenOnly">🖥️ Screen Only
+                                        </option>
+                                        <option value="camera-only" data-i18n="rec.modeCamOnly">📷 Camera Only</option>
+                                    </select>
                                 </div>
 
-                                <div class="setting-row">
+                                <!-- Pick / Change Screen Button -->
+                                <button type="button" class="btn btn-secondary" id="rec-btn-select-screen"
+                                    style="width: 100%; margin-bottom: 0.75rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; font-weight: 700; padding: 0.55rem 0.85rem; border-color: var(--border); font-size: 0.85rem;"
+                                    title="Choose screen, window, or tab to record">
+                                    <span>🖥️</span> <span data-i18n="rec.btnPickScreen">Select / Pick Recording
+                                        Screen</span>
+                                </button>
+
+                                <!-- Mobile Helper Notice -->
+                                <div id="rec-mobile-screen-notice"
+                                    style="display:none; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.25); color: var(--text); padding: 0.65rem 0.8rem; border-radius: var(--radius-md); font-size: 0.82rem; line-height: 1.4; margin-bottom: 0.75rem;">
+                                    💡 <span data-i18n="rec.mobileTip">On mobile, your browser will prompt for
+                                        permission to select screen or app. If direct screen capture is unsupported,
+                                        camera mode will be used automatically.</span>
+                                </div>
+
+                                <div class="setting-row" id="rec-row-webcam">
                                     <span class="setting-label">📷 <span data-i18n="rec.lblWebcam">Enable
                                             Webcam</span></span>
                                     <label class="toggle-switch">
@@ -2876,8 +2922,8 @@
                 },
                 rec: {
                     breadcrumbCurrent: "Screen Studio Recorder",
-                    h1: "Screen Studio Recorder — Record Your Screen, Camera & Audio Right in Your Browser",
-                    tagline: "Record your screen, camera, and audio directly in your browser in high quality — free, no install, no upload, no account. 100% private, local recording.",
+                    h1: "Professional Screen Recorder — A Full Studio, No Download Required",
+                    tagline: "Studio-quality screen recording, right in your browser — screen, camera, system audio and mic together. No install, no upload, no account. Stays on your device.",
                     privacyBadge: "Your recording stays on your device • 100% Client-Side Privacy",
                     noticeBrowserText: "Your browser does not support full MediaRecorder capture. Please use desktop Google Chrome, Microsoft Edge, or Brave for best results.",
                     camPermissionDenied: "Camera access was denied or device is busy. Recording can continue with screen only.",
@@ -2890,6 +2936,14 @@
                     camera: "Camera",
                     microphone: "Microphone",
                     grpSources: "Capture Sources",
+                    lblRecMode: "Recording Mode",
+                    modeScreenCam: "🖥️+📷 Screen + Camera Overlay",
+                    modeScreenOnly: "🖥️ Screen Only",
+                    modeCamOnly: "📷 Camera Only",
+                    btnPickScreen: "Select / Pick Recording Screen",
+                    mobileTip: "On mobile, your browser will prompt for permission to select screen or app. If direct screen capture is unsupported, camera mode will be used automatically.",
+                    screenSelectedSuccess: "Screen selected successfully! Ready to record.",
+                    noDisplayMediaMobile: "Your mobile browser lacks direct screen capture API (getDisplayMedia). Camera mode will be used, or use Chrome on PC for full screen recording.",
                     lblScreen: "Record Screen",
                     lblWebcam: "Enable Webcam",
                     lblMic: "Enable Microphone",
@@ -2948,19 +3002,20 @@
                     feat4Title: "High Quality & 60 FPS", feat4Desc: "Record crisp screen captures up to 60 FPS and high bitrates supported by hardware acceleration.",
                     feat5Title: "Free Without Watermarks", feat5Desc: "Unlimited recording length and zero forced watermarks, logos, or forced user registrations.",
                     feat6Title: "Zero Software Installs", feat6Desc: "Runs instantly in standard web browsers without needing Chrome extensions or desktop apps.",
-                    whyTitle: "Why 100% Local Recording Is More Private",
-                    whyP1: "Traditional screen recording software requires heavy desktop installs, paid monthly subscriptions, or uploads your screen captures to remote servers with strict limits. Screen Studio Recorder provides a 100% browser-native experience. Capture tutorials, demos, presentations, and gaming sessions with zero server latency and absolute privacy.",
-                    howTitle: "Record Your Screen in 3 Simple Steps",
+                    whyTitle: "Why 100% Local Recording Matters More Than You Think",
+                    whyP1: "Traditional screen recording software requires heavy desktop installs, paid monthly subscriptions, or uploads your screen captures to remote servers with strict limits. Professional Screen Recorder provides a 100% browser-native experience. Capture tutorials, demos, presentations, and gaming sessions with zero server latency and absolute privacy.",
+                    howTitle: "From Open Tab to Exported Video in Under a Minute",
                     step1Title: "Configure Sources & Devices", step1Desc: "Choose webcam, microphone, camera position, shape, and audio settings in the left control panel.",
                     step2Title: "Click Start & Select Screen", step2Desc: "Click Start Recording and choose whether to capture your full monitor, application window, or browser tab.",
                     step3Title: "Record & Control", step3Desc: "Use Pause/Resume controls or live audio activity indicators while recording your presentation.",
                     step4Title: "Preview & Save", step4Desc: "Stop recording to preview your video immediately and download the high-quality WebM/MP4 file.",
                     faqTitle: "Frequently Asked Questions",
                     faqs: [
-                        { q: "Does this tool upload my recording anywhere?", a: "No, recording happens entirely inside your browser — nothing is uploaded to any server." },
-                        { q: "Do I need to install software or create an account?", a: "No, the tool works directly in your browser with no installation or sign-up required." },
-                        { q: "Can I record my screen, camera, and audio at the same time?", a: "Yes, you can enable screen, camera, microphone, and system audio recording simultaneously." },
-                        { q: "What quality does the recording produce?", a: "The tool supports high-quality recording directly from your browser with no quality loss." }
+                        { q: "Is my recording uploaded to any server?", a: "No, recording happens entirely inside your browser — nothing is ever uploaded or stored externally." },
+                        { q: "Can I record screen, camera, and system audio together?", a: "Yes, all sources can be enabled simultaneously, each independently controllable." },
+                        { q: "Is there a maximum recording length?", a: "There's no artificial limit — duration depends only on your device's capability and available storage." },
+                        { q: "Does the exported video have a watermark?", a: "No, the final video is completely clean, with no watermark or logo." },
+                        { q: "Do I need to install anything or create an account?", a: "No, the tool runs directly in your browser with no installation or sign-up required." }
                     ]
                 },
                 showcase: {
@@ -3266,8 +3321,8 @@
                 },
                 rec: {
                     breadcrumbCurrent: "مسجل الشاشة الاحترافي",
-                    h1: "مسجل الشاشة الاحترافي — تسجيل شاشتك وكاميرتك وصوتك مباشرة من المتصفح",
-                    tagline: "سجّل شاشتك وصوتك وكاميرا جهازك مباشرة من المتصفح بجودة عالية ومجانًا. بدون تثبيت برامج، بدون رفع ملفات، وبدون تسجيل حساب — خصوصية 100% محليًا داخل متصفحك.",
+                    h1: "مسجل الشاشة الاحترافي — استوديو تسجيل كامل، من غير ما تحمّل حاجة",
+                    tagline: "سجّل شاشتك بجودة استوديو مباشرة من متصفحك — شاشة، كاميرا، صوت النظام والميكروفون معًا. بدون تثبيت، بدون رفع، بدون حساب. تسجيلك يفضل على جهازك فقط.",
                     privacyBadge: "تسجيلك يبقى على جهازك • خصوصية محليّة 100% داخل المتصفح",
                     noticeBrowserText: "متصفحك الحالي لا يدعم كامل تقنيات MediaRecorder للتسجيل. يرجى استخدام متصفح Google Chrome أو Microsoft Edge أو Brave على الكمبيوتر للحصول على أفضل نتيجة.",
                     camPermissionDenied: "تعذّر الوصول للكاميرا أو هي مشغولة حالياً. يمكنك المتابعة بتسجيل الشاشة فقط.",
@@ -3280,6 +3335,14 @@
                     camera: "كاميرا",
                     microphone: "ميكروفون",
                     grpSources: "مصادر التسجيل",
+                    lblRecMode: "نمط ومصدر التسجيل",
+                    modeScreenCam: "🖥️+📷 شاشة + كاميرا (Screen + Camera)",
+                    modeScreenOnly: "🖥️ شاشة فقط (Screen Only)",
+                    modeCamOnly: "📷 كاميرا فقط (Camera Only)",
+                    btnPickScreen: "اختيار الشاشة المراد تسجيلها (Select Screen)",
+                    mobileTip: "في الهواتف، سيعرض لك المتصفح نافذة إذن اختيار شاشة الهاتف أو التطبيق. إذا كان متصفحك لا يدعم تسجيل الشاشة المباشر، سيتم التبديل للكاميرا تلقائياً.",
+                    screenSelectedSuccess: "تم اختيار الشاشة بنجاح! جاهز لبدء التسجيل.",
+                    noDisplayMediaMobile: "متصفح الهاتف الحالي لا يدعم نافذة اختيار الشاشة المباشرة (getDisplayMedia). يمكنك تسجيل الكاميرا، أو فتح المنصة من جهاز الكمبيوتر لتسجيل الشاشة الكاملة.",
                     lblScreen: "تسجيل الشاشة",
                     lblWebcam: "تفعيل الكاميرا",
                     lblMic: "تفعيل الميكروفون",
@@ -3338,19 +3401,20 @@
                     feat4Title: "دعم 60 إطار ودقة فائقة", feat4Desc: "تسجيل مقاطع سلسة بدقة 1080p و 4K ومعدل 60 إطاراً في الثانية بتسريع العتاد.",
                     feat5Title: "مجاني وبدون علامة مائية", feat5Desc: "مدة تسجيل غير محدودة مجاناً بالكامل 100% وبدون إدراج أي شعارات أو علامات مائية.",
                     feat6Title: "بدون برامج أو تثبيت", feat6Desc: "يعمل فورياً عبر المتصفح دون الحاجة لتنزيل تطبيقات أو إضافات خارجية.",
-                    whyTitle: "لماذا يُعد التسجيل المحلي 100% أكثر أمانًا؟",
+                    whyTitle: "ليه تسجيل محلي 100% أهم مما تتخيل؟",
                     whyP1: "على عكس برامج تسجيل الشاشة التقليدية التي تطلب رسوم اشتراكات شهرية أو ترفع الفيديو لسيرفرات خارجية بحدود زمنية ضيقة، يقدم مسجل الشاشة الاحترافي استوديو تسجيل متكامل 100% داخل المتصفح وبدون أي قيود أو مخاوف تتعلق بالخصوصية.",
-                    howTitle: "خطوات تسجيل الشاشة في 3 دقائق",
+                    howTitle: "من الفتح للتصدير في أقل من دقيقة",
                     step1Title: "اضبط المصادر والأجهزة", step1Desc: "اختر الكاميرا، الميكروفون، موضع وشكل الكاميرا العائمة، وجودة الفيديو من اللوحة الجانبية.",
                     step2Title: "اضغط ابدأ واختر الشاشة", step2Desc: "اضغط على ابدأ التسجيل واختر النافذة أو الشاشة الكاملة أو تبويب المتصفح الذي تريد تسجيله.",
                     step3Title: "سجّل وتحكّم بالصوت", step3Desc: "استخدم زر الإيقاف المؤقت أو تابع المؤشرات الصوتية أثناء الشرح والتقديم.",
                     step4Title: "عاين وحمّل الفيديو", step4Desc: "أوقف التسجيل لمعاينة مقطع الفيديو فورياً ثم تنزيل ملف WebM/MP4 بجودته الكاملة.",
-                    faqTitle: "الأسئلة الشائعة حول مسجل الشاشة",
+                    faqTitle: "الأسئلة الشائعة",
                     faqs: [
-                        { q: "هل مسجل الشاشة يرفع الفيديو على الإنترنت؟", a: "لا، التسجيل يتم بالكامل محليًا داخل متصفحك، ولا يُرفع أي ملف إلى أي سيرفر." },
-                        { q: "هل أحتاج إلى تثبيت برنامج أو إنشاء حساب؟", a: "لا، الأداة تعمل مباشرة من المتصفح بدون أي تثبيت أو تسجيل." },
-                        { q: "هل يمكنني تسجيل الشاشة والكاميرا والصوت معًا؟", a: "نعم، يمكنك تفعيل تسجيل الشاشة، الكاميرا، الميكروفون، وصوت النظام في نفس الوقت." },
-                        { q: "ما هي جودة الفيديو الناتج؟", a: "الأداة تدعم التسجيل بجودة عالية مباشرة من متصفحك دون فقدان في الجودة." }
+                        { q: "هل التسجيل بيترفع على أي سيرفر؟", a: "لا، التسجيل بالكامل محلي داخل متصفحك، ولا يُرفع أو يُخزَّن على أي سيرفر خارجي." },
+                        { q: "هل أقدر أسجل الشاشة والكاميرا وصوت النظام مع بعض؟", a: "نعم، الأداة بتسمح بتفعيل كل المصادر دي في نفس الوقت، وتتحكم في كل واحد لوحده." },
+                        { q: "هل فيه حد أقصى لمدة التسجيل؟", a: "لا يوجد حد مصطنع، المدة بتعتمد بس على إمكانيات جهازك ومساحة التخزين المتاحة." },
+                        { q: "هل الفيديو الناتج فيه علامة مائية؟", a: "لا، الفيديو النهائي نظيف تمامًا بدون أي علامة مائية أو شعار." },
+                        { q: "هل محتاج أثبّت برنامج أو أعمل حساب؟", a: "لا، الأداة بتشتغل مباشرة من المتصفح بدون أي تثبيت أو تسجيل دخول." }
                     ]
                 }
             }
