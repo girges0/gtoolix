@@ -127,26 +127,28 @@
 </head>
 <body>
 <script type="text/javascript">
-  var atOptions = {
-    'key' : '${unit.key}',
-    'format' : 'iframe',
-    'height' : ${unit.height},
-    'width' : ${unit.width},
-    'params' : {}
-  };
+  Object.defineProperty(window, 'atOptions', {
+    value: {
+      'key' : '${unit.key}',
+      'format' : 'iframe',
+      'height' : ${unit.height},
+      'width' : ${unit.width},
+      'params' : {}
+    },
+    configurable: true,
+    writable: true,
+    enumerable: true
+  });
 </script>
 <script type="text/javascript" src="https://www.highperformanceformat.com/${unit.key}/invoke.js"></script>
 </body>
 </html>`;
 
-        if ('srcdoc' in iframe) {
-            iframe.srcdoc = html;
-        }
         containerEl.appendChild(iframe);
 
         try {
             const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
-            if (doc && !('srcdoc' in iframe)) {
+            if (doc) {
                 doc.open();
                 doc.write(html);
                 doc.close();
