@@ -2,6 +2,17 @@
 <html lang="ar" dir="rtl" data-theme="light">
 
 <head>
+    <script>
+    (function() {
+        try {
+            var l = localStorage.getItem('siteLang') || 'ar';
+            var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('lang', l);
+            document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+            document.documentElement.setAttribute('data-theme', t);
+        } catch(e) {}
+    })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
