@@ -259,10 +259,7 @@
             if (activePageEl) scopeEl = activePageEl;
         }
 
-        const mobile = isMobile();
-        const adKeys = mobile 
-            ? ['300x250_1', '320x50_1', 'native_1'] 
-            : ['728x90_1', 'native_1', '300x250_1'];
+        const adKeys = ['native_1', '300x250_1', '320x50_1'];
 
         const primarySlots = scopeEl.querySelectorAll('.ad-slot-wrapper:not(.ad-slot--conditional)');
         primarySlots.forEach((slot, index) => {
