@@ -113,8 +113,6 @@
         iframe.style.margin = '0 auto';
         iframe.setAttribute('title', 'Advertisement');
         iframe.setAttribute('loading', 'lazy');
-        // Strict Sandbox Security Shield: Completely blocks all popups, new windows, and redirects
-        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms');
 
         const html = `<!DOCTYPE html>
 <html lang="en">
@@ -187,8 +185,6 @@
 
         const primarySlots = scopeEl.querySelectorAll('.ad-slot--primary');
         primarySlots.forEach((slot, index) => {
-            // Only render if element is currently visible in DOM layout
-            if (slot.offsetParent === null) return;
             if (slot.getAttribute('data-ad-rendered') === 'true') return;
 
             slot.setAttribute('data-ad-rendered', 'true');
