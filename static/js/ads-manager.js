@@ -160,6 +160,19 @@
         containerEl.innerHTML = '';
         containerEl.style.minHeight = unit.height + 'px';
 
+        if (unit.type === 'native') {
+            const nativeDiv = document.createElement('div');
+            nativeDiv.id = unit.id;
+            containerEl.appendChild(nativeDiv);
+
+            const nativeScript = document.createElement('script');
+            nativeScript.async = true;
+            nativeScript.setAttribute('data-cfasync', 'false');
+            nativeScript.src = unit.scriptSrc;
+            containerEl.appendChild(nativeScript);
+            return;
+        }
+
         const iframe = document.createElement('iframe');
         iframe.style.width = '100%';
         iframe.style.height = unit.height + 'px';
@@ -176,20 +189,7 @@
             const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
             if (doc) {
                 doc.open();
-                if (unit.type === 'native') {
-                    doc.write(`<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style>
-</head>
-<body>
-<div id="${unit.id}"></div>
-<script async="async" data-cfasync="false" src="${unit.scriptSrc}"></script>
-</body>
-</html>`);
-                } else {
-                    doc.write(`<!DOCTYPE html>
+                doc.write(`<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -208,7 +208,6 @@
 <body>
 </body>
 </html>`);
-                }
                 doc.close();
             }
         } catch (e) {
