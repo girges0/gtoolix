@@ -26,10 +26,13 @@
     <meta name="author" content="GToolix">
     <meta name="theme-color" content="#F8FAFC">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/static/img/icon-192.png">
-    <link rel="alternate icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/static/img/icon-192.png">
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
     <!-- ===================== SEO: Canonical & Multilingual hreflang ===================== -->
     <link rel="canonical" href="https://gtoolix.com/" />
@@ -387,7 +390,7 @@
 
 <body>
     <header class="site-nav">
-        <button class="site-nav__brand" data-page="home">
+        <a class="site-nav__brand" href="/" data-page="home">
             <span class="site-nav__brand-mark">
                 <picture>
                     <source srcset="/static/img/logo.webp" type="image/webp">
@@ -396,7 +399,7 @@
                 </picture>
             </span>
             <span>GToolix</span>
-        </button>
+        </a>
         <nav class="site-nav__links" id="site-nav-links">
             <a href="/qr-code-generator" data-page="qr" data-i18n="common.navQr">كود QR</a>
             <a href="/youtube-thumbnail-downloader" data-page="thumb" data-i18n="common.navThumb">تحميل صور اليوتيوب
@@ -3815,7 +3818,7 @@
             });
             document.title = PAGE_TITLES[page] || PAGE_TITLES.home;
 
-            if (updateUrl && PAGE_TO_PATH[page] && location.pathname !== PAGE_TO_PATH[page]) {
+            if (updateUrl && PAGE_TO_PATH[page] && (location.pathname !== PAGE_TO_PATH[page] || location.hash !== '')) {
                 history.pushState({ page }, '', PAGE_TO_PATH[page]);
             }
             if (!skipScroll) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
