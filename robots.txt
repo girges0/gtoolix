@@ -1,15 +1,11 @@
 User-agent: Mediapartners-Google
 Disallow:
 
+Disallow: /search
+
 User-agent: *
 Disallow: /search
 Allow: /
-Allow: /favicon.ico
-Allow: /favicon.svg
-Allow: /apple-touch-icon.png
-Allow: /site.webmanifest
-Allow: /og-image.png
-Allow: /sitemap.xml
 Allow: /ads.txt
 
 Sitemap: https://gtoolix.com/sitemap.xml

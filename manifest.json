@@ -1,27 +1,16 @@
 {
   "name": "GToolix – Online Toolbox",
   "short_name": "GToolix",
-  "description": "Free High-Performance Web Tools: QR Code Generator, YouTube Thumbnail Grabber, Gemini AI Watermark Remover & Screen Recorder Studio.",
+  "description": "Free Online Tools: QR Code Generator, YouTube Thumbnail Grabber, Gemini AI Watermark Remover",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#030712",
+  "background_color": "#020817",
   "theme_color": "#6366F1",
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/svg+xml"
     }
   ]
 }
