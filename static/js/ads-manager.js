@@ -160,7 +160,24 @@
         if (!unit) return;
 
         const adBody = containerEl.querySelector('.ad-container-inner') || containerEl;
-        renderIframeAdUnit(adBody, unit);
+        adBody.innerHTML = '';
+
+        const script1 = document.createElement('script');
+        script1.type = 'text/javascript';
+        script1.text = `atOptions = {
+            'key' : '${unit.key}',
+            'format' : 'iframe',
+            'height' : ${unit.height},
+            'width' : ${unit.width},
+            'params' : {}
+        };`;
+
+        const script2 = document.createElement('script');
+        script2.type = 'text/javascript';
+        script2.src = `https://www.highperformanceformat.com/${unit.key}/invoke.js`;
+
+        adBody.appendChild(script1);
+        adBody.appendChild(script2);
     }
 
     /**
