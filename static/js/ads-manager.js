@@ -16,7 +16,7 @@
 
     // Central Config & Feature Flag
     const AD_CONFIG = {
-        enabled: true, // Feature flag: Set to false to instantly disable all ads
+        enabled: false, // Set to false to disable broken Adsterra ad keys and stop all 403 Forbidden console errors & crashes
         storageKey: 'gtoolix_ad_usage',
         triggerThreshold: 3, // Display conditional ad every 3 successful uses
 
