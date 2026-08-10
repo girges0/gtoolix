@@ -1,3 +1,27 @@
+# Google Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Storebot-Google
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+# Bing Search Engine Crawler
+User-agent: Bingbot
+Allow: /
+
+# Global Search Engine Crawlers
 User-agent: *
 Allow: /
 
