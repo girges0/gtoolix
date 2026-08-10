@@ -259,19 +259,17 @@
         }
 
         const mobile = isMobile();
-        const slot1Key = mobile ? '300x250_1' : '728x90_1';
-        const slot2Key = mobile ? '320x50_1' : 'native_1';
+        const adKeys = mobile 
+            ? ['300x250_1', '320x50_1', 'native_1'] 
+            : ['728x90_1', 'native_1', '300x250_1'];
 
-        const primarySlots = scopeEl.querySelectorAll('.ad-slot--primary');
+        const primarySlots = scopeEl.querySelectorAll('.ad-slot-wrapper:not(.ad-slot--conditional)');
         primarySlots.forEach((slot, index) => {
             if (slot.getAttribute('data-ad-rendered') === 'true') return;
 
             slot.setAttribute('data-ad-rendered', 'true');
-            if (index % 2 === 0) {
-                renderAdUnit(slot, slot1Key);
-            } else {
-                renderAdUnit(slot, slot2Key);
-            }
+            const chosenKey = adKeys[index % adKeys.length];
+            renderAdUnit(slot, chosenKey);
         });
     }
 
