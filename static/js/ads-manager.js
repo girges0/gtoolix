@@ -115,7 +115,7 @@
     }
 
     /**
-     * Helper to verify if an iframe contains actual rendered ad elements (img, a, canvas, etc.)
+     * Helper to verify if an iframe contains actual rendered ad elements (img, a, canvas, inner iframe)
      */
     function checkIframeHasAd(iframe) {
         if (!iframe) return false;
@@ -123,21 +123,18 @@
             const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
             if (!doc || !doc.body) return false;
             
-            // Check for interactive/visual ad tags injected by Adsterra
-            const adNodes = doc.body.querySelectorAll('a[href], img[src], iframe, video, canvas, svg, ins, .ad-content, div > a');
+            // Check for actual visual ad elements injected by ad networks
+            const adNodes = doc.body.querySelectorAll('a[href], img[src], iframe, video, canvas, svg, ins, .ad-content, div > a[href]');
             if (adNodes.length > 0) {
                 for (let i = 0; i < adNodes.length; i++) {
-                    const rect = adNodes[i].getBoundingClientRect();
-                    if (rect.height > 10 || rect.width > 10 || adNodes[i].offsetHeight > 10) {
+                    const node = adNodes[i];
+                    const rect = node.getBoundingClientRect();
+                    const h = rect.height || node.offsetHeight || node.clientHeight || 0;
+                    const w = rect.width || node.offsetWidth || node.clientWidth || 0;
+                    if (h > 15 && w > 15) {
                         return true;
                     }
                 }
-            }
-
-            // Check if body has active scroll height / non-script child nodes
-            const nonScriptChildren = Array.from(doc.body.children).filter(c => c.tagName !== 'SCRIPT');
-            if (nonScriptChildren.length > 0 && doc.body.scrollHeight > 20) {
-                return true;
             }
         } catch (e) {
             // Cross-origin iframe populated by third-party ad server
