@@ -1,42 +1,4 @@
-# Google Search Engine Crawlers
-User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Googlebot-News
-Allow: /
-
-User-agent: Googlebot-Video
-Allow: /
-
-User-agent: Storebot-Google
-Allow: /
-
-User-agent: Mediapartners-Google
-Allow: /
-
-# Bing Search Engine Crawler
-User-agent: Bingbot
-Allow: /
-
-# Global Search Engine Crawlers
 User-agent: *
-Allow: /
-
-# AI Search Engine Crawlers
-User-agent: GPTBot
-Allow: /
-User-agent: ChatGPT-User
-Allow: /
-User-agent: PerplexityBot
-Allow: /
-User-agent: ClaudeBot
-Allow: /
-User-agent: Google-Extended
-Allow: /
-User-agent: CCBot
 Allow: /
 
 Sitemap: https://gtoolix.com/sitemap.xml
