@@ -529,6 +529,9 @@ var GeminiWatermarkTool = (function () {
 
         // Hide loading and reveal workspace
         hideLoadingUI();
+        if (window.AdManager) {
+            window.AdManager.recordSuccessfulUse('gemini-watermark-remover');
+        }
     }
 
     let isUpdatingDetection = false;

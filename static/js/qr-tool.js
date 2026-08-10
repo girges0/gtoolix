@@ -346,6 +346,7 @@ var QRTool = (function () {
         link.click();
         document.body.removeChild(link);
         showToast(getLang() === 'ar' ? 'تم تنزيل صورة PNG بنجاح!' : 'PNG downloaded successfully!');
+        if (window.AdManager) window.AdManager.recordSuccessfulUse('qr-code-generator');
     }
 
     function downloadSVG() {
@@ -360,6 +361,7 @@ var QRTool = (function () {
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
         showToast(getLang() === 'ar' ? 'تم تنزيل ملف SVG بنجاح!' : 'SVG downloaded successfully!');
+        if (window.AdManager) window.AdManager.recordSuccessfulUse('qr-code-generator');
     }
 
     function copyPayload() {
