@@ -314,6 +314,9 @@ var QRTool = (function () {
             currentSvgString = qr.createSvgTag(cellSize, margin * cellSize, fgColor, bgColor);
 
             toggleButtons(true);
+            if (window.AdManager && payload) {
+                window.AdManager.recordSuccessfulUse('qr-code-generator');
+            }
         } catch (err) {
             console.error('QR Generation Error:', err);
             canvas.style.display = 'none';

@@ -217,6 +217,9 @@ var ThumbTool = (function () {
         });
 
         updateAvailableCount();
+        if (window.AdManager) {
+            window.AdManager.recordSuccessfulUse('youtube-thumbnail-downloader');
+        }
     }
 
     async function downloadThumbnail(imgUrl, videoId, resId) {

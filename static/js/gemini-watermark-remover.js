@@ -465,6 +465,9 @@ var GeminiWatermarkTool = (function () {
             if (loadingBox) loadingBox.style.display = 'none';
             if (uploadBox) uploadBox.style.display = 'none';
             if (workspaceBox) workspaceBox.style.display = 'grid';
+            if (window.AdManager) {
+                window.AdManager.recordSuccessfulUse('gemini-watermark-remover');
+            }
         }, 250);
     }
 
