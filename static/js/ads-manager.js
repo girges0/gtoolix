@@ -158,6 +158,7 @@
     function renderDirectAdUnit(containerEl, unit) {
         if (!containerEl || !unit) return;
         containerEl.innerHTML = '';
+        containerEl.style.minHeight = unit.height + 'px';
 
         const iframe = document.createElement('iframe');
         iframe.style.width = '100%';
