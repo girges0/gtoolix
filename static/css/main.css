@@ -7216,10 +7216,10 @@ html[dir="rtl"] .floating-status-chip {
 }
 html[dir="rtl"] .ad-conditional-header { flex-direction: row; }
 @media (max-width: 768px) {
-    .ad-slot--primary-desktop { display: none !important; }
-    .ad-slot--primary-mobile { display: flex !important; }
+    .ad-slot--primary-desktop, .ad-desktop-only { display: none !important; }
+    .ad-slot--primary-mobile, .ad-mobile-only { display: block !important; }
 }
 @media (min-width: 769px) {
-    .ad-slot--primary-mobile { display: none !important; }
-    .ad-slot--primary-desktop { display: flex !important; }
+    .ad-slot--primary-mobile, .ad-mobile-only { display: none !important; }
+    .ad-slot--primary-desktop, .ad-desktop-only { display: block !important; }
 }
