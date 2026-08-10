@@ -108,61 +108,32 @@
      * Safe HTML injection into an iframe to cleanly render an Adsterra iframe banner
      */
     /**
-     * Safe HTML injection into an iframe to cleanly render an Adsterra iframe banner
+     * Render Adsterra iframe banner directly into container DOM
+     * Guarantees window.location.hostname matches gtoolix.com
      */
     function renderIframeAdUnit(containerEl, unit) {
         if (!containerEl || !unit) return;
         containerEl.innerHTML = '';
 
-        const iframe = document.createElement('iframe');
-        iframe.style.width = '100%';
-        iframe.style.height = unit.height + 'px';
-        iframe.style.maxWidth = unit.width + 'px';
-        iframe.style.border = 'none';
-        iframe.style.overflow = 'hidden';
-        iframe.style.display = 'block';
-        iframe.style.margin = '0 auto';
-        iframe.setAttribute('title', 'Advertisement');
-        iframe.setAttribute('loading', 'lazy');
+        const wrapper = document.createElement('div');
+        wrapper.className = 'adsterra-banner-inner';
+        wrapper.style.display = 'flex';
+        wrapper.style.justifyContent = 'center';
+        wrapper.style.alignItems = 'center';
+        wrapper.style.width = '100%';
+        wrapper.style.minHeight = unit.height + 'px';
 
-        const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<style>
-  html, body { margin:0; padding:0; height:100%; width:100%; display:flex; justify-content:center; align-items:center; background:transparent; overflow:hidden; }
-</style>
-</head>
-<body>
-<script type="text/javascript">
-  atOptions = {
-    'key' : '${unit.key}',
-    'format' : 'iframe',
-    'height' : ${unit.height},
-    'width' : ${unit.width},
-    'params' : {}
-  };
-</script>
-<script type="text/javascript" src="${unit.scriptUrl}"></script>
-</body>
-</html>`;
+        const optScript = document.createElement('script');
+        optScript.type = 'text/javascript';
+        optScript.text = `atOptions = { 'key': '${unit.key}', 'format': 'iframe', 'height': ${unit.height}, 'width': ${unit.width}, 'params': {} };`;
 
-        containerEl.appendChild(iframe);
+        const invokeScript = document.createElement('script');
+        invokeScript.type = 'text/javascript';
+        invokeScript.src = `https://www.highperformanceformat.com/${unit.key}/invoke.js`;
 
-        try {
-            if ('srcdoc' in iframe) {
-                iframe.srcdoc = html;
-            }
-            const doc = iframe.contentWindow || iframe.contentDocument;
-            if (doc) {
-                const iframeDoc = doc.document || doc;
-                iframeDoc.open();
-                iframeDoc.write(html);
-                iframeDoc.close();
-            }
-        } catch (err) {
-            console.warn('AdManager: Error writing iframe ad content', err);
-        }
+        wrapper.appendChild(optScript);
+        wrapper.appendChild(invokeScript);
+        containerEl.appendChild(wrapper);
     }
 
     /**
@@ -175,12 +146,15 @@
         const nativeWrapper = document.createElement('div');
         nativeWrapper.id = unit.containerId;
         nativeWrapper.className = 'adsterra-native-inner';
-        containerEl.appendChild(nativeWrapper);
+        nativeWrapper.style.width = '100%';
+        nativeWrapper.style.minHeight = '250px';
 
         const script = document.createElement('script');
         script.async = true;
         script.setAttribute('data-cfasync', 'false');
         script.src = unit.scriptUrl;
+
+        containerEl.appendChild(nativeWrapper);
         containerEl.appendChild(script);
     }
 
@@ -191,14 +165,6 @@
         if (!AD_CONFIG.enabled || !containerEl) return;
         const unit = AD_CONFIG.adUnits[unitKey];
         if (!unit) return;
-
-        // Hide skeleton if container has skeleton loader
-        const skeleton = containerEl.querySelector('.ad-skeleton');
-        if (skeleton) {
-            setTimeout(() => {
-                skeleton.style.display = 'none';
-            }, 500);
-        }
 
         const adBody = containerEl.querySelector('.ad-container-inner') || containerEl;
 
