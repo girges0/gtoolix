@@ -21,35 +21,26 @@
         triggerThreshold: 3, // Display conditional ad every 3 successful uses
 
         adUnits: {
-            'NativeBanner_1': {
-                id: '30679713',
-                type: 'native',
-                scriptUrl: 'https://pl30780212.effectivecpmnetwork.com/cf72ae0eecb6564d752d90fbaf702aa9/invoke.js',
-                containerId: 'container-cf72ae0eecb6564d752d90fbaf702aa9'
-            },
             '320x50_1': {
                 id: '30679714',
                 type: 'iframe',
                 width: 320,
                 height: 50,
-                key: 'fb3e69189280b6743811b3cd6c62a26c',
-                scriptUrl: 'https://www.highperformanceformat.com/fb3e69189280b6743811b3cd6c62a26c/invoke.js'
+                key: 'fb3e69189280b6743811b3cd6c62a26c'
             },
             '300x250_1': {
                 id: '30679715',
                 type: 'iframe',
                 width: 300,
                 height: 250,
-                key: '508f5df95a46921027eaae65b738199d',
-                scriptUrl: 'https://www.highperformanceformat.com/508f5df95a46921027eaae65b738199d/invoke.js'
+                key: '508f5df95a46921027eaae65b738199d'
             },
             '728x90_1': {
                 id: '30679717',
                 type: 'iframe',
                 width: 728,
                 height: 90,
-                key: '49f925f88072b4c395baa497ef3b34a9',
-                scriptUrl: 'https://www.highperformanceformat.com/49f925f88072b4c395baa497ef3b34a9/invoke.js'
+                key: '49f925f88072b4c395baa497ef3b34a9'
             }
         }
     };
@@ -161,28 +152,6 @@
     }
 
     /**
-     * Render Native Banner unit safely inside a container
-     */
-    function renderNativeAdUnit(containerEl, unit) {
-        if (!containerEl || !unit) return;
-        containerEl.innerHTML = '';
-
-        const nativeWrapper = document.createElement('div');
-        nativeWrapper.id = unit.containerId;
-        nativeWrapper.className = 'adsterra-native-inner';
-        nativeWrapper.style.width = '100%';
-        nativeWrapper.style.minHeight = '250px';
-
-        const script = document.createElement('script');
-        script.async = true;
-        script.setAttribute('data-cfasync', 'false');
-        script.src = unit.scriptUrl;
-
-        containerEl.appendChild(nativeWrapper);
-        containerEl.appendChild(script);
-    }
-
-    /**
      * Generic ad unit loader router
      */
     function renderAdUnit(containerEl, unitKey) {
@@ -191,12 +160,7 @@
         if (!unit) return;
 
         const adBody = containerEl.querySelector('.ad-container-inner') || containerEl;
-
-        if (unit.type === 'iframe') {
-            renderIframeAdUnit(adBody, unit);
-        } else if (unit.type === 'native') {
-            renderNativeAdUnit(adBody, unit);
-        }
+        renderIframeAdUnit(adBody, unit);
     }
 
     /**
@@ -217,7 +181,7 @@
 
         const mobile = isMobile();
         const slot1Key = mobile ? '320x50_1' : '728x90_1';
-        const slot2Key = mobile ? 'NativeBanner_1' : '300x250_1';
+        const slot2Key = '300x250_1';
 
         const primarySlots = scopeEl.querySelectorAll('.ad-slot--primary');
         primarySlots.forEach((slot, index) => {
@@ -226,7 +190,7 @@
             if (slot.getAttribute('data-ad-rendered') === 'true') return;
 
             slot.setAttribute('data-ad-rendered', 'true');
-            if (index === 0) {
+            if (index % 2 === 0) {
                 renderAdUnit(slot, slot1Key);
             } else {
                 renderAdUnit(slot, slot2Key);
@@ -245,7 +209,7 @@
         if (!conditionalSlots.length) return;
 
         const mobile = isMobile();
-        const adUnitKey = mobile ? 'NativeBanner_1' : '300x250_1';
+        const adUnitKey = mobile ? '320x50_1' : '300x250_1';
 
         conditionalSlots.forEach(slot => {
             slot.style.display = 'block';
