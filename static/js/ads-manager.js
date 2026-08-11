@@ -267,6 +267,12 @@
         primarySlots.forEach((slot, index) => {
             if (slot.getAttribute('data-ad-rendered') === 'true') return;
 
+            // Preserve slots that already contain native container or ad script tags in HTML
+            if (slot.querySelector('div[id^="container-"]') || slot.querySelector('.adsbygoogle') || slot.querySelector('script[src*="invoke.js"]')) {
+                slot.setAttribute('data-ad-rendered', 'true');
+                return;
+            }
+
             slot.setAttribute('data-ad-rendered', 'true');
             const explicitUnit = slot.getAttribute('data-ad-unit');
             let chosenKey = explicitUnit || defaultAdKeys[index % defaultAdKeys.length];
