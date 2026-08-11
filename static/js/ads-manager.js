@@ -258,14 +258,23 @@
             if (activePageEl) scopeEl = activePageEl;
         }
 
-        const adKeys = ['native_1', '300x250_1', '320x50_1'];
+        const mobile = isMobile();
+        const defaultAdKeys = mobile
+            ? ['320x50_1', '300x250_1', 'native_1']
+            : ['728x90_1', '300x250_1', 'native_1'];
 
         const primarySlots = scopeEl.querySelectorAll('.ad-slot-wrapper:not(.ad-slot--conditional)');
         primarySlots.forEach((slot, index) => {
             if (slot.getAttribute('data-ad-rendered') === 'true') return;
 
             slot.setAttribute('data-ad-rendered', 'true');
-            const chosenKey = adKeys[index % adKeys.length];
+            const explicitUnit = slot.getAttribute('data-ad-unit');
+            let chosenKey = explicitUnit || defaultAdKeys[index % defaultAdKeys.length];
+
+            if (chosenKey === '728x90_1' && mobile) {
+                chosenKey = '320x50_1';
+            }
+
             renderAdUnit(slot, chosenKey);
         });
     }
