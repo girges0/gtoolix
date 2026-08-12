@@ -3,7 +3,5 @@ Disallow:
 
 User-agent: *
 Allow: /
-Allow: /ads.txt
-Disallow: /search
 
 Sitemap: https://www.gtoolix.com/sitemap.xml

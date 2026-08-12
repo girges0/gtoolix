@@ -2,6 +2,19 @@
   "version": 2,
   "outputDirectory": ".",
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "gtoolix.com"
+        }
+      ],
+      "destination": "https://www.gtoolix.com/:path*",
+      "statusCode": 308
+    }
+  ],
   "rewrites": [
     { "source": "/monitoring/:path*", "destination": "/gtoolix-monitoring-site/:path*" },
     { "source": "/monitoring", "destination": "/gtoolix-monitoring-site/" },
