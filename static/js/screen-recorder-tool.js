@@ -1086,10 +1086,6 @@
             elements.finalSection.scrollIntoView({ behavior: 'smooth' });
         }
 
-        if (window.AdManager && state.recordedBlob && state.recordedBlob.size > 0) {
-            window.AdManager.recordSuccessfulUse('screen-recorder-studio');
-        }
-
         cleanUpStreams();
     }
 

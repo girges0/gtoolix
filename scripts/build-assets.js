@@ -5,16 +5,13 @@ const esbuild = require('esbuild');
 console.log('Building minified assets with esbuild JS API...');
 
 const cssFiles = [
-    'static/css/main.css',
-    'static/css/ads.css'
+    'static/css/main.css'
 ];
 
 const jsFiles = [
     'static/js/theme.js',
     'static/js/app-init.js',
     'static/js/client.js',
-    'static/js/ad-analytics.js',
-    'static/js/ads-manager.js',
     'static/js/gemini-watermark-remover.js',
     'static/js/screen-recorder-tool.js',
     'static/js/qr-tool.js',
