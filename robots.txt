@@ -6,4 +6,4 @@ Allow: /
 Allow: /ads.txt
 Disallow: /search
 
-Sitemap: https://gtoolix.com/sitemap.xml
+Sitemap: https://www.gtoolix.com/sitemap.xml
