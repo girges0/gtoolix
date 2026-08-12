@@ -1,91 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gtoolix.com/</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://gtoolix.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gtoolix.com/"/>
   </url>
   <url>
     <loc>https://gtoolix.com/qr-code-generator</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://gtoolix.com/qr-code-generator"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gtoolix.com/qr-code-generator"/>
   </url>
   <url>
     <loc>https://gtoolix.com/youtube-thumbnail-downloader</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://gtoolix.com/youtube-thumbnail-downloader"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gtoolix.com/youtube-thumbnail-downloader"/>
   </url>
   <url>
     <loc>https://gtoolix.com/gemini-watermark-remover</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://gtoolix.com/gemini-watermark-remover"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gtoolix.com/gemini-watermark-remover"/>
   </url>
   <url>
     <loc>https://gtoolix.com/screen-recorder-studio</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://gtoolix.com/screen-recorder-studio"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gtoolix.com/screen-recorder-studio"/>
   </url>
   <url>
     <loc>https://gtoolix.com/about</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://gtoolix.com/privacy-policy</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://gtoolix.com/terms-of-service</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://gtoolix.com/disclaimer</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://gtoolix.com/cookies-policy</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://gtoolix.com/dmca</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://gtoolix.com/faq</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gtoolix.com/contact</loc>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
