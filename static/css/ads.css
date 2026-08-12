@@ -3,7 +3,7 @@
    Responsive, CLS-free, Dark/Light & RTL Compatible Ad Containers
    ===================================================================== */
 
-/* Base Ad Container */
+/* Base Ad Container — Always visible */
 .ad-slot-wrapper {
     position: relative;
     width: 100%;
@@ -15,6 +15,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Active & Loaded Ad Slots */
+.ad-slot-wrapper.is-loaded {
+    display: flex !important;
+    margin: 1.5rem auto;
 }
 
 /* Primary Mobile Banner (320x50) */

@@ -14,9 +14,28 @@
 }(typeof self !== 'undefined' ? self : this, function () {
     'use strict';
 
+    // Global patch for atOptions to prevent 'Cannot delete property atOptions of #<Window>' error
+    if (typeof window !== 'undefined') {
+        try {
+            var _globalAtOpts = window.atOptions || {};
+            Object.defineProperty(window, 'atOptions', {
+                get: function () { return _globalAtOpts; },
+                set: function (v) { _globalAtOpts = v; },
+                configurable: true,
+                enumerable: true
+            });
+            Object.defineProperty(Object.prototype, 'atOptions', {
+                get: function () { return _globalAtOpts; },
+                set: function (v) { _globalAtOpts = v; },
+                configurable: true,
+                enumerable: true
+            });
+        } catch (e) { }
+    }
+
     // Central Config & Feature Flag
     const AD_CONFIG = {
-        enabled: true, // Feature flag: Set to false to instantly disable all ads
+        enabled: true, // Enabled with full error-trapping and fail-safe collapse
         storageKey: 'gtoolix_ad_usage',
         triggerThreshold: 3, // Display conditional ad every 3 successful uses
 
@@ -41,6 +60,14 @@
                 width: 728,
                 height: 90,
                 key: '49f925f88072b4c395baa497ef3b34a9'
+            },
+            'native_1': {
+                id: 'container-cf72ae0eecb6564d752d90fbaf702aa9',
+                type: 'native',
+                width: 300,
+                height: 250,
+                key: 'cf72ae0eecb6564d752d90fbaf702aa9',
+                scriptSrc: 'https://pl30780212.effectivecpmnetwork.com/cf72ae0eecb6564d752d90fbaf702aa9/invoke.js'
             }
         }
     };
@@ -96,12 +123,55 @@
     }
 
     /**
-     * Render Adsterra iframe banner inside an isolated iframe document
-     * Uses srcdoc for clean isolation and zero global variable collision
+     * Helper to verify if an iframe contains actual rendered ad elements (img, a, canvas, inner iframe)
      */
-    function renderIframeAdUnit(containerEl, unit) {
+    function checkIframeHasAd(iframe) {
+        if (!iframe) return false;
+        try {
+            const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
+            if (!doc || !doc.body) return false;
+            
+            // Check for actual visual ad elements injected by ad networks
+            const adNodes = doc.body.querySelectorAll('a[href], img[src], iframe, video, canvas, svg, ins, .ad-content, div > a[href]');
+            if (adNodes.length > 0) {
+                for (let i = 0; i < adNodes.length; i++) {
+                    const node = adNodes[i];
+                    const rect = node.getBoundingClientRect();
+                    const h = rect.height || node.offsetHeight || node.clientHeight || 0;
+                    const w = rect.width || node.offsetWidth || node.clientWidth || 0;
+                    if (h > 15 && w > 15) {
+                        return true;
+                    }
+                }
+            }
+        } catch (e) {
+            // Cross-origin iframe populated by third-party ad server
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Render Adsterra ad tag inside iframe document stream (doc.open/write/close)
+     * Allows synchronous document.write calls inside invoke.js while maintaining qtoolix.com origin
+     */
+    function renderDirectAdUnit(containerEl, unit) {
         if (!containerEl || !unit) return;
         containerEl.innerHTML = '';
+        containerEl.style.minHeight = unit.height + 'px';
+
+        if (unit.type === 'native') {
+            const nativeDiv = document.createElement('div');
+            nativeDiv.id = unit.id;
+            containerEl.appendChild(nativeDiv);
+
+            const nativeScript = document.createElement('script');
+            nativeScript.async = true;
+            nativeScript.setAttribute('data-cfasync', 'false');
+            nativeScript.src = unit.scriptSrc;
+            containerEl.appendChild(nativeScript);
+            return;
+        }
 
         const iframe = document.createElement('iframe');
         iframe.style.width = '100%';
@@ -112,17 +182,20 @@
         iframe.style.display = 'block';
         iframe.style.margin = '0 auto';
         iframe.setAttribute('title', 'Advertisement');
-        iframe.setAttribute('loading', 'lazy');
 
-        const html = `<!DOCTYPE html>
-<html lang="en">
+        containerEl.appendChild(iframe);
+
+        try {
+            const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
+            if (doc) {
+                doc.open();
+                doc.write(`<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <style>html,body{margin:0;padding:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:transparent;overflow:hidden;}</style>
-</head>
-<body>
 <script type="text/javascript">
-  var atOptions = {
+  atOptions = {
     'key' : '${unit.key}',
     'format' : 'iframe',
     'height' : ${unit.height},
@@ -131,23 +204,14 @@
   };
 </script>
 <script type="text/javascript" src="https://www.highperformanceformat.com/${unit.key}/invoke.js"></script>
+</head>
+<body>
 </body>
-</html>`;
-
-        if ('srcdoc' in iframe) {
-            iframe.srcdoc = html;
-        }
-        containerEl.appendChild(iframe);
-
-        try {
-            const doc = iframe.contentWindow ? iframe.contentWindow.document : iframe.contentDocument;
-            if (doc && !('srcdoc' in iframe)) {
-                doc.open();
-                doc.write(html);
+</html>`);
                 doc.close();
             }
         } catch (e) {
-            console.warn('AdManager iframe write error:', e);
+            console.warn('AdManager doc.write error:', e);
         }
     }
 
@@ -155,36 +219,34 @@
      * Generic ad unit loader router
      */
     function renderAdUnit(containerEl, unitKey) {
-        if (!AD_CONFIG.enabled || !containerEl) return;
-        const unit = AD_CONFIG.adUnits[unitKey];
+        if (!containerEl) return;
+        containerEl.style.display = 'flex';
+        if (!AD_CONFIG.enabled) return;
+
+        const unit = AD_CONFIG.adUnits[unitKey] || AD_CONFIG.adUnits['native_1'] || AD_CONFIG.adUnits['300x250_1'];
         if (!unit) return;
 
         const adBody = containerEl.querySelector('.ad-container-inner') || containerEl;
-        adBody.innerHTML = '';
-
-        const script1 = document.createElement('script');
-        script1.type = 'text/javascript';
-        script1.text = `atOptions = {
-            'key' : '${unit.key}',
-            'format' : 'iframe',
-            'height' : ${unit.height},
-            'width' : ${unit.width},
-            'params' : {}
-        };`;
-
-        const script2 = document.createElement('script');
-        script2.type = 'text/javascript';
-        script2.src = `https://www.highperformanceformat.com/${unit.key}/invoke.js`;
-
-        adBody.appendChild(script1);
-        adBody.appendChild(script2);
+        renderDirectAdUnit(adBody, unit);
     }
 
     /**
      * Render Primary Ads scoped to active visible page view
      */
     function renderPrimaryAds(activePageId) {
-        if (!AD_CONFIG.enabled) return;
+        // Sync global feature flag override if present
+        if (typeof window !== 'undefined' && typeof window.GTOOLIX_ADS_ENABLED !== 'undefined') {
+            AD_CONFIG.enabled = !!window.GTOOLIX_ADS_ENABLED;
+        }
+
+        if (!AD_CONFIG.enabled) {
+            document.querySelectorAll('.ad-slot-wrapper').forEach(slot => {
+                slot.style.display = 'none';
+                slot.classList.add('ad-failed');
+                slot.classList.remove('is-loaded');
+            });
+            return;
+        }
 
         let scopeEl = document;
         if (activePageId) {
@@ -197,19 +259,29 @@
         }
 
         const mobile = isMobile();
-        const slot1Key = mobile ? '300x250_1' : '728x90_1';
-        const slot2Key = '300x250_1';
+        const defaultAdKeys = mobile
+            ? ['320x50_1', '300x250_1', 'native_1']
+            : ['728x90_1', '300x250_1', 'native_1'];
 
-        const primarySlots = scopeEl.querySelectorAll('.ad-slot--primary');
+        const primarySlots = scopeEl.querySelectorAll('.ad-slot-wrapper:not(.ad-slot--conditional)');
         primarySlots.forEach((slot, index) => {
             if (slot.getAttribute('data-ad-rendered') === 'true') return;
 
-            slot.setAttribute('data-ad-rendered', 'true');
-            if (index % 2 === 0) {
-                renderAdUnit(slot, slot1Key);
-            } else {
-                renderAdUnit(slot, slot2Key);
+            // Preserve slots that already contain native container or ad script tags in HTML
+            if (slot.querySelector('div[id^="container-"]') || slot.querySelector('.adsbygoogle') || slot.querySelector('script[src*="invoke.js"]')) {
+                slot.setAttribute('data-ad-rendered', 'true');
+                return;
             }
+
+            slot.setAttribute('data-ad-rendered', 'true');
+            const explicitUnit = slot.getAttribute('data-ad-unit');
+            let chosenKey = explicitUnit || defaultAdKeys[index % defaultAdKeys.length];
+
+            if (chosenKey === '728x90_1' && mobile) {
+                chosenKey = '320x50_1';
+            }
+
+            renderAdUnit(slot, chosenKey);
         });
     }
 
