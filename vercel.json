@@ -2,73 +2,144 @@
   "version": 2,
   "outputDirectory": ".",
   "cleanUrls": true,
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "gtoolix.com"
-        }
-      ],
-      "destination": "https://www.gtoolix.com/:path*",
-      "statusCode": 308
-    }
-  ],
   "rewrites": [
-    { "source": "/monitoring/:path*", "destination": "/gtoolix-monitoring-site/:path*" },
-    { "source": "/monitoring", "destination": "/gtoolix-monitoring-site/" },
-    { "source": "/qr-code-generator", "destination": "/tools/qr/" },
-    { "source": "/youtube-thumbnail-downloader", "destination": "/tools/thumbnail/" },
-    { "source": "/gemini-watermark-remover", "destination": "/tools/gemini/" },
-    { "source": "/about", "destination": "/about/" },
-    { "source": "/privacy-policy", "destination": "/privacy-policy/" },
-    { "source": "/terms-of-service", "destination": "/terms-of-service/" },
-    { "source": "/disclaimer", "destination": "/disclaimer/" },
-    { "source": "/cookies-policy", "destination": "/cookies-policy/" },
-    { "source": "/dmca", "destination": "/dmca/" },
-    { "source": "/faq", "destination": "/faq/" },
-    { "source": "/screen-recorder-studio", "destination": "/screen-recorder-studio/" },
-    { "source": "/contact", "destination": "/contact/" }
+    {
+      "source": "/monitoring/:path*",
+      "destination": "/gtoolix-monitoring-site/:path*"
+    },
+    {
+      "source": "/monitoring",
+      "destination": "/gtoolix-monitoring-site/"
+    },
+    {
+      "source": "/qr-code-generator",
+      "destination": "/tools/qr/"
+    },
+    {
+      "source": "/youtube-thumbnail-downloader",
+      "destination": "/tools/thumbnail/"
+    },
+    {
+      "source": "/gemini-watermark-remover",
+      "destination": "/tools/gemini/"
+    },
+    {
+      "source": "/about",
+      "destination": "/about/"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy/"
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/terms-of-service/"
+    },
+    {
+      "source": "/disclaimer",
+      "destination": "/disclaimer/"
+    },
+    {
+      "source": "/cookies-policy",
+      "destination": "/cookies-policy/"
+    },
+    {
+      "source": "/dmca",
+      "destination": "/dmca/"
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq/"
+    },
+    {
+      "source": "/screen-recorder-studio",
+      "destination": "/screen-recorder-studio/"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(self), camera=(self)" },
-        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
-        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin-allow-popups" }
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(self), camera=(self)"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin-allow-popups"
+        }
       ]
     },
     {
       "source": "/static/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/sitemap.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
       ]
     },
     {
       "source": "/(.*)\\.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
       ]
     },
     {
       "source": "/robots.txt",
       "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     }
   ]
