@@ -439,7 +439,7 @@ var GeminiWatermarkTool = (function () {
         }
 
         if (progressFill) progressFill.style.width = '15%';
-        const siteLang = localStorage.getItem('siteLang') || document.documentElement.lang || 'ar';
+        const siteLang = (typeof window.getGToolixLanguage === 'function') ? window.getGToolixLanguage() : (localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang') || document.documentElement.lang || 'ar');
         const isRtl = document.documentElement.dir === 'rtl' || siteLang === 'ar';
 
         if (loaderTitle) loaderTitle.textContent = isRtl ? 'جاري قراءة وتحليل الصورة...' : 'Reading & Analyzing Image...';
@@ -479,7 +479,7 @@ var GeminiWatermarkTool = (function () {
 
         showLoadingUI(file);
 
-        const siteLang = localStorage.getItem('siteLang') || document.documentElement.lang || 'ar';
+        const siteLang = (typeof window.getGToolixLanguage === 'function') ? window.getGToolixLanguage() : (localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang') || document.documentElement.lang || 'ar');
         const isRtl = document.documentElement.dir === 'rtl' || siteLang === 'ar';
 
         setTimeout(() => {
@@ -552,7 +552,7 @@ var GeminiWatermarkTool = (function () {
                     : '<span>ℹ</span> <span data-i18n="gemini.notFoundText">No Gemini Watermark Found</span>';
             }
 
-            const siteLang = localStorage.getItem('siteLang') || document.documentElement.lang || 'ar';
+            const siteLang = (typeof window.getGToolixLanguage === 'function') ? window.getGToolixLanguage() : (localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang') || document.documentElement.lang || 'ar');
             const isRtl = document.documentElement.dir === 'rtl' || siteLang === 'ar';
             if (statusText) statusText.textContent = isWatermarkDetected ? (isRtl ? 'تم الاكتشاف' : 'Detected') : (isRtl ? 'نظيف' : 'Clean');
             if (posText) posText.textContent = isRtl ? 'أسفل اليمين' : 'Bottom-Right';

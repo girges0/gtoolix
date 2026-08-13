@@ -235,7 +235,7 @@ var QRTool = (function () {
             canvas.style.display = 'none';
             if (errorEl) {
                 errorEl.style.display = 'block';
-                const isAr = (localStorage.getItem('siteLang') || 'ar') === 'ar';
+                const isAr = getLang() === 'ar';
                 const errorMessages = {
                     enter_url: isAr ? 'يرجى أدخال رابط إلكتروني صحيح' : 'Please enter a valid URL',
                     enter_text: isAr ? 'يرجى أدخال نص لإنشاء كود QR' : 'Please enter text to generate a QR code',
@@ -319,7 +319,7 @@ var QRTool = (function () {
             canvas.style.display = 'none';
             if (errorEl) {
                 errorEl.style.display = 'block';
-                const isAr = (localStorage.getItem('siteLang') || 'ar') === 'ar';
+                const isAr = getLang() === 'ar';
                 errorEl.textContent = isAr ? 'النص المُدخل طويل جدًا بالنسبة لمستوى تصحيح الخطأ الحالي' : 'Text is too long for selected error correction level';
             }
             toggleButtons(false);
