@@ -61,7 +61,26 @@
 
     <link rel="stylesheet" href="/static/css/main.min.css">
     <script>
-        (function () { var t = localStorage.getItem('theme'); if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light' } document.documentElement.setAttribute('data-theme', t) })();
+        (function () {
+            try {
+                var saved = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
+                var l = 'en';
+                if (saved === 'ar' || saved === 'en') {
+                    l = saved;
+                } else {
+                    var userLangs = (navigator.languages && navigator.languages.length) ? navigator.languages : (navigator.language ? [navigator.language] : []);
+                    for (var i = 0; i < userLangs.length; i++) {
+                        var code = (userLangs[i] || '').toLowerCase();
+                        if (code.indexOf('ar') === 0) { l = 'ar'; break; }
+                        if (code.indexOf('en') === 0) { l = 'en'; break; }
+                    }
+                }
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('lang', l);
+                document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
     </script>
 </head>
 
@@ -185,7 +204,19 @@
             ]
         };
 
-        let currentLang = localStorage.getItem('siteLang') || 'ar';
+        let currentLang = (typeof window.getGToolixLanguage === 'function') ? window.getGToolixLanguage() : (function () {
+            try {
+                var saved = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
+                if (saved === 'ar' || saved === 'en') return saved;
+                var langs = (navigator.languages && navigator.languages.length) ? navigator.languages : (navigator.language ? [navigator.language] : []);
+                for (var i = 0; i < langs.length; i++) {
+                    var code = (langs[i] || '').toLowerCase();
+                    if (code.indexOf('ar') === 0) return 'ar';
+                    if (code.indexOf('en') === 0) return 'en';
+                }
+            } catch (e) { }
+            return 'en';
+        })();
 
         function updateLegalLanguage(lang) {
             currentLang = lang;
@@ -221,7 +252,11 @@
         }
 
         function setLanguage(lang) {
-            localStorage.setItem('siteLang', lang);
+            currentLang = lang;
+            try {
+                localStorage.setItem('gtoolix_language', lang);
+                localStorage.setItem('siteLang', lang);
+            } catch (e) { }
             updateLegalLanguage(lang);
         }
 

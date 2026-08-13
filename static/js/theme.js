@@ -206,7 +206,7 @@
 })();
 
 /* ===================================================================
-   GToolix — Global Page & Footer i18n Handler
+   GToolix — Global Page & Footer i18n Handler with Smart Language Detection
    =================================================================== */
 (function () {
     const GLOBAL_TRANSLATIONS = {
@@ -252,8 +252,25 @@
         }
     };
 
+    window.getGToolixLanguage = function () {
+        try {
+            const saved = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
+            if (saved === 'ar' || saved === 'en') return saved;
+            const userLangs = (navigator.languages && navigator.languages.length) ? navigator.languages : (navigator.language ? [navigator.language] : []);
+            for (let i = 0; i < userLangs.length; i++) {
+                const code = (userLangs[i] || '').toLowerCase();
+                if (code.indexOf('ar') === 0) return 'ar';
+                if (code.indexOf('en') === 0) return 'en';
+            }
+        } catch (e) { }
+        return 'en';
+    };
+
     window.updateI18n = function (lang) {
-        const currentLang = lang || localStorage.getItem('siteLang') || 'ar';
+        const currentLang = lang || window.getGToolixLanguage();
+        document.documentElement.setAttribute('lang', currentLang);
+        document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+
         const dict = GLOBAL_TRANSLATIONS[currentLang] || GLOBAL_TRANSLATIONS.ar;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
@@ -261,6 +278,11 @@
                 el.textContent = dict[key];
             }
         });
+
+        const enBtn = document.getElementById('lang-en-btn');
+        const arBtn = document.getElementById('lang-ar-btn');
+        if (enBtn) enBtn.classList.toggle('active', currentLang === 'en');
+        if (arBtn) arBtn.classList.toggle('active', currentLang === 'ar');
     };
 
     window.updateFooterI18n = window.updateI18n;
