@@ -283,28 +283,28 @@
                                 </div>
 
                                 <div class="setting-row" id="rec-row-webcam">
-                                    <span class="setting-label">📷 <span data-i18n="rec.lblWebcam">Enable
-                                            Webcam</span></span>
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" id="rec-opt-webcam" checked aria-label="Enable Webcam">
+                                    <label for="rec-opt-webcam" class="setting-label" id="lbl-rec-opt-webcam">📷 <span data-i18n="rec.lblWebcam">Enable
+                                            Webcam</span></label>
+                                    <label class="toggle-switch" for="rec-opt-webcam">
+                                        <input type="checkbox" id="rec-opt-webcam" checked aria-label="Enable Webcam" aria-labelledby="lbl-rec-opt-webcam">
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
 
                                 <div class="setting-row">
-                                    <span class="setting-label">🎙️ <span data-i18n="rec.lblMic">Enable
-                                            Microphone</span></span>
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" id="rec-opt-mic" checked aria-label="Enable Microphone">
+                                    <label for="rec-opt-mic" class="setting-label" id="lbl-rec-opt-mic">🎙️ <span data-i18n="rec.lblMic">Enable
+                                            Microphone</span></label>
+                                    <label class="toggle-switch" for="rec-opt-mic">
+                                        <input type="checkbox" id="rec-opt-mic" checked aria-label="Enable Microphone" aria-labelledby="lbl-rec-opt-mic">
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
 
                                 <div class="setting-row">
-                                    <span class="setting-label">🔊 <span data-i18n="rec.lblSysAudio">System / Tab
-                                            Audio</span></span>
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" id="rec-opt-sys-audio" checked aria-label="System / Tab Audio">
+                                    <label for="rec-opt-sys-audio" class="setting-label" id="lbl-rec-opt-sys-audio">🔊 <span data-i18n="rec.lblSysAudio">System / Tab
+                                            Audio</span></label>
+                                    <label class="toggle-switch" for="rec-opt-sys-audio">
+                                        <input type="checkbox" id="rec-opt-sys-audio" checked aria-label="System / Tab Audio" aria-labelledby="lbl-rec-opt-sys-audio">
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -373,7 +373,7 @@
                                             style="font-size: 0.85rem; font-weight:700; color:var(--primary);">22%</span>
                                     </div>
                                     <input type="range" id="rec-slider-size" min="10" max="40" value="22"
-                                        class="input-field">
+                                        class="input-field" aria-label="Camera Size">
                                 </div>
 
                                 <div class="qr-input-row">
@@ -388,11 +388,11 @@
                                         </select>
                                     </div>
                                     <div class="input-group">
-                                        <label class="input-label" data-i18n="rec.lblCamBorder">Camera Border</label>
+                                        <label class="input-label" for="rec-opt-border" data-i18n="rec.lblCamBorder">Camera Border</label>
                                         <div class="setting-row" style="padding: 0.4rem 0.6rem;">
-                                            <span class="setting-label" data-i18n="rec.optGlow">Glow Border</span>
-                                            <label class="toggle-switch">
-                                                <input type="checkbox" id="rec-opt-border" checked aria-label="Glow Border">
+                                            <label for="rec-opt-border" class="setting-label" id="lbl-rec-opt-border" data-i18n="rec.optGlow">Glow Border</label>
+                                            <label class="toggle-switch" for="rec-opt-border">
+                                                <input type="checkbox" id="rec-opt-border" checked aria-label="Glow Border" aria-labelledby="lbl-rec-opt-border">
                                                 <span class="toggle-slider"></span>
                                             </label>
                                         </div>
@@ -407,10 +407,10 @@
                                 <span class="setting-group__title">⏱️ <span data-i18n="rec.grpTiming">Options &amp;
                                         Audio Level</span></span>
                                 <div class="setting-row">
-                                    <span class="setting-label">⏳ <span data-i18n="rec.lblCountdown">3-Second
-                                            Countdown</span></span>
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" id="rec-opt-countdown" checked aria-label="3-Second Countdown">
+                                    <label for="rec-opt-countdown" class="setting-label" id="lbl-rec-opt-countdown">⏳ <span data-i18n="rec.lblCountdown">3-Second
+                                            Countdown</span></label>
+                                    <label class="toggle-switch" for="rec-opt-countdown">
+                                        <input type="checkbox" id="rec-opt-countdown" checked aria-label="3-Second Countdown" aria-labelledby="lbl-rec-opt-countdown">
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
