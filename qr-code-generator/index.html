@@ -14,9 +14,6 @@
          crossorigin="anonymous"></script>
     <meta name="theme-color" content="#F8FAFC">
     <!-- Performance Optimization for Mobile PageSpeed > 90 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
     <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
@@ -137,7 +134,8 @@
     }
     </script>
 
-    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css">
+    <link rel="preload" href="/static/css/main.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css"></noscript>
     <script>
         (function () {
             try {
@@ -168,7 +166,7 @@
             <span class="site-nav__brand-mark">
                 <picture>
                     <source srcset="/static/img/logo.webp" type="image/webp">
-                    <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40" loading="eager" fetchpriority="high">
+                    <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40" loading="eager" fetchpriority="high">
                 </picture>
             </span>
             <span>GToolix</span>
@@ -748,7 +746,7 @@
                         <span class="site-nav__brand-mark">
                             <picture>
                                 <source srcset="/static/img/logo.webp" type="image/webp">
-                                <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40" loading="lazy">
+                                <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40" loading="lazy">
                             </picture>
                         </span>
                         <span>GToolix</span>
