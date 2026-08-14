@@ -32,8 +32,8 @@
 
     function ensureToolScripts(page) {
         if (page === 'qr') {
-            if (window.QRTool) return Promise.resolve();
-            return loadToolScript('/static/js/qrcode.min.js').then(() => loadToolScript('/static/js/qr-tool.min.js'));
+            window.location.href = '/qr-code-generator';
+            return Promise.resolve();
         } else if (page === 'thumb') {
             if (window.ThumbTool) return Promise.resolve();
             return loadToolScript('/static/js/thumb-tool.min.js');
