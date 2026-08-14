@@ -396,7 +396,9 @@ var QRTool = (function () {
     }
 
     function getLang() {
-        return localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang') || (document.documentElement.lang === 'en' ? 'en' : 'ar');
+        const docLang = document.documentElement.getAttribute('lang') || document.documentElement.lang;
+        if (docLang === 'ar' || docLang === 'en') return docLang;
+        return (typeof window.getGToolixLanguage === 'function') ? window.getGToolixLanguage() : (localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang') || 'ar');
     }
 
     function showToast(msg) {

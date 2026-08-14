@@ -777,6 +777,8 @@
         const translations = {
             en: {
                 common: {
+                    pageTitle: "Free Professional Screen Recorder | Record Screen, Camera & Audio - GToolix",
+                    pageDesc: "Record screen, webcam, and audio in studio quality right from your browser — 100% private, zero upload, no signup, no watermark.",
                     navQr: "QR Code Generator", navThumb: "YouTube Thumbnail Downloader", navGemini: "Gemini Watermark Remover", navRecorder: "Screen Recorder Studio",
                     subQr: "Instant & Free", subThumb: "HD & 4K Quality", subGemini: "Ultra Fast ⚡", subRecorder: "Screen + Camera",
                     relatedToolsTitle: "Try Our Other Tools",
@@ -923,6 +925,12 @@
         function applyTranslations() {
             document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+            const pTitle = (translations[currentLang] && translations[currentLang].common && translations[currentLang].common.pageTitle) || (currentLang === 'en' ? "Free Professional Screen Recorder | Record Screen, Camera & Audio - GToolix" : "مسجل الشاشة الاحترافي مجانًا | تسجيل شاشة وصوت وكاميرا بدون برنامج - GToolix");
+            if (pTitle) document.title = pTitle;
+            const pDesc = (translations[currentLang] && translations[currentLang].common && translations[currentLang].common.pageDesc) || (currentLang === 'en' ? "Record screen, webcam, and audio in studio quality right from your browser — 100% private, zero upload, no signup, no watermark." : "سجّل شاشتك بجودة استوديو مباشرة من متصفحك — شاشة، كاميرا، صوت النظام والميكروفون معًا. بدون تثبيت، بدون رفع، بدون حساب. تسجيلك يفضل على جهازك فقط.");
+            const metaDescEl = document.querySelector('meta[name="description"]');
+            if (metaDescEl && pDesc) metaDescEl.setAttribute('content', pDesc);
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const k = el.getAttribute('data-i18n');

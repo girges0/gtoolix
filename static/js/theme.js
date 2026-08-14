@@ -252,7 +252,64 @@
         }
     };
 
+    const ROUTE_TITLES = {
+        '/qr-code-generator': {
+            en: { title: "Free QR Code Generator Online | Custom Barcode & QR - GToolix", desc: "Free high-performance online QR Code Generator. Create custom high-resolution QR codes for URLs, Wi-Fi, vCards, SMS, and text instantly with zero watermarks." },
+            ar: { title: "مولد كود QR مجاني أونلاين | إنشاء باركود QR بدون تسجيل – GToolix", desc: "أفضل أداة مجانية أونلاين لإنشاء وتخصيص أكواد QR عالية الدقة بدون علامة مائية. توليد فوري لأكواد الروابط والواي فاي وبطاقات الاتصال والنصوص." }
+        },
+        '/gemini/watermark-remover': {
+            en: { title: "Free Gemini Watermark Remover Online | Remove Google AI Watermark - GToolix", desc: "Remove Google Gemini AI watermark from your images instantly online. 100% free, browser-based, client-side processing, no quality loss." },
+            ar: { title: "مزيل علامة جيميناي المائية مجاناً أونلاين | GToolix", desc: "أداة مجانية أونلاين لإزالة العلامة المائية من صور جيميناي (Google Gemini AI) فورياً وبأقصى جودة وبدون تسجيل." }
+        },
+        '/youtube-thumbnail-downloader': {
+            en: { title: "Free YouTube Thumbnail Downloader HD & 4K | Image Extractor - GToolix", desc: "Free online YouTube Thumbnail Downloader. Extract high-resolution YouTube video and Shorts cover images in HD, 1080p, and 4K instantly with zero watermark." },
+            ar: { title: "تحميل صور اليوتيوب المصغرة HD و 4K مجاناً | مستخرج الصور – GToolix", desc: "أفضل أداة مجانية أونلاين لتحميل وتنظيف صور اليوتيوب المصغرة (Thumbnails) بجودة HD و 1080p و 4K بضغطة واحدة. استخرج صور أغلفة فيديوهات يوتيوب والشورتس فورياً وبدون تسجيل." }
+        },
+        '/screen-recorder-studio': {
+            en: { title: "Free Professional Screen Recorder | Record Screen, Camera & Audio - GToolix", desc: "Record screen, webcam, and audio in studio quality right from your browser — 100% private, zero upload, no signup, no watermark." },
+            ar: { title: "مسجل الشاشة الاحترافي مجانًا | تسجيل شاشة وصوت وكاميرا بدون برنامج - GToolix", desc: "سجّل شاشتك بجودة استوديو مباشرة من متصفحك — شاشة، كاميرا، صوت النظام والميكروفون معًا. بدون تثبيت، بدون رفع، بدون حساب. تسجيلك يفضل على جهازك فقط." }
+        },
+        '/about': {
+            en: { title: "About GToolix - Vision, Mission & Privacy Commitment | GToolix", desc: "Learn about GToolix, a fast and secure digital platform providing free client-side web tools." },
+            ar: { title: "عن منصة GToolix – الرؤية والمهمة والالتزام | GToolix", desc: "تعرّف على منصة GToolix، الأداة الرقمية السريعة والآمنة لتوليد أكواد QR وتنزيل صور يوتيوب المصغرة بدون تسجيل ولا علامة مائية." }
+        },
+        '/privacy-policy': {
+            en: { title: "Privacy Policy | GToolix", desc: "Read GToolix Privacy Policy to learn how we protect your data with 100% client-side local processing." },
+            ar: { title: "سياسة الخصوصية | GToolix", desc: "اقرأ سياسة الخصوصية لمنصة GToolix وتعرف على كيفية حماية بياناتك ومعالجة كافة الأدوات محلياً 100%." }
+        },
+        '/terms-of-service': {
+            en: { title: "Terms of Service | GToolix", desc: "Read GToolix Terms of Service and usage guidelines for all free web tools." },
+            ar: { title: "الشروط والأحكام | GToolix", desc: "اتفق مع الشروط والأحكام الخاصة باستكشاف واستخدام أدوات منصة GToolix." }
+        },
+        '/cookies-policy': {
+            en: { title: "Cookies Policy | GToolix", desc: "Learn how GToolix uses cookies and local storage to save your language and theme preferences." },
+            ar: { title: "سياسة الكوكيز | GToolix", desc: "تعرف على كيفية استخدام منصة GToolix لملفات الكوكيز وحفظ تفضيلات اللغة والمظهر." }
+        },
+        '/disclaimer': {
+            en: { title: "Disclaimer | GToolix", desc: "Read the official legal disclaimer for GToolix web tools." },
+            ar: { title: "إخلاء المسؤولية | GToolix", desc: "إخلاء المسؤولية القانونية وتوضيح طبيعة استخدام أدوات منصة GToolix." }
+        },
+        '/dmca': {
+            en: { title: "DMCA Copyright Policy | GToolix", desc: "GToolix DMCA Copyright Policy and copyright infringement notification guidelines." },
+            ar: { title: "سياسة حقوق النشر (DMCA) | GToolix", desc: "سياسة حقوق الطبع والنشر والتأليف وإرشادات الإبلاغ عن الانتهاكات في منصة GToolix." }
+        },
+        '/faq': {
+            en: { title: "Frequently Asked Questions (FAQ) | GToolix", desc: "Frequently asked questions about GToolix tools, privacy, and browser compatibility." },
+            ar: { title: "الأسئلة الشائعة (FAQ) | GToolix", desc: "إجابات كافة الأسئلة الشائعة حول أدوات منصة GToolix والخصوصية والتوافق." }
+        },
+        '/contact': {
+            en: { title: "Contact Us | GToolix", desc: "Get in touch with the GToolix support and development team." },
+            ar: { title: "اتصل بنا | GToolix", desc: "تواصل مع فريق دعم وتطوير منصة GToolix للأسئلة والاستفسارات." }
+        },
+        '/': {
+            en: { title: "GToolix - Free High-Performance Web Tools Studio", desc: "All-in-one suite of free web tools: QR Code Generator, YouTube Thumbnail Downloader, Gemini Watermark Remover, and Screen Recorder Studio. Fast, client-side, zero signup." },
+            ar: { title: "GToolix - استوديو الأدوات المجانية عالية الأداء", desc: "منصة GToolix تقدم أدوات ويب مجانية فائقة السرعة: مولد كود QR، تنزيل صور يوتيوب المصغرة، إزالة علامة جيميناي المائية، ومسجل الشاشة الاحترافي." }
+        }
+    };
+
     window.getGToolixLanguage = function () {
+        const docLang = document.documentElement.getAttribute('lang') || document.documentElement.lang;
+        if (docLang === 'ar' || docLang === 'en') return docLang;
         try {
             const saved = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
             if (saved === 'ar' || saved === 'en') return saved;
@@ -278,6 +335,25 @@
                 el.textContent = dict[key];
             }
         });
+
+        // Update document.title and meta description dynamically
+        let path = window.location.pathname.replace(/\/$/, '') || '/';
+        let routeMeta = ROUTE_TITLES[path];
+        if (!routeMeta) {
+            for (let r in ROUTE_TITLES) {
+                if (r !== '/' && path.indexOf(r) === 0) {
+                    routeMeta = ROUTE_TITLES[r];
+                    break;
+                }
+            }
+        }
+        if (!routeMeta) routeMeta = ROUTE_TITLES['/'];
+
+        if (routeMeta && routeMeta[currentLang]) {
+            document.title = routeMeta[currentLang].title;
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute('content', routeMeta[currentLang].desc);
+        }
 
         const enBtn = document.getElementById('lang-en-btn');
         const arBtn = document.getElementById('lang-ar-btn');

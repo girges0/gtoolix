@@ -785,6 +785,8 @@
         const translations = {
             en: {
                 common: {
+                    pageTitle: "Free QR Code Generator Online | Custom Barcode & QR - GToolix",
+                    pageDesc: "Free high-performance online QR Code Generator. Create custom high-resolution QR codes for URLs, Wi-Fi, vCards, SMS, and text instantly with zero watermarks.",
                     navQr: "QR Code Generator", navThumb: "YouTube Thumbnail Downloader", navGemini: "Gemini Watermark Remover", navRecorder: "Screen Recorder Studio",
                     subQr: "Instant & Free", subThumb: "HD & 4K Quality", subGemini: "Ultra Fast ⚡", subRecorder: "Screen + Camera",
                     relatedToolsTitle: "Try Our Other Tools",
@@ -949,8 +951,15 @@
         }
 
         function applyTranslations() {
+            document.documentElement.setAttribute('lang', currentLang);
+            document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
             document.documentElement.lang = currentLang;
-            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+            const pTitle = (translations[currentLang] && translations[currentLang].common && translations[currentLang].common.pageTitle) || (currentLang === 'en' ? "Free QR Code Generator Online | Custom Barcode & QR - GToolix" : "مولد كود QR مجاني أونلاين | إنشاء باركود QR بدون تسجيل – GToolix");
+            if (pTitle) document.title = pTitle;
+            const pDesc = (translations[currentLang] && translations[currentLang].common && translations[currentLang].common.pageDesc) || (currentLang === 'en' ? "Free high-performance online QR Code Generator. Create custom high-resolution QR codes for URLs, Wi-Fi, vCards, SMS, and text instantly with zero watermarks." : "أفضل أداة مجانية أونلاين لإنشاء وتخصيص أكواد QR عالية الدقة بدون علامة مائية. توليد فوري لأكواد الروابط والواي فاي وبطاقات الاتصال والنصوص.");
+            const metaDescEl = document.querySelector('meta[name="description"]');
+            if (metaDescEl && pDesc) metaDescEl.setAttribute('content', pDesc);
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const k = el.getAttribute('data-i18n');
@@ -980,6 +989,10 @@
                         </div>
                     `).join('');
                 }
+            }
+
+            if (window.QRTool && typeof window.QRTool.render === 'function') {
+                window.QRTool.render();
             }
 
             if (window.updateFooterI18n) window.updateFooterI18n(currentLang);

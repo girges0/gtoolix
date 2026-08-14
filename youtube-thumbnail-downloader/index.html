@@ -543,6 +543,8 @@
         const translations = {
             en: {
                 common: {
+                    pageTitle: "Free YouTube Thumbnail Downloader HD & 4K | Image Extractor - GToolix",
+                    pageDesc: "Free online YouTube Thumbnail Downloader. Extract high-resolution YouTube video and Shorts cover images in HD, 1080p, and 4K instantly with zero watermark.",
                     navQr: "QR Code Generator", navThumb: "YouTube Thumbnail Downloader", navGemini: "Gemini Watermark Remover", navRecorder: "Screen Recorder Studio",
                     subQr: "Instant & Free", subThumb: "HD & 4K Quality", subGemini: "Ultra Fast ⚡", subRecorder: "Screen + Camera",
                     relatedToolsTitle: "Try Our Other Tools",
@@ -723,6 +725,12 @@
         function applyTranslations() {
             document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+            const pTitle = (translations[currentLang] && translations[currentLang].common && translations[currentLang].common.pageTitle) || (currentLang === 'en' ? "Free YouTube Thumbnail Downloader HD & 4K | Image Extractor - GToolix" : "تحميل صور اليوتيوب المصغرة HD و 4K مجاناً | مستخرج الصور – GToolix");
+            if (pTitle) document.title = pTitle;
+            const pDesc = (translations[currentLang] && translations[currentLang].common && translations[currentLang].common.pageDesc) || (currentLang === 'en' ? "Free online YouTube Thumbnail Downloader. Extract high-resolution YouTube video and Shorts cover images in HD, 1080p, and 4K instantly with zero watermark." : "أفضل أداة مجانية أونلاين لتحميل وتنظيف صور اليوتيوب المصغرة (Thumbnails) بجودة HD و 1080p و 4K بضغطة واحدة. استخرج صور أغلفة فيديوهات يوتيوب والشورتس فورياً وبدون تسجيل.");
+            const metaDescEl = document.querySelector('meta[name="description"]');
+            if (metaDescEl && pDesc) metaDescEl.setAttribute('content', pDesc);
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const k = el.getAttribute('data-i18n');
