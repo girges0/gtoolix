@@ -35,8 +35,8 @@
             window.location.href = '/qr-code-generator';
             return Promise.resolve();
         } else if (page === 'thumb') {
-            if (window.ThumbTool) return Promise.resolve();
-            return loadToolScript('/static/js/thumb-tool.min.js');
+            window.location.href = '/youtube-thumbnail-downloader';
+            return Promise.resolve();
         } else if (page === 'gemini') {
             window.location.href = '/gemini/watermark-remover';
             return Promise.resolve();
