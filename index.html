@@ -78,6 +78,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=optional">
 
@@ -379,7 +382,8 @@
             display: block
         }
     </style>
-    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css">
+    <link rel="preload" href="/static/css/main.min.css" as="style">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
     <script>/* Theme init — prevent FOUC */
         window.seoPageType = "";
         (function () { var t = localStorage.getItem('theme'); if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light' } document.documentElement.setAttribute('data-theme', t) })();
@@ -404,7 +408,7 @@
             <span class="site-nav__brand-mark">
                 <picture>
                     <source srcset="/static/img/logo.webp" type="image/webp">
-                    <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40"
+                    <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40"
                         loading="eager" fetchpriority="high">
                 </picture>
             </span>
@@ -809,7 +813,7 @@
                         <span class="site-nav__brand-mark">
                             <picture>
                                 <source srcset="/static/img/logo.webp" type="image/webp">
-                                <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40"
+                                <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="40"
                                     height="40" loading="lazy">
                             </picture>
                         </span>

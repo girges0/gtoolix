@@ -13,6 +13,13 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456"
          crossorigin="anonymous"></script>
     <meta name="theme-color" content="#F8FAFC">
+    <!-- Performance Optimization for Mobile PageSpeed > 90 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
     <!-- Favicon & PWA Suite (Google Search Optimized) -->
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -177,7 +184,8 @@
     }
     </script>
 
-    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css">
+    <link rel="preload" href="/static/css/main.min.css" as="style">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
     <script>
         (function () {
             try {
@@ -206,7 +214,10 @@
     <header class="site-nav">
         <a class="site-nav__brand" href="/">
             <span class="site-nav__brand-mark">
-                <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40">
+                <picture>
+                    <source srcset="/static/img/logo.webp" type="image/webp">
+                    <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40" loading="eager" fetchpriority="high">
+                </picture>
             </span>
             <span>GToolix</span>
         </a>
@@ -591,7 +602,10 @@
                 <div class="footer-col footer-col--brand">
                     <a class="footer-brand" href="/">
                         <span class="site-nav__brand-mark">
-                            <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40">
+                            <picture>
+                                <source srcset="/static/img/logo.webp" type="image/webp">
+                                <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40" loading="lazy">
+                            </picture>
                         </span>
                         <span>GToolix</span>
                     </a>
