@@ -2,48 +2,6 @@
   "version": 2,
   "outputDirectory": ".",
   "cleanUrls": true,
-  "redirects": [
-    {
-      "source": "/qr-code-generator",
-      "destination": "/qrcode/generator",
-      "permanent": true
-    },
-    {
-      "source": "/youtube-thumbnail-downloader",
-      "destination": "/youtube/thumbnail-downloader",
-      "permanent": true
-    },
-    {
-      "source": "/gemini-watermark-remover",
-      "destination": "/gemini/watermark-remover",
-      "permanent": true
-    },
-    {
-      "source": "/screen-recorder-studio",
-      "destination": "/screen-recorder/studio",
-      "permanent": true
-    },
-    {
-      "source": "/tools/qr/:path*",
-      "destination": "/qrcode/generator",
-      "permanent": true
-    },
-    {
-      "source": "/tools/thumbnail/:path*",
-      "destination": "/youtube/thumbnail-downloader",
-      "permanent": true
-    },
-    {
-      "source": "/tools/gemini/:path*",
-      "destination": "/gemini/watermark-remover",
-      "permanent": true
-    },
-    {
-      "source": "/tools/screen-recorder/:path*",
-      "destination": "/screen-recorder/studio",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/monitoring/:path*",
@@ -52,6 +10,54 @@
     {
       "source": "/monitoring",
       "destination": "/gtoolix-monitoring-site/"
+    },
+    {
+      "source": "/qr-code-generator",
+      "destination": "/tools/qr/"
+    },
+    {
+      "source": "/youtube-thumbnail-downloader",
+      "destination": "/tools/thumbnail/"
+    },
+    {
+      "source": "/gemini-watermark-remover",
+      "destination": "/tools/gemini/"
+    },
+    {
+      "source": "/about",
+      "destination": "/about/"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy/"
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/terms-of-service/"
+    },
+    {
+      "source": "/disclaimer",
+      "destination": "/disclaimer/"
+    },
+    {
+      "source": "/cookies-policy",
+      "destination": "/cookies-policy/"
+    },
+    {
+      "source": "/dmca",
+      "destination": "/dmca/"
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq/"
+    },
+    {
+      "source": "/screen-recorder-studio",
+      "destination": "/screen-recorder-studio/"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/"
     }
   ],
   "headers": [

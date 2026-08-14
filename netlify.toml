@@ -16,48 +16,7 @@
 [build.processing.html]
   pretty_urls = true
 
-# Legacy Redirects (301 Permanent)
-[[redirects]]
-  from = "/qr-code-generator"
-  to = "/qrcode/generator"
-  status = 301
-
-[[redirects]]
-  from = "/youtube-thumbnail-downloader"
-  to = "/youtube/thumbnail-downloader"
-  status = 301
-
-[[redirects]]
-  from = "/gemini-watermark-remover"
-  to = "/gemini/watermark-remover"
-  status = 301
-
-[[redirects]]
-  from = "/screen-recorder-studio"
-  to = "/screen-recorder/studio"
-  status = 301
-
-[[redirects]]
-  from = "/tools/qr/*"
-  to = "/qrcode/generator"
-  status = 301
-
-[[redirects]]
-  from = "/tools/thumbnail/*"
-  to = "/youtube/thumbnail-downloader"
-  status = 301
-
-[[redirects]]
-  from = "/tools/gemini/*"
-  to = "/gemini/watermark-remover"
-  status = 301
-
-[[redirects]]
-  from = "/tools/screen-recorder/*"
-  to = "/screen-recorder/studio"
-  status = 301
-
-# Monitoring App Rewrite
+# Route Redirects
 [[redirects]]
   from = "/monitoring/*"
   to = "/gtoolix-monitoring-site/:splat"
@@ -66,6 +25,66 @@
 [[redirects]]
   from = "/monitoring"
   to = "/gtoolix-monitoring-site/"
+  status = 200
+
+[[redirects]]
+  from = "/qr-code-generator"
+  to = "/tools/qr/"
+  status = 200
+
+[[redirects]]
+  from = "/youtube-thumbnail-downloader"
+  to = "/tools/thumbnail/"
+  status = 200
+
+[[redirects]]
+  from = "/gemini-watermark-remover"
+  to = "/tools/gemini/"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/about/"
+  status = 200
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy-policy/"
+  status = 200
+
+[[redirects]]
+  from = "/terms-of-service"
+  to = "/terms-of-service/"
+  status = 200
+
+[[redirects]]
+  from = "/disclaimer"
+  to = "/disclaimer/"
+  status = 200
+
+[[redirects]]
+  from = "/cookies-policy"
+  to = "/cookies-policy/"
+  status = 200
+
+[[redirects]]
+  from = "/dmca"
+  to = "/dmca/"
+  status = 200
+
+[[redirects]]
+  from = "/faq"
+  to = "/faq/"
+  status = 200
+
+[[redirects]]
+  from = "/screen-recorder-studio"
+  to = "/screen-recorder-studio/"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact/"
   status = 200
 
 # Custom 404 page
@@ -103,3 +122,4 @@
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
     Cache-Control = "public, max-age=86400"
+

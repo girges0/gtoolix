@@ -14,8 +14,8 @@
         recorder: 'Screen Studio Recorder | Free Online Screen & Camera Recorder - GToolix'
     };
     const HASH_TO_PAGE = { '': 'home', '#': 'home', '#home': 'home', '#qr-code': 'qr', '#youtube-thumbnail': 'thumb', '#gemini-watermark': 'gemini', '#screen-recorder': 'recorder' };
-    const PAGE_TO_PATH = { home: '/', qr: '/qrcode/generator', thumb: '/youtube/thumbnail-downloader', gemini: '/gemini/watermark-remover', recorder: '/screen-recorder/studio' };
-    const PATH_TO_PAGE = { '/': 'home', '/qrcode/generator': 'qr', '/qrcode/generator/': 'qr', '/youtube/thumbnail-downloader': 'thumb', '/youtube/thumbnail-downloader/': 'thumb', '/gemini/watermark-remover': 'gemini', '/gemini/watermark-remover/': 'gemini', '/screen-recorder/studio': 'recorder', '/screen-recorder/studio/': 'recorder', '/gemini-watermark-remover': 'gemini', '/qr-code-generator': 'qr', '/youtube-thumbnail-downloader': 'thumb', '/screen-recorder-studio': 'recorder', '/tools/qr/': 'qr', '/tools/thumbnail/': 'thumb', '/tools/gemini/': 'gemini', '/tools/screen-recorder/': 'recorder' };
+    const PAGE_TO_PATH = { home: '/', qr: '/qr-code-generator', thumb: '/youtube-thumbnail-downloader', gemini: '/gemini-watermark-remover', recorder: '/screen-recorder-studio' };
+    const PATH_TO_PAGE = { '/': 'home', '/gemini-watermark-remover': 'gemini', '/qr-code-generator': 'qr', '/youtube-thumbnail-downloader': 'thumb', '/screen-recorder-studio': 'recorder', '/tools/qr/': 'qr', '/tools/thumbnail/': 'thumb', '/tools/gemini/': 'gemini', '/tools/screen-recorder/': 'recorder' };
 
     const loadedToolScripts = {};
     function loadToolScript(src) {
