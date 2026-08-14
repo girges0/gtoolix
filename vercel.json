@@ -13,15 +13,19 @@
     },
     {
       "source": "/qr-code-generator",
-      "destination": "/tools/qr/"
+      "destination": "/qr-code-generator/"
     },
     {
       "source": "/youtube-thumbnail-downloader",
       "destination": "/tools/thumbnail/"
     },
     {
+      "source": "/gemini/watermark-remover",
+      "destination": "/gemini/watermark-remover/"
+    },
+    {
       "source": "/gemini-watermark-remover",
-      "destination": "/tools/gemini/"
+      "destination": "/gemini/watermark-remover/"
     },
     {
       "source": "/about",

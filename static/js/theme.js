@@ -296,5 +296,37 @@
     }
 })();
 
+/* ===================================================================
+   GToolix — Global Scroll Reveal System
+   =================================================================== */
+(function () {
+    'use strict';
+    function initReveal() {
+        const items = document.querySelectorAll('.reveal');
+        if (!items.length) return;
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+            items.forEach(el => el.classList.add('in-view'));
+            return;
+        }
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('in-view'), Math.min(i * 30, 150));
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.01, rootMargin: '200px 0px 100px 0px' });
+        items.forEach(el => io.observe(el));
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initReveal);
+    } else {
+        initReveal();
+    }
+})();
+
+
 
 

@@ -29,7 +29,7 @@
 
 [[redirects]]
   from = "/qr-code-generator"
-  to = "/tools/qr/"
+  to = "/qr-code-generator/"
   status = 200
 
 [[redirects]]
@@ -38,8 +38,13 @@
   status = 200
 
 [[redirects]]
+  from = "/gemini/watermark-remover"
+  to = "/gemini/watermark-remover/"
+  status = 200
+
+[[redirects]]
   from = "/gemini-watermark-remover"
-  to = "/tools/gemini/"
+  to = "/gemini/watermark-remover/"
   status = 200
 
 [[redirects]]
