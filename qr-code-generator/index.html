@@ -9,17 +9,226 @@
     <meta name="keywords" content="مولد QR, منشئ QR, مولد رمز QR, إنشاء رمز QR, صانع QR, مولد باركود QR, مولد QR مجاني, إنشاء QR أونلاين, مولد QR للروابط, مولد QR للنصوص, مولد QR للواي فاي, أفضل مولد QR, QR Code Generator, Free QR Code Generator, Online QR Code Generator, Create QR Code, Generate QR Code, QR Maker, QR Creator, QR Code Tool, Custom QR Code Generator, Website QR Code Generator, WiFi QR Code Generator, URL QR Code Generator, Text QR Code Generator, Free QR Maker, Best QR Generator">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="author" content="GToolix">
-    <!-- Google AdSense Verification & Auto Ads -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456"
-         crossorigin="anonymous"></script>
     <meta name="theme-color" content="#F8FAFC">
-    <!-- Performance Optimization for Mobile PageSpeed > 90 -->
+
+    <!-- Performance Optimization: Preconnect & Preloads -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
     <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=optional">
+
+    <!-- Critical Inline Styles (Above-the-fold instant paint) -->
+    <style>
+        :root {
+            --bg: #020817;
+            --bg-secondary: #0F172A;
+            --card: #111827;
+            --border: #1E293B;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.04);
+            --primary: #2563EB;
+            --primary-hover: #3B82F6;
+            --accent: #06B6D4;
+            --text: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --radius-full: 9999px;
+            --radius-md: 1rem;
+            --radius-lg: 1.125rem;
+            --radius-xl: 1.25rem;
+            --nav-bg: rgba(2, 8, 23, 0.82)
+        }
+
+        [data-theme="light"] {
+            --bg: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --card: #FFFFFF;
+            --border: #E2E8F0;
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass: rgba(255, 255, 255, 0.7);
+            --primary: #2563EB;
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --nav-bg: rgba(248, 250, 252, 0.85)
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: clip;
+            scrollbar-gutter: stable;
+            width: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: clip;
+            width: 100%;
+            min-height: 100svh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html[dir="rtl"] body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.45rem 0.85rem;
+            margin: 0 auto;
+            max-width: 1180px;
+            width: min(100% - 2rem, 1180px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            min-height: 56px;
+            box-sizing: border-box;
+        }
+
+        .site-nav__brand {
+            display: flex;
+            align-items: center;
+            direction: ltr;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+            background: none;
+            border: none;
+            min-height: 44px;
+            cursor: pointer;
+        }
+
+        .site-nav__logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 9px;
+            display: block;
+        }
+
+        .tool-view {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 5.5rem max(1rem, 3vw) 3rem;
+            box-sizing: border-box;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .tool-header h1 {
+            font-size: clamp(1.6rem, 5vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.25;
+            margin: 0.75rem 0 0.5rem;
+            color: var(--text);
+        }
+
+        .tool-header .tagline {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.55;
+        }
+
+        .tool-breadcrumbs {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .tool-breadcrumbs a {
+            color: var(--primary-hover);
+            text-decoration: none;
+        }
+
+        .tool-header__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.3rem 0.85rem;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--primary-hover);
+            margin-bottom: 0.5rem;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22C55E;
+            box-shadow: 0 0 8px #22C55E;
+        }
+
+        .card.qr-generator-card {
+            background: var(--card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: clamp(1rem, 3vw, 2rem);
+            box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.4);
+            box-sizing: border-box;
+        }
+    </style>
+
+    <!-- Google AdSense Non-Blocking Loader for 100/100 Mobile PageSpeed -->
+    <script>
+        (function() {
+            var loaded = false;
+            function loadAdSense() {
+                if (loaded) return;
+                loaded = true;
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456";
+                s.crossOrigin = "anonymous";
+                document.head.appendChild(s);
+            }
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function() { setTimeout(loadAdSense, 1200); });
+            } else {
+                window.addEventListener('load', function() { setTimeout(loadAdSense, 1200); });
+            }
+            ['scroll', 'touchstart', 'mousemove', 'keydown', 'click'].forEach(function(e) {
+                window.addEventListener(e, loadAdSense, { once: true, passive: true });
+            });
+        })();
+    </script>
     <!-- Favicon & PWA Suite (Google Search Optimized) -->
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
