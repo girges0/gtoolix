@@ -17,7 +17,7 @@
     },
     {
       "source": "/youtube-thumbnail-downloader",
-      "destination": "/tools/thumbnail/"
+      "destination": "/youtube-thumbnail-downloader/"
     },
     {
       "source": "/gemini/watermark-remover",

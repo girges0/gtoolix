@@ -34,7 +34,7 @@
 
 [[redirects]]
   from = "/youtube-thumbnail-downloader"
-  to = "/tools/thumbnail/"
+  to = "/youtube-thumbnail-downloader/"
   status = 200
 
 [[redirects]]

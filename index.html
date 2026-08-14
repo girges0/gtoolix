@@ -431,7 +431,7 @@
 
 <body>
     <header class="site-nav">
-        <a class="site-nav__brand" href="/" data-page="home">
+        <a class="site-nav__brand" href="/">
             <span class="site-nav__brand-mark">
                 <picture>
                     <source srcset="/static/img/logo.webp" type="image/webp">
@@ -499,7 +499,7 @@
                     </div>
                 </a>
 
-                <a href="#qr-code" data-page="qr" class="orbit-node orbit-node--b tool-chip-card">
+                <a href="/qr-code-generator" class="orbit-node orbit-node--b tool-chip-card">
                     <div class="node-shell node-shell--qr">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -515,7 +515,7 @@
                     </div>
                 </a>
 
-                <a href="#gemini-watermark" data-page="gemini" class="orbit-node orbit-node--c tool-chip-card">
+                <a href="/gemini/watermark-remover" class="orbit-node orbit-node--c tool-chip-card">
                     <div class="node-shell node-shell--gemini">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                             <path
@@ -710,7 +710,7 @@
                     </span>
                 </a>
 
-                <a href="#youtube-thumbnail" data-page="thumb" class="tool-card reveal">
+                <a href="/youtube-thumbnail-downloader" class="tool-card reveal">
                     <span class="tool-card__badge" data-i18n="home.badge4k">4K Ready</span>
                     <div class="tool-card__icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -752,7 +752,7 @@
                     </span>
                 </a>
 
-                <a href="#screen-recorder" data-page="recorder" class="tool-card reveal">
+                <a href="/screen-recorder-studio" class="tool-card reveal">
                     <span class="tool-card__badge" data-i18n="home.badgeRecorder">شاشة + كاميرا</span>
                     <div class="tool-card__icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -833,11 +833,33 @@
                     </div>
                 </div>
             </section>
+        </div>
+
+    <!-- ===================== 404 NOT FOUND (For Legacy Hashes) ===================== -->
+    <div id="page-404" class="page-view" style="display: none;">
+        <div class="container" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; padding: 4rem 1rem;">
+            <div class="card glass-card" style="max-width: 600px; width: 100%; text-align: center; padding: 3rem 2rem;">
+                <div style="font-size: 5rem; font-weight: 800; line-height: 1; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">
+                    404
+                </div>
+                <h1 id="error-title" style="font-size: 1.75rem; margin-bottom: 0.75rem;" data-i18n="error.title">الصفحة غير موجودة</h1>
+                <p id="error-desc" style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1rem;" data-i18n="error.desc">
+                    عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يمكنك العودة إلى الصفحة الرئيسية واستكشاف جميع الأدوات.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/" class="btn btn-primary" id="error-btn-home" data-i18n="error.btnHome">الرئيسية</a>
+                    <a href="/qr-code-generator" class="btn btn-ghost" data-i18n="common.navQr">مولد كود QR</a>
+                    <a href="/youtube-thumbnail-downloader" class="btn btn-ghost" data-i18n="common.navThumb">تحميل صور اليوتيوب المصغرة</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-col footer-col--brand">
-                    <a class="footer-brand" href="/" data-page="home">
+                    <a class="footer-brand" href="/">
                         <span class="site-nav__brand-mark">
                             <picture>
                                 <source srcset="/static/img/logo.webp" type="image/webp">
@@ -855,11 +877,11 @@
                     <h4 class="footer-col__title" data-i18n="common.footerToolsTitle">الأدوات المميزة</h4>
                     <nav class="footer-links">
                         <a href="/qr-code-generator" data-i18n="common.navQr">مولد كود QR</a>
-                        <a href="#youtube-thumbnail" data-page="thumb" data-i18n="common.navThumb">تحميل صور
+                        <a href="/youtube-thumbnail-downloader" data-i18n="common.navThumb">تحميل صور
                             اليوتيوب المصغرة</a>
                         <a href="/gemini/watermark-remover" data-i18n="common.navGemini">مزيل علامة
                             جيميناي</a>
-                        <a href="#screen-recorder" data-page="recorder" data-i18n="common.navRecorder">مسجل
+                        <a href="/screen-recorder-studio" data-i18n="common.navRecorder">مسجل
                             الشاشة الاحترافي</a>
                     </nav>
                 </div>
@@ -906,6 +928,11 @@
                     linkPrivacy: "Privacy Policy", linkTerms: "Terms of Service", linkCookies: "Cookies Policy",
                     linkDisclaimer: "Disclaimer", linkDmca: "Copyright (DMCA)", adLabel: "ADVERTISEMENT • AD",
                     footerCopyright: "© 2026 GToolix. All rights reserved."
+                },
+                error: {
+                    title: "Page Not Found",
+                    desc: "Sorry, the page you are looking for does not exist or has been moved. Return home to explore our free tools.",
+                    btnHome: "Back to Home"
                 },
                 home: {
                     heroEyebrow: "No installs. No signup. Just tools.",
@@ -1296,6 +1323,11 @@
                     linkPrivacy: "سياسة الخصوصية", linkTerms: "الشروط والأحكام", linkCookies: "سياسة الكوكيز",
                     linkDisclaimer: "إخلاء المسؤولية", linkDmca: "حقوق النشر (DMCA)", adLabel: "إعلان • ADVERTISEMENT",
                     footerCopyright: "© 2026 GToolix. All rights reserved."
+                },
+                error: {
+                    title: "الصفحة غير موجودة",
+                    desc: "عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. يمكنك العودة إلى الصفحة الرئيسية واستكشاف جميع الأدوات.",
+                    btnHome: "الرئيسية"
                 },
                 home: {
                     heroEyebrow: "بدون تثبيت • بدون تسجيل • أدوات مجانية",
@@ -1816,116 +1848,33 @@
         });
 
         // ===================================================================
-        // Page router — single index.html client-side navigation
+        // Legacy Hash Detection — displays 404 UI for deprecated hash URLs
         // ===================================================================
-        const PAGE_IDS = { home: 'page-home', qr: 'page-qr', thumb: 'page-thumb', gemini: 'page-gemini', recorder: 'page-recorder' };
-        const PAGE_TITLES = {
-            home: 'GToolix – Free Online Tools: QR Code Generator, YouTube Thumbnail Grabber, Gemini Watermark Remover, Screen Studio Recorder',
-            qr: 'Free QR Code Generator Online – No Signup, Instant Download | GToolix',
-            thumb: 'YouTube Thumbnail Downloader – Download HD & 4K Thumbnails Free | GToolix',
-            gemini: 'Gemini Watermark Remover – Clean AI-Generated Images Free | GToolix',
-            recorder: 'Screen Studio Recorder | Free Online Screen & Camera Recorder - GToolix'
-        };
-        const HASH_TO_PAGE = { '': 'home', '#': 'home', '#home': 'home', '#qr-code': 'qr', '#youtube-thumbnail': 'thumb', '#gemini-watermark': 'gemini', '#screen-recorder': 'recorder' };
-        const PAGE_TO_HASH = { home: '', qr: '#qr-code', thumb: '#youtube-thumbnail', gemini: '#gemini-watermark', recorder: '#screen-recorder' };
-        const PAGE_TO_PATH = { home: '/', qr: '#qr-code', thumb: '#youtube-thumbnail', gemini: '#gemini-watermark', recorder: '#screen-recorder' };
-        const PATH_TO_PAGE = { '/': 'home', '/gemini-watermark-remover': 'gemini', '/qr-code-generator': 'qr', '/youtube-thumbnail-downloader': 'thumb', '/screen-recorder-studio': 'recorder', '/tools/qr/': 'qr', '/tools/thumbnail/': 'thumb', '/tools/gemini/': 'gemini', '/tools/screen-recorder/': 'recorder' };
-
-        const loadedToolScripts = {};
-        function loadToolScript(src) {
-            if (loadedToolScripts[src]) return Promise.resolve();
-            return new Promise((resolve, reject) => {
-                const s = document.createElement('script');
-                s.src = src;
-                s.onload = () => { loadedToolScripts[src] = true; resolve(); };
-                s.onerror = reject;
-                document.body.appendChild(s);
-            });
-        }
-
-        function ensureToolScripts(page) {
-            if (page === 'qr') {
-                if (window.QRTool) return Promise.resolve();
-                return loadToolScript('/static/js/qrcode.min.js').then(() => loadToolScript('/static/js/qr-tool.min.js'));
-            } else if (page === 'thumb') {
-                if (window.ThumbTool) return Promise.resolve();
-                return loadToolScript('/static/js/thumb-tool.min.js');
-            } else if (page === 'gemini') {
-                if (window.GeminiWatermarkTool && window.GeminiEngine) return Promise.resolve();
-                return loadToolScript('/static/js/gemini-engine.bundle.js').then(() => loadToolScript('/static/js/gemini-watermark-remover.min.js'));
-            } else if (page === 'recorder') {
-                if (window.ScreenRecorderTool) {
-                    window.ScreenRecorderTool.onPageActivated();
-                    return Promise.resolve();
+        const LEGACY_TOOL_HASHES = ['#qr-code', '#youtube-thumbnail', '#gemini-watermark', '#screen-recorder', '#qr', '#thumb', '#gemini', '#recorder'];
+        function handleLegacyHash() {
+            const hash = (window.location.hash || '').toLowerCase();
+            const isLegacy = LEGACY_TOOL_HASHES.includes(hash);
+            const homeEl = document.getElementById('page-home');
+            const notFoundEl = document.getElementById('page-404');
+            if (isLegacy) {
+                if (homeEl) homeEl.style.display = 'none';
+                if (notFoundEl) {
+                    notFoundEl.style.display = 'block';
+                    notFoundEl.classList.add('active');
                 }
-                return loadToolScript('/static/js/screen-recorder-tool.min.js').then(() => {
-                    if (window.ScreenRecorderTool) window.ScreenRecorderTool.onPageActivated();
-                });
+                document.title = (currentLang === 'en') ? "404 - Page Not Found | GToolix" : "404 - الصفحة غير موجودة | GToolix";
+            } else {
+                if (homeEl) homeEl.style.display = 'block';
+                if (notFoundEl) {
+                    notFoundEl.style.display = 'none';
+                    notFoundEl.classList.remove('active');
+                }
+                document.title = (currentLang === 'en')
+                    ? "GToolix – Free Online Tools: QR Code Generator, YouTube Thumbnail Grabber, Gemini Watermark Remover, Screen Studio Recorder"
+                    : "GToolix – أدوات مجانية أونلاين: مولد كود QR، تحميل صور اليوتيوب، مزيل علامة جيمناي، مسجل الشاشة";
             }
-            return Promise.resolve();
         }
-
-        function showPage(page, { skipScroll, updateUrl = true } = {}) {
-            if (!PAGE_IDS[page]) page = 'home';
-            document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
-            const targetEl = document.getElementById(PAGE_IDS[page]);
-            if (targetEl) {
-                targetEl.classList.add('active');
-                targetEl.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
-                if (page === 'home' && typeof window.resetHeroVisibility === 'function') {
-                    window.resetHeroVisibility();
-                }
-                if (window.AdManager && typeof window.AdManager.renderPrimaryAds === 'function') {
-                    window.AdManager.renderPrimaryAds(page);
-                }
-            }
-            document.querySelectorAll('.site-nav__links a[data-page]').forEach(a => {
-                a.classList.toggle('active', a.getAttribute('data-page') === page);
-            });
-            document.title = PAGE_TITLES[page] || PAGE_TITLES.home;
-
-            if (updateUrl) {
-                const targetHash = PAGE_TO_HASH[page] !== undefined ? PAGE_TO_HASH[page] : '';
-                const targetUrl = targetHash ? '/' + targetHash : '/';
-                if (location.hash !== targetHash || (location.pathname !== '/' && location.pathname !== '')) {
-                    history.pushState({ page }, '', targetUrl);
-                }
-            }
-            if (!skipScroll) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
-
-            ensureToolScripts(page).then(() => {
-                if (window.ScreenRecorderTool) {
-                    if (page === 'recorder') {
-                        window.ScreenRecorderTool.onPageActivated();
-                    } else {
-                        window.ScreenRecorderTool.onPageDeactivated();
-                    }
-                }
-            });
-        }
-
-        document.addEventListener('click', (e) => {
-            const el = e.target.closest('[data-page]');
-            if (!el) return;
-            e.preventDefault();
-            const targetPage = el.getAttribute('data-page');
-            showPage(targetPage);
-            toggleNav(true);
-        });
-
-        window.addEventListener('popstate', (e) => {
-            const p = (e.state && e.state.page) ? e.state.page : (HASH_TO_PAGE[location.hash] || PATH_TO_PAGE[location.pathname] || 'home');
-            showPage(p, { skipScroll: true, updateUrl: false });
-        });
-
-        window.addEventListener('hashchange', () => {
-            const p = HASH_TO_PAGE[location.hash] || 'home';
-            showPage(p, { skipScroll: true });
-        });
-
-        // Trigger initial active page view & primary ads on load
-        const initPage = PATH_TO_PAGE[location.pathname] || HASH_TO_PAGE[location.hash] || 'home';
-        showPage(initPage, { skipScroll: true, updateUrl: false });
+        window.addEventListener('hashchange', handleLegacyHash);
 
         // ===================================================================
         // Home page: Self-pausing 3D motion system + 3D cursor tilt
@@ -2114,12 +2063,7 @@
                 pc.appendChild(fragment);
             }
             applyTranslations();
-            const pageFromPath = PATH_TO_PAGE[location.pathname];
-            const pageFromHash = HASH_TO_PAGE[location.hash];
-            const initPage = (location.hash && HASH_TO_PAGE[location.hash] && HASH_TO_PAGE[location.hash] !== 'home')
-                ? HASH_TO_PAGE[location.hash]
-                : (pageFromPath || 'home');
-            showPage(initPage, { skipScroll: true, updateUrl: false });
+            handleLegacyHash();
         });
     </script>
     <script src="/static/js/theme.min.js" defer></script>

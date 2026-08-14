@@ -5,103 +5,32 @@
 (function () {
     'use strict';
 
-    const PAGE_IDS = { home: 'page-home', qr: 'page-qr', thumb: 'page-thumb', gemini: 'page-gemini', recorder: 'page-recorder' };
-    const PAGE_TITLES = {
-        home: 'GToolix – Free Online Tools: QR Code Generator, YouTube Thumbnail Grabber, Gemini Watermark Remover, Screen Studio Recorder',
-        qr: 'Free QR Code Generator Online – No Signup, Instant Download | GToolix',
-        thumb: 'YouTube Thumbnail Downloader – Download HD & 4K Thumbnails Free | GToolix',
-        gemini: 'Gemini Watermark Remover – Clean AI-Generated Images Free | GToolix',
-        recorder: 'Screen Studio Recorder | Free Online Screen & Camera Recorder - GToolix'
-    };
-    const HASH_TO_PAGE = { '': 'home', '#': 'home', '#home': 'home', '#qr-code': 'qr', '#youtube-thumbnail': 'thumb', '#gemini-watermark': 'gemini', '#screen-recorder': 'recorder' };
-    const PAGE_TO_HASH = { home: '', qr: '#qr-code', thumb: '#youtube-thumbnail', gemini: '#gemini-watermark', recorder: '#screen-recorder' };
-    const PAGE_TO_PATH = { home: '/', qr: '#qr-code', thumb: '#youtube-thumbnail', gemini: '#gemini-watermark', recorder: '#screen-recorder' };
-    const PATH_TO_PAGE = { '/': 'home', '/gemini-watermark-remover': 'gemini', '/qr-code-generator': 'qr', '/youtube-thumbnail-downloader': 'thumb', '/screen-recorder-studio': 'recorder', '/tools/qr/': 'qr', '/tools/thumbnail/': 'thumb', '/tools/gemini/': 'gemini', '/tools/screen-recorder/': 'recorder' };
-
-    const loadedToolScripts = {};
-    function loadToolScript(src) {
-        if (loadedToolScripts[src]) return Promise.resolve();
-        return new Promise((resolve, reject) => {
-            const s = document.createElement('script');
-            s.src = src;
-            s.onload = () => { loadedToolScripts[src] = true; resolve(); };
-            s.onerror = reject;
-            document.body.appendChild(s);
-        });
-    }
-
-    function ensureToolScripts(page) {
-        if (page === 'qr') {
-            window.location.href = '/qr-code-generator';
-            return Promise.resolve();
-        } else if (page === 'thumb') {
-            window.location.href = '/youtube-thumbnail-downloader';
-            return Promise.resolve();
-        } else if (page === 'gemini') {
-            window.location.href = '/gemini/watermark-remover';
-            return Promise.resolve();
-        } else if (page === 'recorder') {
-            window.location.href = '/screen-recorder-studio';
-            return Promise.resolve();
-        }
-        return Promise.resolve();
-    }
-
-    function showPage(page, options) {
-        options = options || {};
-        if (!PAGE_IDS[page]) page = 'home';
-        document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
-        const targetEl = document.getElementById(PAGE_IDS[page]);
-        if (targetEl) {
-            targetEl.classList.add('active');
-            targetEl.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
-            if (page === 'home' && typeof window.resetHeroVisibility === 'function') {
-                window.resetHeroVisibility();
+    // ===================================================================
+    // Legacy Hash Detection — displays 404 UI for deprecated hash URLs
+    // ===================================================================
+    const LEGACY_TOOL_HASHES = ['#qr-code', '#youtube-thumbnail', '#gemini-watermark', '#screen-recorder', '#qr', '#thumb', '#gemini', '#recorder'];
+    function handleLegacyHash() {
+        const hash = (window.location.hash || '').toLowerCase();
+        const isLegacy = LEGACY_TOOL_HASHES.includes(hash);
+        const homeEl = document.getElementById('page-home');
+        const notFoundEl = document.getElementById('page-404');
+        if (isLegacy) {
+            if (homeEl) homeEl.style.display = 'none';
+            if (notFoundEl) {
+                notFoundEl.style.display = 'block';
+                notFoundEl.classList.add('active');
+            }
+            const currentLang = document.documentElement.lang || 'ar';
+            document.title = (currentLang === 'en') ? "404 - Page Not Found | GToolix" : "404 - الصفحة غير موجودة | GToolix";
+        } else {
+            if (homeEl) homeEl.style.display = 'block';
+            if (notFoundEl) {
+                notFoundEl.style.display = 'none';
+                notFoundEl.classList.remove('active');
             }
         }
-        document.querySelectorAll('.site-nav__links a[data-page]').forEach(a => {
-            a.classList.toggle('active', a.getAttribute('data-page') === page);
-        });
-        document.title = PAGE_TITLES[page] || PAGE_TITLES.home;
-
-        if (options.updateUrl !== false) {
-            const targetHash = PAGE_TO_HASH[page] !== undefined ? PAGE_TO_HASH[page] : '';
-            const targetUrl = targetHash ? '/' + targetHash : '/';
-            if (location.hash !== targetHash || (location.pathname !== '/' && location.pathname !== '')) {
-                history.pushState({ page }, '', targetUrl);
-            }
-        }
-        if (!options.skipScroll) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
-
-        ensureToolScripts(page).then(() => {
-            if (window.ScreenRecorderTool) {
-                if (page === 'recorder') {
-                    window.ScreenRecorderTool.onPageActivated();
-                } else {
-                    window.ScreenRecorderTool.onPageDeactivated();
-                }
-            }
-        });
     }
-
-    document.addEventListener('click', (e) => {
-        const el = e.target.closest('[data-page]');
-        if (!el) return;
-        e.preventDefault();
-        const targetPage = el.getAttribute('data-page');
-        showPage(targetPage);
-        if (typeof window.toggleNav === 'function') window.toggleNav(true);
-    });
-
-    window.addEventListener('popstate', (e) => {
-        const p = (e.state && e.state.page) ? e.state.page : (HASH_TO_PAGE[location.hash] || PATH_TO_PAGE[location.pathname] || 'home');
-        showPage(p, { skipScroll: true, updateUrl: false });
-    });
-
-    window.addEventListener('hashchange', () => {
-        const p = HASH_TO_PAGE[location.hash] || 'home';
-        showPage(p, { skipScroll: true });
-    });
+    window.addEventListener('hashchange', handleLegacyHash);
 
     // Motion & 3D Parallax system (Desktop only)
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -284,11 +213,6 @@
             pc.appendChild(fragment);
         }
         if (typeof window.applyTranslations === 'function') window.applyTranslations();
-        const pageFromPath = PATH_TO_PAGE[location.pathname];
-        const pageFromHash = HASH_TO_PAGE[location.hash];
-        const initPage = (location.hash && HASH_TO_PAGE[location.hash] && HASH_TO_PAGE[location.hash] !== 'home')
-            ? HASH_TO_PAGE[location.hash]
-            : (pageFromPath || 'home');
-        showPage(initPage, { skipScroll: true, updateUrl: false });
+        handleLegacyHash();
     });
 })();
