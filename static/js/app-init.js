@@ -14,7 +14,8 @@
         recorder: 'Screen Studio Recorder | Free Online Screen & Camera Recorder - GToolix'
     };
     const HASH_TO_PAGE = { '': 'home', '#': 'home', '#home': 'home', '#qr-code': 'qr', '#youtube-thumbnail': 'thumb', '#gemini-watermark': 'gemini', '#screen-recorder': 'recorder' };
-    const PAGE_TO_PATH = { home: '/', qr: '/qr-code-generator', thumb: '/youtube-thumbnail-downloader', gemini: '/gemini-watermark-remover', recorder: '/screen-recorder-studio' };
+    const PAGE_TO_HASH = { home: '', qr: '#qr-code', thumb: '#youtube-thumbnail', gemini: '#gemini-watermark', recorder: '#screen-recorder' };
+    const PAGE_TO_PATH = { home: '/', qr: '#qr-code', thumb: '#youtube-thumbnail', gemini: '#gemini-watermark', recorder: '#screen-recorder' };
     const PATH_TO_PAGE = { '/': 'home', '/gemini-watermark-remover': 'gemini', '/qr-code-generator': 'qr', '/youtube-thumbnail-downloader': 'thumb', '/screen-recorder-studio': 'recorder', '/tools/qr/': 'qr', '/tools/thumbnail/': 'thumb', '/tools/gemini/': 'gemini', '/tools/screen-recorder/': 'recorder' };
 
     const loadedToolScripts = {};
@@ -68,8 +69,12 @@
         });
         document.title = PAGE_TITLES[page] || PAGE_TITLES.home;
 
-        if (options.updateUrl !== false && PAGE_TO_PATH[page] && (location.pathname !== PAGE_TO_PATH[page] || location.hash !== '')) {
-            history.pushState({ page }, '', PAGE_TO_PATH[page]);
+        if (options.updateUrl !== false) {
+            const targetHash = PAGE_TO_HASH[page] !== undefined ? PAGE_TO_HASH[page] : '';
+            const targetUrl = targetHash ? '/' + targetHash : '/';
+            if (location.hash !== targetHash || (location.pathname !== '/' && location.pathname !== '')) {
+                history.pushState({ page }, '', targetUrl);
+            }
         }
         if (!options.skipScroll) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
 
@@ -94,7 +99,7 @@
     });
 
     window.addEventListener('popstate', (e) => {
-        const p = (e.state && e.state.page) ? e.state.page : (PATH_TO_PAGE[location.pathname] || HASH_TO_PAGE[location.hash] || 'home');
+        const p = (e.state && e.state.page) ? e.state.page : (HASH_TO_PAGE[location.hash] || PATH_TO_PAGE[location.pathname] || 'home');
         showPage(p, { skipScroll: true, updateUrl: false });
     });
 
