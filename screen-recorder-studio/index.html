@@ -13,6 +13,13 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456"
          crossorigin="anonymous"></script>
     <meta name="theme-color" content="#F8FAFC">
+    <!-- Performance Optimization for Mobile PageSpeed > 90 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
     <!-- Favicon & PWA Suite (Google Search Optimized) -->
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -125,7 +132,8 @@
     }
     </script>
 
-    <link rel="stylesheet" href="/static/css/main.min.css">
+    <link rel="preload" href="/static/css/main.min.css" as="style">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
     <script>
         (function () {
             try {
@@ -154,7 +162,10 @@
     <header class="site-nav">
         <a class="site-nav__brand" href="/">
             <span class="site-nav__brand-mark">
-                <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40">
+                <picture>
+                    <source srcset="/static/img/logo.webp" type="image/webp">
+                    <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40" loading="eager" fetchpriority="high">
+                </picture>
             </span>
             <span>GToolix</span>
         </a>
@@ -275,7 +286,7 @@
                                     <span class="setting-label">📷 <span data-i18n="rec.lblWebcam">Enable
                                             Webcam</span></span>
                                     <label class="toggle-switch">
-                                        <input type="checkbox" id="rec-opt-webcam" checked>
+                                        <input type="checkbox" id="rec-opt-webcam" checked aria-label="Enable Webcam">
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -284,7 +295,7 @@
                                     <span class="setting-label">🎙️ <span data-i18n="rec.lblMic">Enable
                                             Microphone</span></span>
                                     <label class="toggle-switch">
-                                        <input type="checkbox" id="rec-opt-mic" checked>
+                                        <input type="checkbox" id="rec-opt-mic" checked aria-label="Enable Microphone">
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -293,7 +304,7 @@
                                     <span class="setting-label">🔊 <span data-i18n="rec.lblSysAudio">System / Tab
                                             Audio</span></span>
                                     <label class="toggle-switch">
-                                        <input type="checkbox" id="rec-opt-sys-audio" checked>
+                                        <input type="checkbox" id="rec-opt-sys-audio" checked aria-label="System / Tab Audio">
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -381,7 +392,7 @@
                                         <div class="setting-row" style="padding: 0.4rem 0.6rem;">
                                             <span class="setting-label" data-i18n="rec.optGlow">Glow Border</span>
                                             <label class="toggle-switch">
-                                                <input type="checkbox" id="rec-opt-border" checked>
+                                                <input type="checkbox" id="rec-opt-border" checked aria-label="Glow Border">
                                                 <span class="toggle-slider"></span>
                                             </label>
                                         </div>
@@ -399,7 +410,7 @@
                                     <span class="setting-label">⏳ <span data-i18n="rec.lblCountdown">3-Second
                                             Countdown</span></span>
                                     <label class="toggle-switch">
-                                        <input type="checkbox" id="rec-opt-countdown" checked>
+                                        <input type="checkbox" id="rec-opt-countdown" checked aria-label="3-Second Countdown">
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -489,8 +500,8 @@
                                     <polygon points="23 7 16 12 23 17 23 7"></polygon>
                                     <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                                 </svg>
-                                <h3 style="font-size:1.1rem; font-weight:700; color:#FFFFFF; margin-bottom:0.35rem;"
-                                    data-i18n="rec.emptyTitle">Ready to Record</h3>
+                                <h2 style="font-size:1.1rem; font-weight:700; color:#FFFFFF; margin-bottom:0.35rem;"
+                                    data-i18n="rec.emptyTitle">Ready to Record</h2>
                                 <p style="font-size:0.9rem; max-width:320px; margin:0 auto; color:rgba(255,255,255,0.75);"
                                     data-i18n="rec.emptyDesc">Configure camera and audio settings on the left, then
                                     click Start Recording.</p>
@@ -713,7 +724,7 @@
                         </div>
                     </div>
 
-                    <a class="back-link" data-page="home" data-i18n="common.backLink" style="margin-top: 1.5rem;">←
+                    <a class="back-link" href="/" data-page="home" data-i18n="common.backLink" style="margin-top: 1.5rem; color: var(--primary); font-weight: 600;">←
                         العودة لكل الأدوات</a>
                 </div>
             </main>
@@ -726,7 +737,10 @@
             <div class="footer-grid">
                 <div class="footer-col footer-col--brand">
                     <a class="footer-brand" href="/">
-                        <img src="/static/img/logo.png" alt="GToolix Logo" class="footer-logo-img" width="36" height="36">
+                        <picture>
+                            <source srcset="/static/img/logo.webp" type="image/webp">
+                            <img src="/static/img/logo.webp" alt="GToolix Logo" class="footer-logo-img" width="36" height="36" loading="lazy">
+                        </picture>
                         <span>GToolix</span>
                     </a>
                     <p class="footer-desc" data-i18n="common.footerNote">
