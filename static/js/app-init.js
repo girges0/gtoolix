@@ -41,13 +41,8 @@
             window.location.href = '/gemini/watermark-remover';
             return Promise.resolve();
         } else if (page === 'recorder') {
-            if (window.ScreenRecorderTool) {
-                window.ScreenRecorderTool.onPageActivated();
-                return Promise.resolve();
-            }
-            return loadToolScript('/static/js/screen-recorder-tool.min.js').then(() => {
-                if (window.ScreenRecorderTool) window.ScreenRecorderTool.onPageActivated();
-            });
+            window.location.href = '/screen-recorder-studio';
+            return Promise.resolve();
         }
         return Promise.resolve();
     }
