@@ -177,7 +177,7 @@
     }
     </script>
 
-    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css">
     <script>
         (function () {
             try {
@@ -228,6 +228,14 @@
         </div>
     </header>
     <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+
+    <div class="background-gradient"></div>
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="particles" id="particles"></div>
 
     <main>
         <!-- ===================== GEMINI WATERMARK REMOVER ===================== -->
@@ -910,14 +918,34 @@
             btn.setAttribute('aria-expanded', String(shouldOpen));
         }
 
+        function initParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (particlesContainer && window.innerWidth > 1023) {
+                const fragment = document.createDocumentFragment();
+                for (let i = 0; i < 35; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    p.style.left = (Math.random() * 100) + '%';
+                    p.style.animationDelay = (Math.random() * 8) + 's';
+                    p.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                    fragment.appendChild(p);
+                }
+                particlesContainer.appendChild(fragment);
+            }
+        }
+
         window.translations = translations;
         window.applyTranslations = applyTranslations;
         window.setLanguage = setLanguage;
 
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', applyTranslations);
+            document.addEventListener('DOMContentLoaded', () => {
+                applyTranslations();
+                initParticles();
+            });
         } else {
             applyTranslations();
+            initParticles();
         }
     </script>
     <script src="/static/js/theme.min.js" defer></script>

@@ -38,8 +38,8 @@
             if (window.ThumbTool) return Promise.resolve();
             return loadToolScript('/static/js/thumb-tool.min.js');
         } else if (page === 'gemini') {
-            if (window.GeminiWatermarkTool && window.GeminiEngine) return Promise.resolve();
-            return loadToolScript('/static/js/gemini-engine.bundle.js').then(() => loadToolScript('/static/js/gemini-watermark-remover.min.js'));
+            window.location.href = '/gemini/watermark-remover';
+            return Promise.resolve();
         } else if (page === 'recorder') {
             if (window.ScreenRecorderTool) {
                 window.ScreenRecorderTool.onPageActivated();
