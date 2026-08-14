@@ -13,6 +13,13 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456"
          crossorigin="anonymous"></script>
     <meta name="theme-color" content="#F8FAFC">
+    <!-- Performance Optimization for Mobile PageSpeed > 90 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
     <!-- Favicon & PWA Suite (Google Search Optimized) -->
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -159,7 +166,10 @@
     <header class="site-nav">
         <a class="site-nav__brand" href="/">
             <span class="site-nav__brand-mark">
-                <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40">
+                <picture>
+                    <source srcset="/static/img/logo.webp" type="image/webp">
+                    <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40" loading="eager" fetchpriority="high">
+                </picture>
             </span>
             <span>GToolix</span>
         </a>
@@ -196,7 +206,7 @@
         <div class="tool-view">
             <header class="tool-header reveal in-view">
                 <nav class="tool-breadcrumbs">
-                    <a data-page="home" data-i18n="common.breadcrumbHome">الرئيسية</a>
+                    <a href="/" data-page="home" data-i18n="common.breadcrumbHome">الرئيسية</a>
                     <span class="sep">/</span>
                     <span data-i18n="qr.breadcrumbCurrent">مولد كود QR</span>
                 </nav>
@@ -259,7 +269,7 @@
                                         <span class="qr-tab-icon">📱</span> <span data-i18n="qr.tabSocial">Social</span>
                                     </button>
                                 </div>
-                                <button type="button" role="tab" class="qr-tabs-nav-btn next" id="qr-tabs-next"
+                                <button type="button" class="qr-tabs-nav-btn next" id="qr-tabs-next"
                                     aria-label="Scroll tabs right" onclick="QRTool.scrollTabs(150)">
                                     ›
                                 </button>
@@ -736,7 +746,10 @@
                 <div class="footer-col footer-col--brand">
                     <a class="footer-brand" href="/">
                         <span class="site-nav__brand-mark">
-                            <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40">
+                            <picture>
+                                <source srcset="/static/img/logo.webp" type="image/webp">
+                                <img src="/static/img/logo.png" alt="GToolix Logo" class="site-nav__logo-img" width="40" height="40" loading="lazy">
+                            </picture>
                         </span>
                         <span>GToolix</span>
                     </a>
@@ -756,19 +769,19 @@
                 <div class="footer-col">
                     <h4 class="footer-col__title" data-i18n="common.footerTrustTitle">عن المنصة والثقة</h4>
                     <nav class="footer-links">
-                        <a href="/about/" data-i18n="common.linkAbout">عن المنصة</a>
-                        <a href="/faq/" data-i18n="common.linkFaq">الأسئلة الشائعة</a>
+                        <a href="/about" data-i18n="common.linkAbout">عن المنصة</a>
+                        <a href="/faq" data-i18n="common.linkFaq">الأسئلة الشائعة</a>
                     </nav>
                 </div>
 
                 <div class="footer-col">
                     <h4 class="footer-col__title" data-i18n="common.footerLegalTitle">الخصوصية والشروط</h4>
                     <nav class="footer-links">
-                        <a href="/privacy-policy/" data-i18n="common.linkPrivacy">سياسة الخصوصية</a>
-                        <a href="/terms-of-service/" data-i18n="common.linkTerms">الشروط والأحكام</a>
-                        <a href="/cookies-policy/" data-i18n="common.linkCookies">سياسة الكوكيز</a>
-                        <a href="/disclaimer/" data-i18n="common.linkDisclaimer">إخلاء المسؤولية</a>
-                        <a href="/dmca/" data-i18n="common.linkDmca">حقوق النشر (DMCA)</a>
+                        <a href="/privacy-policy" data-i18n="common.linkPrivacy">سياسة الخصوصية</a>
+                        <a href="/terms-of-service" data-i18n="common.linkTerms">الشروط والأحكام</a>
+                        <a href="/cookies-policy" data-i18n="common.linkCookies">سياسة الكوكيز</a>
+                        <a href="/disclaimer" data-i18n="common.linkDisclaimer">إخلاء المسؤولية</a>
+                        <a href="/dmca" data-i18n="common.linkDmca">حقوق النشر (DMCA)</a>
                     </nav>
                 </div>
             </div>
