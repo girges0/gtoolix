@@ -103,12 +103,7 @@
     <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
     <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
-    </noscript>
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
 
     <!-- ===================== SEO: Global JSON-LD Schema ===================== -->
     <script type="application/ld+json">
@@ -410,8 +405,7 @@
         }
     </style>
     <link rel="preload" href="/static/css/main.min.css" as="style">
-    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/static/css/main.min.css"></noscript>
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
     <script>/* Theme init — prevent FOUC */
         window.seoPageType = "";
         (function () { var t = localStorage.getItem('theme'); if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light' } document.documentElement.setAttribute('data-theme', t) })();

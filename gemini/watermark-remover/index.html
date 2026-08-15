@@ -2,6 +2,28 @@
 <html lang="ar" dir="rtl" data-theme="light">
 
 <head>
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
+                var l = 'en';
+                if (saved === 'ar' || saved === 'en') {
+                    l = saved;
+                } else {
+                    var userLangs = (navigator.languages && navigator.languages.length) ? navigator.languages : (navigator.language ? [navigator.language] : []);
+                    for (var i = 0; i < userLangs.length; i++) {
+                        var code = (userLangs[i] || '').toLowerCase();
+                        if (code.indexOf('ar') === 0) { l = 'ar'; break; }
+                        if (code.indexOf('en') === 0) { l = 'en'; break; }
+                    }
+                }
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('lang', l);
+                document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>مزيل العلامة المائية لجيمناي مجاناً أونلاين | إزالة شعار Gemini بدون رفع للصور – GToolix</title>
@@ -20,12 +42,7 @@
     <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
     <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
-    </noscript>
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
 
     <!-- Critical Inline Styles (Above-the-fold instant paint) -->
     <style>
@@ -495,30 +512,7 @@
     </script>
 
     <link rel="preload" href="/static/css/main.min.css" as="style">
-    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/static/css/main.min.css"></noscript>
-    <script>
-        (function () {
-            try {
-                var saved = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
-                var l = 'en';
-                if (saved === 'ar' || saved === 'en') {
-                    l = saved;
-                } else {
-                    var userLangs = (navigator.languages && navigator.languages.length) ? navigator.languages : (navigator.language ? [navigator.language] : []);
-                    for (var i = 0; i < userLangs.length; i++) {
-                        var code = (userLangs[i] || '').toLowerCase();
-                        if (code.indexOf('ar') === 0) { l = 'ar'; break; }
-                        if (code.indexOf('en') === 0) { l = 'en'; break; }
-                    }
-                }
-                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                document.documentElement.setAttribute('lang', l);
-                document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
-                document.documentElement.setAttribute('data-theme', t);
-            } catch (e) { }
-        })();
-    </script>
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
 </head>
 
 <body>
