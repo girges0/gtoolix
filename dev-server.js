@@ -81,6 +81,22 @@ const server = http.createServer((req, res) => {
     }
 
     if (!fs.existsSync(filePath)) {
+        const isEnRequest = pathname.startsWith('/en/') || pathname === '/en';
+        const fallback404 = isEnRequest
+            ? path.join(ROOT_DIR, 'en', '404.html')
+            : path.join(ROOT_DIR, '404.html');
+
+        if (fs.existsSync(fallback404)) {
+            fs.readFile(fallback404, (err, content) => {
+                res.writeHead(404, {
+                    'Content-Type': 'text/html; charset=UTF-8',
+                    'Access-Control-Allow-Origin': '*'
+                });
+                res.end(content);
+            });
+            return;
+        }
+
         res.writeHead(404, { 'Content-Type': 'text/html; charset=UTF-8' });
         res.end(`<h1>404 Not Found</h1><p>Cannot GET ${escapeHtml(req.url)}</p>`);
         return;

@@ -460,3 +460,14 @@
   to = "/en/dmca/index.html"
   status = 200
 
+[[redirects]]
+  from = "/404"
+  to = "/404.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/404"
+  to = "/en/404.html"
+  status = 200
+
+

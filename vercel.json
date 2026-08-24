@@ -239,6 +239,14 @@
     {
       "source": "/en/dmca",
       "destination": "/en/dmca/index.html"
+    },
+    {
+      "source": "/404",
+      "destination": "/404.html"
+    },
+    {
+      "source": "/en/404",
+      "destination": "/en/404.html"
     }
   ],
   "headers": [

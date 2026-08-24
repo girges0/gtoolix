@@ -7,17 +7,23 @@
             try {
                 var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
                 document.documentElement.setAttribute('data-theme', t);
+
+                var p = window.location.pathname || '';
+                var isAr = (p === '/404' || (p.indexOf('/en') !== 0 && p !== ''));
+                var storedLang = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
+                var lang = (p === '/en/404' || p.indexOf('/en') === 0) ? 'en' : (storedLang || 'en');
+                document.documentElement.setAttribute('lang', lang);
+                document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
             } catch (e) { }
         })();
     </script>
-    <script src="/static/js/lang-detect.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>404 - Page Not Found | GToolix</title>
-    <meta name="description" content="Sorry, the page you are looking for does not exist or has been moved. Explore free GToolix tools.">
+    <title id="page-title">404 - Page Not Found | GToolix</title>
+    <meta name="description" id="page-description" content="Sorry, the page you are looking for does not exist or has been moved. Explore free GToolix tools.">
     <meta name="robots" content="noindex, follow">
-
-    
 
     <!-- Performance: Preconnect & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -151,8 +157,8 @@
 </head>
 
 <body>
-        <header class="site-nav" id="site-header">
-        <a class="site-nav__brand" href="/en/" aria-label="GToolix Home">
+    <header class="site-nav" id="site-header">
+        <a class="site-nav__brand" id="nav-brand-link" href="/en/" aria-label="GToolix Home" data-i18n-href="homeUrl" data-i18n-aria="brandAria">
             <span class="site-nav__brand-mark">
                 <picture>
                     <source srcset="/static/img/logo.webp" type="image/webp">
@@ -163,37 +169,37 @@
             <span>GToolix</span>
         </a>
         <nav class="site-nav__links" id="site-nav-links" aria-label="Main Navigation">
-            <a href="/en/tools" class="nav-item-link" data-nav="tools">
+            <a href="/en/tools" class="nav-item-link" id="nav-link-tools" data-nav="tools" data-i18n-href="toolsUrl">
                 <span class="nav-item-icon nav-icon-tools">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
                 </span>
                 <span class="nav-item-body">
-                    <span class="nav-item-label" data-i18n="common.navTools">Tools</span>
-                    <span class="nav-item-desc" data-i18n="common.navToolsDesc">Free Interactive Smart Web Tools</span>
+                    <span class="nav-item-label" data-i18n="navTools">Tools</span>
+                    <span class="nav-item-desc" data-i18n="navToolsDesc">Free Interactive Smart Web Tools</span>
                 </span>
                 <span class="nav-item-chevron" aria-hidden="true">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </span>
             </a>
-            <a href="/en/blog" class="nav-item-link" data-nav="blog">
+            <a href="/en/blog" class="nav-item-link" id="nav-link-blog" data-nav="blog" data-i18n-href="blogUrl">
                 <span class="nav-item-icon nav-icon-blog">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="10" y1="6" x2="16" y2="6"></line><line x1="10" y1="10" x2="16" y2="10"></line></svg>
                 </span>
                 <span class="nav-item-body">
-                    <span class="nav-item-label" data-i18n="common.navBlog">Articles</span>
-                    <span class="nav-item-desc" data-i18n="common.navBlogDesc">Guides, Articles & Insights</span>
+                    <span class="nav-item-label" data-i18n="navBlog">Articles</span>
+                    <span class="nav-item-desc" data-i18n="navBlogDesc">Guides, Articles & Insights</span>
                 </span>
                 <span class="nav-item-chevron" aria-hidden="true">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </span>
             </a>
-            <a href="/en/programs" class="nav-item-link" data-nav="programs">
+            <a href="/en/programs" class="nav-item-link" id="nav-link-programs" data-nav="programs" data-i18n-href="programsUrl">
                 <span class="nav-item-icon nav-icon-programs">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M8 10l3 3-3 3"></path><line x1="13" y1="16" x2="17" y2="16"></line></svg>
                 </span>
                 <span class="nav-item-body">
-                    <span class="nav-item-label" data-i18n="common.navPrograms">Programs</span>
-                    <span class="nav-item-desc" data-i18n="common.navProgramsDesc">Desktop Apps & Software Hub</span>
+                    <span class="nav-item-label" data-i18n="navPrograms">Programs</span>
+                    <span class="nav-item-desc" data-i18n="navProgramsDesc">Desktop Apps & Software Hub</span>
                 </span>
                 <span class="nav-item-chevron" aria-hidden="true">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -201,7 +207,7 @@
             </a>
         </nav>
         <div class="site-nav__right">
-            <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Toggle theme">
+            <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Toggle theme" data-i18n-aria="themeAria">
                 <span class="theme-toggle-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -217,8 +223,8 @@
                 </span>
             </button>
             <div class="lang-switcher" aria-label="Language Switcher">
-                <a href="/en/404" class="lang-btn active" id="lang-en-btn" onclick="try{localStorage.setItem('gtoolix_language','en');localStorage.setItem('siteLang','en');}catch(e){}">EN</a>
-                <a href="/404" class="lang-btn" id="lang-ar-btn" onclick="try{localStorage.setItem('gtoolix_language','ar');localStorage.setItem('siteLang','ar');}catch(e){}">AR</a>
+                <a href="/en/404" class="lang-btn active" id="lang-en-btn" onclick="set404Language('en', true); return false;">EN</a>
+                <a href="/404" class="lang-btn" id="lang-ar-btn" onclick="set404Language('ar', true); return false;">AR</a>
             </div>
             <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"
                 aria-controls="site-nav-links" onclick="toggleNav()">
@@ -240,23 +246,23 @@
         <div style="font-size: clamp(5rem, 12vw, 8.5rem); font-weight: 900; line-height: 1; margin-bottom: 1rem; background: linear-gradient(135deg, #2563EB, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             404
         </div>
-        <h1 style="font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; margin-bottom: 1rem;">
+        <h1 style="font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; margin-bottom: 1rem;" data-i18n="errTitle">
             Page Not Found
         </h1>
-        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; max-width: 520px; margin-inline: auto;">
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; max-width: 520px; margin-inline: auto;" data-i18n="errDesc">
             Sorry, the page you requested could not be found. You can return to the homepage or explore our tools catalog.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="/en/" class="btn btn-primary" style="padding: 0.75rem 1.5rem; text-decoration: none; font-weight: 600;">Back to Home</a>
-            <a href="/en/tools" class="btn btn-outline" style="padding: 0.75rem 1.5rem; text-decoration: none; font-weight: 600;">Explore Tools</a>
+            <a href="/en/" class="btn btn-primary" id="btn-404-home" data-i18n-href="homeUrl" data-i18n="btnHome" style="padding: 0.75rem 1.5rem; text-decoration: none; font-weight: 600;">Back to Home</a>
+            <a href="/en/tools" class="btn btn-outline" id="btn-404-tools" data-i18n-href="toolsUrl" data-i18n="btnTools" style="padding: 0.75rem 1.5rem; text-decoration: none; font-weight: 600;">Explore Tools</a>
         </div>
     </main>
 
-        <footer>
+    <footer>
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-col footer-col--brand">
-                    <a class="footer-brand" href="/en/" aria-label="GToolix Home">
+                    <a class="footer-brand" id="footer-brand-link" href="/en/" aria-label="GToolix Home" data-i18n-href="homeUrl" data-i18n-aria="brandAria">
                         <span class="site-nav__brand-mark">
                             <picture>
                                 <source srcset="/static/img/logo.webp" type="image/webp">
@@ -265,55 +271,243 @@
                         </span>
                         <span>GToolix</span>
                     </a>
-                    <p class="footer-note">GToolix is intended for personal use with content you own or licensed for public use.</p>
+                    <p class="footer-note" data-i18n="footerBrandNote">GToolix is intended for personal use with content you own or licensed for public use.</p>
                 </div>
 
                 <div class="footer-col">
-                    <h4 class="footer-col__title">Featured Tools</h4>
+                    <h4 class="footer-col__title" data-i18n="footerFeaturedTools">Featured Tools</h4>
                     <nav class="footer-links">
-                        <a href="/en/tools/qr-code-generator">QR Code Generator</a>
-                        <a href="/en/tools/youtube-thumbnail-downloader">YouTube Thumbnail Downloader</a>
-                        <a href="/en/tools/screen-recorder-studio">Screen Recorder</a>
-                        <a href="/en/tools/image-compressor">Image Compressor & Converter</a>
+                        <a href="/en/tools/qr-code-generator" data-i18n-href="toolQrUrl" data-i18n="footerToolQr">QR Code Generator</a>
+                        <a href="/en/tools/youtube-thumbnail-downloader" data-i18n-href="toolThumbUrl" data-i18n="footerToolThumb">YouTube Thumbnail Downloader</a>
+                        <a href="/en/tools/screen-recorder-studio" data-i18n-href="toolRecUrl" data-i18n="footerToolRec">Screen Recorder</a>
+                        <a href="/en/tools/image-compressor" data-i18n-href="toolCompUrl" data-i18n="footerToolComp">Image Compressor & Converter</a>
                     </nav>
                 </div>
 
                 <div class="footer-col">
-                    <h4 class="footer-col__title">Platform Sections</h4>
+                    <h4 class="footer-col__title" data-i18n="footerSections">Platform Sections</h4>
                     <nav class="footer-links">
-                        <a href="/en/tools">Tools</a>
-                        <a href="/en/blog">Articles</a>
-                        <a href="/en/programs">Programs</a>
+                        <a href="/en/tools" data-i18n-href="toolsUrl" data-i18n="footerSecTools">Tools</a>
+                        <a href="/en/blog" data-i18n-href="blogUrl" data-i18n="footerSecBlog">Articles</a>
+                        <a href="/en/programs" data-i18n-href="programsUrl" data-i18n="footerSecPrograms">Programs</a>
                     </nav>
                 </div>
 
                 <div class="footer-col">
-                    <h4 class="footer-col__title">About Platform & Trust</h4>
+                    <h4 class="footer-col__title" data-i18n="footerAboutTitle">About Platform & Trust</h4>
                     <nav class="footer-links">
-                        <a href="/en/about">About Us</a>
-                        <a href="/en/faq">FAQ</a>
-                        <a href="/en/contact">Contact Us</a>
+                        <a href="/en/about" data-i18n-href="aboutUrl" data-i18n="footerAbout">About Us</a>
+                        <a href="/en/faq" data-i18n-href="faqUrl" data-i18n="footerFaq">FAQ</a>
+                        <a href="/en/contact" data-i18n-href="contactUrl" data-i18n="footerContact">Contact Us</a>
                     </nav>
                 </div>
 
                 <div class="footer-col">
-                    <h4 class="footer-col__title">Privacy & Terms</h4>
+                    <h4 class="footer-col__title" data-i18n="footerLegalTitle">Privacy & Terms</h4>
                     <nav class="footer-links">
-                        <a href="/en/privacy-policy">Privacy Policy</a>
-                        <a href="/en/terms-of-service">Terms of Service</a>
-                        <a href="/en/cookies-policy">Cookies Policy</a>
-                        <a href="/en/disclaimer">Disclaimer</a>
-                        <a href="/en/dmca">Copyright (DMCA)</a>
+                        <a href="/en/privacy-policy" data-i18n-href="privacyUrl" data-i18n="footerPrivacy">Privacy Policy</a>
+                        <a href="/en/terms-of-service" data-i18n-href="termsUrl" data-i18n="footerTerms">Terms of Service</a>
+                        <a href="/en/cookies-policy" data-i18n-href="cookiesUrl" data-i18n="footerCookies">Cookies Policy</a>
+                        <a href="/en/disclaimer" data-i18n-href="disclaimerUrl" data-i18n="footerDisclaimer">Disclaimer</a>
+                        <a href="/en/dmca" data-i18n-href="dmcaUrl" data-i18n="footerDmca">Copyright (DMCA)</a>
                     </nav>
                 </div>
             </div>
             <div class="footer-bottom-bar">
-                <p>&copy; 2026 GToolix. All rights reserved.</p>
+                <p data-i18n="footerCopyright">&copy; 2026 GToolix. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        const I18N_DICTIONARY = {
+            ar: {
+                pageTitle: '404 - الصفحة غير موجودة | GToolix',
+                pageDesc: 'عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. استكشف أدوات GToolix المجانية.',
+                brandAria: 'GToolix الرئيسية',
+                themeAria: 'تبديل المظهر',
+                homeUrl: '/',
+                toolsUrl: '/tools',
+                blogUrl: '/blog',
+                programsUrl: '/programs',
+                aboutUrl: '/about',
+                contactUrl: '/contact',
+                faqUrl: '/faq',
+                privacyUrl: '/privacy-policy',
+                termsUrl: '/terms-of-service',
+                cookiesUrl: '/cookies-policy',
+                disclaimerUrl: '/disclaimer',
+                dmcaUrl: '/dmca',
+                toolQrUrl: '/tools/qr-code-generator',
+                toolThumbUrl: '/tools/youtube-thumbnail-downloader',
+                toolRecUrl: '/tools/screen-recorder-studio',
+                toolCompUrl: '/tools/image-compressor',
+                navTools: 'الأدوات',
+                navToolsDesc: 'أدوات ذكية وتفاعلية مجانية',
+                navBlog: 'المقالات',
+                navBlogDesc: 'شروحات ومقالات حصرية ومفيدة',
+                navPrograms: 'البرامج',
+                navProgramsDesc: 'تطبيقات وحلول رقمية جاهزة',
+                errTitle: 'الصفحة غير موجودة',
+                errDesc: 'عذراً، الرابط الذي تحاول الوصول إليه غير متاح أو تم نقله. يمكنك العودة إلى الصفحة الرئيسية أو استكشاف مكتبة الأدوات.',
+                btnHome: 'الصفحة الرئيسية',
+                btnTools: 'مكتبة الأدوات',
+                footerBrandNote: 'GToolix مخصص للاستخدام الشخصي مع محتوى تملك حقوقه أو مرخّص للاستخدام العام.',
+                footerFeaturedTools: 'الأدوات المميزة',
+                footerToolQr: 'مولد رمز QR',
+                footerToolThumb: 'تحميل الصور المصغرة لليوتيوب',
+                footerToolRec: 'مسجل الشاشة',
+                footerToolComp: 'ضاغط ومحوّل الصور الرقمي',
+                footerSections: 'أقسام المنصة',
+                footerSecTools: 'الأدوات',
+                footerSecBlog: 'المقالات',
+                footerSecPrograms: 'البرامج',
+                footerAboutTitle: 'عن المنصة والثقة',
+                footerAbout: 'عن المنصة',
+                footerFaq: 'الأسئلة الشائعة',
+                footerContact: 'اتصل بنا',
+                footerLegalTitle: 'الخصوصية والشروط',
+                footerPrivacy: 'سياسة الخصوصية',
+                footerTerms: 'شروط الاستخدام',
+                footerCookies: 'سياسة الكوكيز',
+                footerDisclaimer: 'إخلاء المسؤولية',
+                footerDmca: 'حقوق النشر (DMCA)',
+                footerCopyright: '© 2026 GToolix. جميع الحقوق محفوظة.'
+            },
+            en: {
+                pageTitle: '404 - Page Not Found | GToolix',
+                pageDesc: 'Sorry, the page you are looking for does not exist or has been moved. Explore free GToolix tools.',
+                brandAria: 'GToolix Home',
+                themeAria: 'Toggle theme',
+                homeUrl: '/en/',
+                toolsUrl: '/en/tools',
+                blogUrl: '/en/blog',
+                programsUrl: '/en/programs',
+                aboutUrl: '/en/about',
+                contactUrl: '/en/contact',
+                faqUrl: '/en/faq',
+                privacyUrl: '/en/privacy-policy',
+                termsUrl: '/en/terms-of-service',
+                cookiesUrl: '/en/cookies-policy',
+                disclaimerUrl: '/en/disclaimer',
+                dmcaUrl: '/en/dmca',
+                toolQrUrl: '/en/tools/qr-code-generator',
+                toolThumbUrl: '/en/tools/youtube-thumbnail-downloader',
+                toolRecUrl: '/en/tools/screen-recorder-studio',
+                toolCompUrl: '/en/tools/image-compressor',
+                navTools: 'Tools',
+                navToolsDesc: 'Free Interactive Smart Web Tools',
+                navBlog: 'Articles',
+                navBlogDesc: 'Guides, Articles & Insights',
+                navPrograms: 'Programs',
+                navProgramsDesc: 'Desktop Apps & Software Hub',
+                errTitle: 'Page Not Found',
+                errDesc: 'Sorry, the page you requested could not be found. You can return to the homepage or explore our tools catalog.',
+                btnHome: 'Back to Home',
+                btnTools: 'Explore Tools',
+                footerBrandNote: 'GToolix is intended for personal use with content you own or licensed for public use.',
+                footerFeaturedTools: 'Featured Tools',
+                footerToolQr: 'QR Code Generator',
+                footerToolThumb: 'YouTube Thumbnail Downloader',
+                footerToolRec: 'Screen Recorder',
+                footerToolComp: 'Image Compressor & Converter',
+                footerSections: 'Platform Sections',
+                footerSecTools: 'Tools',
+                footerSecBlog: 'Articles',
+                footerSecPrograms: 'Programs',
+                footerAboutTitle: 'About Platform & Trust',
+                footerAbout: 'About Us',
+                footerFaq: 'FAQ',
+                footerContact: 'Contact Us',
+                footerLegalTitle: 'Privacy & Terms',
+                footerPrivacy: 'Privacy Policy',
+                footerTerms: 'Terms of Service',
+                footerCookies: 'Cookies Policy',
+                footerDisclaimer: 'Disclaimer',
+                footerDmca: 'Copyright (DMCA)',
+                footerCopyright: '© 2026 GToolix. All rights reserved.'
+            }
+        };
+
+        function set404Language(lang, updateUrl) {
+            const data = I18N_DICTIONARY[lang] || I18N_DICTIONARY.en;
+            
+            try {
+                localStorage.setItem('gtoolix_language', lang);
+                localStorage.setItem('siteLang', lang);
+            } catch (e) {}
+
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            document.title = data.pageTitle;
+            const desc = document.getElementById('page-description') || document.querySelector('meta[name="description"]');
+            if (desc) desc.setAttribute('content', data.pageDesc);
+
+            // Update text nodes
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (data[key]) {
+                    el.textContent = data[key];
+                }
+            });
+
+            // Update URLs
+            document.querySelectorAll('[data-i18n-href]').forEach(el => {
+                const key = el.getAttribute('data-i18n-href');
+                if (data[key]) {
+                    el.setAttribute('href', data[key]);
+                }
+            });
+
+            // Update ARIA labels
+            document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+                const key = el.getAttribute('data-i18n-aria');
+                if (data[key]) {
+                    el.setAttribute('aria-label', data[key]);
+                }
+            });
+
+            // Update Language Switcher UI
+            const enBtn = document.getElementById('lang-en-btn');
+            const arBtn = document.getElementById('lang-ar-btn');
+            if (enBtn && arBtn) {
+                if (lang === 'en') {
+                    enBtn.classList.add('active');
+                    arBtn.classList.remove('active');
+                } else {
+                    arBtn.classList.add('active');
+                    enBtn.classList.remove('active');
+                }
+            }
+
+            if (updateUrl && window.history && window.history.pushState) {
+                const targetPath = lang === 'en' ? '/en/404' : '/404';
+                if (window.location.pathname !== targetPath) {
+                    window.history.pushState(null, '', targetPath);
+                }
+            }
+        }
+
+        // Initialize language based on URL or Storage
+        (function initLanguage() {
+            var p = window.location.pathname || '';
+            var isAr = (p === '/404');
+            if (!isAr) {
+                try {
+                    var stored = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
+                    if (stored === 'ar' && p !== '/en/404' && p.indexOf('/en/') !== 0) isAr = true;
+                } catch(e) {}
+            }
+            if (isAr) {
+                set404Language('ar', false);
+            } else {
+                set404Language('en', false);
+            }
+        })();
+
         function toggleNav(forceClose) {
             const links = document.getElementById('site-nav-links');
             const btn = document.getElementById('nav-toggle');
