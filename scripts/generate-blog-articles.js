@@ -1760,6 +1760,7 @@ function generateFullBlogArticlePage(artObj, lang) {
     const updatedText = isAr ? 'آخر تحديث: 24 أغسطس 2026' : 'Updated: Aug 24, 2026';
 
     const toolUrl = `${pfx}/tools/${artObj.toolSlug}`;
+    const currentImageUrl = (!isAr && (artObj.imageUrlEn || artObj.featured_image_url_en)) ? (artObj.imageUrlEn || artObj.featured_image_url_en) : (artObj.imageUrl || artObj.featured_image_url);
 
     // Table of Contents HTML
     const tocItemsHtml = sections.map((sec, i) => {
@@ -1827,7 +1828,7 @@ function generateFullBlogArticlePage(artObj, lang) {
                 },
                 "headline": title,
                 "description": description,
-                "image": `https://www.gtoolix.com${artObj.imageUrl}`,
+                "image": `https://www.gtoolix.com${currentImageUrl}`,
                 "datePublished": artObj.publishedDate,
                 "dateModified": artObj.modifiedDate,
                 "author": {
@@ -1930,7 +1931,7 @@ function generateFullBlogArticlePage(artObj, lang) {
     <meta property="og:title" content="${escapeHtml(title)}">
     <meta property="og:description" content="${escapeHtml(description)}">
     <meta property="og:url" content="${currentUrl}">
-    <meta property="og:image" content="https://www.gtoolix.com${artObj.imageUrl}">
+    <meta property="og:image" content="https://www.gtoolix.com${currentImageUrl}">
     <meta property="og:locale" content="${isAr ? 'ar_EG' : 'en_US'}">
     <meta property="article:published_time" content="${artObj.publishedDate}">
     <meta property="article:modified_time" content="${artObj.modifiedDate}">
@@ -1941,7 +1942,7 @@ function generateFullBlogArticlePage(artObj, lang) {
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${escapeHtml(title)}">
     <meta name="twitter:description" content="${escapeHtml(description)}">
-    <meta name="twitter:image" content="https://www.gtoolix.com${artObj.imageUrl}">
+    <meta name="twitter:image" content="https://www.gtoolix.com${currentImageUrl}">
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
@@ -1952,7 +1953,7 @@ function generateFullBlogArticlePage(artObj, lang) {
     <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
     <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
-    <link rel="preload" as="image" type="image/jpeg" href="${artObj.imageUrl}">
+    <link rel="preload" as="image" type="image/jpeg" href="${currentImageUrl}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
 
     <!-- Stylesheets -->
@@ -2010,7 +2011,7 @@ ${navbarHtml}
 
             <!-- Featured Image Hero Banner -->
             <div class="article-featured-hero" style="border-radius: 1.25rem; overflow: hidden; margin-bottom: 3.5rem; aspect-ratio: 16/9; box-shadow: 0 16px 40px -10px rgba(0,0,0,0.3); border: 1px solid var(--border);">
-                <img src="${artObj.imageUrl}" alt="${escapeHtml(title)}" style="width: 100%; height: 100%; object-fit: cover;" fetchpriority="high">
+                <img src="${currentImageUrl}" alt="${escapeHtml(title)}" style="width: 100%; height: 100%; object-fit: cover;" width="1200" height="675" fetchpriority="high">
             </div>
 
             <!-- Table of Contents (فهرس المحتويات) -->

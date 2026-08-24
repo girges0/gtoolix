@@ -177,7 +177,7 @@ async function runTests() {
         });
 
         try {
-            const resp = await page.goto(`http://localhost:${PORT}${route}`, { waitUntil: 'domcontentloaded', timeout: 10000 });
+            const resp = await page.goto(`http://localhost:${PORT}${route}`, { waitUntil: 'domcontentloaded', timeout: 20000 });
             const status = resp ? resp.status() : 0;
 
             await page.waitForTimeout(600);

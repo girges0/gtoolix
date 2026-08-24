@@ -449,6 +449,8 @@
                 text-align: center;
                 gap: 0.5rem;
             }
+        }
+
         /* Related Tools Cards Grid */
         .related-tools-block {
             margin-top: 3rem;
@@ -703,313 +705,8 @@
       ]
     }
     </script>
-
     <link rel="preload" href="/static/css/main.min.css" as="style">
     <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1042,9 +739,8 @@
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
 </head>
-
 <body>
-                                                                                                                                                                                                                                                                                                        <header class="site-nav" id="site-header">
+                        <header class="site-nav" id="site-header">
         <a class="site-nav__brand" href="/" aria-label="GToolix Home">
             <span class="site-nav__brand-mark">
                 <picture>
@@ -1129,9 +825,7 @@
     </div>
     <div class="particles" id="particles"></div>
 
-    <main>
-        <!-- ===================== QR CODE GENERATOR ===================== -->
-    <div id="page-qr" class="page-view active" style="display: block;">
+    <main id="page-qr" class="page-view active" style="display: block;">
         <div class="tool-view">
             <header class="tool-header reveal in-view">
                 <nav class="tool-breadcrumbs">
@@ -1150,9 +844,7 @@
                     vCard، الرسائل النصية، والمواقع — مجاني 100%، معاينة فورية، وبدون علامات مائية.</p>
             </header>
 
-
-
-            <main>
+            <div class="tool-body-wrap">
                 <div class="card qr-generator-card">
                     <div class="qr-workspace">
                         <div class="qr-workspace-left">
@@ -1452,7 +1144,7 @@
                                         
                                         <div class="qr-logo-active-bar" id="qr-logo-active-state" style="display: none;">
                                             <div class="qr-logo-thumb-wrapper">
-                                                <img id="qr-logo-preview-img" src="" alt="Active Logo" class="qr-logo-thumb">
+                                                <img id="qr-logo-preview-img" src="" alt="Active Logo" class="qr-logo-thumb" width="40" height="40">
                                             </div>
                                             <div class="qr-logo-details">
                                                 <span class="qr-logo-filename" id="qr-logo-name">logo.png</span>
@@ -1731,13 +1423,12 @@
 
                     <a href="/tools" class="back-link" data-i18n="common.backLink">← العودة لكل الأدوات</a>
                 </div>
-            </main>
+            </div>
         </div>
-    </div>
     </main>
 
-        <!-- ===================== GLOBAL FOOTER ===================== -->
-                                                                                                                                                                                                                                                                                                        <footer>
+    <!-- ===================== GLOBAL FOOTER ===================== -->
+                        <footer>
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-col footer-col--brand">

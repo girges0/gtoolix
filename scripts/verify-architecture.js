@@ -129,7 +129,7 @@ expectedPublicRoutes.forEach(r => {
 
 // CSP Headers
 const headersStr = JSON.stringify(vercelConfig.headers);
-assert(headersStr.includes('https://*.supabase.co'), 'vercel.json CSP includes Supabase endpoint in connect-src');
+assert(!headersStr.includes('supabase.co'), 'vercel.json CSP is completely free of Supabase endpoints');
 
 // Robots.txt verification
 assert(robots.includes('User-agent: Mediapartners-Google'), 'robots.txt allows Mediapartners-Google (AdSense)');
