@@ -22,14 +22,15 @@
 
     /**
      * Determine initial theme:
-     * 1. Check localStorage
-     * 2. Fall back to system preference
+     * 1. Check if user set an explicit manual override (theme_manual)
+     * 2. Otherwise always follow device/system preference (prefers-color-scheme)
      * 3. Default to light
      */
     function getInitialTheme() {
         try {
+            const isManual = localStorage.getItem('theme_manual') === 'true';
             const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved === DARK || saved === LIGHT) return saved;
+            if (isManual && (saved === DARK || saved === LIGHT)) return saved;
         } catch (e) { }
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             return DARK;
@@ -40,11 +41,14 @@
     /**
      * Apply theme to HTML root element
      */
-    function applyTheme(theme, animateIcon) {
+    function applyTheme(theme, animateIcon, isManual) {
         if (theme !== DARK && theme !== LIGHT) theme = LIGHT;
         document.documentElement.setAttribute('data-theme', theme);
         try {
-            localStorage.setItem(STORAGE_KEY, theme);
+            if (isManual) {
+                localStorage.setItem('theme_manual', 'true');
+                localStorage.setItem(STORAGE_KEY, theme);
+            }
         } catch (e) { }
         const metaTheme = document.querySelector('meta[name="theme-color"]');
         if (metaTheme) {
@@ -69,7 +73,7 @@
         document.documentElement.classList.add('theme-transitioning');
         const current = document.documentElement.getAttribute('data-theme') || LIGHT;
         const next = current === DARK ? LIGHT : DARK;
-        applyTheme(next, true);
+        applyTheme(next, true, true);
         setTimeout(() => {
             document.documentElement.classList.remove('theme-transitioning');
         }, 350);
@@ -146,18 +150,24 @@
     }
 
     /**
-     * Watch OS color scheme changes
+     * Watch OS/device color scheme changes in real-time
      */
     function watchSystemPreference() {
         if (!window.matchMedia) return;
         try {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                let saved = null;
-                try { saved = localStorage.getItem(STORAGE_KEY); } catch (err) { }
-                if (!saved) {
-                    applyTheme(e.matches ? DARK : LIGHT, true);
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            const systemChangeHandler = function (e) {
+                let isManual = false;
+                try { isManual = localStorage.getItem('theme_manual') === 'true'; } catch (err) { }
+                if (!isManual) {
+                    applyTheme(e.matches ? DARK : LIGHT, true, false);
                 }
-            });
+            };
+            if (mediaQuery.addEventListener) {
+                mediaQuery.addEventListener('change', systemChangeHandler);
+            } else if (mediaQuery.addListener) {
+                mediaQuery.addListener(systemChangeHandler);
+            }
         } catch (e) { }
     }
 
@@ -169,6 +179,17 @@
         if (btn) {
             e.preventDefault();
             toggleTheme();
+            return;
+        }
+
+        const langBtn = e.target.closest('.lang-btn');
+        if (langBtn) {
+            try {
+                const isEn = langBtn.id === 'lang-en-btn' || langBtn.textContent.trim().toUpperCase() === 'EN' || (langBtn.getAttribute('href') || '').includes('/en');
+                localStorage.setItem('gtoolix_manual_lang', 'true');
+                localStorage.setItem('gtoolix_language', isEn ? 'en' : 'ar');
+                localStorage.setItem('siteLang', isEn ? 'en' : 'ar');
+            } catch (err) { }
         }
     });
 
@@ -177,7 +198,7 @@
      */
     function init() {
         const theme = getInitialTheme();
-        applyTheme(theme, false);
+        applyTheme(theme, false, false);
         createButton();
         watchSystemPreference();
     }

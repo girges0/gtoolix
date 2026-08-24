@@ -9,6 +9,7 @@ const cssFiles = [
 ];
 
 const jsFiles = [
+    'static/js/lang-detect.js',
     'static/js/theme.js',
     'static/js/app-init.js',
     'static/js/client.js',
