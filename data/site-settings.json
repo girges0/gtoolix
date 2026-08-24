@@ -1,31 +1,9 @@
 {
-  "maintenance_mode": {
-    "enabled": false,
-    "title_ar": "الموقع قيد الصيانة والتحديث الدوري",
-    "title_en": "Under Scheduled Maintenance",
-    "message_ar": "نقوم حالياً بإجراء بعض التحسينات الهامة وتحديثات الأمان على منصة GToolix لتقديم تجربة أسرع وأكثر استقراراً. سنعود للعمل قريباً جداً!",
-    "message_en": "We are performing scheduled improvements and security updates to GToolix to deliver superior performance. We will be back online shortly!",
-    "estimated_reopen": "",
-    "support_contact": "gtoolix@gmail.com",
-    "admin_bypass_key": "gtoolix_admin_bypass_2026"
-  },
-  "announcement_banner": {
-    "enabled": false,
-    "theme": "feature",
-    "text_ar": "🚀 أدوات ويب عالية الأداء تعمل محلياً 100% في متصفحك وبدون تسجيل مجاناً للأبد!",
-    "text_en": "🚀 High-performance web tools running 100% locally in your browser with zero accounts required!",
-    "link": "/tools",
-    "button_label_ar": "استكشف الأدوات ↗",
-    "button_label_en": "Explore Tools ↗",
-    "open_new_tab": false,
-    "dismissible": true,
-    "sticky": false,
-    "target_pages": "all"
-  },
   "homepage_featured_tool_slugs": [
     "qr-code-generator",
     "youtube-thumbnail-downloader",
-    "screen-recorder-studio"
+    "screen-recorder-studio",
+    "image-compressor"
   ],
   "seo_meta": {
     "site_name_ar": "GToolix – أدوات ويب تفاعلية ذكية ومجانية",

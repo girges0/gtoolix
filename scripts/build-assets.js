@@ -13,6 +13,7 @@ const jsFiles = [
     'static/js/theme.js',
     'static/js/app-init.js',
     'static/js/client.js',
+    'static/js/content-client.js',
     'static/js/screen-recorder-tool.js',
     'static/js/qr-tool.js',
     'tools/qr-code-generator/qr-tool.js',
