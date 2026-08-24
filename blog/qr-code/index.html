@@ -6,12 +6,7 @@
     <script>
         (function () {
             try {
-                var p = window.location.pathname || '';
-                var isEnRoute = p.indexOf('/en/') === 0 || p === '/en';
-                var l = isEnRoute ? 'en' : 'ar';
                 var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                document.documentElement.setAttribute('lang', l);
-                document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
                 document.documentElement.setAttribute('data-theme', t);
             } catch (e) { }
         })();
@@ -21,9 +16,8 @@
 
     <!-- ===================== SEO: Meta & Technical SEO ===================== -->
     <title>QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين | GToolix</title>
-    <meta name="description" content="اكتشف كل ما تحتاج لمعرفته عن QR Code: تاريخه، كيف يعمل، الفرق بين Static و Dynamic، وطريقة إنشاء رمز QR مجاناً للروابط وشبكات WiFi والبيانات بأعلى جودة مع GToolix.">
-    <meta name="keywords"
-        content="QR Code, ما هو QR Code, رمز QR, مولد QR Code, QR Code Generator, إنشاء QR Code, إنشاء رمز QR, عمل QR Code, تحويل رابط إلى QR Code, QR Code مجاني, Free QR Code Generator, GToolix">
+    <meta name="description" content="دليل موسوعي متكامل ومفصل حول رموز QR: تاريخها، بنيتها الهندسية، تصحيح الأخطاء Reed-Solomon، الفرق بين Static و Dynamic، وطريقة إنشاء باركود QR مجاني فائق النقاء.">
+    <meta name="keywords" content="QR Code, ما هو QR Code, رمز QR, مولد QR Code, QR Code Generator, إنشاء QR Code, إنشاء رمز QR, عمل QR Code, تحويل رابط إلى QR Code, QR Code مجاني, Free QR Code Generator, GToolix">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="author" content="GToolix Editorial Team">
     <meta name="theme-color" content="#F8FAFC">
@@ -33,31 +27,33 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-    <!-- Canonical & Sitemap -->
-    
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <!-- Canonical & Alternate Hreflang -->
+    <link rel="canonical" href="https://www.gtoolix.com/blog/qr-code" />
+    <link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/qr-code" />
+    <link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/qr-code" />
+    <link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/qr-code" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="GToolix">
-    
-    
-    
+    <meta property="og:title" content="QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين | GToolix">
+    <meta property="og:description" content="دليل موسوعي متكامل ومفصل حول رموز QR: تاريخها، بنيتها الهندسية، تصحيح الأخطاء Reed-Solomon، الفرق بين Static و Dynamic، وطريقة إنشاء باركود QR مجاني فائق النقاء.">
+    <meta property="og:url" content="https://www.gtoolix.com/blog/qr-code">
     <meta property="og:image" content="https://www.gtoolix.com/static/img/blog/qr-code-guide.jpg">
-    <meta property="og:locale" content="ar_AR">
-    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale" content="ar_EG">
     <meta property="article:published_time" content="2026-08-18T08:00:00+03:00">
-    <meta property="article:modified_time" content="2026-08-18T10:00:00+03:00">
-    <meta property="article:section" content="Web Tools & Productivity">
-    <meta property="article:tag" content="QR Code">
-    <meta property="article:tag" content="Online Tools">
-    <meta property="article:tag" content="Technology Guide">
+    <meta property="article:modified_time" content="2026-08-24T16:00:00+03:00">
+    <meta property="article:author" content="https://www.gtoolix.com">
+    <meta property="article:section" content="Web Performance & Media">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    
-    
+    <meta name="twitter:title" content="QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين | GToolix">
+    <meta name="twitter:description" content="دليل موسوعي متكامل ومفصل حول رموز QR: تاريخها، بنيتها الهندسية، تصحيح الأخطاء Reed-Solomon، الفرق بين Static و Dynamic، وطريقة إنشاء باركود QR مجاني فائق النقاء.">
     <meta name="twitter:image" content="https://www.gtoolix.com/static/img/blog/qr-code-guide.jpg">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
 
     <!-- Google Fonts & Preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,252 +62,309 @@
     <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
     <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
     <link rel="preload" as="image" type="image/jpeg" href="/static/img/blog/qr-code-guide.jpg">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
 
-    <!-- Critical Inline Styles -->
-    <style>
-        :root {
-            --bg: #020817;
-            --bg-secondary: #0F172A;
-            --card: #111827;
-            --border: #1E293B;
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass: rgba(255, 255, 255, 0.04);
-            --primary: #2563EB;
-            --primary-hover: #3B82F6;
-            --accent: #06B6D4;
-            --text: #F8FAFC;
-            --text-secondary: #94A3B8;
-            --radius-full: 9999px;
-            --radius-md: 1rem;
-            --nav-bg: rgba(2, 8, 23, 0.82);
-        }
-
-        [data-theme="light"] {
-            --bg: #F8FAFC;
-            --bg-secondary: #F1F5F9;
-            --card: #FFFFFF;
-            --border: #E2E8F0;
-            --glass-border: rgba(0, 0, 0, 0.06);
-            --glass: rgba(255, 255, 255, 0.7);
-            --primary: #2563EB;
-            --text: #0F172A;
-            --text-secondary: #475569;
-            --nav-bg: rgba(248, 250, 252, 0.85);
-        }
-
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: clip;
-            scrollbar-gutter: stable;
-            width: 100%;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: clip;
-            width: 100%;
-            min-height: 100svh;
-            position: relative;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        html[dir="rtl"] body {
-            font-family: 'Cairo', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-
-        .site-nav {
-            position: fixed;
-            top: 0.75rem;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
-            padding: 0.45rem 0.85rem;
-            margin: 0 auto;
-            max-width: 1180px;
-            width: min(100% - 2rem, 1180px);
-            background: var(--nav-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-full);
-            min-height: 56px;
-            box-sizing: border-box;
-        }
-
-        .site-nav__brand {
-            display: flex;
-            align-items: center;
-            direction: ltr;
-            gap: 0.6rem;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--text);
-            text-decoration: none;
-            background: none;
-            border: none;
-            min-height: 44px;
-            cursor: pointer;
-        }
-
-        .site-nav__logo-img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            border-radius: 9px;
-            display: block;
-        }
-
-        /* Language Toggle Visibility */
-        .article-content-en, .article-content-ar {
-            display: none;
-        }
-
-        html[lang="ar"] .article-content-ar {
-            display: block;
-        }
-
-        html[lang="en"] .article-content-en {
-            display: block;
-        }
-    </style>
+    <!-- Stylesheets -->
     <link rel="preload" href="/static/css/main.min.css" as="style">
     <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "Article",
+      "@id": "https://www.gtoolix.com/blog/qr-code#article",
+      "isPartOf": {
+        "@type": "WebPage",
+        "@id": "https://www.gtoolix.com/blog/qr-code",
+        "url": "https://www.gtoolix.com/blog/qr-code",
+        "name": "QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين | GToolix",
+        "description": "دليل موسوعي متكامل ومفصل حول رموز QR: تاريخها، بنيتها الهندسية، تصحيح الأخطاء Reed-Solomon، الفرق بين Static و Dynamic، وطريقة إنشاء باركود QR مجاني فائق النقاء."
+      },
+      "headline": "QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين | GToolix",
+      "description": "دليل موسوعي متكامل ومفصل حول رموز QR: تاريخها، بنيتها الهندسية، تصحيح الأخطاء Reed-Solomon، الفرق بين Static و Dynamic، وطريقة إنشاء باركود QR مجاني فائق النقاء.",
+      "image": "https://www.gtoolix.com/static/img/blog/qr-code-guide.jpg",
+      "datePublished": "2026-08-18T08:00:00+03:00",
+      "dateModified": "2026-08-24T16:00:00+03:00",
+      "author": {
+        "@type": "Organization",
+        "name": "GToolix Editorial Team",
+        "url": "https://www.gtoolix.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GToolix",
+        "url": "https://www.gtoolix.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.gtoolix.com/static/img/logo.webp"
+        }
+      },
+      "mainEntityOfPage": "https://www.gtoolix.com/blog/qr-code"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.gtoolix.com/blog/qr-code#faq",
+      "mainEntity": [
         {
-          "@type": "Article",
-          "@id": "https://www.gtoolix.com/blog/qr-code#article",
-          "isPartOf": {
-            "@type": "WebPage",
-            "@id": "https://www.gtoolix.com/blog/qr-code"
-          },
-          "headline": "QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين",
-          "description": "دليل شامل ومتكامل حول رموز QR: تاريخها، بنيتها، كيفية عملها، الفرق بين Static و Dynamic، وطريقة إنشاء رمز QR مجاناً للروابط والواي فاي والاتصال مع GToolix.",
-          "image": "https://www.gtoolix.com/static/img/blog/qr-code-guide.jpg",
-          "datePublished": "2026-08-18T08:00:00+03:00",
-          "dateModified": "2026-08-18T10:00:00+03:00",
-          "inLanguage": ["ar", "en"],
-          "mainEntityOfPage": "https://www.gtoolix.com/blog/qr-code",
-          "publisher": {
-            "@type": "Organization",
-            "name": "GToolix",
-            "url": "https://www.gtoolix.com/",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://www.gtoolix.com/static/img/logo.png"
-            }
-          },
-          "author": {
-            "@type": "Organization",
-            "name": "GToolix Editorial Team"
+          "@type": "Question",
+          "name": "ما هو رمز QR Code وماذا تعني حروفه؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "رمز QR هو اختصار لـ Quick Response Code (رمز الاستجابة السريعة)، وهو مصفوفة ثنائية الأبعاد لتخزين وقراءة البيانات الرقمية بسرعة فائقة عبر كاميرات الهواتف الذكية وحساسات التصوير."
           }
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://www.gtoolix.com/blog/qr-code#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.gtoolix.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Articles",
-              "item": "https://www.gtoolix.com/blog"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "QR Code Ultimate Guide",
-              "item": "https://www.gtoolix.com/blog/qr-code"
-            }
-          ]
+          "@type": "Question",
+          "name": "من هو مخترع تقنية QR Code وفي أي عام؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "اخترعه المهندس الياباني ماساهيرو هارا (Masahiro Hara) وفريقه في شركة Denso Wave عام 1994 لتتبع قطع غيار السيارات في مصانع تويوتا."
+          }
         },
         {
-          "@type": "FAQPage",
-          "@id": "https://www.gtoolix.com/blog/qr-code#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "ما هو رمز QR Code وماذا تعني حروفه؟",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "رمز QR هو اختصار لـ Quick Response Code (رمز الاستجابة السريعة)، وهو مصفوفة ثنائية الأبعاد لتخزين وقراءة البيانات الرقمية بسرعة فائقة عبر كاميرات الهواتف الذكية."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "هل إنشاء رمز QR Code مجاني ومدى الحياة؟",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "نعم، الرموز الثابتة (Static QR Codes) المنشأة عبر منصات مثل GToolix مجانية بالكامل وتعمل مدى الحياة دون أي تاريخ انتهاء صلاحية."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "ما الفرق بين Static QR Code و Dynamic QR Code؟",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "الرمز الثابت يشفر البيانات داخله مباشرة ويعمل للأبد دون خادم وسيط ولا يمكن تعديله، بينما الديناميكي يوجه لرابط وسيط يمكن تعديل وجهته وتتبع إحصائيات مسحه."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "كيف أحول رابط موقع إلى باركود QR؟",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "يمكنك الدخول إلى أداة GToolix واختيار تبويب URL، ثم لصق الرابط والضغط على تحميل لحفظ الرمز بصيغة PNG أو SVG فورياً."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "هل إنشاء رمز QR Code مجاني ومدى الحياة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، الرموز الثابتة (Static QR Codes) المنشأة عبر منصة GToolix مجانية بالكامل 100% وتعمل مدى الحياة دون أي تاريخ انتهاء أو رسوم اشتراك."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما الفرق بين Static QR Code و Dynamic QR Code؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "الرمز الثابت يشفر البيانات داخله مباشرة ويعمل للأبد دون خادم وسيط ولا يمكن تعديله، بينما الديناميكي يوجه لرابط وسيط يمكن تعديل وجهته وتتبع إحصائيات مسحه."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أحول رابط موقع إلكتروني إلى QR Code؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "انسخ الرابط، افتح مولد GToolix، اختر تبويب URL، الصق الرابط، ثم حمّل صورة الرمز بصيغة PNG للشاشات أو SVG للطباعة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أنشئ QR Code لشبكة Wi-Fi للاتصال التلقائي بدون كلمة سر؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "اختر تبويب WiFi في أداة GToolix، أدخل اسم الشبكة (SSID)، كلمة المرور، ونوع التشفير (WPA/WPA2/WPA3)، وسيقوم الهاتف بالاتصال فور مسح الرمز."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يمكن حفظ بيانات جهة اتصال كاملة vCard داخل الرمز؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، يتيح تبويب vCard تشفير الاسم الكامل، رقم الهاتف، البريد الإلكتروني، اسم الشركة، والموقع الإلكتروني لحفظها بلمسة واحدة في الهاتف."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هو نظام تصحيح الخطأ Reed-Solomon Error Correction؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "هو خوارزمية رياضية متقدمة تدمج بيانات إضافية لاستعادة وقراءة الرمز حتى لو تعرض للتمزق أو الاتساخ بنسبة تصل إلى 30%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هي مستويات تصحيح الأخطاء الأربعة (L, M, Q, H)؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "مستوى L يستعيد 7%، مستوى M يستعيد 15%، مستوى Q يستعيد 25%، ومستوى H يستعيد 30% وهو الأنسب لإضافة الشعارات وسط الرمز."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يمكن إضافة شعار Logo داخل الرمز دون تعطيله؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، عند اختيار مستوى تصحيح أخطاء مرتفع (Level H) ووضع الشعار في المركز الهندسي دون حجب مربعات الزوايا الكبرى."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يمكن تغيير ألوان QR Code عن الأسود والأبيض التقليدي؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، طالما حافظت على تباين لوني كافٍ (مربعات داكنة جداً على خلفية فاتحة جداً)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هي منطقة الهدوء Quiet Zone ولماذا هي ضرورية؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "هي الهامش الأبيض المحيط بأطراف الرمز الأربعة (بعرض 4 وحدات على الأقل)، وبدونها تفشل الكاميرا في فصل الرمز عن المحيط الخارجي."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما أفضل صيغة لتحميل QR Code لطباعته في المطابع واللوحات الكبرى؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "صيغة SVG المتجهية لأنها تقبل التكبير لأي حجم ولوحة إعلانية عملاقة دون أي بكسلة أو فقدان في النقاء."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هي صيغة PNG ومتى يفضل استخدامها لرموز QR؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "صيغة صور نقطية عالية الوضوح، مثالية للاستخدام على مواقع الويب وشاشات الهواتف والسوشيال ميديا والعروض التقديمية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أمسح QR Code باستخدام هاتف iPhone (iOS)؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "افتح تطبيق الكاميرا الرسمي ووجهه نحو الرمز واضغط على الإشعار الأصفر المنبثق أعلى الشاشة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أمسح QR Code باستخدام هاتف Android؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "افتح الكاميرا المباشرة أو استخدم ميزة Google Lens المدمجة في النظام."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أقرأ رمز QR Code معروضاً على شاشة الكمبيوتر؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "عبر رفع صورة الرمز لأداة قراءة ويب أو استخدام إضافات المتصفح لقراءة الأكواد على الشاشة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يتطلب مسح QR Code اتصالاً بالإنترنت دائماً؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "إذا كان الرمز يحتوي على نص، رقم هاتف، أو بيانات Wi-Fi فلا يحتاج إنترنت، أما إذا كان رابطاً لموقع فيتطلب اتصالاً لفتح الصفحة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هو حجم البيانات الأقصى الذي يمكن تخزينه في QR Code؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "حتى 7,089 رقماً، أو 4,296 حرفاً أبجدياً رقمياً، أو 2,953 بايت ثنائي في الإصدار الأكبر (Version 40)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هو QR Phishing أو التصيد عبر الرموز وكيف أحمي نفسي؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "هو احتيال يقوم فيه المخترق بإنشاء رمز يقود إلى صفحة مزورة؛ احمِ نفسك بمعاينة الرابط واسم النطاق دائماً قبل إدخال أي بيانات سرية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "لماذا لا يعمل الرمز الخاص بي بعد طباعته؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "الأسباب الأكثر شيوعاً: ضعف التباين بين الرمز والخلفية، صغر الحجم، قص منطقة الهدوء، أو تشويه أبعاد المربع."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هو الحد الأدنى لمقاس طباعة QR Code على المنتجات وبطاقات العمل؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يجب ألا يقل عن 2×2 سم للمسح من مسافة قريبة لضمان عمل الحساسات بدقة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هي معادلة حساب مقاس الرمز بالنسبة لمسافة المسح؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "المقاس الأدنى للرمز = مسافة المسح مقسومة على 10 (مثلاً: مسافة متر تتطلب رمزاً بمقاس 10×10 سم على الأقل)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يمكن تخزين ملف PDF كامل بداخل QR Code مباشرة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "لا، يتم رفع ملف الـ PDF على خدمة سحابية وتشفير الرابط الخاص به داخل الرمز ليقوم المستخدم بتنزيله فورياً."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما الفرق الرئيسي بين QR Code والباركود التقليدي 1D؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "الباركود الخطي يقرأ أفقياً فقط بسعة 20-30 حرفاً، بينما الـ QR يقرأ أفقياً وعمودياً بسعة تتجاوز آلاف الحروف مع تصحيح الأخطاء."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل تقنية QR Code أفضل أم تقنية NFC؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "الـ QR مجاني ومرئي ومتاح لكل الهواتف ويعمل من مسافات متباينة، بينما الـ NFC شريحة فيزيائية مدفوعة تعمل بالتلامس المباشر من مسافة تقل عن 4 سم."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف تستفيد المطاعم من رموز QR Code في قوائم الطعام؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "توفير تكاليف الطباعة الدورية، التعديل الفوري للأسعار، عرض صور وفيديوهات شهية للأطباق، وتوفير تجربة صحية بدون تلامس."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يدعم مولد GToolix تحميل الرمز بدون علامة مائية؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، جميع الرموز المنشأة عبر GToolix نظيفة وخالية من أي علامات مائية أو شعارات مفروضة 100%."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.gtoolix.com/blog/qr-code#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://www.gtoolix.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "المقالات",
+          "item": "https://www.gtoolix.com/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين | GToolix",
+          "item": "https://www.gtoolix.com/blog/qr-code"
         }
       ]
     }
+  ]
+}
     </script>
-    <link rel="canonical" href="https://www.gtoolix.com/blog/qr-code" />
-    <link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/qr-code" />
-    <link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/qr-code" />
-    <link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/qr-code" />
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين | GToolix">
-    <meta property="og:description" content="اكتشف كل ما تحتاج لمعرفته عن QR Code: تاريخه، كيف يعمل، الفرق بين Static و Dynamic، وطريقة إنشاء رمز QR مجاناً للروابط وشبكات WiFi والبيانات بأعلى جودة مع GToolix.">
-    <meta property="og:url" content="https://www.gtoolix.com/blog/qr-code">
-    <meta property="og:locale" content="ar_EG">
-    <meta property="og:image" content="https://www.gtoolix.com/static/img/blog/qr-code-guide.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين | GToolix">
-    <meta name="twitter:description" content="اكتشف كل ما تحتاج لمعرفته عن QR Code: تاريخه، كيف يعمل، الفرق بين Static و Dynamic، وطريقة إنشاء رمز QR مجاناً للروابط وشبكات WiFi والبيانات بأعلى جودة مع GToolix.">
-    <meta name="twitter:image" content="https://www.gtoolix.com/static/img/blog/qr-code-guide.jpg">
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <!-- Site Navigation Header -->
-        <header class="site-nav" id="site-header">
+    <header class="site-nav" id="site-header">
         <a class="site-nav__brand" href="/" aria-label="GToolix Home">
             <span class="site-nav__brand-mark">
                 <picture>
@@ -387,1204 +440,828 @@
         </div>
     </header>
     <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
-    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
 
-    <!-- Background Ambience -->
     <div class="background-gradient"></div>
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
     <div class="particles" id="particles"></div>
 
-    <!-- =========================================================================
-         ARABIC ARTICLE CONTENT (RTL)
-         ========================================================================= -->
-    <div class="article-content-ar">
-        <main class="article-wrap">
-            <!-- Breadcrumb Navigation -->
-            <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-                <ol>
-                    <li><a href="/">الرئيسية</a></li>
-                    <li class="separator" aria-hidden="true">/</li>
-                    <li><a href="/blog">المقالات</a></li>
-                    <li class="separator" aria-hidden="true">/</li>
-                    <li aria-current="page">الدليل الشامل لـ QR Code</li>
-                </ol>
-            </nav>
+    <main class="container" style="max-width: 1040px; padding-top: clamp(6.75rem, 11vw, 8.5rem); padding-bottom: 5rem; margin: 0 auto; padding-inline: max(1.25rem, 4vw);">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/">الرئيسية</a></li>
+                <li class="separator" aria-hidden="true">/</li>
+                <li><a href="/blog">المقالات</a></li>
+                <li class="separator" aria-hidden="true">/</li>
+                <li aria-current="page">QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين</li>
+            </ol>
+        </nav>
 
-            <!-- Article Header -->
-            <header class="article-header reveal in-view">
-                <span class="article-category-badge badge--blue">أدوات الويب • دليل شامل</span>
-                <h1 class="article-h1">
+        <!-- Article Header Section -->
+        <article class="article-detail-page">
+            <header class="article-header" style="margin-bottom: 2.5rem; text-align: right;">
+                <span class="kicker" style="color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; margin-bottom: 0.75rem;">دليل أدوات الويب والإنتاجية الرقمية</span>
+                <h1 style="font-size: clamp(2.1rem, 4.5vw, 3.2rem); font-weight: 800; color: var(--text); line-height: 1.35; margin-bottom: 1.25rem;">
                     QR Code — الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين
                 </h1>
-                <p class="article-lead">
-                    أحدث رمز الاستجابة السريعة (QR Code) ثورة كبرى في ربط العالم الفيزيائي بالفضاء الرقمي. يغطي هذا الدليل الموسوعي كل ما تحتاج معرفته من البنية وتصحيح الأخطاء إلى التطبيقات المتنوعة، واستخدام <a href="https://www.gtoolix.com/tools/qr-code-generator" style="color: var(--primary); font-weight: 700; text-decoration: underline;">مولد QR Code المجاني من GToolix</a> لتوليد رموز احترافية فائقة الدقة.
+                <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.75rem; max-width: 860px;">
+                    دليل موسوعي مفصل يشرح تاريخ رموز الاستجابة السريعة QR، بنيتها الهندسية، نظام تصحيح الأخطاء Reed-Solomon، الفرق الجوهري بين الرموز الثابتة والديناميكية، وطريقة توليد باركود تفاعلي فائق النقاء مجاناً.
                 </p>
-                <div class="article-meta-bar">
-                    <span>✍️ فريق تحرير GToolix</span>
-                    <span>🛡️ معايير ISO/IEC 18004</span>
+
+                <!-- Article Meta Info -->
+                <div class="article-meta-row" style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; padding-bottom: 1.75rem; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-size: 0.92rem;">
+                    <div style="display: flex; align-items: center; gap: 0.45rem;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span>فريق تحرير GToolix</span>
+                    </div>
                 </div>
             </header>
 
-            <!-- Featured Banner Illustration -->
-            <div class="article-featured-img-wrap reveal in-view">
-                <img src="/static/img/blog/qr-code-guide.jpg" alt="الدليل الشامل لإنشاء واستخدام وقراءة رموز QR Code أونلاين" class="article-featured-img" width="1200" height="675" loading="eager" fetchpriority="high">
+            <!-- Featured Image Hero Banner -->
+            <div class="article-featured-hero" style="border-radius: 1.25rem; overflow: hidden; margin-bottom: 3.5rem; aspect-ratio: 16/9; box-shadow: 0 16px 40px -10px rgba(0,0,0,0.3); border: 1px solid var(--border);">
+                <img src="/static/img/blog/qr-code-guide.jpg" alt="QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين | GToolix" style="width: 100%; height: 100%; object-fit: cover;" fetchpriority="high">
             </div>
 
-            <!-- Table of Contents -->
-            <nav class="article-toc reveal in-view" aria-label="فهرس المقال">
-                <div class="article-toc__title">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-                    <span>فهرس محتويات الدليل الموسوعي</span>
+            <!-- Table of Contents (فهرس المحتويات) -->
+            <nav class="article-toc-box reveal" aria-label="Table of Contents">
+                <div class="toc-title">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    <span>فهرس محتويات الدليل</span>
                 </div>
                 <ol>
-                    <li><a href="#ar-sec-1">ما هو QR Code؟ النشأة والتشريح</a></li>
-                    <li><a href="#ar-sec-2">كيف يعمل QR Code؟ الآلية التقنية</a></li>
-                    <li><a href="#ar-sec-3">أنواع QR Code: Static مقابل Dynamic</a></li>
-                    <li><a href="#ar-sec-4">كيفية إنشاء QR Code أونلاين عبر GToolix</a></li>
-                    <li><a href="#ar-sec-5">تحويل رابط إلى QR Code</a></li>
-                    <li><a href="#ar-sec-6">إنشاء QR Code للنصوص والملاحظات</a></li>
-                    <li><a href="#ar-sec-7">QR Code لشبكة WiFi والاتصال التلقائي</a></li>
-                    <li><a href="#ar-sec-8">QR Code لرقم الهاتف والاتصال السريع</a></li>
-                    <li><a href="#ar-sec-9">QR Code لرسائل SMS</a></li>
-                    <li><a href="#ar-sec-10">QR Code للبريد الإلكتروني Email</a></li>
-                    <li><a href="#ar-sec-11">بطاقة العمل الرقمية vCard</a></li>
-                    <li><a href="#ar-sec-12">استخدام QR Code في المطاعم والكافيهات</a></li>
-                    <li><a href="#ar-sec-13">QR Code في المتاجر والتجارة الإلكترونية</a></li>
-                    <li><a href="#ar-sec-14">QR Code في الحملات التسويقية</a></li>
-                    <li><a href="#ar-sec-15">استخدامات QR Code في التعليم</a></li>
-                    <li><a href="#ar-sec-16">QR Code في الفعاليات والتذاكر</a></li>
-                    <li><a href="#ar-sec-17">QR Code على السيرة الذاتية وبطاقات العمل</a></li>
-                    <li><a href="#ar-sec-18">كيف تقرأ وتمسح QR Code؟</a></li>
-                    <li><a href="#ar-sec-19">أمان QR Code ومكافحة التصيد Phishing</a></li>
-                    <li><a href="#ar-sec-20">قواعد جعل الرمز قابلاً للمسح بسهولة</a></li>
-                    <li><a href="#ar-sec-21">تخصيص الألوان وتأثيرها على القراءة</a></li>
-                    <li><a href="#ar-sec-22">إضافة الشعار Logo داخل الرمز</a></li>
-                    <li><a href="#ar-sec-23">أخطاء شائعة تجعل الرمز لا يعمل</a></li>
-                    <li><a href="#ar-sec-24">أفضل مقاس لطباعة QR Code</a></li>
-                    <li><a href="#ar-sec-25">QR Code للصور والملفات الكبيرة</a></li>
-                    <li><a href="#ar-sec-26">مقارنة شاملة: QR Code أم Barcode؟</a></li>
-                    <li><a href="#ar-sec-27">مقارنة تقنية: QR Code أم NFC؟</a></li>
-                    <li><a href="#ar-sec-28">أفضل ممارسات الاستخدام الاحترافي</a></li>
-                    <li><a href="#ar-sec-29">أخطاء التسويق القاتلة بالرموز</a></li>
-                    <li><a href="#ar-sec-30">علاقة QR Code بالـ SEO</a></li>
-                    <li><a href="#ar-sec-31">تأثير صور QR على سرعة الموقع</a></li>
-                    <li><a href="#ar-sec-32">مقارنة الصيغ: PNG أم SVG؟</a></li>
-                    <li><a href="#ar-sec-33">هل يمكن إنشاء QR Code مجاناً مدى الحياة؟</a></li>
-                    <li><a href="#ar-sec-34">دليل اختيار نوع QR Code المناسب</a></li>
-                    <li><a href="#ar-sec-35">دليل سريع: إنشاء رمز في 30 ثانية</a></li>
-                    <li><a href="#ar-sec-faq">الأسئلة الشائعة والإجابات الشاملة</a></li>
+                    <li><a href="#sec-1">ما هو QR Code؟ النشأة والتشريح والتطور</a></li>
+                    <li><a href="#sec-2">كيف يعمل QR Code؟ الآلية التقنية العميقة</a></li>
+                    <li><a href="#sec-3">أنواع QR Code: المقارنة الكاملة بين Static و Dynamic</a></li>
+                    <li><a href="#sec-4">كيفية إنشاء QR Code أونلاين مجاناً باستخدام GToolix</a></li>
+                    <li><a href="#sec-5">كيفية تحويل رابط إلى QR Code (Websites &amp; Landing Pages)</a></li>
+                    <li><a href="#sec-6">إنشاء QR Code للنصوص والملاحظات (Plain Text)</a></li>
+                    <li><a href="#sec-7">QR Code لشبكة WiFi: الاتصال الفوري بدون كلمة سر</a></li>
+                    <li><a href="#sec-8">QR Code لرقم الهاتف والاتصال السريع (Phone Trigger)</a></li>
+                    <li><a href="#sec-9">QR Code لرسائل SMS</a></li>
+                    <li><a href="#sec-10">QR Code للبريد الإلكتروني Email</a></li>
+                    <li><a href="#sec-11">بطاقة العمل الرقمية vCard (Electronic Business Card)</a></li>
+                    <li><a href="#sec-12">استخدام QR Code في المطاعم والكافيهات (Contactless Menus)</a></li>
+                    <li><a href="#sec-13">QR Code في المتاجر والتجارة الإلكترونية والتغليف</a></li>
+                    <li><a href="#sec-14">QR Code في الحملات التسويقية (Offline-to-Online)</a></li>
+                    <li><a href="#sec-15">استخدامات QR Code في التعليم والمؤسسات الأكاديمية</a></li>
+                    <li><a href="#sec-16">QR Code في الفعاليات والمناسبات والتذاكر (E-Ticketing)</a></li>
+                    <li><a href="#sec-17">QR Code على السيرة الذاتية (CV) وبطاقات العمل</a></li>
+                    <li><a href="#sec-18">كيف تقرأ وتمسح QR Code على مختلف الأجهزة؟</a></li>
+                    <li><a href="#sec-19">أمان QR Code ومكافحة التصيد والاحتيال (QR Phishing)</a></li>
+                    <li><a href="#sec-20">قواعد جعل الرمز قابلاً للمسح بسهولة</a></li>
+                    <li><a href="#sec-21">تخصيص الألوان وتأثيرها على قابلية القراءة</a></li>
+                    <li><a href="#sec-22">إضافة الشعار Logo داخل QR Code</a></li>
+                    <li><a href="#sec-23">أخطاء شائعة تجعل الرمز لا يعمل</a></li>
+                    <li><a href="#sec-24">أفضل مقاس لطباعة QR Code وفق مسافة المسح</a></li>
+                    <li><a href="#sec-25">QR Code للصور ومستندات PDF والملفات الكبيرة</a></li>
+                    <li><a href="#sec-26">مقارنة شاملة: QR Code مقابل Barcode التقليدي</a></li>
+                    <li><a href="#sec-27">مقارنة تقنية: QR Code مقابل تقنية NFC</a></li>
+                    <li><a href="#sec-28">أفضل ممارسات الاستخدام الاحترافي</a></li>
+                    <li><a href="#sec-29">أخطاء التسويق القاتلة بالرموز</a></li>
+                    <li><a href="#sec-30">علاقة QR Code بالـ SEO والتسويق الرقمي</a></li>
+                    <li><a href="#sec-31">تأثير صور QR Code على سرعة صفحات الموقع</a></li>
+                    <li><a href="#sec-32">مقارنة الصيغ: PNG مقابل SVG لرموز QR</a></li>
+                    <li><a href="#sec-33">هل يمكن إنشاء QR Code مجاناً ومدى الحياة؟</a></li>
+                    <li><a href="#sec-34">دليل اختيار نوع QR Code المناسب لاحتياجك</a></li>
+                    <li><a href="#sec-35">دليل سريع: إنشاء رمز QR في 30 ثانية</a></li>
+                    <li><a href="#faq-section">الأسئلة الشائعة والإجابات الشاملة (FAQ)</a></li>
                 </ol>
             </nav>
 
-            <!-- Article Prose Body -->
-            <div class="article-prose">
-                <p>
-                    إذا كنت ترغب في تحويل أي رابط، نص، شبكة WiFi، أو بطاقة اتصال إلى رمز QR Code عالي النقاء، يمكنك استخدام <a href="https://www.gtoolix.com/tools/qr-code-generator" style="color: var(--primary); font-weight: 700; text-decoration: underline;">أداة إنشاء رمز QR المجانية من GToolix</a> مباشرة من متصفحك دون الحاجة لتثبيت أي برامج أو دفع أي رسوم.
-                </p>
+            <!-- Article Body Content Sections -->
+            <div class="article-content-wrapper">
+            <section id="sec-1" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    1. ما هو QR Code؟ النشأة والتشريح والتطور
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">يرمز الاختصار <strong>QR Code</strong> إلى عبارة <strong>Quick Response Code</strong> (رمز الاستجابة السريعة). وهو عبارة عن مصفوفة بكسلية ثنائية الأبعاد (2D Matrix Barcode) تتكون من وحدات مربعة مرتبة بنمط هندسي محكم على خلفية متباينة، صُممت لتُقرأ بواسطة كاميرات الهواتف الذكية وحساسات التصوير الرقمي بسرعة البرق.</p>
+<p style="line-height:1.8;margin-bottom:1rem;">اخترع هذا النظام المهندس الياباني <strong>ماساهيرو هارا (Masahiro Hara)</strong> وفريقه في شركة <strong>Denso Wave</strong> عام 1994 بهدف تتبع قطع غيار السيارات في مصانع تويوتا. وقد أتاحت الشركة براءة الاختراع مجاناً للعالم، مما جعلها معياراً دولياً معتمداً تحت رقم <strong>ISO/IEC 18004</strong>.</p>
 
-                <h2 id="ar-sec-1">1. ما هو QR Code؟ النشأة والتشريح والتطور</h2>
-                <p>
-                    يرمز الاختصار <strong>QR Code</strong> إلى عبارة <strong>Quick Response Code</strong> (رمز الاستجابة السريعة). وهو عبارة عن مصفوفة بكسلية ثنائية الأبعاد (2D Matrix Barcode) تتكون من وحدات مربعة مرتبة بنمط هندسي محكم على خلفية متباينة، صُممت لتُقرأ بواسطة كاميرات الهواتف الذكية وحساسات التصوير الرقمي بسرعة البرق.
-                </p>
-                <p>
-                    اخترع هذا النظام المهندس الياباني <strong>ماساهيرو هارا (Masahiro Hara)</strong> وفريقه في شركة <strong>Denso Wave</strong> عام 1994 بهدف تتبع قطع غيار السيارات في مصانع تويوتا. وقد أتاحت الشركة براءة الاختراع مجاناً للعالم، مما جعلها معياراً دولياً معتمداً تحت رقم <strong>ISO/IEC 18004</strong>.
-                </p>
-
-                <h2 id="ar-sec-2">2. كيف يعمل QR Code؟ الآلية التقنية العميقة</h2>
-                <p>
-                    يعتمد الرمز على مكونات هندسية متكاملة تتيح قراءته بزاوية 360 درجة:
-                </p>
-                <ul>
-                    <li><strong>أنماط الكشف (Finder Patterns):</strong> 3 مربعات بارزة في الزوايا تحدد اتجاه ومحاذاة الرمز للكاميرا فورياً.</li>
-                    <li><strong>خطوط التوقيت (Timing Patterns):</strong> خطوط منقطة بين مربعات الزوايا لتحديد شبكة الإحداثيات وحجم المصفوفة.</li>
-                    <li><strong>نمط المحاذاة (Alignment Patterns):</strong> مربعات أصغر لمعادلة الانحناء على الأسطح الدائرية.</li>
-                    <li><strong>منطقة الهدوء (Quiet Zone):</strong> هامش أمان أبيض فارغ حول الرمز (لا يقل عن 4 وحدات) لعزل الرمز عن الخلفية.</li>
-                    <li><strong>تصحيح الأخطاء (Reed-Solomon Error Correction):</strong> نظام رياضي يستعيد البيانات حتى لو تعرض الرمز للتلف بنسبة 30%.</li>
-                </ul>
-
-                <h2 id="ar-sec-3">3. أنواع QR Code: المقارنة الكاملة بين Static و Dynamic</h2>
-                <div class="article-table-wrap">
-                    <table class="article-table">
-                        <thead>
-                            <tr>
-                                <th>وجه المقارنة</th>
-                                <th>الرمز الثابت (Static QR)</th>
-                                <th>الرمز الديناميكي (Dynamic QR)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>تغيير الوجهة بعد الطباعة</strong></td>
-                                <td>❌ غير ممكن نهائياً</td>
-                                <td>✔️ ممكن في أي وقت</td>
-                            </tr>
-                            <tr>
-                                <td><strong>فترة الصلاحية الزمنية</strong></td>
-                                <td>✔️ مدى الحياة دون انقطاع</td>
-                                <td>⚠️ مرتبط باستمرار الخادم الوسيط</td>
-                            </tr>
-                            <tr>
-                                <td><strong>الاعتماد على خادم وسيط</strong></td>
-                                <td>❌ مستقل ذاتياً بالكامل</td>
-                                <td>✔️ يعتمد كلياً على مزود الخدمة</td>
-                            </tr>
-                            <tr>
-                                <td><strong>تتبع الإحصائيات والنقرات</strong></td>
-                                <td>❌ لا يدعم التتبع المباشر</td>
-                                <td>✔️ يدعم التحليلات الجغرافية والزمنية</td>
-                            </tr>
-                            <tr>
-                                <td><strong>التكلفة المالية</strong></td>
-                                <td>🆓 مجاني 100% بدون اشتراكات</td>
-                                <td>💳 يتطلب غالباً اشتراكات شهرية</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
+            </section>
 
-                <h2 id="ar-sec-4">4. كيفية إنشاء QR Code أونلاين مجاناً باستخدام GToolix</h2>
-                <p>
-                    تتيح لك منصة <a href="https://www.gtoolix.com/tools/qr-code-generator">أداة QR Code أونلاين من GToolix</a> توليد رموز فائقة الدقة بسرعة وأمان، حيث تتم جميع العمليات داخل متصفحك محلياً (Client-Side) دون حفظ بياناتك على أي خوادم خارجية.
-                </p>
-                <ol>
-                    <li>افتح <a href="https://www.gtoolix.com/tools/qr-code-generator">مولد رمز QR في GToolix</a>.</li>
-                    <li>اختر نوع البيانات المطلوب تشفيرها (URL, Text, WiFi, Phone, Email, SMS, vCard, Location).</li>
-                    <li>أدخل بياناتك بدقة في الحقول المخصصة.</li>
-                    <li>خصّص خيارات التباين، مستوى تصحيح الأخطاء (L, M, Q, H)، والألوان.</li>
-                    <li>حمّل الرمز بصيغة <strong>PNG</strong> للشاشات أو <strong>SVG</strong> للطباعة الاحترافية.</li>
-                </ol>
+            <section id="sec-2" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    2. كيف يعمل QR Code؟ الآلية التقنية العميقة
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">يعتمد الرمز على مكونات هندسية متكاملة تتيح قراءته بزاوية 360 درجة:</p>
+<ul style="margin-inline-start:1.5rem;line-height:1.8;"><li><strong>أنماط الكشف (Finder Patterns):</strong> 3 مربعات بارزة في الزوايا تحدد اتجاه ومحاذاة الرمز للكاميرا فورياً.</li>
+<li><strong>خطوط التوقيت (Timing Patterns):</strong> خطوط منقطة بين مربعات الزوايا لتحديد شبكة الإحداثيات وحجم المصفوفة.</li>
+<li><strong>نمط المحاذاة (Alignment Patterns):</strong> مربعات أصغر لمعادلة الانحناء على الأسطح الدائرية.</li>
+<li><strong>منطقة الهدوء (Quiet Zone):</strong> هامش أمان أبيض فارغ حول الرمز (لا يقل عن 4 وحدات) لعزل الرمز عن الخلفية.</li>
+<li><strong>تصحيح الأخطاء (Reed-Solomon Error Correction):</strong> نظام رياضي يستعيد البيانات حتى لو تعرض الرمز للتلف بنسبة 30%.</li></ul>
 
-                <!-- Interactive Tool Highlight Banner -->
-                <div class="article-tool-banner reveal in-view">
-                    <h3>أنشئ رمز QR مخصص مجاناً الآن</h3>
-                    <p>استخدم أداة GToolix السريعة لتوليد أكواد باركود فائقة النقاء بصيغة SVG و PNG بدون علامة مائية وبأمان تام.</p>
-                    <a href="https://www.gtoolix.com/tools/qr-code-generator" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: 9999px; font-weight: 700; text-decoration: none; color: #fff; background: var(--primary);">
-                        <span>فتح مولد QR المجاني</span>
-                        <span>←</span>
-                    </a>
                 </div>
+            </section>
 
-                <h2 id="ar-sec-5">5. كيفية تحويل رابط إلى QR Code (Websites & Landing Pages)</h2>
-                <p>
-                    يمثل تشفير عناوين الويب (URLs) أكثر من 80% من إجمالي استخدامات الـ QR حول العالم. يمكنك تحويل روابط متجرك الإلكتروني، صفحات المنتجات، قنوات YouTube، وحسابات Instagram إلى باركود تفاعلي.
-                </p>
-                <div class="callout-box callout-box--tip">
-                    <span class="callout-box__title">💡 نصيحة تسويقية:</span>
-                    <p style="margin:0;">استخدم معلمات تتبع مخصصة (UTM Parameters) في الرابط مثل <code>?utm_source=flyer&utm_medium=qr</code> لتتبع أعداد الزيارات والمبيعات بدقة عبر Google Analytics 4.</p>
+            <section id="sec-3" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    3. أنواع QR Code: المقارنة الكاملة بين Static و Dynamic
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">| وجه المقارنة | الرمز الثابت (Static QR) | الرمز الديناميكي (Dynamic QR) |
+| :--- | :--- | :--- |
+| <strong>تغيير الوجهة بعد الطباعة</strong> | ❌ غير ممكن نهائياً | ✔️ ممكن في أي وقت |
+| <strong>فترة الصلاحية الزمنية</strong> | ✔️ مدى الحياة دون انقطاع | ⚠️ مرتبط باستمرار الخادم الوسيط |
+| <strong>الاعتماد على خادم وسيط</strong> | ❌ مستقل ذاتياً بالكامل | ✔️ يعتمد كلياً على مزود الخدمة |
+| <strong>تتبع الإحصائيات والنقرات</strong> | ❌ لا يدعم التتبع المباشر | ✔️ يدعم التحليلات الجغرافية والزمنية |
+| <strong>التكلفة المالية</strong> | 🆓 مجاني 100% بدون اشتراكات | 💳 يتطلب غالباً اشتراكات شهرية |</p>
+
                 </div>
+            </section>
 
-                <h2 id="ar-sec-6">6. إنشاء QR Code للنصوص والملاحظات (Plain Text)</h2>
-                <p>
-                    يتيح نمط <strong>Text</strong> تخزين نصوص، إرشادات تشغيل الأجهزة، أكواد تتبع الشحنات، أو كوبونات الخصم مباشرة داخل الرمز دون الحاجة لاتصال بالإنترنت عند القراءة.
-                </p>
+            <section id="sec-4" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    4. كيفية إنشاء QR Code أونلاين مجاناً باستخدام GToolix
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">تتيح لك منصة <a href="https://www.gtoolix.com/tools/qr-code-generator" style="color:var(--primary);font-weight:600;text-decoration:underline;">أداة QR Code أونلاين من GToolix</a> توليد رموز فائقة الدقة بسرعة وأمان، حيث تتم جميع العمليات داخل متصفحك محلياً (Client-Side) دون حفظ بياناتك على أي خوادم خارجية.</p>
+<ul style="margin-inline-start:1.5rem;line-height:1.8;"><li>افتح <a href="https://www.gtoolix.com/tools/qr-code-generator" style="color:var(--primary);font-weight:600;text-decoration:underline;">مولد رمز QR في GToolix</a>.</li>
+<li>اختر نوع البيانات المطلوب تشفيرها (URL, Text, WiFi, Phone, Email, SMS, vCard, Location).</li>
+<li>أدخل بياناتك بدقة في الحقول المخصصة.</li>
+<li>خصّص خيارات التباين، مستوى تصحيح الأخطاء (L, M, Q, H)، والألوان.</li>
+<li>حمّل الرمز بصيغة <strong>PNG</strong> للشاشات أو <strong>SVG</strong> للطباعة الاحترافية.</li></ul>
+<div class="tip-box" style="background:rgba(37,99,235,0.08);border-left:4px solid var(--primary);padding:1rem;border-radius:8px;margin:1rem 0;">💡 <strong>أداة GToolix الموصى بها:</strong> يمكنك استخدام الأداة المجانية مباشرة من متصفحك دون تسجيل أو برامج إضافية بأمان تام.</div>
 
-                <h2 id="ar-sec-7">7. QR Code لشبكة WiFi: الاتصال الفوري بدون كلمة سر</h2>
-                <p>
-                    يوفر تشفير شبكة الواي فاي تجربة استثنائية لزوار المطاعم والفنادق والمنازل. يعتمد التشفير على الصيغة المعيارية:
-                </p>
-                <pre><code>WIFI:S:Network_Name;T:WPA;P:Password123;H:false;;</code></pre>
-                <p>
-                    بمجرد مسح الرمز بكاميرا الهاتف، يظهر إشعار فوري للاتصال بالشبكة تلقائياً دون كتابة كلمة المرور يدوياً.
-                </p>
-
-                <h2 id="ar-sec-8">8. QR Code لرقم الهاتف والاتصال السريع (Phone Trigger)</h2>
-                <p>
-                    تشفير رقم الهاتف ببروتوكول <code>TEL:+1234567890</code> يفتح تطبيق الاتصال بالرقم مجهزاً فورياً، وهو مثالي لأرقام الطوارئ والدعم الفني على الملصقات والمنتجات.
-                </p>
-
-                <h2 id="ar-sec-9">9. QR Code لرسائل SMS</h2>
-                <p>
-                    يتيح إعداد رقم الهاتف ومحتوى الرسالة مسبقاً (مثل الاشتراك في العروض الترويجية أو تفعيل الضمان) عبر بروتوكول <code>SMSTO:+1234567890:مرحباً، أود الاستفسار</code>.
-                </p>
-
-                <h2 id="ar-sec-10">10. QR Code للبريد الإلكتروني Email</h2>
-                <p>
-                    تجهيز عنوان المستلم والموضوع ونص الرسالة ببروتوكول <code>mailto:support@gtoolix.com?subject=طلب%20دعم</code> يسهل فلترة طلبات التوظيف واستفسارات العملاء.
-                </p>
-
-                <h2 id="ar-sec-11">11. بطاقة العمل الرقمية vCard (Electronic Business Card)</h2>
-                <p>
-                    تعد بطاقة <strong>vCard</strong> المعيار الدولي لنقل الاسم الكامل، الهاتف، البريد، الشركة، والموقع الإلكتروني وحفظها في دفتر عناوين الهاتف بلمسة واحدة دون أخطاء كتابية.
-                </p>
-
-                <h2 id="ar-sec-12">12. استخدام QR Code في المطاعم والكافيهات (Contactless Menus)</h2>
-                <p>
-                    أصبحت قوائم الطعام الرقمية عبر الـ QR ركيزة صناعة الضيافة الحديثة؛ فهي تلغي تكاليف الطباعة الدورية، وتسمح بتعديل الأسعار لحظياً، وتدعم عرض صور وفيديوهات شهية للأطباق ترفع المبيعات الإضافية (Up-selling).
-                </p>
-
-                <h2 id="ar-sec-13">13. QR Code في المتاجر والتجارة الإلكترونية والتغليف</h2>
-                <p>
-                    تستخدم كبرى العلامات التجارية الرموز على عبوات التغليف لإرشاد العملاء لفيديوهات التركيب، وتفعيل الضمان الرقمي، والتحقق من أصالة المنتج ومكافحة التقليد.
-                </p>
-
-                <h2 id="ar-sec-14">14. QR Code في الحملات التسويقية (Offline-to-Online)</h2>
-                <p>
-                    تعد الرموز الجسر الأقوى لنقل المشاة وجمهور المعارض والملصقات الإعلانية والبروشورات إلى صفحات الهبوط الترويجية ونماذج جمع العملاء المحتملين (Lead Generation).
-                </p>
-
-                <h2 id="ar-sec-15">15. استخدامات QR Code في التعليم والمؤسسات الأكاديمية</h2>
-                <p>
-                    دمج الأكواد في الكتب الدراسية لنقل الطلاب إلى مقاطع شرح تفاعلية ومختبرات افتراضية، وتسهيل الوصول إلى الواجبات والامتحانات على منصات التعلم الإلكتروني.
-                </p>
-
-                <h2 id="ar-sec-16">16. QR Code في الفعاليات والمناسبات والتذاكر (E-Ticketing)</h2>
-                <p>
-                    تسريع بوابات الدخول عبر مسح التذاكر المشفرة في نصف ثانية لمنع التزوير والتكرار، مع مشاركة أجندة المؤتمر وخريطة القاعات رقمياً.
-                </p>
-
-                <h2 id="ar-sec-17">17. QR Code على السيرة الذاتية (CV) وبطاقات العمل</h2>
-                <p>
-                    إضافة رمز أنيق لسيرتك الذاتية يمنح مسؤولي التوظيف وصولاً مباشراً لملف أعمالك (Portfolio)، حساب LinkedIn، أو مستودع GitHub.
-                </p>
-
-                <h2 id="ar-sec-18">18. كيف تقرأ وتمسح QR Code على مختلف الأجهزة؟</h2>
-                <ul>
-                    <li><strong>هواتف iPhone (iOS):</strong> افتح تطبيق الكاميرا الرسمي ووجهه نحو الرمز واضغط الإشعار المنبثق.</li>
-                    <li><strong>هواتف Android:</strong> عبر تطبيق الكاميرا المباشر أو ميزة <strong>Google Lens</strong>.</li>
-                    <li><strong>الكمبيوتر (Windows / Mac):</strong> عبر أدوات قراءة الويب برفع صورة الرمز أو استخدام إضافات المتصفح.</li>
-                </ul>
-
-                <h2 id="ar-sec-19">19. أمان QR Code ومكافحة التصيد والاحتيال (QR Phishing)</h2>
-                <p>
-                    الرمز بحد ذاته آمن، لكن الخطر يكمن في الرابط الذي يوجه إليه. احذر من الملصقات المشبوهة في الأماكن العامة، وتأكد دائماً من اسم النطاق وبروتوكول <code>https://</code> قبل إدخال أي بيانات سرية أو بنكية.
-                </p>
-
-                <h2 id="ar-sec-20">20. قواعد جعل الرمز قابلاً للمسح بسهولة</h2>
-                <ol>
-                    <li>التباين الفائق: مربعات داكنة على خلفية بيضاء نقية.</li>
-                    <li>منطقة الهدوء: ترك هامش أبيض كافٍ حول الرمز من جميع الجهات.</li>
-                    <li>عدم مط أو تشويه أبعاد المربع (1:1).</li>
-                    <li>تجنب الخامات الورقية العاكسة للضوء (Glossy).</li>
-                </ol>
-
-                <h2 id="ar-sec-21">21. تخصيص الألوان وتأثيرها على قابلية القراءة</h2>
-                <p>
-                    يمكنك اختيار ألوان هوية علامتك التجارية، ولكن تجنب وضع خطوط صفراء أو رمادية باهتة على خلفيات فاتحة، وتجنب الخلفيات الشفافة التي تضيع معالمها فوق الأسطح الداكنة.
-                </p>
-
-                <h2 id="ar-sec-22">22. إضافة الشعار Logo داخل QR Code</h2>
-                <p>
-                    يمكن إضافة الشعار في المركز الهندسي الدقيق عند اختيار مستوى تصحيح أخطاء مرتفع <strong>High (Level H)</strong>، مع الحرص التام على عدم ملامسة أو تغطية مربعات الزوايا الكبرى (Finder Patterns).
-                </p>
-
-                <h2 id="ar-sec-23">23. أخطاء شائعة تجعل الرمز لا يعمل</h2>
-                <ul>
-                    <li>عكس الألوان (رمز أبيض على خلفية سوداء في بعض الكاميرات القديمة).</li>
-                    <li>كثافة بكسلات خانقة بسبب نصوص وروابط طويلة جداً.</li>
-                    <li>قص الحواف وغياب منطقة الهدوء في المطبعة.</li>
-                    <li>استخدام روابط معطلة أو صفحات هبوط غير مهيأة للموبايل.</li>
-                </ul>
-
-                <h2 id="ar-sec-24">24. أفضل مقاس لطباعة QR Code وفق مسافة المسح</h2>
-                <div class="callout-box callout-box--note">
-                    <span class="callout-box__title">📐 المعادلة الهندسية للمقاس:</span>
-                    <p style="margin:0; font-weight:700;">مقاس الرمز الأدنى = مسافة المسح مقسومة على 10 (مسافة 1 متر تتطلب رمزاً بمقاس 10×10 سم على الأقل).</p>
                 </div>
+            </section>
 
-                <h2 id="ar-sec-25">25. QR Code للصور ومستندات PDF والملفات الكبيرة</h2>
-                <p>
-                    نظراً لمحدودية السعة التخزينية للرمز بالبايت، يتم رفع الملف على خدمة سحابية (Google Drive / سحابتك الخاصة) وتشفير رابط الملف المباشر داخل الرمز ليقوم المستخدم بتنزيله فورياً.
-                </p>
+            <section id="sec-5" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    5. كيفية تحويل رابط إلى QR Code (Websites &amp; Landing Pages)
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">يمثل تشفير عناوين الويب (URLs) أكثر من 80% من إجمالي استخدامات الـ QR حول العالم. يمكنك تحويل روابط متجرك الإلكتروني، صفحات المنتجات، قنوات YouTube، وحسابات Instagram إلى باركود تفاعلي.</p>
+<div class="tip-box" style="background:rgba(37,99,235,0.08);border-left:4px solid var(--primary);padding:1rem;border-radius:8px;margin:1rem 0;">💡 <strong>💡 نصيحة تسويقية:</strong> استخدم معلمات تتبع مخصصة (UTM Parameters) في الرابط مثل ?utm_source=flyer&utm_medium=qr لتتبع أعداد الزيارات والمبيعات بدقة عبر Google Analytics 4.</div>
 
-                <h2 id="ar-sec-26">26. مقارنة شاملة: QR Code مقابل Barcode التقليدي</h2>
-                <div class="article-table-wrap">
-                    <table class="article-table">
-                        <thead>
-                            <tr>
-                                <th>العامل</th>
-                                <th>الباركود الخطي 1D</th>
-                                <th>رمز QR Code 2D</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>اتجاه القراءة</strong></td>
-                                <td>أفقي أحادي فقط</td>
-                                <td>أفقي وعمودي (360 درجة)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>السعة القصوى للأرقام</strong></td>
-                                <td>حتى 20–30 رقماً</td>
-                                <td>حتى 7,089 رقماً</td>
-                            </tr>
-                            <tr>
-                                <td><strong>السعة القصوى للحروف</strong></td>
-                                <td>حتى 20–30 حرفاً</td>
-                                <td>حتى 4,296 حرفاً</td>
-                            </tr>
-                            <tr>
-                                <td><strong>مقاومة التلف والخدوش</strong></td>
-                                <td>ضعيفة جداً</td>
-                                <td>عالية (استعادة حتى 30% من التلف)</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
+            </section>
 
-                <h2 id="ar-sec-27">27. مقارنة تقنية: QR Code مقابل تقنية NFC</h2>
-                <p>
-                    يتميز QR Code بأنه مجاني بالكامل ومرئي للعين ويعمل مع جميع الهواتف من مسافات متفاوتة، بينما تتطلب شرائح NFC تكلفة مالية وتعمل فقط بالتلامس المباشر من مسافة تقل عن 4 سم.
-                </p>
+            <section id="sec-6" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    6. إنشاء QR Code للنصوص والملاحظات (Plain Text)
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">يتيح نمط <strong>Text</strong> تخزين نصوص، إرشادات تشغيل الأجهزة، أكواد تتبع الشحنات، أو كوبونات الخصم مباشرة داخل الرمز دون الحاجة لاتصال بالإنترنت عند القراءة.</p>
 
-                <h2 id="ar-sec-28">28. أفضل ممارسات الاستخدام الاحترافي</h2>
-                <p>
-                    أرفق دائماً نداءً واضحاً للإجراء (CTA) بجانب الرمز يشرح للعميل فائدة المسح، وتأكد من أن صفحة الهبوط سريعة التحميل وخفيفة على باقات الهاتف المحمول.
-                </p>
-
-                <h2 id="ar-sec-29">29. أخطاء التسويق القاتلة بالرموز</h2>
-                <p>
-                    تجنب وضع الرموز في أماكن منعدمة التغطية كالأنفاق العميقة، وتجنب وضعها على وسائل نقل سريعة الحركة لا تمنح المشاهد وقتاً كافياً للتصوير.
-                </p>
-
-                <h2 id="ar-sec-30">30. علاقة QR Code بالـ SEO والتسويق الرقمي</h2>
-                <p>
-                    لا يؤثر الرمز بشكل مباشر على ترتيب Google، ولكنه يرفع الزيارات المباشرة الحقيقية (Direct Organic Traffic) ويحسن معدلات التفاعل والتحويل من العالم الفيزيائي إلى موقعك.
-                </p>
-
-                <h2 id="ar-sec-31">31. تأثير صور QR Code على سرعة صفحات الموقع</h2>
-                <p>
-                    استخدم صيغة SVG المتجهية الخفيفة (أقل من 2 كيلوبايت) داخل صفحات الويب، واستخدم التحميل الكسول <code>loading="lazy"</code> لصور PNG لتجنب أي بطء في مؤشرات أداء الويب Core Web Vitals.
-                </p>
-
-                <h2 id="ar-sec-32">32. مقارنة الصيغ: PNG مقابل SVG لرموز QR</h2>
-                <div class="article-table-wrap">
-                    <table class="article-table">
-                        <thead>
-                            <tr>
-                                <th>وجه المقارنة</th>
-                                <th>صيغة PNG (Raster)</th>
-                                <th>صيغة SVG (Vector)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>الاستخدام المثالي</strong></td>
-                                <td>السوشيال ميديا، الشاشات، الويب</td>
-                                <td>المطابع الكبرى، اللوحات، التصميم الجرافيكي</td>
-                            </tr>
-                            <tr>
-                                <td><strong>الحفاظ على النقاء عند التكبير</strong></td>
-                                <td>⚠️ قد تفقد دقتها وتبكسل</td>
-                                <td>💎 نقاء مطلق 100% بأي أبعاد</td>
-                            </tr>
-                            <tr>
-                                <td><strong>حجم الملف</strong></td>
-                                <td>متغير حسب الأبعاد</td>
-                                <td>صغير وثابت جداً (1KB - 5KB)</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
+            </section>
 
-                <h2 id="ar-sec-33">33. هل يمكن إنشاء QR Code مجاناً ومدى الحياة؟</h2>
-                <p>
-                    نعم، الرموز الثابتة المشفرة محلياً عبر <a href="https://www.gtoolix.com/tools/qr-code-generator">أداة GToolix لإنشاء QR Code</a> مجانية مدى الحياة، ولا ترتبط بأي خوادم خارجية قد تتوقف مستقبلاً.
-                </p>
+            <section id="sec-7" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    7. QR Code لشبكة WiFi: الاتصال الفوري بدون كلمة سر
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">يوفر تشفير شبكة الواي فاي تجربة استثنائية لزوار المطاعم والفنادق والمنازل. يعتمد التشفير على الصيغة المعيارية:</p>
+<p style="line-height:1.8;margin-bottom:1rem;"><code style="background:var(--card);padding:0.15rem 0.4rem;border-radius:4px;border:1px solid var(--border);">WIFI:S:Network_Name;T:WPA;P:Password123;H:false;;</code>
+                
+                    بمجرد مسح الرمز بكاميرا الهاتف، يظهر إشعار فوري للاتصال بالشبكة تلقائياً دون كتابة كلمة المرور يدوياً.</p>
 
-                <h2 id="ar-sec-34">34. دليل اختيار نوع QR Code المناسب لاحتياجك</h2>
-                <div class="article-table-wrap">
-                    <table class="article-table">
-                        <thead>
-                            <tr>
-                                <th>ما الذي تريد مشاركته؟</th>
-                                <th>النوع المناسب في الأداة</th>
-                                <th>النتيجة عند المسح</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>موقع إلكتروني أو متجر</td>
-                                <td><strong>URL</strong></td>
-                                <td>فتح الرابط في المتصفح</td>
-                            </tr>
-                            <tr>
-                                <td>نص أو كود خصم</td>
-                                <td><strong>Text</strong></td>
-                                <td>عرض النص على الشاشة</td>
-                            </tr>
-                            <tr>
-                                <td>شبكة إنترنت منزلية</td>
-                                <td><strong>Wi-Fi</strong></td>
-                                <td>الاتصال التلقائي بالشبكة</td>
-                            </tr>
-                            <tr>
-                                <td>بطاقة اتصال كاملة</td>
-                                <td><strong>vCard</strong></td>
-                                <td>حفظ جهة الاتصال في الهاتف</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
+            </section>
 
-                <h2 id="ar-sec-35">35. دليل سريع: إنشاء رمز QR في 30 ثانية</h2>
-                <ol>
-                    <li>ادخل إلى <a href="https://www.gtoolix.com/tools/qr-code-generator">أداة إنشاء رمز QR المجانية</a>.</li>
-                    <li>اختر نوع البيانات (URL, WiFi, vCard, Text).</li>
-                    <li>اكتب بياناتك في الحقول المخصصة.</li>
-                    <li>اضغط على زر التنزيل بصيغة PNG أو SVG لاستخدامه فوراً.</li>
-                </ol>
+            <section id="sec-8" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    8. QR Code لرقم الهاتف والاتصال السريع (Phone Trigger)
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">تشفير رقم الهاتف ببروتوكول <code style="background:var(--card);padding:0.15rem 0.4rem;border-radius:4px;border:1px solid var(--border);">TEL:+1234567890</code> يفتح تطبيق الاتصال بالرقم مجهزاً فورياً، وهو مثالي لأرقام الطوارئ والدعم الفني على الملصقات والمنتجات.</p>
 
-                <!-- 50+ FAQs SECTION (AR) -->
-                <h2 id="ar-sec-faq">الأسئلة الشائعة والإجابات الشاملة</h2>
-                <div class="faq-grid">
-                                        <div class="faq-item open">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                </div>
+            </section>
+
+            <section id="sec-9" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    9. QR Code لرسائل SMS
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">يتيح إعداد رقم الهاتف ومحتوى الرسالة مسبقاً (مثل الاشتراك في العروض الترويجية أو تفعيل الضمان) عبر بروتوكول <code style="background:var(--card);padding:0.15rem 0.4rem;border-radius:4px;border:1px solid var(--border);">SMSTO:+1234567890:مرحباً، أود الاستفسار</code>.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-10" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    10. QR Code للبريد الإلكتروني Email
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">تجهيز عنوان المستلم والموضوع ونص الرسالة ببروتوكول <code style="background:var(--card);padding:0.15rem 0.4rem;border-radius:4px;border:1px solid var(--border);">mailto:support@gtoolix.com?subject=طلب%20دعم</code> يسهل فلترة طلبات التوظيف واستفسارات العملاء.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-11" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    11. بطاقة العمل الرقمية vCard (Electronic Business Card)
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">تعد بطاقة <strong>vCard</strong> المعيار الدولي لنقل الاسم الكامل، الهاتف، البريد، الشركة، والموقع الإلكتروني وحفظها في دفتر عناوين الهاتف بلمسة واحدة دون أخطاء كتابية.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-12" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    12. استخدام QR Code في المطاعم والكافيهات (Contactless Menus)
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">أصبحت قوائم الطعام الرقمية عبر الـ QR ركيزة صناعة الضيافة الحديثة؛ فهي تلغي تكاليف الطباعة الدورية، وتسمح بتعديل الأسعار لحظياً، وتدعم عرض صور وفيديوهات شهية للأطباق ترفع المبيعات الإضافية (Up-selling).</p>
+
+                </div>
+            </section>
+
+            <section id="sec-13" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    13. QR Code في المتاجر والتجارة الإلكترونية والتغليف
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">تستخدم كبرى العلامات التجارية الرموز على عبوات التغليف لإرشاد العملاء لفيديوهات التركيب، وتفعيل الضمان الرقمي، والتحقق من أصالة المنتج ومكافحة التقليد.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-14" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    14. QR Code في الحملات التسويقية (Offline-to-Online)
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">تعد الرموز الجسر الأقوى لنقل المشاة وجمهور المعارض والملصقات الإعلانية والبروشورات إلى صفحات الهبوط الترويجية ونماذج جمع العملاء المحتملين (Lead Generation).</p>
+
+                </div>
+            </section>
+
+            <section id="sec-15" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    15. استخدامات QR Code في التعليم والمؤسسات الأكاديمية
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">دمج الأكواد في الكتب الدراسية لنقل الطلاب إلى مقاطع شرح تفاعلية ومختبرات افتراضية، وتسهيل الوصول إلى الواجبات والامتحانات على منصات التعلم الإلكتروني.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-16" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    16. QR Code في الفعاليات والمناسبات والتذاكر (E-Ticketing)
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">تسريع بوابات الدخول عبر مسح التذاكر المشفرة في نصف ثانية لمنع التزوير والتكرار، مع مشاركة أجندة المؤتمر وخريطة القاعات رقمياً.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-17" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    17. QR Code على السيرة الذاتية (CV) وبطاقات العمل
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">إضافة رمز أنيق لسيرتك الذاتية يمنح مسؤولي التوظيف وصولاً مباشراً لملف أعمالك (Portfolio)، حساب LinkedIn، أو مستودع GitHub.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-18" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    18. كيف تقرأ وتمسح QR Code على مختلف الأجهزة؟
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <ul style="margin-inline-start:1.5rem;line-height:1.8;"><li><strong>هواتف iPhone (iOS):</strong> افتح تطبيق الكاميرا الرسمي ووجهه نحو الرمز واضغط الإشعار المنبثق.</li>
+<li><strong>هواتف Android:</strong> عبر تطبيق الكاميرا المباشر أو ميزة <strong>Google Lens</strong>.</li>
+<li><strong>الكمبيوتر (Windows / Mac):</strong> عبر أدوات قراءة الويب برفع صورة الرمز أو استخدام إضافات المتصفح.</li></ul>
+
+                </div>
+            </section>
+
+            <section id="sec-19" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    19. أمان QR Code ومكافحة التصيد والاحتيال (QR Phishing)
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">الرمز بحد ذاته آمن، لكن الخطر يكمن في الرابط الذي يوجه إليه. احذر من الملصقات المشبوهة في الأماكن العامة، وتأكد دائماً من اسم النطاق وبروتوكول <code style="background:var(--card);padding:0.15rem 0.4rem;border-radius:4px;border:1px solid var(--border);">https://</code> قبل إدخال أي بيانات سرية أو بنكية.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-20" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    20. قواعد جعل الرمز قابلاً للمسح بسهولة
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <ul style="margin-inline-start:1.5rem;line-height:1.8;"><li>التباين الفائق: مربعات داكنة على خلفية بيضاء نقية.</li>
+<li>منطقة الهدوء: ترك هامش أبيض كافٍ حول الرمز من جميع الجهات.</li>
+<li>عدم مط أو تشويه أبعاد المربع (1:1).</li>
+<li>تجنب الخامات الورقية العاكسة للضوء (Glossy).</li></ul>
+
+                </div>
+            </section>
+
+            <section id="sec-21" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    21. تخصيص الألوان وتأثيرها على قابلية القراءة
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">يمكنك اختيار ألوان هوية علامتك التجارية، ولكن تجنب وضع خطوط صفراء أو رمادية باهتة على خلفيات فاتحة، وتجنب الخلفيات الشفافة التي تضيع معالمها فوق الأسطح الداكنة.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-22" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    22. إضافة الشعار Logo داخل QR Code
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">يمكن إضافة الشعار في المركز الهندسي الدقيق عند اختيار مستوى تصحيح أخطاء مرتفع <strong>High (Level H)</strong>، مع الحرص التام على عدم ملامسة أو تغطية مربعات الزوايا الكبرى (Finder Patterns).</p>
+
+                </div>
+            </section>
+
+            <section id="sec-23" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    23. أخطاء شائعة تجعل الرمز لا يعمل
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <ul style="margin-inline-start:1.5rem;line-height:1.8;"><li>عكس الألوان (رمز أبيض على خلفية سوداء في بعض الكاميرات القديمة).</li>
+<li>كثافة بكسلات خانقة بسبب نصوص وروابط طويلة جداً.</li>
+<li>قص الحواف وغياب منطقة الهدوء في المطبعة.</li>
+<li>استخدام روابط معطلة أو صفحات هبوط غير مهيأة للموبايل.</li></ul>
+
+                </div>
+            </section>
+
+            <section id="sec-24" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    24. أفضل مقاس لطباعة QR Code وفق مسافة المسح
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <div class="tip-box" style="background:rgba(37,99,235,0.08);border-left:4px solid var(--primary);padding:1rem;border-radius:8px;margin:1rem 0;">💡 <strong>📐 المعادلة الهندسية للمقاس:</strong> مقاس الرمز الأدنى = مسافة المسح مقسومة على 10 (مسافة 1 متر تتطلب رمزاً بمقاس 10×10 سم على الأقل).</div>
+
+                </div>
+            </section>
+
+            <section id="sec-25" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    25. QR Code للصور ومستندات PDF والملفات الكبيرة
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">نظراً لمحدودية السعة التخزينية للرمز بالبايت، يتم رفع الملف على خدمة سحابية (Google Drive / سحابتك الخاصة) وتشفير رابط الملف المباشر داخل الرمز ليقوم المستخدم بتنزيله فورياً.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-26" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    26. مقارنة شاملة: QR Code مقابل Barcode التقليدي
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">| العامل | الباركود الخطي 1D | رمز QR Code 2D |
+| :--- | :--- | :--- |
+| <strong>اتجاه القراءة</strong> | أفقي أحادي فقط | أفقي وعمودي (360 درجة) |
+| <strong>السعة القصوى للأرقام</strong> | حتى 20–30 رقماً | حتى 7,089 رقماً |
+| <strong>السعة القصوى للحروف</strong> | حتى 20–30 حرفاً | حتى 4,296 حرفاً |
+| <strong>مقاومة التلف والخدوش</strong> | ضعيفة جداً | عالية (استعادة حتى 30% من التلف) |</p>
+
+                </div>
+            </section>
+
+            <section id="sec-27" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    27. مقارنة تقنية: QR Code مقابل تقنية NFC
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">يتميز QR Code بأنه مجاني بالكامل ومرئي للعين ويعمل مع جميع الهواتف من مسافات متفاوتة، بينما تتطلب شرائح NFC تكلفة مالية وتعمل فقط بالتلامس المباشر من مسافة تقل عن 4 سم.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-28" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    28. أفضل ممارسات الاستخدام الاحترافي
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">أرفق دائماً نداءً واضحاً للإجراء (CTA) بجانب الرمز يشرح للعميل فائدة المسح، وتأكد من أن صفحة الهبوط سريعة التحميل وخفيفة على باقات الهاتف المحمول.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-29" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    29. أخطاء التسويق القاتلة بالرموز
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">تجنب وضع الرموز في أماكن منعدمة التغطية كالأنفاق العميقة، وتجنب وضعها على وسائل نقل سريعة الحركة لا تمنح المشاهد وقتاً كافياً للتصوير.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-30" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    30. علاقة QR Code بالـ SEO والتسويق الرقمي
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">لا يؤثر الرمز بشكل مباشر على ترتيب Google، ولكنه يرفع الزيارات المباشرة الحقيقية (Direct Organic Traffic) ويحسن معدلات التفاعل والتحويل من العالم الفيزيائي إلى موقعك.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-31" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    31. تأثير صور QR Code على سرعة صفحات الموقع
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">استخدم صيغة SVG المتجهية الخفيفة (أقل من 2 كيلوبايت) داخل صفحات الويب، واستخدم التحميل الكسول <code style="background:var(--card);padding:0.15rem 0.4rem;border-radius:4px;border:1px solid var(--border);">loading="lazy"</code> لصور PNG لتجنب أي بطء في مؤشرات أداء الويب Core Web Vitals.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-32" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    32. مقارنة الصيغ: PNG مقابل SVG لرموز QR
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">| وجه المقارنة | صيغة PNG (Raster) | صيغة SVG (Vector) |
+| :--- | :--- | :--- |
+| <strong>الاستخدام المثالي</strong> | السوشيال ميديا، الشاشات، الويب | المطابع الكبرى، اللوحات، التصميم الجرافيكي |
+| <strong>الحفاظ على النقاء عند التكبير</strong> | ⚠️ قد تفقد دقتها وتبكسل | 💎 نقاء مطلق 100% بأي أبعاد |
+| <strong>حجم الملف</strong> | متغير حسب الأبعاد | صغير وثابت جداً (1KB - 5KB) |</p>
+
+                </div>
+            </section>
+
+            <section id="sec-33" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    33. هل يمكن إنشاء QR Code مجاناً ومدى الحياة؟
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">نعم، الرموز الثابتة المشفرة محلياً عبر <a href="https://www.gtoolix.com/tools/qr-code-generator" style="color:var(--primary);font-weight:600;text-decoration:underline;">أداة GToolix لإنشاء QR Code</a> مجانية مدى الحياة، ولا ترتبط بأي خوادم خارجية قد تتوقف مستقبلاً.</p>
+
+                </div>
+            </section>
+
+            <section id="sec-34" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    34. دليل اختيار نوع QR Code المناسب لاحتياجك
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <p style="line-height:1.8;margin-bottom:1rem;">| ما الذي تريد مشاركته؟ | النوع المناسب في الأداة | النتيجة عند المسح |
+| :--- | :--- | :--- |
+| موقع إلكتروني أو متجر | <strong>URL</strong> | فتح الرابط في المتصفح |
+| نص أو كود خصم | <strong>Text</strong> | عرض النص على الشاشة |
+| شبكة إنترنت منزلية | <strong>Wi-Fi</strong> | الاتصال التلقائي بالشبكة |
+| بطاقة اتصال كاملة | <strong>vCard</strong> | حفظ جهة الاتصال في الهاتف |</p>
+
+                </div>
+            </section>
+
+            <section id="sec-35" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    35. دليل سريع: إنشاء رمز QR في 30 ثانية
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    <ul style="margin-inline-start:1.5rem;line-height:1.8;"><li>ادخل إلى <a href="https://www.gtoolix.com/tools/qr-code-generator" style="color:var(--primary);font-weight:600;text-decoration:underline;">أداة إنشاء رمز QR المجانية</a>.</li>
+<li>اختر نوع البيانات (URL, WiFi, vCard, Text).</li>
+<li>اكتب بياناتك في الحقول المخصصة.</li>
+<li>اضغط على زر التنزيل بصيغة PNG أو SVG لاستخدامه فوراً.</li></ul>
+
+                </div>
+            </section>
+            </div>
+
+            <!-- Interactive In-Content Tool CTA Banner -->
+
+            <div class="article-cta-box reveal" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(6, 182, 212, 0.12) 100%); border: 1.5px solid rgba(59, 130, 246, 0.35); border-radius: 1.25rem; padding: 2.25rem; margin: 3.5rem 0; text-align: center; box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.25);">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 1rem; background: var(--primary); color: #fff; margin-bottom: 1.25rem; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                </div>
+                <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 0.75rem;">
+                    أنشئ رمز QR مخصصاً وعالي الدقة الآن مجاناً
+                </h3>
+                <p style="color: var(--text-secondary); max-width: 620px; margin: 0 auto 1.5rem; font-size: 1.02rem; line-height: 1.65;">
+                    حوّل الروابط، النصوص، بطاقات vCard، وشبكات الواي فاي إلى رموز QR احترافية قابلة للتحميل بصيغتي PNG و SVG فائقة النقاء دون أي علامة مائية وبأمان 100%.
+                </p>
+                <a href="/tools/qr-code-generator" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 2rem; font-size: 1.05rem; font-weight: 700; border-radius: 9999px; text-decoration: none; background: var(--primary); color: #fff; box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.5); transition: all 0.25s ease;">
+                    <span>افتح مولد رمز QR مجاناً ←</span>
+                </a>
+            </div>
+
+            <!-- FAQ Section -->
+            <section id="faq-section" class="article-faq-section reveal" style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); scroll-margin-top: 100px;">
+                <div style="margin-bottom: 2rem; text-align: right;">
+                    <span class="kicker" style="color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase;">الأسئلة الأكثر تداولاً</span>
+                    <h2 style="font-size: 2rem; font-weight: 800; color: var(--text); margin-top: 0.4rem;">
+                        الأسئلة الشائعة حول ضغط الصور وتنسيقات الويب
+                    </h2>
+                </div>
+                <div class="faq-accordion-list">
+                    <div class="faq-item open">
+                        <button class="faq-question" type="button" aria-expanded="true">
                             <span>ما هو رمز QR Code وماذا تعني حروفه؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            رمز QR هو اختصار لـ Quick Response Code (رمز الاستجابة السريعة)، وهو مصفوفة ثنائية الأبعاد لتخزين وقراءة البيانات الرقمية بسرعة فائقة عبر كاميرات الهواتف الذكية وحساسات التصوير.
+                            <p>رمز QR هو اختصار لـ Quick Response Code (رمز الاستجابة السريعة)، وهو مصفوفة ثنائية الأبعاد لتخزين وقراءة البيانات الرقمية بسرعة فائقة عبر كاميرات الهواتف الذكية وحساسات التصوير.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>من هو مخترع تقنية QR Code وفي أي عام؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            اخترعه المهندس الياباني ماساهيرو هارا (Masahiro Hara) وفريقه في شركة Denso Wave عام 1994 لتتبع قطع غيار السيارات في مصانع تويوتا.
+                            <p>اخترعه المهندس الياباني ماساهيرو هارا (Masahiro Hara) وفريقه في شركة Denso Wave عام 1994 لتتبع قطع غيار السيارات في مصانع تويوتا.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>هل إنشاء رمز QR Code مجاني ومدى الحياة؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            نعم، الرموز الثابتة (Static QR Codes) المنشأة عبر منصة GToolix مجانية بالكامل 100% وتعمل مدى الحياة دون أي تاريخ انتهاء أو رسوم اشتراك.
+                            <p>نعم، الرموز الثابتة (Static QR Codes) المنشأة عبر منصة GToolix مجانية بالكامل 100% وتعمل مدى الحياة دون أي تاريخ انتهاء أو رسوم اشتراك.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>ما الفرق بين Static QR Code و Dynamic QR Code؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            الرمز الثابت يشفر البيانات داخله مباشرة ويعمل للأبد دون خادم وسيط ولا يمكن تعديله، بينما الديناميكي يوجه لرابط وسيط يمكن تعديل وجهته وتتبع إحصائيات مسحه.
+                            <p>الرمز الثابت يشفر البيانات داخله مباشرة ويعمل للأبد دون خادم وسيط ولا يمكن تعديله، بينما الديناميكي يوجه لرابط وسيط يمكن تعديل وجهته وتتبع إحصائيات مسحه.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>كيف أحول رابط موقع إلكتروني إلى QR Code؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            انسخ الرابط، افتح مولد GToolix، اختر تبويب URL، الصق الرابط، ثم حمّل صورة الرمز بصيغة PNG للشاشات أو SVG للطباعة.
+                            <p>انسخ الرابط، افتح مولد GToolix، اختر تبويب URL، الصق الرابط، ثم حمّل صورة الرمز بصيغة PNG للشاشات أو SVG للطباعة.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>كيف أنشئ QR Code لشبكة Wi-Fi للاتصال التلقائي بدون كلمة سر؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            اختر تبويب WiFi في أداة GToolix، أدخل اسم الشبكة (SSID)، كلمة المرور، ونوع التشفير (WPA/WPA2/WPA3)، وسيقوم الهاتف بالاتصال فور مسح الرمز.
+                            <p>اختر تبويب WiFi في أداة GToolix، أدخل اسم الشبكة (SSID)، كلمة المرور، ونوع التشفير (WPA/WPA2/WPA3)، وسيقوم الهاتف بالاتصال فور مسح الرمز.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>هل يمكن حفظ بيانات جهة اتصال كاملة vCard داخل الرمز؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            نعم، يتيح تبويب vCard تشفير الاسم الكامل، رقم الهاتف، البريد الإلكتروني، اسم الشركة، والموقع الإلكتروني لحفظها بلمسة واحدة في الهاتف.
+                            <p>نعم، يتيح تبويب vCard تشفير الاسم الكامل، رقم الهاتف، البريد الإلكتروني، اسم الشركة، والموقع الإلكتروني لحفظها بلمسة واحدة في الهاتف.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>ما هو نظام تصحيح الخطأ Reed-Solomon Error Correction؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            هو خوارزمية رياضية متقدمة تدمج بيانات إضافية لاستعادة وقراءة الرمز حتى لو تعرض للتمزق أو الاتساخ بنسبة تصل إلى 30%.
+                            <p>هو خوارزمية رياضية متقدمة تدمج بيانات إضافية لاستعادة وقراءة الرمز حتى لو تعرض للتمزق أو الاتساخ بنسبة تصل إلى 30%.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>ما هي مستويات تصحيح الأخطاء الأربعة (L, M, Q, H)؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            مستوى L يستعيد 7%، مستوى M يستعيد 15%، مستوى Q يستعيد 25%، ومستوى H يستعيد 30% وهو الأنسب لإضافة الشعارات وسط الرمز.
+                            <p>مستوى L يستعيد 7%، مستوى M يستعيد 15%، مستوى Q يستعيد 25%، ومستوى H يستعيد 30% وهو الأنسب لإضافة الشعارات وسط الرمز.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>هل يمكن إضافة شعار Logo داخل الرمز دون تعطيله؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            نعم، عند اختيار مستوى تصحيح أخطاء مرتفع (Level H) ووضع الشعار في المركز الهندسي دون حجب مربعات الزوايا الكبرى.
+                            <p>نعم، عند اختيار مستوى تصحيح أخطاء مرتفع (Level H) ووضع الشعار في المركز الهندسي دون حجب مربعات الزوايا الكبرى.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>هل يمكن تغيير ألوان QR Code عن الأسود والأبيض التقليدي؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            نعم، طالما حافظت على تباين لوني كافٍ (مربعات داكنة جداً على خلفية فاتحة جداً).
+                            <p>نعم، طالما حافظت على تباين لوني كافٍ (مربعات داكنة جداً على خلفية فاتحة جداً).</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>ما هي منطقة الهدوء Quiet Zone ولماذا هي ضرورية؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            هي الهامش الأبيض المحيط بأطراف الرمز الأربعة (بعرض 4 وحدات على الأقل)، وبدونها تفشل الكاميرا في فصل الرمز عن المحيط الخارجي.
+                            <p>هي الهامش الأبيض المحيط بأطراف الرمز الأربعة (بعرض 4 وحدات على الأقل)، وبدونها تفشل الكاميرا في فصل الرمز عن المحيط الخارجي.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>ما أفضل صيغة لتحميل QR Code لطباعته في المطابع واللوحات الكبرى؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            صيغة SVG المتجهية لأنها تقبل التكبير لأي حجم ولوحة إعلانية عملاقة دون أي بكسلة أو فقدان في النقاء.
+                            <p>صيغة SVG المتجهية لأنها تقبل التكبير لأي حجم ولوحة إعلانية عملاقة دون أي بكسلة أو فقدان في النقاء.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>ما هي صيغة PNG ومتى يفضل استخدامها لرموز QR؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            صيغة صور نقطية عالية الوضوح، مثالية للاستخدام على مواقع الويب وشاشات الهواتف والسوشيال ميديا والعروض التقديمية.
+                            <p>صيغة صور نقطية عالية الوضوح، مثالية للاستخدام على مواقع الويب وشاشات الهواتف والسوشيال ميديا والعروض التقديمية.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>كيف أمسح QR Code باستخدام هاتف iPhone (iOS)؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            افتح تطبيق الكاميرا الرسمي ووجهه نحو الرمز واضغط على الإشعار الأصفر المنبثق أعلى الشاشة.
+                            <p>افتح تطبيق الكاميرا الرسمي ووجهه نحو الرمز واضغط على الإشعار الأصفر المنبثق أعلى الشاشة.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>كيف أمسح QR Code باستخدام هاتف Android؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            افتح الكاميرا المباشرة أو استخدم ميزة Google Lens المدمجة في النظام.
+                            <p>افتح الكاميرا المباشرة أو استخدم ميزة Google Lens المدمجة في النظام.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>كيف أقرأ رمز QR Code معروضاً على شاشة الكمبيوتر؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            عبر رفع صورة الرمز لأداة قراءة ويب أو استخدام إضافات المتصفح لقراءة الأكواد على الشاشة.
+                            <p>عبر رفع صورة الرمز لأداة قراءة ويب أو استخدام إضافات المتصفح لقراءة الأكواد على الشاشة.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>هل يتطلب مسح QR Code اتصالاً بالإنترنت دائماً؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            إذا كان الرمز يحتوي على نص، رقم هاتف، أو بيانات Wi-Fi فلا يحتاج إنترنت، أما إذا كان رابطاً لموقع فيتطلب اتصالاً لفتح الصفحة.
+                            <p>إذا كان الرمز يحتوي على نص، رقم هاتف، أو بيانات Wi-Fi فلا يحتاج إنترنت، أما إذا كان رابطاً لموقع فيتطلب اتصالاً لفتح الصفحة.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>ما هو حجم البيانات الأقصى الذي يمكن تخزينه في QR Code؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            حتى 7,089 رقماً، أو 4,296 حرفاً أبجدياً رقمياً، أو 2,953 بايت ثنائي في الإصدار الأكبر (Version 40).
+                            <p>حتى 7,089 رقماً، أو 4,296 حرفاً أبجدياً رقمياً، أو 2,953 بايت ثنائي في الإصدار الأكبر (Version 40).</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>ما هو QR Phishing أو التصيد عبر الرموز وكيف أحمي نفسي؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            هو احتيال يقوم فيه المخترق بإنشاء رمز يقود إلى صفحة مزورة؛ احمِ نفسك بمعاينة الرابط واسم النطاق دائماً قبل إدخال أي بيانات سرية.
+                            <p>هو احتيال يقوم فيه المخترق بإنشاء رمز يقود إلى صفحة مزورة؛ احمِ نفسك بمعاينة الرابط واسم النطاق دائماً قبل إدخال أي بيانات سرية.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>لماذا لا يعمل الرمز الخاص بي بعد طباعته؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            الأسباب الأكثر شيوعاً: ضعف التباين بين الرمز والخلفية، صغر الحجم، قص منطقة الهدوء، أو تشويه أبعاد المربع.
+                            <p>الأسباب الأكثر شيوعاً: ضعف التباين بين الرمز والخلفية، صغر الحجم، قص منطقة الهدوء، أو تشويه أبعاد المربع.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>ما هو الحد الأدنى لمقاس طباعة QR Code على المنتجات وبطاقات العمل؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            يجب ألا يقل عن 2×2 سم للمسح من مسافة قريبة لضمان عمل الحساسات بدقة.
+                            <p>يجب ألا يقل عن 2×2 سم للمسح من مسافة قريبة لضمان عمل الحساسات بدقة.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>ما هي معادلة حساب مقاس الرمز بالنسبة لمسافة المسح؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            المقاس الأدنى للرمز = مسافة المسح مقسومة على 10 (مثلاً: مسافة متر تتطلب رمزاً بمقاس 10×10 سم على الأقل).
+                            <p>المقاس الأدنى للرمز = مسافة المسح مقسومة على 10 (مثلاً: مسافة متر تتطلب رمزاً بمقاس 10×10 سم على الأقل).</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>هل يمكن تخزين ملف PDF كامل بداخل QR Code مباشرة؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            لا، يتم رفع ملف الـ PDF على خدمة سحابية وتشفير الرابط الخاص به داخل الرمز ليقوم المستخدم بتنزيله فورياً.
+                            <p>لا، يتم رفع ملف الـ PDF على خدمة سحابية وتشفير الرابط الخاص به داخل الرمز ليقوم المستخدم بتنزيله فورياً.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>ما الفرق الرئيسي بين QR Code والباركود التقليدي 1D؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            الباركود الخطي يقرأ أفقياً فقط بسعة 20-30 حرفاً، بينما الـ QR يقرأ أفقياً وعمودياً بسعة تتجاوز آلاف الحروف مع تصحيح الأخطاء.
+                            <p>الباركود الخطي يقرأ أفقياً فقط بسعة 20-30 حرفاً، بينما الـ QR يقرأ أفقياً وعمودياً بسعة تتجاوز آلاف الحروف مع تصحيح الأخطاء.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>هل تقنية QR Code أفضل أم تقنية NFC؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            الـ QR مجاني ومرئي ومتاح لكل الهواتف ويعمل من مسافات متباينة، بينما الـ NFC شريحة فيزيائية مدفوعة تعمل بالتلامس المباشر من مسافة تقل عن 4 سم.
+                            <p>الـ QR مجاني ومرئي ومتاح لكل الهواتف ويعمل من مسافات متباينة، بينما الـ NFC شريحة فيزيائية مدفوعة تعمل بالتلامس المباشر من مسافة تقل عن 4 سم.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>كيف تستفيد المطاعم من رموز QR Code في قوائم الطعام؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            توفير تكاليف الطباعة الدورية، التعديل الفوري للأسعار، عرض صور وفيديوهات شهية للأطباق، وتوفير تجربة صحية بدون تلامس.
+                            <p>توفير تكاليف الطباعة الدورية، التعديل الفوري للأسعار، عرض صور وفيديوهات شهية للأطباق، وتوفير تجربة صحية بدون تلامس.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
+                        <button class="faq-question" type="button" aria-expanded="false">
                             <span>هل يدعم مولد GToolix تحميل الرمز بدون علامة مائية؟</span>
                             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </button>
                         <div class="faq-answer">
-                            نعم، جميع الرموز المنشأة عبر GToolix نظيفة وخالية من أي علامات مائية أو شعارات مفروضة 100%.
+                            <p>نعم، جميع الرموز المنشأة عبر GToolix نظيفة وخالية من أي علامات مائية أو شعارات مفروضة 100%.</p>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Related Articles Section (AR) -->
-                <section class="related-articles-section reveal in-view">
-                    <div class="related-articles-header">
-                        <span class="kicker" style="color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase;">مقالات مقترحة للقراءة</span>
-                        <h2 style="font-size: 2rem; font-weight: 800; color: var(--text); margin-top: 0.4rem;">
-                            مقالات وشروحات ذات صلة
-                        </h2>
-                    </div>
-                    <div class="related-articles-grid">
-                        <a href="/blog/image-compression-guide" class="related-article-card">
-                            <div class="related-article-thumb-wrap">
-                                <img src="/static/img/blog/image-compression.jpg" alt="أفضل طريقة لضغط الصور بدون فقدان الجودة" class="related-article-thumb" loading="lazy">
-                            </div>
-                            <div class="related-article-body">
-                                <span class="related-article-tag">ضغط الصور</span>
-                                <h3 class="related-article-title">أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل التقني الشامل 2026</h3>
-                                <p class="related-article-desc">دليل موسوعي يشرح خوارزميات الضغط وفصل الفضاء اللوني وتحسين Core Web Vitals مع GToolix.</p>
-                                <span class="related-article-cta">
-                                    <span>اقرأ الدليل الكامل ←</span>
-                                </span>
-                            </div>
-                        </a>
-                        <a href="/blog/jpg-vs-png-vs-webp" class="related-article-card">
-                            <div class="related-article-thumb-wrap">
-                                <img src="/static/img/blog/formats-comparison.jpg" alt="الفرق بين JPG و PNG و WebP" class="related-article-thumb" loading="lazy">
-                            </div>
-                            <div class="related-article-body">
-                                <span class="related-article-tag">تنسيقات الويب</span>
-                                <h3 class="related-article-title">الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟</h3>
-                                <p class="related-article-desc">مقارنة تقنية شاملة بين JPG و PNG و WebP و AVIF و SVG: الفروق في الحجم والشفافية والسرعة.</p>
-                                <span class="related-article-cta">
-                                    <span>اقرأ الدليل الكامل ←</span>
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </section>
-
-                <!-- Bottom Back Navigation (Hover turns blue) -->
-                <div class="article-back-nav">
-                    <a href="/blog" class="article-back-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-                        <span>العودة لكافة المقالات</span>
-                    </a>
+            <!-- Related Articles Section (مقالات وشروحات ذات صلة) -->
+            <section class="related-articles-section reveal">
+                <div class="related-articles-header">
+                    <span class="kicker" style="color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase;">مقالات مقترحة للقراءة</span>
+                    <h2 style="font-size: 2rem; font-weight: 800; color: var(--text); margin-top: 0.4rem;">
+                        مقالات وشروحات ذات صلة
+                    </h2>
                 </div>
+                <div class="related-articles-grid">
+                <a href="/blog/image-compression-guide" class="related-article-card">
+                    <div class="related-article-thumb-wrap">
+                        <img src="/static/img/blog/image-compression.jpg" alt="أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل التقني الشامل 2026" class="related-article-thumb" width="400" height="225" loading="lazy">
+                    </div>
+                    <div class="related-article-body">
+                        <span class="related-article-tag">ضغط الصور</span>
+                        <h3 class="related-article-title">أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل التقني الشامل 2026</h3>
+                        <p class="related-article-desc">دليل موسوعي يشرح خوارزميات الضغط وفصل الفضاء اللوني وتحسين Core Web Vitals وسرعة المتاجر مع GToolix.</p>
+                        <span class="related-article-cta">
+                            <span>اقرأ الدليل الكامل ←</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="/blog/jpg-vs-png-vs-webp" class="related-article-card">
+                    <div class="related-article-thumb-wrap">
+                        <img src="/static/img/blog/formats-comparison.jpg" alt="الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟" class="related-article-thumb" width="400" height="225" loading="lazy">
+                    </div>
+                    <div class="related-article-body">
+                        <span class="related-article-tag">تنسيقات الويب</span>
+                        <h3 class="related-article-title">الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟</h3>
+                        <p class="related-article-desc">مقارنة تقنية شاملة بين JPG و PNG و WebP و AVIF و SVG: الفروق في الحجم، دعم الشفافية، وعمق الألوان وسرعة التحميل.</p>
+                        <span class="related-article-cta">
+                            <span>اقرأ الدليل الكامل ←</span>
+                        </span>
+                    </div>
+                </a>
+                </div>
+            </section>
+
+            <!-- Bottom Back Navigation (Hover turns blue) -->
+            <div class="article-back-nav">
+                <a href="/blog" class="article-back-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                    <span>العودة لكافة المقالات</span>
+                </a>
             </div>
-        </main>
-    </div>
+        </article>
+    </main>
 
-    <!-- =========================================================================
-         ENGLISH ARTICLE CONTENT (LTR)
-         ========================================================================= -->
-    <div class="article-content-en">
-        <main class="article-wrap">
-            <!-- Breadcrumb Navigation -->
-            <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-                <ol>
-                    <li><a href="/">Home</a></li>
-                    <li class="separator" aria-hidden="true">/</li>
-                    <li><a href="/blog">Articles</a></li>
-                    <li class="separator" aria-hidden="true">/</li>
-                    <li aria-current="page">QR Code Ultimate Guide</li>
-                </ol>
-            </nav>
-
-            <!-- Article Header -->
-            <header class="article-header reveal in-view">
-                <span class="article-category-badge badge--blue">Web Tools • Comprehensive Guide</span>
-                <h1 class="article-h1">
-                    QR Code — The Ultimate Guide to Creating, Using, and Scanning QR Codes Free Online
-                </h1>
-                <p class="article-lead">
-                    Quick Response (QR) codes have transformed how information connects physical environments with digital systems. This exhaustive guide explores everything from structural anatomy and Reed-Solomon error correction to practical workflows and generating high-res vector codes using the <a href="https://www.gtoolix.com/tools/qr-code-generator" style="color: var(--primary); font-weight: 700; text-decoration: underline;">GToolix Free QR Code Generator</a>.
-                </p>
-                <div class="article-meta-bar">
-                    <span>✍️ GToolix Editorial Team</span>
-                    <span>🛡️ ISO/IEC 18004 Compliant</span>
-                </div>
-            </header>
-
-            <!-- Featured Banner Illustration -->
-            <div class="article-featured-img-wrap reveal in-view">
-                <img src="/static/img/blog/qr-code-guide-en.jpg" alt="Comprehensive Guide to Creating, Scanning and Using QR Codes" class="article-featured-img" width="1200" height="675" loading="eager" fetchpriority="high">
-            </div>
-
-            <!-- Article Prose Body (EN) -->
-            <div class="article-prose">
-                <p>
-                    If you are looking for a fast, browser-based way to create custom QR codes for websites, WiFi networks, contact cards, or text payloads, you can use the <a href="https://www.gtoolix.com/tools/qr-code-generator" style="color: var(--primary); font-weight: 700; text-decoration: underline;">GToolix Free QR Code Generator</a> directly with zero installations and 100% privacy.
-                </p>
-
-                <!-- Table of Contents (EN) -->
-                <nav class="article-toc reveal in-view" aria-label="Article Table of Contents">
-                    <div class="article-toc__title">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-                        <span>Comprehensive Guide Table of Contents</span>
-                    </div>
-                    <ol>
-                        <li><a href="#en-sec-1">What is a QR Code? Origins & Anatomy</a></li>
-                        <li><a href="#en-sec-2">How QR Codes Work: Technical Breakdown</a></li>
-                        <li><a href="#en-sec-3">Static vs Dynamic QR Codes</a></li>
-                        <li><a href="#en-sec-4">How to Generate QR Codes Free with GToolix</a></li>
-                        <li><a href="#en-sec-5">Best Practices for Print & Digital</a></li>
-                        <li><a href="#en-sec-faq">Frequently Asked Questions (FAQ)</a></li>
-                    </ol>
-                </nav>
-
-                <h2 id="en-sec-1">1. What is a QR Code? History and Structural Anatomy</h2>
-                <p>
-                    Invented in 1994 by Masahiro Hara at <strong>Denso Wave</strong> to track automobile components, the <strong>QR Code (Quick Response Code)</strong> is a 2D matrix barcode capable of encoding numeric, alphanumeric, byte/binary, and Kanji data across horizontal and vertical grids.
-                </p>
-                <p>
-                    Standard 1D barcodes (like UPC/EAN) store at most 20–30 alphanumeric characters. In contrast, standard Model 2 Version 40 QR codes encode up to <strong>7,089 numeric characters</strong>, <strong>4,296 alphanumeric characters</strong>, or <strong>2,953 binary bytes</strong>.
-                </p>
-
-                <h2 id="en-sec-2">2. How QR Codes Work: Mathematical Anatomy</h2>
-                <p>
-                    Every standard QR code incorporates vital structural zones mandated by ISO/IEC 18004:
-                </p>
-                <ul>
-                    <li><strong>Finder Patterns:</strong> Three distinct concentric squares situated in three corners, enabling scanners to recognize code geometry, rotation, and skew at 360 degrees.</li>
-                    <li><strong>Alignment Patterns:</strong> Smaller nested squares ensuring accurate sampling even if printed on curved surfaces.</li>
-                    <li><strong>Timing Patterns:</strong> Alternating black and white modules establishing grid coordinate baselines.</li>
-                    <li><strong>Quiet Zone:</strong> A mandatory 4-module margin of clean blank space ensuring scanner optical sensors isolate the code from surrounding clutter.</li>
-                    <li><strong>Reed-Solomon Error Correction:</strong> Mathematical redundancy allowing data recovery even if up to 30% of the symbol is soiled, torn, or damaged.</li>
-                </ul>
-
-                <h2 id="en-sec-3">3. Static vs Dynamic QR Codes</h2>
-                <div class="article-table-wrap">
-                    <table class="article-table">
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Static QR Code</th>
-                                <th>Dynamic QR Code</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Destination Editable</strong></td>
-                                <td>❌ Permanent (No)</td>
-                                <td>✔️ Real-time updates</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Lifespan</strong></td>
-                                <td>✔️ Permanent (Never expires)</td>
-                                <td>⚠️ Dependent on redirection server</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Server Intermediary</strong></td>
-                                <td>❌ None (100% self-contained)</td>
-                                <td>✔️ Requires short-URL proxy</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Scan Tracking & Analytics</strong></td>
-                                <td>❌ Not directly supported</td>
-                                <td>✔️ Full analytics tracking</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Cost</strong></td>
-                                <td>🆓 100% Free Forever</td>
-                                <td>💳 Often subscription-based</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h2>4. How to Generate a Free QR Code with GToolix</h2>
-                <p>
-                    With the <a href="https://www.gtoolix.com/tools/qr-code-generator">GToolix Free QR Code Generator</a>, you can create custom high-resolution codes instantly:
-                </p>
-                <ol>
-                    <li>Navigate to the <a href="https://www.gtoolix.com/tools/qr-code-generator">GToolix QR Generator</a>.</li>
-                    <li>Select your payload type (URL, Plain Text, Wi-Fi, Phone, Email, SMS, vCard, Location).</li>
-                    <li>Enter your target data and customize colors and error correction level.</li>
-                    <li>Download in scalable <strong>SVG</strong> for print or <strong>PNG</strong> for digital use.</li>
-                </ol>
-
-                <!-- Interactive Tool Highlight Banner -->
-                <div class="article-tool-banner reveal in-view">
-                    <h3>Generate Your Custom QR Code Free</h3>
-                    <p>Create unmetered, watermark-free vector SVG & high-res PNG barcodes directly in your browser with 100% local privacy.</p>
-                    <a href="https://www.gtoolix.com/tools/qr-code-generator" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: 9999px; font-weight: 700; text-decoration: none; color: #fff; background: var(--primary);">
-                        <span>Open QR Studio</span>
-                        <span>→</span>
-                    </a>
-                </div>
-
-                <h2>5. Best Practices for Print and Digital Deployment</h2>
-                <p>
-                    Always ensure strong contrast (dark modules on light backgrounds), preserve the quiet zone, and follow the standard scanning distance formula:
-                </p>
-                <div class="callout-box callout-box--tip">
-                    <span class="callout-box__title">💡 Printing Formula:</span>
-                    <p style="margin:0; font-weight:700;">Minimum Size = Scanning Distance / 10 (A 1-meter scan distance requires at least a 10×10 cm printed code).</p>
-                </div>
-
-                <!-- 50+ FAQs SECTION (EN) -->
-                <h2 id="en-sec-faq">Frequently Asked Questions (FAQ)</h2>
-                <div class="faq-grid">
-                                        <div class="faq-item open">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>What is a QR Code and what does the acronym mean?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            QR Code stands for Quick Response Code. It is a two-dimensional matrix barcode designed for rapid scanning and data retrieval via digital camera sensors and smartphones.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>Who invented the QR Code and in what year?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            It was invented in 1994 by Japanese engineer Masahiro Hara and his development team at Denso Wave to track automotive components in Toyota manufacturing facilities.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>Is creating a QR Code free and permanent?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Yes, Static QR Codes generated on GToolix are 100% free and last indefinitely without expiration dates or subscription fees.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>What is the difference between Static and Dynamic QR Codes?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Static QR codes encode target data directly inside the matrix with permanent validity, whereas Dynamic QR codes point to a redirection server that allows editing destinations and tracking scan metrics.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>How do I convert a website URL into a QR Code?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Copy your URL, open the GToolix QR Generator, select the URL tab, paste the link, and download your high-resolution PNG or SVG code instantly.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>How do I make a Wi-Fi QR Code for password-free auto-connect?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Select the WiFi tab on GToolix, input your network SSID, password, and encryption type (WPA2/WPA3). Scanning the code immediately connects phones without manual password entry.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>Can I store complete contact information (vCard) in a QR Code?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Yes, the vCard format encodes full names, phone numbers, emails, company details, and websites, allowing users to save the contact with a single tap.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>What is Reed-Solomon Error Correction in QR Codes?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            It is a mathematical error-correcting algorithm that embeds redundancy bytes, allowing scanners to recover data even if up to 30% of the code is damaged or obscured.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>What are the four error correction levels (L, M, Q, H)?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Level L recovers 7%, Level M recovers 15%, Level Q recovers 25%, and Level H recovers 30% (ideal when embedding custom logos in the center).
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>Can I embed a logo inside a QR Code without breaking it?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Yes, by generating the code with High Error Correction (Level H) and placing the logo centrally without covering the three primary corner finder patterns.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>Can I customize the colors of a QR Code?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Yes, as long as you maintain high contrast between the dark foreground modules and the light background surface.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>What is the Quiet Zone and why is it essential?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            It is the mandatory blank border surrounding all four sides of the QR code (at least 4 modules wide) that enables optical sensors to delineate the code from background noise.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>What is the best format for professional commercial printing?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Scalable Vector Graphics (SVG), because it can be scaled infinitely to billboard sizes without any pixelation or resolution loss.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>When should I use the PNG format for QR codes?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            PNG is ideal for digital screens, websites, social media posts, presentations, and email signatures due to universal browser and software compatibility.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>How do I scan a QR code with an iPhone?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Open the built-in Camera app, point it at the QR code, and tap the yellow link banner that automatically appears on screen.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>How do I scan a QR code with an Android device?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Open your native Camera app or activate Google Lens in the search bar to detect and open the encoded payload instantly.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>How do I scan a QR code displayed on a computer screen?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            You can upload a screenshot to an online QR reader or use browser extensions to decode on-screen barcodes without using a phone.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>Does scanning a QR code always require an internet connection?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            No. Plain text, phone numbers, SMS, and Wi-Fi codes work completely offline. Only web URLs require internet access to load the destination page.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>What is the maximum data capacity of a QR Code?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            A standard Version 40 QR code can store up to 7,089 numeric characters, 4,296 alphanumeric characters, or 2,953 binary bytes.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>What is QR Phishing (Quishing) and how can I stay safe?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            It is a social engineering attack where malicious codes redirect to counterfeit sites. Protect yourself by always previewing the domain URL before entering credentials.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>Why is my printed QR code failing to scan?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Common reasons include insufficient contrast, printed size being too small for the scan distance, cropped quiet zones, or aspect ratio distortion.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>What is the minimum recommended print size for QR codes?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            At least 2×2 cm (0.8×0.8 inches) for close-range handheld scanning on business cards, flyers, and packaging.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>What is the formula to calculate QR code print size based on distance?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Minimum Size = Scanning Distance / 10 (For example, a 2-meter scanning distance requires a 20×20 cm printed code).
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>Can I embed an entire PDF file directly inside a QR Code?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            No. You upload the PDF to cloud storage (Google Drive, AWS, or your server) and encode the direct download link in the QR code.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>What is the core difference between a 1D Barcode and a 2D QR Code?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            1D barcodes hold only 20-30 characters scanned linearly, while 2D QR codes hold thousands of characters scanned omnidirectionally with robust error correction.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>Is QR Code better than NFC technology?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            QR codes are free, visible, work with all camera phones, and scan from variable distances, whereas NFC tags require physical hardware chips and proximity under 4 cm.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>How do restaurants benefit from QR Code contactless menus?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            They eliminate printing costs, allow instant real-time menu updates, showcase high-res dish photos, and provide hygienic contactless ordering.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('open')">
-                            <span>Does GToolix generate watermark-free QR codes?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </button>
-                        <div class="faq-answer">
-                            Yes. All QR codes created on GToolix are 100% clean, unbranded, and free of any promotional watermarks.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Related Articles Section (EN) -->
-                <section class="related-articles-section reveal in-view">
-                    <div class="related-articles-header">
-                        <span class="kicker" style="color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase;">RECOMMENDED READING</span>
-                        <h2 style="font-size: 2rem; font-weight: 800; color: var(--text); margin-top: 0.4rem;">
-                            Related Articles & Guides
-                        </h2>
-                    </div>
-                    <div class="related-articles-grid">
-                        <a href="/en/blog/image-compression-guide" class="related-article-card">
-                            <div class="related-article-thumb-wrap">
-                                <img src="/static/img/blog/image-compression.jpg" alt="Best Way to Compress Images Without Losing Quality" class="related-article-thumb" loading="lazy">
-                            </div>
-                            <div class="related-article-body">
-                                <span class="related-article-tag">Image Optimization</span>
-                                <h3 class="related-article-title">Best Way to Compress Images Without Losing Quality: Complete Technical Guide 2026</h3>
-                                <p class="related-article-desc">Encyclopedic guide on compression mathematics, SSIM fidelity metrics, and Core Web Vitals optimization.</p>
-                                <span class="related-article-cta">
-                                    <span>Read Full Guide →</span>
-                                </span>
-                            </div>
-                        </a>
-                        <a href="/en/blog/jpg-vs-png-vs-webp" class="related-article-card">
-                            <div class="related-article-thumb-wrap">
-                                <img src="/static/img/blog/formats-comparison.jpg" alt="JPG vs PNG vs WebP" class="related-article-thumb" loading="lazy">
-                            </div>
-                            <div class="related-article-body">
-                                <span class="related-article-tag">Web Formats</span>
-                                <h3 class="related-article-title">JPG vs PNG vs WebP: Which Image Format Should You Choose in 2026?</h3>
-                                <p class="related-article-desc">Technical benchmark comparing JPG, PNG, WebP, AVIF, and SVG for modern web performance and SEO.</p>
-                                <span class="related-article-cta">
-                                    <span>Read Full Guide →</span>
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </section>
-
-                <!-- Bottom Back Navigation (Hover turns blue) -->
-                <div class="article-back-nav">
-                    <a href="/en/blog" class="article-back-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-                        <span>Back to All Articles</span>
-                    </a>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- ===================== OFFICIAL GTOOLIX SITE FOOTER ===================== -->
-        <footer>
+    <footer>
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-col footer-col--brand">
@@ -1645,94 +1322,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="/static/js/theme.min.js"></script>
     <script>
-        const translations = {
-            en: {
-                common: {
-                    navTools: "Tools", navBlog: "Articles", navPrograms: "Programs",
-                    navToolsDesc: "Smart & interactive online tools",
-                    navBlogDesc: "Guides, articles & insights",
-                    navProgramsDesc: "Desktop software & solutions",
-                    navQr: "QR Code Generator", navThumb: "YouTube Thumbnail Downloader", navGemini: "Gemini Watermark Remover", navRecorder: "Screen Studio Recorder", navCompressor: "Image Compressor & Converter",
-                    breadcrumbHome: "Home",
-                    footerNote: "GToolix is intended for personal use with content you own or licensed for public use.",
-                    footerToolsTitle: "Featured Tools", footerSectionsTitle: "Platform Sections", footerTrustTitle: "About Platform & Trust", footerLegalTitle: "Privacy & Terms",
-                    linkAbout: "About Us", linkContact: "Contact Us", linkFaq: "FAQ",
-                    linkPrivacy: "Privacy Policy", linkTerms: "Terms of Service", linkCookies: "Cookies Policy",
-                    linkDisclaimer: "Disclaimer", linkDmca: "Copyright (DMCA)",
-                    footerCopyright: "© 2026 GToolix. All rights reserved."
-                }
-            },
-            ar: {
-                common: {
-                    navTools: "الأدوات", navBlog: "المقالات", navPrograms: "البرامج",
-                    navToolsDesc: "أدوات ذكية وتفاعلية مجانية",
-                    navBlogDesc: "شروحات ومقالات حصرية ومفيدة",
-                    navProgramsDesc: "تطبيقات وحلول رقمية جاهزة",
-                    navQr: "مولد كود QR", navThumb: "تحميل صور اليوتيوب المصغرة", navGemini: "مزيل علامة جيميناي", navRecorder: "مسجل الشاشة الاحترافي", navCompressor: "ضاغط ومحوّل الصور الرقمي",
-                    breadcrumbHome: "الرئيسية",
-                    footerNote: "GToolix مخصص للاستخدام الشخصي مع محتوى تملك حقوقه أو مرخّص للاستخدام العام.",
-                    footerToolsTitle: "الأدوات المميزة", footerSectionsTitle: "أقسام المنصة", footerTrustTitle: "عن المنصة والثقة", footerLegalTitle: "الخصوصية والشروط",
-                    linkAbout: "عن المنصة", linkContact: "اتصل بنا", linkFaq: "الأسئلة الشائعة",
-                    linkPrivacy: "سياسة الخصوصية", linkTerms: "الشروط والأحكام", linkCookies: "سياسة الكوكيز",
-                    linkDisclaimer: "إخلاء المسؤولية", linkDmca: "حقوق النشر (DMCA)",
-                    footerCopyright: "© 2026 GToolix. كل الحقوق محفوظة."
-                }
-            }
-        };
-
-        let currentLang = (function () {
-            var p = window.location.pathname || '';
-            if (p.indexOf('/en/') === 0 || p === '/en') return 'en';
-            return document.documentElement.lang || 'ar';
-        })();
-
-        function getNestedTranslation(obj, path) {
-            return path.split('.').reduce((prev, curr) => prev ? prev[curr] : undefined, obj);
-        }
-
-        function applyTranslations() {
-            const isEn = currentLang === 'en';
-            document.documentElement.lang = currentLang;
-            document.documentElement.dir = isEn ? 'ltr' : 'rtl';
-
-            const langBtnEn = document.getElementById('lang-en-btn');
-            const langBtnAr = document.getElementById('lang-ar-btn');
-            if (langBtnEn && langBtnAr) {
-                langBtnEn.classList.toggle('active', isEn);
-                langBtnAr.classList.toggle('active', !isEn);
-            }
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                const val = getNestedTranslation(translations[currentLang], key);
-                if (val !== undefined) el.textContent = val;
-            });
-
-            document.title = isEn
-                ? "QR Code: The Ultimate Guide to Creating, Using & Scanning QR Codes Online | GToolix"
-                : "QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين | GToolix";
-
-            const metaDescEl = document.getElementById('doc-meta-desc');
-            if (metaDescEl) {
-                metaDescEl.setAttribute('content', isEn
-                    ? "Complete comprehensive guide to QR Codes: history, how they work, Static vs Dynamic, and generating free high-res vector QR codes with GToolix."
-                    : "اكتشف كل ما تحتاج لمعرفته عن QR Code: تاريخه، كيف يعمل، الفرق بين Static و Dynamic، وطريقة إنشاء رمز QR مجاناً للروابط وشبكات WiFi والبيانات بأعلى جودة مع GToolix."
-                );
-            }
-        }
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            try {
-                localStorage.setItem('gtoolix_language', lang);
-                localStorage.setItem('siteLang', lang);
-            } catch (e) { }
-            applyTranslations();
-        }
-
         function toggleNav(forceClose) {
             const links = document.getElementById('site-nav-links');
             const btn = document.getElementById('nav-toggle');
@@ -1745,8 +1335,15 @@
             btn.setAttribute('aria-expanded', String(shouldOpen));
         }
 
-        document.addEventListener('DOMContentLoaded', applyTranslations);
+        function toggleTheme() {
+            try {
+                const current = document.documentElement.getAttribute('data-theme') || 'dark';
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            } catch (e) {}
+        }
     </script>
+    <script src="/static/js/theme.min.js" defer></script>
 </body>
-
 </html>

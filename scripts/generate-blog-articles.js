@@ -1710,7 +1710,7 @@ function buildRelatedArticlesHtml(currentSlug, lang) {
 
         return `                <a href="${link}" class="related-article-card">
                     <div class="related-article-thumb-wrap">
-                        <img src="${img}" alt="${escapeHtml(title)}" class="related-article-thumb" loading="lazy">
+                        <img src="${img}" alt="${escapeHtml(title)}" class="related-article-thumb" width="400" height="225" loading="lazy">
                     </div>
                     <div class="related-article-body">
                         <span class="related-article-tag">${escapeHtml(tag)}</span>
@@ -2089,7 +2089,17 @@ ${footerHtml}
 
 // Build and write all static article files
 function buildAllBlogArticles() {
+    let qrCodeArticle = null;
+    try {
+        qrCodeArticle = require('./build-qr-clean.js').qrCodeArticle;
+    } catch (e) {
+        console.warn('[WARN] Could not load qrCodeArticle:', e.message);
+    }
+
     const articles = [imageCompressionArticle, formatsComparisonArticle];
+    if (qrCodeArticle) {
+        articles.unshift(qrCodeArticle);
+    }
 
     articles.forEach(art => {
         // Arabic HTML

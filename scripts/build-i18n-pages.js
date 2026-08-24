@@ -1240,7 +1240,7 @@ function generateBlogIndexPage(lang) {
 
         return `            <article class="article-card reveal in-view" data-keywords="${keywordsAttr}">
                 <a href="${pfx}/blog/${art.slug}" class="article-card__thumb-link" aria-label="${escapeHtml(artTitle)}">
-                    <img src="${imgUrl}" alt="${escapeHtml(artTitle)}" class="article-card__thumb-img" loading="lazy">
+                    <img src="${imgUrl}" alt="${escapeHtml(artTitle)}" class="article-card__thumb-img" width="400" height="225" loading="lazy">
                 </a>
                 <div class="article-card__body">
                     <div class="article-card__meta">
@@ -1354,10 +1354,13 @@ function generateBlogArticleQr(lang) {
 
     if (isAr) {
         // Remove English article content block for clean single H1 and optimal HTML size
-        content = content.replace(/<!--\s*ENGLISH ARTICLE CONTENT[\s\S]*?<div\s+class=["']article-content-en["']>[\s\S]*?<\/main>\s*<\/div>/i, '');
+        content = content.replace(/<!--[\s\S]*?ENGLISH ARTICLE CONTENT[\s\S]*?<div\s+class=["']article-content-en["']>[\s\S]*?<\/main>\s*<\/div>/i, '');
+        // Also ensure article-content-en standalone is removed if comments differ
+        content = content.replace(/<div\s+class=["']article-content-en["']>[\s\S]*?<\/main>\s*<\/div>/i, '');
     } else {
         // Remove Arabic article content block for clean single H1 and optimal HTML size
-        content = content.replace(/<!--\s*ARABIC ARTICLE CONTENT[\s\S]*?<div\s+class=["']article-content-ar["']>[\s\S]*?<\/main>\s*<\/div>/i, '');
+        content = content.replace(/<!--[\s\S]*?ARABIC ARTICLE CONTENT[\s\S]*?<div\s+class=["']article-content-ar["']>[\s\S]*?<\/main>\s*<\/div>/i, '');
+        content = content.replace(/<div\s+class=["']article-content-ar["']>[\s\S]*?<\/main>\s*<\/div>/i, '');
         content = prefixInternalLinksForEnglish(content);
     }
 
@@ -2161,8 +2164,6 @@ function buildAll() {
     // 4. Blog Index & Articles
     generateBlogIndexPage('ar');
     generateBlogIndexPage('en');
-    generateBlogArticleQr('ar');
-    generateBlogArticleQr('en');
     try {
         const { execSync } = require('child_process');
         execSync('node scripts/generate-blog-articles.js', { stdio: 'inherit' });

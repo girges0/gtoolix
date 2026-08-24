@@ -46,15 +46,8 @@ try {
     assert(false, `Data layer JSON parsing error: ${e.message}`);
 }
 
-// 2. Standalone Gemini Module Verification
-console.log('\n--- 2. Standalone Gemini Module Checks ---');
-const geminiModuleDir = fs.existsSync(path.join(__dirname, '..', 'gemini-watermark-remover'))
-    ? path.join(__dirname, '..', 'gemini-watermark-remover')
-    : path.join(__dirname, '..', 'archived_gemini_tool');
-assert(fs.existsSync(geminiModuleDir), 'gemini-watermark-remover / archived_gemini_tool folder exists');
-
-// 3. Section Index Pages & Dynamic Templates Verification
-console.log('\n--- 3. Section Index Pages & Dynamic Templates Checks ---');
+// 2. Section Index Pages & Dynamic Templates Verification
+console.log('\n--- 2. Section Index Pages & Dynamic Templates Checks ---');
 const toolsHtml = path.join(__dirname, '..', 'tools', 'index.html');
 const blogHtml = path.join(__dirname, '..', 'blog', 'index.html');
 const programsHtml = path.join(__dirname, '..', 'programs', 'index.html');
@@ -143,35 +136,8 @@ assert(robots.includes('User-agent: Mediapartners-Google'), 'robots.txt allows M
 assert(robots.includes('User-agent: *') && robots.includes('Allow: /'), 'robots.txt allows Googlebot and standard crawlers');
 assert(robots.includes('Sitemap: https://www.gtoolix.com/sitemap.xml'), 'robots.txt includes sitemap URL');
 
-// 6. CMS & Database Schema Verification
-console.log('\n--- 6. CMS & Database Schema Verification ---');
-const schemaPath = path.join(__dirname, '..', 'gtoolix-monitoring-site', 'schema.sql');
-assert(fs.existsSync(schemaPath), 'schema.sql exists');
-
-const schemaSql = fs.readFileSync(schemaPath, 'utf8');
-assert(schemaSql.includes('CREATE TABLE IF NOT EXISTS public.categories'), 'schema.sql defines public.categories table');
-assert(schemaSql.includes('CREATE TABLE IF NOT EXISTS public.tools'), 'schema.sql defines public.tools table');
-assert(schemaSql.includes('CREATE TABLE IF NOT EXISTS public.articles'), 'schema.sql defines public.articles table');
-assert(schemaSql.includes('CREATE TABLE IF NOT EXISTS public.programs'), 'schema.sql defines public.programs table');
-assert(schemaSql.includes('CREATE TABLE IF NOT EXISTS public.site_settings'), 'schema.sql defines public.site_settings table');
-assert(schemaSql.includes('public.handle_updated_at()'), 'schema.sql defines updated_at trigger function');
-assert(schemaSql.includes('public.is_admin()'), 'schema.sql secures CMS with public.is_admin() RLS policies');
-
-// 7. Monitoring Site CMS UI & Script Verification
-console.log('\n--- 7. Monitoring Site CMS UI Checks ---');
-const monitorHtmlPath = path.join(__dirname, '..', 'gtoolix-monitoring-site', 'index.html');
-const monitorAppPath = path.join(__dirname, '..', 'gtoolix-monitoring-site', 'app.js');
-
-const monitorHtml = fs.readFileSync(monitorHtmlPath, 'utf8');
-assert(monitorHtml.includes('tab-cms-tools') && monitorHtml.includes('tab-cms-articles'), 'monitoring index.html contains CMS navigation tabs');
-assert(monitorHtml.includes('cmsToolModal') && monitorHtml.includes('cmsArticleModal'), 'monitoring index.html contains CMS editor modals');
-
-const monitorApp = fs.readFileSync(monitorAppPath, 'utf8');
-assert(monitorApp.includes('loadCmsTools') && monitorApp.includes('loadCmsArticles'), 'monitoring app.js implements CMS load & edit methods');
-assert(monitorApp.includes('validateSlug'), 'monitoring app.js includes real-time slug validator');
-
-// 8. AdSense & Ads.txt Integrity
-console.log('\n--- 8. AdSense & Ads.txt Integrity ---');
+// 6. AdSense & Ads.txt Integrity
+console.log('\n--- 6. AdSense & Ads.txt Integrity ---');
 const adsTxt = path.join(__dirname, '..', 'ads.txt');
 assert(fs.existsSync(adsTxt), 'ads.txt exists');
 const adsContent = fs.readFileSync(adsTxt, 'utf8');

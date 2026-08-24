@@ -36,10 +36,17 @@ const server = http.createServer((req, res) => {
     if (pathname.startsWith('/blog/') && pathname !== '/blog/' && pathname !== '/blog/index.html') {
         const sub = pathname.replace(/^\/blog\//, '').replace(/\/+$/, '');
         if (sub && sub !== 'article.html' && sub !== 'index.html' && !sub.includes('.')) {
-            // Check if static folder exists first, else rewrite to article.html
             const possibleFolder = path.join(ROOT_DIR, 'blog', sub, 'index.html');
             if (!fs.existsSync(possibleFolder)) {
                 pathname = '/blog/article.html';
+            }
+        }
+    } else if (pathname.startsWith('/en/blog/') && pathname !== '/en/blog/' && pathname !== '/en/blog/index.html') {
+        const sub = pathname.replace(/^\/en\/blog\//, '').replace(/\/+$/, '');
+        if (sub && sub !== 'article.html' && sub !== 'index.html' && !sub.includes('.')) {
+            const possibleFolder = path.join(ROOT_DIR, 'en', 'blog', sub, 'index.html');
+            if (!fs.existsSync(possibleFolder)) {
+                pathname = '/en/blog/article.html';
             }
         }
     } else if (pathname.startsWith('/programs/') && pathname !== '/programs/' && pathname !== '/programs/index.html') {
@@ -48,6 +55,14 @@ const server = http.createServer((req, res) => {
             const possibleFolder = path.join(ROOT_DIR, 'programs', sub, 'index.html');
             if (!fs.existsSync(possibleFolder)) {
                 pathname = '/programs/program.html';
+            }
+        }
+    } else if (pathname.startsWith('/en/programs/') && pathname !== '/en/programs/' && pathname !== '/en/programs/index.html') {
+        const sub = pathname.replace(/^\/en\/programs\//, '').replace(/\/+$/, '');
+        if (sub && sub !== 'program.html' && sub !== 'index.html' && !sub.includes('.')) {
+            const possibleFolder = path.join(ROOT_DIR, 'en', 'programs', sub, 'index.html');
+            if (!fs.existsSync(possibleFolder)) {
+                pathname = '/en/programs/program.html';
             }
         }
     }
