@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+
+<head>
+    <script src="/static/js/lang-detect.min.js"></script>
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
+                var l = 'en';
+                if (saved === 'ar' || saved === 'en') {
+                    l = saved;
+                } else {
+                    var userLangs = (navigator.languages && navigator.languages.length) ? navigator.languages : (navigator.language ? [navigator.language] : []);
+                    for (var i = 0; i < userLangs.length; i++) {
+                        var code = (userLangs[i] || '').toLowerCase();
+                        if (code.indexOf('ar') === 0) { l = 'ar'; break; }
+                        if (code.indexOf('en') === 0) { l = 'en'; break; }
+                    }
+                }
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('lang', l);
+                document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>المقالات والشروحات | GToolix</title>
+    <meta name="description" content="مقالات وشروحات تفصيلية في مختلف المجالات وأدوات الويب من فريق GToolix.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="GToolix Editorial Team">
+    <meta name="theme-color" content="#F8FAFC">
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+    <!-- Critical CSS -->
+    <style>
+        :root {
+            --bg: #020817;
+            --bg-secondary: #0F172A;
+            --card: #111827;
+            --border: #1E293B;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.04);
+            --primary: #2563EB;
+            --primary-hover: #3B82F6;
+            --accent: #06B6D4;
+            --text: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --radius-full: 9999px;
+            --radius-md: 1rem;
+            --nav-bg: rgba(2, 8, 23, 0.82);
+        }
+
+        [data-theme="light"] {
+            --bg: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --card: #FFFFFF;
+            --border: #E2E8F0;
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass: rgba(255, 255, 255, 0.7);
+            --primary: #2563EB;
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #64748B;
+            --nav-bg: rgba(248, 250, 252, 0.85);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: clip;
+        }
+
+        html[dir="rtl"] body {
+            font-family: 'Cairo', 'Inter', system-ui, sans-serif;
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 0.75rem;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.45rem 0.85rem;
+            max-width: 1180px;
+            width: min(100% - 2rem, 1180px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            min-height: 56px;
+        }
+
+        .site-nav__brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .site-nav__logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 9px;
+        }
+
+        .article-container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 7rem 1.5rem 5rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .breadcrumb-nav ol {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--primary-hover);
+        }
+
+        .article-kicker {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-hover);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-h1 {
+            font-size: clamp(1.85rem, 4vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            color: var(--text);
+        }
+
+        .article-meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            padding: 0.85rem 0 1.5rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .article-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .article-cover-img {
+            width: 100%;
+            max-height: 460px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            margin-bottom: 2.5rem;
+            background: var(--bg-secondary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-body {
+            font-size: 1.08rem;
+            line-height: 1.9;
+            color: var(--text);
+        }
+
+        .article-body h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 2.5rem 0 1rem;
+            color: var(--text);
+            scroll-margin-top: 5.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-body h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 2rem 0 0.75rem;
+            color: var(--text);
+        }
+
+        .article-body p {
+            margin-bottom: 1.35rem;
+            color: var(--text-secondary);
+        }
+
+        .article-body ul, .article-body ol {
+            margin: 0 1.75rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .article-body li {
+            margin-bottom: 0.6rem;
+        }
+
+        .article-body strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .article-body a {
+            color: var(--primary-hover);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .article-table-wrap {
+            overflow-x: auto;
+            margin: 2.25rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--bg-secondary);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .article-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: start;
+        }
+
+        .article-table th {
+            background: rgba(37, 99, 235, 0.12);
+            color: var(--text);
+            font-weight: 700;
+            padding: 1rem 1.25rem;
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+        }
+
+        .article-table td {
+            padding: 0.95rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .article-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .callout-box {
+            border-radius: 12px;
+            padding: 1.35rem 1.65rem;
+            margin: 2.25rem 0;
+            background: rgba(37, 99, 235, 0.08);
+            border-inline-start: 4px solid var(--primary);
+            color: var(--text);
+        }
+
+        .callout-box--tip {
+            background: rgba(16, 185, 129, 0.08);
+            border-inline-start: 4px solid #10B981;
+        }
+
+        .callout-box p {
+            margin: 0 !important;
+            color: var(--text) !important;
+            font-size: 1.02rem;
+            line-height: 1.75;
+        }
+
+        .article-tags-wrap {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding-top: 1.75rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .article-tag-pill {
+            padding: 0.4rem 0.95rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Tool CTA Box */
+        .article-tool-cta {
+            margin: 3.5rem 0 2.5rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(6, 182, 212, 0.08));
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            border-radius: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .article-tool-cta__info {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .article-tool-cta__title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+
+        .article-tool-cta__desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .article-tool-cta__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.65rem;
+            background: var(--primary);
+            color: #FFFFFF !important;
+            text-decoration: none !important;
+            font-weight: 700;
+            border-radius: var(--radius-full);
+            font-size: 0.95rem;
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+        }
+
+        .article-tool-cta__btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+        }
+
+        /* Related Articles */
+        .related-articles-section {
+            margin-top: 3.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .related-articles-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .related-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-hover);
+        }
+
+        .related-card__img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            background: var(--bg-secondary);
+        }
+
+        .related-card__body {
+            padding: 1.15rem;
+        }
+
+        .related-card__title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.4;
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .not-found-state {
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+    </style>
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="canonical" href="https://www.gtoolix.com/blog" />
+    <link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog" />
+    <link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog" />
+    <link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog" />
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GToolix">
+    <meta property="og:title" content="المقالات والشروحات | GToolix">
+    <meta property="og:description" content="مقالات وشروحات تفصيلية في مختلف المجالات وأدوات الويب من فريق GToolix.">
+    <meta property="og:url" content="https://www.gtoolix.com/blog">
+    <meta property="og:locale" content="ar_EG">
+    <meta property="og:image" content="https://www.gtoolix.com/static/img/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="المقالات والشروحات | GToolix">
+    <meta name="twitter:description" content="مقالات وشروحات تفصيلية في مختلف المجالات وأدوات الويب من فريق GToolix.">
+    <meta name="twitter:image" content="https://www.gtoolix.com/static/img/logo.png">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Navigation Header -->
+                                                                                                                                                                                                                                                                                        <header class="site-nav" id="site-header">
+        <a class="site-nav__brand" href="/" aria-label="GToolix Home">
+            <span class="site-nav__brand-mark">
+                <picture>
+                    <source srcset="/static/img/logo.webp" type="image/webp">
+                    <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38"
+                        height="38" loading="eager" fetchpriority="high">
+                </picture>
+            </span>
+            <span>GToolix</span>
+        </a>
+        <nav class="site-nav__links" id="site-nav-links" aria-label="Main Navigation">
+            <a href="/tools" class="nav-item-link" data-nav="tools">
+                <span class="nav-item-icon nav-icon-tools">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navTools">الأدوات</span>
+                    <span class="nav-item-desc" data-i18n="common.navToolsDesc">أدوات ذكية وتفاعلية مجانية</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/blog" class="nav-item-link" data-nav="blog">
+                <span class="nav-item-icon nav-icon-blog">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="10" y1="6" x2="16" y2="6"></line><line x1="10" y1="10" x2="16" y2="10"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navBlog">المقالات</span>
+                    <span class="nav-item-desc" data-i18n="common.navBlogDesc">شروحات ومقالات حصرية ومفيدة</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/programs" class="nav-item-link" data-nav="programs">
+                <span class="nav-item-icon nav-icon-programs">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M8 10l3 3-3 3"></path><line x1="13" y1="16" x2="17" y2="16"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navPrograms">البرامج</span>
+                    <span class="nav-item-desc" data-i18n="common.navProgramsDesc">تطبيقات وحلول رقمية جاهزة</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+        </nav>
+        <div class="site-nav__right">
+            <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Toggle theme">
+                <span class="theme-toggle-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </span>
+            </button>
+            <div class="lang-switcher" aria-label="Language Switcher">
+                <a href="/en/blog/article.html" class="lang-btn" id="lang-en-btn" onclick="try{localStorage.setItem('gtoolix_language','en');localStorage.setItem('siteLang','en');}catch(e){}">EN</a>
+                <a href="/blog/article.html" class="lang-btn active" id="lang-ar-btn" onclick="try{localStorage.setItem('gtoolix_language','ar');localStorage.setItem('siteLang','ar');}catch(e){}">AR</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"
+                aria-controls="site-nav-links" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+
+    <main class="article-container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/" data-i18n="common.breadcrumbHome">الرئيسية</a></li>
+                <li class="separator" aria-hidden="true">/</li>
+                <li><a href="/blog" data-i18n="common.navBlog">المقالات</a></li>
+                <li class="separator" aria-hidden="true">/</li>
+                <li aria-current="page" id="breadcrumb-current-title">جاري التحميل...</li>
+            </ol>
+        </nav>
+
+        <!-- Article Content State -->
+        <article id="article-main-content">
+            <span class="article-kicker" id="article-kicker">GToolix Tech Insights</span>
+            <h1 class="article-h1" id="article-title">جاري تحميل المقال...</h1>
+            <p id="article-excerpt" style="font-size:1.15rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem;"></p>
+
+            <div class="article-meta-bar">
+                <span class="article-meta-item">✍️ <span id="article-author">فريق تحرير GToolix</span></span>
+            </div>
+
+            <img id="article-cover" class="article-cover-img" src="" alt="Article Cover" style="display:none;">
+
+            <div id="article-body" class="article-body">
+                <div style="text-align:center;padding:3rem 0;color:var(--text-muted);">جاري تجهيز نص وشروحات المقال...</div>
+            </div>
+
+            <!-- Interactive Tool CTA -->
+            <div class="article-tool-cta" id="article-tool-cta">
+                <div class="article-tool-cta__info">
+                    <h3 class="article-tool-cta__title" id="article-tool-title">استخدم الأداة الآن مجاناً</h3>
+                    <p class="article-tool-cta__desc" id="article-tool-desc">أداة تفاعلية سريعة وآمنة 100% تعمل مباشرة داخل متصفحك دون الحاجة لتثبيت أي برامج.</p>
+                </div>
+                <a href="/tools" id="article-tool-btn" class="article-tool-cta__btn">
+                    <span id="article-tool-btn-text">فتح الأداة فورياً</span>
+                    <span>←</span>
+                </a>
+            </div>
+
+            <div class="article-tags-wrap" id="article-tags"></div>
+
+            <!-- Related Articles -->
+            <section class="related-articles-section" id="related-articles-section">
+                <h3 class="related-articles-title" id="related-articles-heading">مقالات وشروحات تقنية ذات صلة</h3>
+                <div class="related-grid" id="related-articles-grid"></div>
+            </section>
+
+            <!-- Bottom Back Navigation (Hover turns blue) -->
+            <div class="article-back-nav">
+                <a href="/blog" class="article-back-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                    <span>العودة لكافة المقالات</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- 404 State -->
+        <div id="article-not-found" class="not-found-state" style="display:none;">
+            <div style="font-size:3.5rem;margin-bottom:1rem;">📄❌</div>
+            <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.75rem;">المقال غير موجود</h1>
+            <p style="color:var(--text-secondary);max-width:480px;margin:0 auto 1.5rem;">
+                عذراً، لم يتم العثور على هذا المقال أو ربما تم نقله أو حذفه مؤخراً.
+            </p>
+            <a href="/blog" class="btn btn-primary" style="display:inline-block;padding:0.6rem 1.5rem;background:var(--primary);color:#fff;border-radius:9999px;text-decoration:none;font-weight:700;">
+                العودة إلى مكتبة المقالات
+            </a>
+        </div>
+    </main>
+
+    <!-- Complete Site Footer -->
+        <!-- ===================== GLOBAL FOOTER ===================== -->
+                                                                                                                                                                                                                                                                                        <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+                    <a class="footer-brand" href="/" aria-label="GToolix Home">
+                        <span class="site-nav__brand-mark">
+                            <picture>
+                                <source srcset="/static/img/logo.webp" type="image/webp">
+                                <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38" height="38" loading="lazy">
+                            </picture>
+                        </span>
+                        <span>GToolix</span>
+                    </a>
+                    <p class="footer-note">GToolix مخصص للاستخدام الشخصي مع محتوى تملك حقوقه أو مرخّص للاستخدام العام.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">الأدوات المميزة</h4>
+                    <nav class="footer-links">
+                        <a href="/tools/qr-code-generator">مولد رمز QR</a>
+                        <a href="/tools/youtube-thumbnail-downloader">تحميل الصور المصغرة لليوتيوب</a>
+                        <a href="/tools/screen-recorder-studio">مسجل الشاشة</a>
+                        <a href="/tools/image-compressor">ضاغط ومحوّل الصور الرقمي</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">أقسام المنصة</h4>
+                    <nav class="footer-links">
+                        <a href="/tools">الأدوات</a>
+                        <a href="/blog">المقالات</a>
+                        <a href="/programs">البرامج</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">عن المنصة والثقة</h4>
+                    <nav class="footer-links">
+                        <a href="/about">عن المنصة</a>
+                        <a href="/faq">الأسئلة الشائعة</a>
+                        <a href="/contact">اتصل بنا</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">الخصوصية والشروط</h4>
+                    <nav class="footer-links">
+                        <a href="/privacy-policy">سياسة الخصوصية</a>
+                        <a href="/terms-of-service">شروط الاستخدام</a>
+                        <a href="/cookies-policy">سياسة الكوكيز</a>
+                        <a href="/disclaimer">إخلاء المسؤولية</a>
+                        <a href="/dmca">حقوق النشر (DMCA)</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 GToolix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Content Client & Logic -->
+    <script src="/static/js/content-client.js"></script>
+    <script src="/static/js/theme.min.js" defer></script>
+    <script>
+        const translations = {
+            en: {
+                common: {
+                    navTools: "Tools", navBlog: "Articles", navPrograms: "Programs",
+                    navQr: "QR Code Generator", navThumb: "YouTube Thumbnail Downloader", navRecorder: "Screen Recorder", navCompressor: "Digital Image Compressor & Converter",
+                    breadcrumbHome: "Home",
+                    footerNote: "GToolix is intended for personal use with content you own or licensed for public use.",
+                    footerToolsTitle: "Featured Tools", footerSectionsTitle: "Platform Sections", footerTrustTitle: "About Platform & Trust", footerLegalTitle: "Privacy & Terms",
+                    linkAbout: "About Us", linkContact: "Contact Us", linkFaq: "FAQ",
+                    linkPrivacy: "Privacy Policy", linkTerms: "Terms of Service", linkCookies: "Cookies Policy",
+                    linkDisclaimer: "Disclaimer", linkDmca: "Copyright (DMCA)",
+                    footerCopyright: "© 2026 GToolix. All rights reserved."
+                }
+            },
+            ar: {
+                common: {
+                    navTools: "الأدوات", navBlog: "المقالات", navPrograms: "البرامج",
+                    navQr: "مولد رمز QR", navThumb: "تحميل الصور المصغرة لليوتيوب", navRecorder: "مسجل الشاشة", navCompressor: "ضاغط ومحوّل الصور الرقمي",
+                    breadcrumbHome: "الرئيسية",
+                    footerNote: "GToolix مخصص للاستخدام الشخصي مع محتوى تملك حقوقه أو مرخّص للاستخدام العام.",
+                    footerToolsTitle: "الأدوات المميزة", footerSectionsTitle: "أقسام المنصة", footerTrustTitle: "عن المنصة والثقة", footerLegalTitle: "الخصوصية والشروط",
+                    linkAbout: "عن المنصة", linkContact: "اتصل بنا", linkFaq: "الأسئلة الشائعة",
+                    linkPrivacy: "سياسة الخصوصية", linkTerms: "الشروط والأحكام", linkCookies: "سياسة الكوكيز",
+                    linkDisclaimer: "إخلاء المسؤولية", linkDmca: "حقوق النشر (DMCA)",
+                    footerCopyright: "© 2026 GToolix. كل الحقوق محفوظة."
+                }
+            }
+        };
+
+        let currentLang = document.documentElement.lang || 'ar';
+        let currentArticle = null;
+        let allArticles = [];
+
+        function escapeHtml(str) {
+            return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function getSlugFromUrl() {
+            const searchParams = new URLSearchParams(window.location.search);
+            const querySlug = searchParams.get('slug');
+            if (querySlug) return querySlug;
+
+            const path = window.location.pathname.replace(/\/+$/, '');
+            const segments = path.split('/').filter(Boolean);
+            const blogIdx = segments.indexOf('blog');
+            if (blogIdx !== -1 && segments.length > blogIdx + 1) {
+                const seg = segments[blogIdx + 1];
+                if (seg && seg !== 'article.html' && seg !== 'index.html') {
+                    return seg;
+                }
+            }
+            return '';
+        }
+
+        function parseMarkdownClient(md) {
+            if (!md) return '';
+            let text = md.replace(/\r\n/g, '\n');
+
+            // 1. Code blocks
+            const codeBlocks = [];
+            text = text.replace(/```([a-z0-9_-]*)\n([\s\S]*?)```/gim, (match, lang, code) => {
+                const id = `__CODEBLOCK_${codeBlocks.length}__`;
+                codeBlocks.push(`<pre><code class="language-${escapeHtml(lang)}">${escapeHtml(code.trim())}</code></pre>`);
+                return id;
+            });
+
+            // Inline code
+            const inlineCodes = [];
+            text = text.replace(/`([^`\n]+)`/g, (match, code) => {
+                const id = `__INLINECODE_${inlineCodes.length}__`;
+                inlineCodes.push(`<code>${escapeHtml(code)}</code>`);
+                return id;
+            });
+
+            // 2. Tables
+            text = text.replace(/((?:(?:\|[^\n]+\|)\n?)+)/g, (match) => {
+                const lines = match.trim().split('\n').map(l => l.trim()).filter(Boolean);
+                if (lines.length < 2) return match;
+                
+                let html = '<div class="article-table-wrap"><table class="article-table">';
+                let inTbody = false;
+
+                lines.forEach((line, idx) => {
+                    if (line.includes('---')) return;
+                    const cells = line.split('|').filter((_, i, arr) => i > 0 && i < arr.length - 1).map(c => c.trim());
+                    if (idx === 0) {
+                        html += '<thead><tr>' + cells.map(c => `<th>${c}</th>`).join('') + '</tr></thead>';
+                    } else {
+                        if (!inTbody) {
+                            html += '<tbody>';
+                            inTbody = true;
+                        }
+                        html += '<tr>' + cells.map(c => `<td>${c}</td>`).join('') + '</tr>';
+                    }
+                });
+                if (inTbody) html += '</tbody>';
+                html += '</table></div>';
+                return '\n\n' + html + '\n\n';
+            });
+
+            // 3. Callout Boxes & Blockquotes
+            text = text.replace(/(?:^|\n)(> [^\n]+(?:\n> [^\n]+)*)/g, (match, quoteContent) => {
+                const clean = quoteContent.split('\n').map(l => l.replace(/^>\s?/, '').trim()).join(' ');
+                if (clean.includes('💡') || clean.includes('نصيحة') || clean.includes('Tip')) {
+                    return `\n\n<div class="callout-box callout-box--tip"><p>${clean}</p></div>\n\n`;
+                }
+                return `\n\n<blockquote>${clean}</blockquote>\n\n`;
+            });
+
+            // 4. Headings
+            text = text.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
+            text = text.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+            text = text.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+            text = text.replace(/^# (.*$)/gim, '<h2>$1</h2>');
+
+            // 5. Bold & Italic
+            text = text.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
+            text = text.replace(/\*(.*?)\*/gim, '<em>$1</em>');
+
+            // 6. Images & Links
+            text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<img src="$2" alt="$1" style="max-width:100%;border-radius:12px;margin:1.5rem 0;" loading="lazy">');
+            text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+            // 7. Lists
+            text = text.replace(/(?:^|\n)((?:- [^\n]+\n?)+)/g, (match, list) => {
+                const items = list.trim().split('\n').map(l => l.replace(/^- /, '').trim());
+                return '\n\n<ul>' + items.map(it => `<li>${it}</li>`).join('') + '</ul>\n\n';
+            });
+            text = text.replace(/(?:^|\n)((?:\d+\. [^\n]+\n?)+)/g, (match, list) => {
+                const items = list.trim().split('\n').map(l => l.replace(/^\d+\.\s*/, '').trim());
+                return '\n\n<ol>' + items.map(it => `<li>${it}</li>`).join('') + '</ol>\n\n';
+            });
+
+            // 8. Paragraphs
+            const blocks = text.split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
+            const finalHtml = blocks.map(block => {
+                if (block.startsWith('<h') || block.startsWith('<div') || block.startsWith('<table') || 
+                    block.startsWith('<ul') || block.startsWith('<ol') || block.startsWith('<blockquote') ||
+                    block.startsWith('<pre') || block.startsWith('__CODEBLOCK_')) {
+                    return block;
+                }
+                return `<p>${block.replace(/\n/g, '<br>')}</p>`;
+            }).join('\n\n');
+
+            let output = finalHtml;
+            inlineCodes.forEach((codeHtml, idx) => {
+                output = output.replace(new RegExp(`__INLINECODE_${idx}__`, 'g'), codeHtml);
+            });
+            codeBlocks.forEach((codeHtml, idx) => {
+                output = output.replace(new RegExp(`__CODEBLOCK_${idx}__`, 'g'), codeHtml);
+            });
+
+            return output;
+        }
+
+        function getToolCtaInfo(slug, isAr) {
+            if (slug.includes('qr')) {
+                return {
+                    title: isAr ? 'أنشئ رمز QR مخصص فائق الدقة مجاناً' : 'Generate Free High-Res QR Codes Now',
+                    desc: isAr ? 'مولد كود QR مجاني فائق الجودة يدعم الروابط، الواي فاي، وبطاقات الأعمال بصيغتي PNG و SVG.' : 'Free vector QR generator supporting URLs, Wi-Fi, and vCards with instant SVG export.',
+                    url: '/tools/qr-code-generator',
+                    btn: isAr ? 'استخدم مولد QR الآن' : 'Open QR Generator'
+                };
+            }
+            if (slug.includes('gemini')) {
+                return {
+                    title: isAr ? 'أزل العلامات المائية من صور Gemini في ثوانٍ' : 'Remove Gemini Watermarks in Seconds',
+                    desc: isAr ? 'أداة ذكية لإزالة علامات الذكاء الاصطناعي وترميم الصور محلياً بدقة 4K دون رفع الصور لأي خادم.' : 'Clean AI-generated imagery locally in full 4K without uploading files to external servers.',
+                    url: '/tools/gemini-watermark-remover',
+                    btn: isAr ? 'استخدم مزيل العلامة الآن' : 'Open Watermark Remover'
+                };
+            }
+            if (slug.includes('youtube')) {
+                return {
+                    title: isAr ? 'استخرج وحمّل صور غلاف اليوتيوب بدقة 4K' : 'Download 4K YouTube Thumbnails Instantly',
+                    desc: isAr ? 'أداة سريعة لتحميل صور اليوتيوب المصغرة الأصلية للفيديوهات والـ Shorts بأعلى دقة HD.' : 'Extract native maxres 1080p and 4K thumbnail covers from any video or Shorts URL.',
+                    url: '/tools/youtube-thumbnail-downloader',
+                    btn: isAr ? 'حمّل الأغلفة الآن' : 'Open Thumbnail Grabber'
+                };
+            }
+            if (slug.includes('screen')) {
+                return {
+                    title: isAr ? 'سجّل شاشتك وكاميرا الويب والصوت بدون برامج' : 'Record Screen & Webcam Directly from Browser',
+                    desc: isAr ? 'ستوديو تسجيل الشاشة الاحترافي بجودة 60fps وخصوصية محلية 100% بدون قيود أو علامات مائية.' : 'Studio-grade 60fps screen & audio recorder with 100% client-side privacy and no watermarks.',
+                    url: '/tools/screen-recorder-studio',
+                    btn: isAr ? 'ابدأ التسجيل الآن' : 'Open Screen Studio'
+                };
+            }
+            return {
+                title: isAr ? 'استكشف جميع أدوات GToolix المجانية' : 'Explore All Free GToolix Tools',
+                desc: isAr ? 'مجموعة متكاملة من الأدوات الذكية للإنتاجية والتصميم وصناعة المحتوى.' : 'Comprehensive suite of client-side web tools for productivity and design.',
+                url: '/tools',
+                btn: isAr ? 'تصفح جميع الأدوات' : 'Explore Tools'
+            };
+        }
+
+        async function loadArticle() {
+            const slug = getSlugFromUrl();
+            if (!slug) {
+                showNotFound();
+                return;
+            }
+
+            try {
+                const [article, articles] = await Promise.all([
+                    GToolixContent.getArticleBySlug(slug),
+                    GToolixContent.getArticles()
+                ]);
+
+                if (!article) {
+                    showNotFound();
+                    return;
+                }
+
+                currentArticle = article;
+                allArticles = Array.isArray(articles) ? articles : [];
+                renderArticleData();
+            } catch (e) {
+                console.error('[Article] Load error:', e);
+                showNotFound();
+            }
+        }
+
+        function renderArticleData() {
+            if (!currentArticle) return;
+            const isAr = (currentLang || 'ar').startsWith('ar');
+
+            const title = isAr ? (currentArticle.title_ar || currentArticle.title_en) : (currentArticle.title_en || currentArticle.title_ar);
+            const excerpt = isAr ? (currentArticle.excerpt_ar || currentArticle.excerpt_en) : (currentArticle.excerpt_en || currentArticle.excerpt_ar);
+            const content = isAr ? (currentArticle.content_ar || currentArticle.content_en) : (currentArticle.content_en || currentArticle.content_ar);
+
+            document.getElementById('page-title').textContent = `${title} | GToolix`;
+            document.getElementById('page-meta-desc').setAttribute('content', excerpt || title);
+            document.getElementById('breadcrumb-current-title').textContent = title;
+            document.getElementById('article-title').textContent = title;
+            document.getElementById('article-excerpt').textContent = excerpt || '';
+
+            document.getElementById('article-author').textContent = currentArticle.author_name || (isAr ? 'فريق تحرير GToolix' : 'GToolix Editorial Team');
+
+            if (currentArticle.published_at) {
+                document.getElementById('article-date').textContent = new Date(currentArticle.published_at).toLocaleDateString(isAr ? 'ar-EG' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            } else {
+                document.getElementById('article-date').textContent = isAr ? 'مقال حصري' : 'Featured';
+            }
+
+            const coverEl = document.getElementById('article-cover');
+            if (currentArticle.featured_image_url) {
+                coverEl.src = currentArticle.featured_image_url;
+                coverEl.alt = title;
+                coverEl.style.display = 'block';
+            } else {
+                coverEl.style.display = 'none';
+            }
+
+            // Body
+            const bodyEl = document.getElementById('article-body');
+            if (content) {
+                bodyEl.innerHTML = parseMarkdownClient(content);
+            }
+
+            // Tags
+            const tagsContainer = document.getElementById('article-tags');
+            tagsContainer.innerHTML = '';
+            const tags = Array.isArray(currentArticle.tags) ? currentArticle.tags : (typeof currentArticle.tags === 'string' ? currentArticle.tags.split(',') : []);
+            tags.forEach(t => {
+                const tagStr = String(t).trim();
+                if (tagStr) {
+                    const span = document.createElement('span');
+                    span.className = 'article-tag-pill';
+                    span.textContent = '#' + tagStr;
+                    tagsContainer.appendChild(span);
+                }
+            });
+
+            // Tool CTA
+            const ctaInfo = getToolCtaInfo(currentArticle.slug || '', isAr);
+            document.getElementById('article-tool-title').textContent = ctaInfo.title;
+            document.getElementById('article-tool-desc').textContent = ctaInfo.desc;
+            document.getElementById('article-tool-btn').href = ctaInfo.url;
+            document.getElementById('article-tool-btn-text').textContent = ctaInfo.btn;
+
+            // Related Articles
+            const relatedGrid = document.getElementById('related-articles-grid');
+            const relatedSection = document.getElementById('related-articles-section');
+            const otherArticles = allArticles.filter(a => a.slug !== currentArticle.slug);
+
+            if (otherArticles.length > 0) {
+                document.getElementById('related-articles-heading').textContent = isAr ? 'مقالات وشروحات تقنية مقترحة' : 'Recommended Articles & Guides';
+                relatedGrid.innerHTML = otherArticles.slice(0, 3).map(art => {
+                    const rTitle = isAr ? (art.title_ar || art.title_en) : (art.title_en || art.title_ar);
+                    const rImg = art.featured_image_url || '/static/img/blog/qr-code-guide.jpg';
+                    return `
+                        <a href="/blog/${art.slug}" class="related-card">
+                            <img src="${rImg}" alt="${rTitle}" class="related-card__img" loading="lazy">
+                            <div class="related-card__body">
+                                <h4 class="related-card__title">${rTitle}</h4>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+                relatedSection.style.display = 'block';
+            } else {
+                relatedSection.style.display = 'none';
+            }
+
+            document.getElementById('article-main-content').style.display = 'block';
+            document.getElementById('article-not-found').style.display = 'none';
+        }
+
+        function showNotFound() {
+            document.getElementById('article-main-content').style.display = 'none';
+            document.getElementById('article-not-found').style.display = 'block';
+            document.getElementById('page-title').textContent = '404 - المقال غير موجود | GToolix';
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            try {
+                localStorage.setItem('gtoolix_language', lang);
+                localStorage.setItem('siteLang', lang);
+            } catch (e) { }
+
+            const langBtnEn = document.getElementById('lang-en-btn');
+            const langBtnAr = document.getElementById('lang-ar-btn');
+            if (langBtnEn) langBtnEn.classList.toggle('active', lang === 'en');
+            if (langBtnAr) langBtnAr.classList.toggle('active', lang === 'ar');
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const val = key.split('.').reduce((prev, curr) => prev ? prev[curr] : undefined, translations[currentLang]);
+                if (val !== undefined) el.textContent = val;
+            });
+
+            if (currentArticle) renderArticleData();
+        }
+
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            const backdrop = document.getElementById('nav-backdrop');
+            if (!links || !btn) return;
+            const shouldOpen = forceClose === true ? false : !links.classList.contains('is-open');
+            links.classList.toggle('is-open', shouldOpen);
+            if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+            document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLang);
+            loadArticle();
+        });
+    </script>
+</body>
+
+</html>

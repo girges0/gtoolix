@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+
+<head>
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
+    <script src="/static/js/lang-detect.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+        <!-- ===================== SEO: Primary Meta & Technical SEO ===================== -->
+    <title>المقالات والشروحات | GToolix Articles &amp; Guides</title>
+    <meta name="description" content="مقالات وشروحات تفصيلية في مختلف المجالات، أدوات الويب، والإنتاجية الرقمية والأداء من فريق GToolix.">
+    <meta name="keywords" content="GToolix blog, articles, guides, tutorials, web tools articles, مدونة, شروحات أدوات, مقالات متنوعة">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="GToolix">
+    <meta name="theme-color" content="#F8FAFC">
+
+    <!-- Favicon & PWA Suite (Google Search Optimized) -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- ===================== SEO: Canonical & Hreflang ===================== -->
+    <link rel="canonical" href="https://www.gtoolix.com/blog" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog" />
+    <link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog" />
+    <link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog" />
+
+    <!-- ===================== SEO: Open Graph ===================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GToolix">
+    <meta property="og:title" content="المقالات والشروحات | GToolix Articles &amp; Guides">
+    <meta property="og:description" content="مقالات وشروحات تفصيلية في مختلف المجالات، أدوات الويب، والإنتاجية الرقمية والأداء من فريق GToolix.">
+    <meta property="og:url" content="https://www.gtoolix.com/blog">
+    <meta property="og:locale" content="ar_EG">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:image" content="https://www.gtoolix.com/static/img/logo.png">
+
+    <!-- ===================== SEO: Twitter Card ===================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="المقالات والشروحات | GToolix Articles &amp; Guides">
+    <meta name="twitter:description" content="مقالات وشروحات تفصيلية في مختلف المجالات، أدوات الويب، والإنتاجية الرقمية والأداء من فريق GToolix.">
+    <meta name="twitter:image" content="https://www.gtoolix.com/static/img/logo.png">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "المقالات والشروحات | GToolix Articles & Guides",
+  "description": "مقالات وشروحات تفصيلية في مختلف المجالات، أدوات الويب، والإنتاجية الرقمية والأداء من فريق GToolix.",
+  "url": "https://www.gtoolix.com/blog",
+  "publisher": {
+    "@type": "Organization",
+    "name": "GToolix",
+    "url": "https://www.gtoolix.com",
+    "logo": "https://www.gtoolix.com/static/img/logo.webp"
+  }
+}
+    </script>
+
+    
+
+    <!-- Performance: Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+
+    <!-- Critical Inline Styles -->
+    <style>
+        :root {
+            --bg: #020817;
+            --bg-secondary: #0F172A;
+            --card: #111827;
+            --border: #1E293B;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.04);
+            --primary: #2563EB;
+            --primary-hover: #3B82F6;
+            --accent: #06B6D4;
+            --text: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --radius-full: 9999px;
+            --radius-md: 1rem;
+            --nav-bg: rgba(2, 8, 23, 0.82);
+        }
+
+        [data-theme="light"] {
+            --bg: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --card: #FFFFFF;
+            --border: #E2E8F0;
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass: rgba(255, 255, 255, 0.7);
+            --primary: #2563EB;
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --nav-bg: rgba(248, 250, 252, 0.85);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: clip;
+            scrollbar-gutter: stable;
+            width: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: clip;
+            width: 100%;
+            min-height: 100svh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html[dir="rtl"] body {
+            font-family: 'Cairo', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 0.75rem;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.45rem 0.85rem;
+            margin: 0 auto;
+            max-width: 1180px;
+            width: min(100% - 2rem, 1180px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            min-height: 56px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .site-nav__brand {
+            display: flex;
+            align-items: center;
+            direction: ltr;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+            background: none;
+            border: none;
+            min-height: 44px;
+            cursor: pointer;
+        }
+
+        .site-nav__logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 9px;
+            display: block;
+        }
+
+        .site-nav__right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+    <link rel="preload" href="/static/css/main.min.css" as="style">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
+    <script>
+        window.seoPageType = "blog";
+    </script>
+
+    <!--JSON_LD-->
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
+</head>
+
+<body>
+        <header class="site-nav" id="site-header">
+        <a class="site-nav__brand" href="/" aria-label="GToolix Home">
+            <span class="site-nav__brand-mark">
+                <picture>
+                    <source srcset="/static/img/logo.webp" type="image/webp">
+                    <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38"
+                        height="38" loading="eager" fetchpriority="high">
+                </picture>
+            </span>
+            <span>GToolix</span>
+        </a>
+        <nav class="site-nav__links" id="site-nav-links" aria-label="Main Navigation">
+            <a href="/tools" class="nav-item-link" data-nav="tools">
+                <span class="nav-item-icon nav-icon-tools">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navTools">الأدوات</span>
+                    <span class="nav-item-desc" data-i18n="common.navToolsDesc">أدوات ذكية وتفاعلية مجانية</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/blog" class="nav-item-link" data-nav="blog">
+                <span class="nav-item-icon nav-icon-blog">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="10" y1="6" x2="16" y2="6"></line><line x1="10" y1="10" x2="16" y2="10"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navBlog">المقالات</span>
+                    <span class="nav-item-desc" data-i18n="common.navBlogDesc">شروحات ومقالات حصرية ومفيدة</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/programs" class="nav-item-link" data-nav="programs">
+                <span class="nav-item-icon nav-icon-programs">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M8 10l3 3-3 3"></path><line x1="13" y1="16" x2="17" y2="16"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navPrograms">البرامج</span>
+                    <span class="nav-item-desc" data-i18n="common.navProgramsDesc">تطبيقات وحلول رقمية جاهزة</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+        </nav>
+        <div class="site-nav__right">
+            <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Toggle theme">
+                <span class="theme-toggle-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </span>
+            </button>
+            <div class="lang-switcher" aria-label="Language Switcher">
+                <a href="/en/blog" class="lang-btn" id="lang-en-btn" onclick="try{localStorage.setItem('gtoolix_language','en');localStorage.setItem('siteLang','en');}catch(e){}">EN</a>
+                <a href="/blog" class="lang-btn active" id="lang-ar-btn" onclick="try{localStorage.setItem('gtoolix_language','ar');localStorage.setItem('siteLang','ar');}catch(e){}">AR</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"
+                aria-controls="site-nav-links" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+
+    <div class="background-gradient"></div>
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="particles" id="particles"></div>
+
+    <main class="container" style="max-width: 1180px; padding-top: clamp(6.75rem, 11vw, 8.5rem); padding-bottom: 4rem; margin: 0 auto; padding-inline: max(1rem, 3.5vw);">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/">الرئيسية</a></li>
+                <li class="separator" aria-hidden="true">/</li>
+                <li aria-current="page">المقالات</li>
+            </ol>
+        </nav>
+
+        <!-- Header Section -->
+        <header class="section-head reveal in-view">
+            <span class="kicker">مكتبة المقالات</span>
+            <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 0.85rem;">
+                المقالات والشروحات
+            </h1>
+            <p style="color: var(--text-secondary); max-width: 680px; margin: 0 auto; font-size: 1.05rem; line-height: 1.65;">
+                شروحات وأدلة متقدمة وشاملة في مختلف المجالات وأدوات الويب والإنتاجية الرقمية.
+            </p>
+        </header>
+
+        <!-- Search Controls -->
+        <div class="blog-search-wrapper reveal in-view" id="blog-search-wrapper">
+            <div class="search-box-wrapper" role="search">
+                <svg class="search-box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" inputmode="search" class="search-box-input" id="blog-search-input" placeholder="ابحث في المقالات والشروحات..." aria-label="Search articles" autocomplete="off">
+                <button type="button" class="search-box-clear" id="blog-search-clear" aria-label="Clear search" onclick="clearBlogSearch()" style="display: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="search-meta-bar" id="blog-search-meta">
+                <span class="search-count-badge" id="blog-results-count">إجمالي المقالات: 3</span>
+            </div>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="articles-grid" id="articles-catalog-grid">
+                        <article class="article-card reveal in-view" data-keywords="QR Code Tech Guide Web Tools Digital Privacy Barcodes QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين دليل موسوعي متكامل ومفصل حول رموز QR: تاريخها، بنيتها الهندسية، تصحيح الأخطاء Reed-Solomon، الفرق بين Static و Dynamic، وطريقة إنشاء باركود QR مجاني فائق النقاء للروابط والواي فاي وبطاقات vCard.">
+                <a href="/blog/qr-code" class="article-card__thumb-link" aria-label="QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين">
+                    <img src="/static/img/blog/qr-code-guide.jpg" alt="QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين" class="article-card__thumb-img" loading="lazy">
+                </a>
+                <div class="article-card__body">
+                    <div class="article-card__meta">
+                        <span class="article-card__tag">QR Code</span>
+                    </div>
+                    <h2 class="article-card__title">
+                        <a href="/blog/qr-code">QR Code: الدليل الشامل لإنشاء واستخدام وقراءة رموز QR مجاناً أونلاين</a>
+                    </h2>
+                    <p class="article-card__excerpt">
+                        دليل موسوعي متكامل ومفصل حول رموز QR: تاريخها، بنيتها الهندسية، تصحيح الأخطاء Reed-Solomon، الفرق بين Static و Dynamic، وطريقة إنشاء باركود QR مجاني فائق النقاء للروابط والواي فاي وبطاقات vCard.
+                    </p>
+                    <div class="article-card__footer">
+                        <a href="/blog/qr-code" class="article-card__cta">
+                            <span>اقرأ الدليل الكامل</span>
+                            <span class="cta-arrow">←</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="article-card reveal in-view" data-keywords="Image Compression Web Performance Design Media أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل 2026 تعرف على أسرار ضغط الصور الرقمية، الفرق بين الضغط مع فقدان وبدون فقدان، وكيفية تصغير حجم صور JPG وPNG وWebP لسرعة موقعك.">
+                <a href="/blog/image-compression-guide" class="article-card__thumb-link" aria-label="أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل 2026">
+                    <img src="/static/img/blog/image-compression.jpg" alt="أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل 2026" class="article-card__thumb-img" loading="lazy">
+                </a>
+                <div class="article-card__body">
+                    <div class="article-card__meta">
+                        <span class="article-card__tag">Image Compression</span>
+                    </div>
+                    <h2 class="article-card__title">
+                        <a href="/blog/image-compression-guide">أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل 2026</a>
+                    </h2>
+                    <p class="article-card__excerpt">
+                        تعرف على أسرار ضغط الصور الرقمية، الفرق بين الضغط مع فقدان وبدون فقدان، وكيفية تصغير حجم صور JPG وPNG وWebP لسرعة موقعك.
+                    </p>
+                    <div class="article-card__footer">
+                        <a href="/blog/image-compression-guide" class="article-card__cta">
+                            <span>اقرأ الدليل الكامل</span>
+                            <span class="cta-arrow">←</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="article-card reveal in-view" data-keywords="WebP PNG JPG Image Formats الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب؟ مقارنة تقنية شاملة بين صيغ الصور الأكثر انتشاراً: الفروق في الحجم، دعم الشفافية، ونسبة الضغط الأنسب لكل استخدام.">
+                <a href="/blog/jpg-vs-png-vs-webp" class="article-card__thumb-link" aria-label="الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب؟">
+                    <img src="/static/img/blog/formats-comparison.jpg" alt="الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب؟" class="article-card__thumb-img" loading="lazy">
+                </a>
+                <div class="article-card__body">
+                    <div class="article-card__meta">
+                        <span class="article-card__tag">WebP</span>
+                    </div>
+                    <h2 class="article-card__title">
+                        <a href="/blog/jpg-vs-png-vs-webp">الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب؟</a>
+                    </h2>
+                    <p class="article-card__excerpt">
+                        مقارنة تقنية شاملة بين صيغ الصور الأكثر انتشاراً: الفروق في الحجم، دعم الشفافية، ونسبة الضغط الأنسب لكل استخدام.
+                    </p>
+                    <div class="article-card__footer">
+                        <a href="/blog/jpg-vs-png-vs-webp" class="article-card__cta">
+                            <span>اقرأ الدليل الكامل</span>
+                            <span class="cta-arrow">←</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- No Results Fallback State -->
+        <div class="no-results-state" id="no-results-state" aria-live="polite">
+            <div style="margin-bottom: 0.75rem; color: var(--text-secondary);">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">لم يتم العثور على مقالات تطابق بحثك</h3>
+            <p style="color: var(--text-secondary); max-width: 480px; margin: 0 auto 1.5rem; font-size: 0.95rem; line-height: 1.6;">جرّب استخدام كلمات بحثية أخرى أو تصفح كافة المقالات المتاحة.</p>
+            <button type="button" class="btn btn-primary" onclick="clearBlogSearch()">عرض جميع المقالات</button>
+        </div>
+    </main>
+
+        <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+                    <a class="footer-brand" href="/" aria-label="GToolix Home">
+                        <span class="site-nav__brand-mark">
+                            <picture>
+                                <source srcset="/static/img/logo.webp" type="image/webp">
+                                <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38" height="38" loading="lazy">
+                            </picture>
+                        </span>
+                        <span>GToolix</span>
+                    </a>
+                    <p class="footer-note">GToolix مخصص للاستخدام الشخصي مع محتوى تملك حقوقه أو مرخّص للاستخدام العام.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">الأدوات المميزة</h4>
+                    <nav class="footer-links">
+                        <a href="/tools/qr-code-generator">مولد رمز QR</a>
+                        <a href="/tools/youtube-thumbnail-downloader">تحميل الصور المصغرة لليوتيوب</a>
+                        <a href="/tools/screen-recorder-studio">مسجل الشاشة</a>
+                        <a href="/tools/image-compressor">ضاغط ومحوّل الصور الرقمي</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">أقسام المنصة</h4>
+                    <nav class="footer-links">
+                        <a href="/tools">الأدوات</a>
+                        <a href="/blog">المقالات</a>
+                        <a href="/programs">البرامج</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">عن المنصة والثقة</h4>
+                    <nav class="footer-links">
+                        <a href="/about">عن المنصة</a>
+                        <a href="/faq">الأسئلة الشائعة</a>
+                        <a href="/contact">اتصل بنا</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">الخصوصية والشروط</h4>
+                    <nav class="footer-links">
+                        <a href="/privacy-policy">سياسة الخصوصية</a>
+                        <a href="/terms-of-service">شروط الاستخدام</a>
+                        <a href="/cookies-policy">سياسة الكوكيز</a>
+                        <a href="/disclaimer">إخلاء المسؤولية</a>
+                        <a href="/dmca">حقوق النشر (DMCA)</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 GToolix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let blogSearchQuery = '';
+
+        function clearBlogSearch() {
+            const input = document.getElementById('blog-search-input');
+            if (input) {
+                input.value = '';
+                input.focus();
+            }
+            blogSearchQuery = '';
+            filterArticles();
+        }
+
+        function filterArticles() {
+            const cards = document.querySelectorAll('#articles-catalog-grid .article-card');
+            const clearBtn = document.getElementById('blog-search-clear');
+            const countBadge = document.getElementById('blog-results-count');
+            const noResultsEl = document.getElementById('no-results-state');
+
+            if (clearBtn) {
+                clearBtn.style.display = blogSearchQuery ? 'inline-flex' : 'none';
+            }
+
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+                const text = card.textContent.toLowerCase();
+
+                const matches = !blogSearchQuery || keywords.includes(blogSearchQuery) || text.includes(blogSearchQuery);
+
+                if (matches) {
+                    card.style.display = 'flex';
+                    requestAnimationFrame(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    });
+                    visibleCount++;
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.96)';
+                    card.style.display = 'none';
+                }
+            });
+
+            if (countBadge) {
+                const isAr = document.documentElement.getAttribute('lang') === 'ar' || document.documentElement.getAttribute('dir') === 'rtl';
+                if (blogSearchQuery) {
+                    countBadge.textContent = isAr ? `تم العثور على ${visibleCount} مقال` : `Found ${visibleCount} articles`;
+                } else {
+                    countBadge.textContent = isAr ? `إجمالي المقالات: ${visibleCount}` : `Total Guides: ${visibleCount}`;
+                }
+            }
+
+            if (noResultsEl) {
+                noResultsEl.classList.toggle('visible', visibleCount === 0);
+            }
+        }
+
+        function setupBlogSearch() {
+            const searchInput = document.getElementById('blog-search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    blogSearchQuery = e.target.value.trim().toLowerCase();
+                    filterArticles();
+                });
+                searchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        clearBlogSearch();
+                    }
+                });
+            }
+        }
+
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            const backdrop = document.getElementById('nav-backdrop');
+            if (!links || !btn) return;
+            const shouldOpen = forceClose === true ? false : !links.classList.contains('is-open');
+            links.classList.toggle('is-open', shouldOpen);
+            if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+            document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setupBlogSearch();
+        });
+    </script>
+    <script src="/static/js/theme.min.js" defer></script>
+    <script src="/static/js/client.min.js" defer></script>
+</body>
+</html>

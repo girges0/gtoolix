@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
+    <script src="/static/js/lang-detect.min.js"></script>
+    <script src="/static/js/content-client.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- ===================== SEO: Primary Meta & Technical SEO ===================== -->
+    <title>GToolix – All-in-One Digital Hub for Web Tools, Software &amp; Guides</title>
+    <meta name="description" content="GToolix platform: High-performance interactive online tools, trusted downloadable software library, and insightful articles &amp; guides — 100% free with privacy first.">
+    <meta name="keywords" content="online tools, free tools, web utilities, software library, articles, guides, GToolix, qr generator, youtube thumbnail downloader, screen recorder, image compressor">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="GToolix">
+    <meta name="theme-color" content="#F8FAFC">
+
+    <!-- Favicon & PWA Suite (Google Search Optimized) -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- ===================== SEO: Canonical & Hreflang ===================== -->
+    <link rel="canonical" href="https://www.gtoolix.com/en/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/" />
+
+    <!-- ===================== SEO: Open Graph ===================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GToolix">
+    <meta property="og:title" content="GToolix – All-in-One Digital Hub for Web Tools, Software &amp; Guides">
+    <meta property="og:description" content="GToolix platform: High-performance interactive online tools, trusted downloadable software library, and insightful articles &amp; guides — 100% free with privacy first.">
+    <meta property="og:url" content="https://www.gtoolix.com/en/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ar_EG">
+    <meta property="og:image" content="https://www.gtoolix.com/static/img/logo.png">
+
+    <!-- ===================== SEO: Twitter Card ===================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GToolix – All-in-One Digital Hub for Web Tools, Software &amp; Guides">
+    <meta name="twitter:description" content="GToolix platform: High-performance interactive online tools, trusted downloadable software library, and insightful articles &amp; guides — 100% free with privacy first.">
+    <meta name="twitter:image" content="https://www.gtoolix.com/static/img/logo.png">
+    
+
+    
+
+    <!-- ===================== Performance: Preconnect Hints & Web Fonts ===================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://www.gtoolix.com/#website",
+            "name": "GToolix",
+            "url": "https://www.gtoolix.com/",
+            "description": "Free Online Tools: QR Code Generator, YouTube Thumbnail Downloader, Screen Recorder Studio, and Image Compressor.",
+            "inLanguage": [
+                "en",
+                "ar"
+            ]
+        },
+        {
+            "@type": "Organization",
+            "@id": "https://www.gtoolix.com/#organization",
+            "name": "GToolix",
+            "url": "https://www.gtoolix.com/",
+            "logo": "https://www.gtoolix.com/static/img/logo.png"
+        }
+    ]
+}
+    </script>
+
+    <style>
+        :root {
+            --bg: #020817;
+            --bg-secondary: #0F172A;
+            --card: #111827;
+            --border: #1E293B;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.04);
+            --primary: #2563EB;
+            --text: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --radius-full: 9999px;
+            --radius-md: 1rem;
+            --nav-bg: rgba(2, 8, 23, 0.82)
+        }
+
+        [data-theme="light"] {
+            --bg: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --card: #FFFFFF;
+            --border: #E2E8F0;
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass: rgba(255, 255, 255, 0.7);
+            --primary: #2563EB;
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --nav-bg: rgba(248, 250, 252, 0.85)
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: clip;
+            scrollbar-gutter: stable;
+            width: 100%;
+            -webkit-text-size-adjust: 100%
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: clip;
+            width: 100%;
+            min-height: 100svh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html[dir="rtl"] body {
+            font-family: 'Cairo', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 1rem;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.5rem 1.15rem;
+            max-width: 1180px;
+            width: min(100% - 2rem, 1180px);
+            background: rgba(11, 19, 43, 0.68);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-full, 9999px);
+            min-height: 58px;
+            box-sizing: border-box;
+            box-shadow: 0 12px 36px -6px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .site-nav.is-scrolled {
+            background: rgba(11, 19, 43, 0.88);
+            box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        [data-theme="light"] .site-nav {
+            background: rgba(255, 255, 255, 0.78);
+            border-color: rgba(226, 232, 240, 0.85);
+            box-shadow: 0 12px 36px -6px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .site-nav.is-scrolled {
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(203, 213, 225, 0.9);
+            box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+        }
+
+        .site-nav__brand {
+            display: flex;
+            align-items: center;
+            direction: ltr;
+            gap: 0.65rem;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--text);
+            text-decoration: none;
+            background: none;
+            border: none;
+            min-height: 44px;
+            cursor: pointer;
+            letter-spacing: -0.01em;
+        }
+
+        .site-nav__logo-img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            border-radius: 10px;
+            display: block;
+            box-shadow: 0 0 16px rgba(37, 99, 235, 0.35);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .site-nav__right {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .page-view {
+            display: none;
+            position: relative;
+            z-index: 1
+        }
+
+        .page-view.active {
+            display: block
+        }
+
+        .gt-landing-wrap {
+            width: 100%;
+            overflow-x: clip;
+            position: relative;
+        }
+
+        .gt-hero-section {
+            position: relative;
+            padding-top: clamp(6.75rem, 12vw, 8.5rem);
+            padding-bottom: 2.5rem;
+            padding-inline: clamp(1rem, 4vw, 1.5rem);
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+    </style>
+    <link rel="preload" href="/static/css/main.min.css" as="style">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
+    <script>/* Theme init — prevent FOUC */
+        window.seoPageType = "";
+        (function () { var t = localStorage.getItem('theme'); if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light' } document.documentElement.setAttribute('data-theme', t) })();
+    </script>
+    <!-- ===================== Google Consent Mode v2 & AdSense Engine ===================== -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted',
+            'wait_for_update': 500
+        });
+    </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="site-nav" id="site-header">
+        <a class="site-nav__brand" href="/en/" aria-label="GToolix Home">
+            <span class="site-nav__brand-mark">
+                <picture>
+                    <source srcset="/static/img/logo.webp" type="image/webp">
+                    <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38"
+                        height="38" loading="eager" fetchpriority="high">
+                </picture>
+            </span>
+            <span>GToolix</span>
+        </a>
+        <nav class="site-nav__links" id="site-nav-links" aria-label="Main Navigation">
+            <a href="/en/tools" class="nav-item-link" data-nav="tools">
+                <span class="nav-item-icon nav-icon-tools">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navTools">Tools</span>
+                    <span class="nav-item-desc" data-i18n="common.navToolsDesc">Free Interactive Smart Web Tools</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/en/blog" class="nav-item-link" data-nav="blog">
+                <span class="nav-item-icon nav-icon-blog">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="10" y1="6" x2="16" y2="6"></line><line x1="10" y1="10" x2="16" y2="10"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navBlog">Articles</span>
+                    <span class="nav-item-desc" data-i18n="common.navBlogDesc">Guides, Articles & Insights</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/en/programs" class="nav-item-link" data-nav="programs">
+                <span class="nav-item-icon nav-icon-programs">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M8 10l3 3-3 3"></path><line x1="13" y1="16" x2="17" y2="16"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navPrograms">Programs</span>
+                    <span class="nav-item-desc" data-i18n="common.navProgramsDesc">Desktop Apps & Software Hub</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+        </nav>
+        <div class="site-nav__right">
+            <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Toggle theme">
+                <span class="theme-toggle-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </span>
+            </button>
+            <div class="lang-switcher" aria-label="Language Switcher">
+                <a href="/en/" class="lang-btn active" id="lang-en-btn" onclick="try{localStorage.setItem('gtoolix_language','en');localStorage.setItem('siteLang','en');}catch(e){}">EN</a>
+                <a href="/" class="lang-btn" id="lang-ar-btn" onclick="try{localStorage.setItem('gtoolix_language','ar');localStorage.setItem('siteLang','ar');}catch(e){}">AR</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"
+                aria-controls="site-nav-links" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+
+    <!-- Background Ambience -->
+    <div class="background-gradient"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- ===================== HOME VIEW ===================== -->
+    <main id="page-home" class="page-view active gt-landing-wrap">
+
+        <!-- 1. HERO SECTION -->
+        <section class="gt-hero-section" id="hero">
+            <!-- Small pill badge -->
+            <div class="gt-hero-badge" id="hero-badge">
+                <span class="gt-badge-dot"></span>
+                <span>Online Tools & Digital Solutions</span>
+            </div>
+
+            <!-- Large centered headline (2 lines) -->
+            <h1 class="gt-hero-title gt-heading">
+                All Your <span class="gt-flip-word" tabindex="0" role="button" aria-label="Digital"><span class="gt-flip-inner"><span class="gt-flip-front">Digital</span><span class="gt-flip-back">Free</span></span><span class="gt-flip-glow" aria-hidden="true"></span><span class="gt-flip-sparkles" aria-hidden="true"><span class="gt-sparkle s1"></span><span class="gt-sparkle s2"></span><span class="gt-sparkle s3"></span></span></span> Tools.<br>In One Place.
+            </h1>
+
+            <!-- Subheadline paragraph -->
+            <p class="gt-hero-sub">
+                Discover simple, fast, and practical tools for your daily digital workflows.
+            </p>
+
+            <!-- Two CTA buttons side by side -->
+            <div class="gt-hero-actions">
+                <a href="/en/tools" class="gt-btn gt-btn-primary" aria-label="Explore Tools">
+                    <span>Explore Tools →</span>
+                </a>
+                <a href="/en/blog" class="gt-btn gt-btn-outline" aria-label="Explore Articles">
+                    <span>Explore Articles →</span>
+                </a>
+            </div>
+
+            <!-- Glowing Circular Arc Graphic Container -->
+            <div class="gt-hero-arc-container">
+                <!-- Half circle glowing arc graphic behind cards -->
+                <div class="gt-glowing-arc" aria-hidden="true"></div>
+
+                <!-- 2. POPULAR TOOLS SECTION -->
+                <div class="gt-popular-tools-wrap reveal-on-scroll" id="popular-tools">
+                    <h2 class="gt-popular-heading gt-heading">
+                        Popular Tools
+                    </h2>
+
+                    <!-- 5-card grid sitting directly on the glowing background -->
+                    <div class="gt-preview-grid">
+                        <!-- Tool 1: QR Code Generator -->
+                        <a href="/en/tools/qr-code-generator" class="gt-tool-tile gt-tool-tile--qr" aria-label="QR Code Generator">
+                            <div class="gt-tool-tile-top">
+                                <div class="gt-tool-icon-wrap icon-qr">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                                        <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                                        <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                                        <path d="M14 14h3v3h-3z" />
+                                        <path d="M18 18h3v3h-3z" />
+                                        <path d="M14 18h3v3h-3z" />
+                                        <path d="M18 14h3v3h-3z" />
+                                    </svg>
+                                </div>
+                                <span class="gt-tool-badge">SVG / PNG</span>
+                            </div>
+                            <h3 class="gt-tool-tile-title">QR Code Generator</h3>
+                            <p class="gt-tool-tile-desc">Generate & customize high-res vector QR codes instantly with zero watermark.</p>
+                            <span class="gt-tool-tile-link">
+                                <span>Explore Tool</span>
+                                <span class="dir-arrow">→</span>
+                            </span>
+                        </a>
+
+                        <!-- Tool 2: YouTube Thumbnail Downloader -->
+                        <a href="/en/tools/youtube-thumbnail-downloader" class="gt-tool-tile gt-tool-tile--thumb" aria-label="YouTube Thumbnail Downloader">
+                            <div class="gt-tool-tile-top">
+                                <div class="gt-tool-icon-wrap icon-thumb">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+                                    </svg>
+                                </div>
+                                <span class="gt-tool-badge">4K / HD</span>
+                            </div>
+                            <h3 class="gt-tool-tile-title">YouTube Thumbnail Downloader</h3>
+                            <p class="gt-tool-tile-desc">Extract & download YouTube video cover thumbnails in HD and 4K.</p>
+                            <span class="gt-tool-tile-link">
+                                <span>Explore Tool</span>
+                                <span class="dir-arrow">→</span>
+                            </span>
+                        </a>
+
+                        <!-- Tool 3: Screen Recorder -->
+                        <a href="/en/tools/screen-recorder-studio" class="gt-tool-tile gt-tool-tile--recorder" aria-label="Screen Recorder">
+                            <div class="gt-tool-tile-top">
+                                <div class="gt-tool-icon-wrap icon-rec">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                    </svg>
+                                </div>
+                                <span class="gt-tool-badge">HD 60FPS</span>
+                            </div>
+                            <h3 class="gt-tool-tile-title">Screen Recorder</h3>
+                            <p class="gt-tool-tile-desc">Record screen, audio, and webcam in studio quality directly in your browser.</p>
+                            <span class="gt-tool-tile-link">
+                                <span>Explore Tool</span>
+                                <span class="dir-arrow">→</span>
+                            </span>
+                        </a>
+
+                        <!-- Tool 4: Image Compressor & Converter -->
+                        <a href="/en/tools/image-compressor" class="gt-tool-tile gt-tool-tile--compressor" aria-label="Image Compressor & Converter">
+                            <div class="gt-tool-tile-top">
+                                <div class="gt-tool-icon-wrap icon-compressor">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21 15 16 10 5 21"></polyline>
+                                    </svg>
+                                </div>
+                                <span class="gt-tool-badge">JPG / PNG / WebP</span>
+                            </div>
+                            <h3 class="gt-tool-tile-title">Image Compressor & Converter</h3>
+                            <p class="gt-tool-tile-desc">Compress and convert JPG, PNG, WebP, and GIF images directly in your browser with zero uploads.</p>
+                            <span class="gt-tool-tile-link">
+                                <span>Explore Tool</span>
+                                <span class="dir-arrow">→</span>
+                            </span>
+                        </a>
+
+                        <!-- 5th Card: View All Tools -->
+                        <a href="/en/tools" class="gt-tool-tile gt-tool-tile--all" aria-label="View All Tools">
+                            <div class="gt-tool-all-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                                    <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                                    <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                                    <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                                </svg>
+                            </div>
+                            <span class="gt-tool-all-label">
+                                <span>View All Tools</span>
+                                <span class="dir-arrow">→</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PLATFORM SECTIONS SECTION -->
+        <section class="gt-sections-wrap" id="platform-sections">
+            <div class="gt-kicker-title reveal-on-scroll">
+                Explore GToolix
+            </div>
+            <div class="gt-sections-grid reveal-on-scroll">
+                <!-- Section 1: Online Tools -->
+                <a href="/en/tools" class="gt-section-card stagger-item stagger-delay-1" aria-label="Online Tools">
+                    <div class="gt-section-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3 class="gt-section-title">Online Tools</h3>
+                    <p class="gt-section-desc">Useful browser-based tools for your daily digital workflows.</p>
+                    <span class="gt-section-cta">
+                        <span>Explore Tools →</span>
+                    </span>
+                </a>
+
+                <!-- Section 2: Blog -->
+                <a href="/en/blog" class="gt-section-card stagger-item stagger-delay-2" aria-label="Articles">
+                    <div class="gt-section-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="gt-section-title">Articles</h3>
+                    <p class="gt-section-desc">Guides, walkthroughs, and practical insights on tools and tech.</p>
+                    <span class="gt-section-cta">
+                        <span>Browse Articles →</span>
+                    </span>
+                </a>
+
+                <!-- Section 3: Programs -->
+                <a href="/en/programs" class="gt-section-card stagger-item stagger-delay-3" aria-label="Programs">
+                    <div class="gt-section-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                            <line x1="12" y1="11" x2="12" y2="17"></line>
+                            <polyline points="9 14 12 17 15 14"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="gt-section-title">Programs</h3>
+                    <p class="gt-section-desc">Discover downloadable software and essential desktop utilities.</p>
+                    <span class="gt-section-cta">
+                        <span>Explore Programs →</span>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 4. FEATURE SECTIONS (3 Alternating Blocks) -->
+        <section class="gt-features-container" id="features">
+            <!-- FEATURE BLOCK 1 — ONLINE TOOLS (Text Left / Visual Right) -->
+            <div class="gt-feature-block gt-feature-block--tools reveal-on-scroll" data-feature="tools">
+                <div class="gt-feature-text">
+                    <h2 class="gt-feature-heading gt-heading">
+                        Powerful Tools, Built Simply
+                    </h2>
+                    <p class="gt-feature-p">
+                        Use practical web tools right from your browser without unnecessary friction or complexity.
+                    </p>
+                    <ul class="gt-checklist">
+                        <li class="gt-checklist-item stagger-item stagger-delay-1">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Fast browser-based performance</span>
+                        </li>
+                        <li class="gt-checklist-item stagger-item stagger-delay-2">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Clean and intuitive user interfaces</span>
+                        </li>
+                        <li class="gt-checklist-item stagger-item stagger-delay-3">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Built for daily productivity tasks</span>
+                        </li>
+                        <li class="gt-checklist-item stagger-item stagger-delay-4">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Full English & Arabic support</span>
+                        </li>
+                    </ul>
+                    <a href="/en/tools" class="gt-btn gt-btn-outline gt-magnetic-btn" aria-label="Explore Tools">
+                        <span>Explore Tools →</span>
+                    </a>
+                </div>
+
+                <div class="gt-feature-visual-wrap">
+                    <div class="gt-floating-pill gt-parallax-badge">
+                        <span class="gt-pill-pulse-dot"></span>
+                        <span>100% Local Privacy</span>
+                    </div>
+                    <div class="gt-mockup-card">
+                        <div class="gt-highlight-tile">
+                            <div class="gt-tool-icon-wrap gt-parallax-icon icon-qr">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                                    <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                                    <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                                    <path d="M14 14h3v3h-3z" />
+                                    <path d="M18 18h3v3h-3z" />
+                                    <path d="M14 18h3v3h-3z" />
+                                    <path d="M18 14h3v3h-3z" />
+                                </svg>
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <div style="font-weight: 700; font-size: 0.95rem; color: var(--gt-text);">QR Code Generator</div>
+                                <div style="font-size: 0.8rem; color: var(--gt-text-muted);">Client-side vector QR engine</div>
+                            </div>
+                            <span class="gt-parallax-badge" style="font-size: 0.75rem; color: #38BDF8; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); padding: 0.2rem 0.6rem; border-radius: 9999px;">Active</span>
+                        </div>
+
+                        <div class="gt-sub-tile gt-parallax-sub">
+                            <div class="gt-tool-icon-wrap gt-parallax-icon icon-thumb">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+                                </svg>
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <div style="font-weight: 700; font-size: 0.95rem; color: var(--gt-text);">YouTube Thumbnail Downloader</div>
+                                <div style="font-size: 0.8rem; color: var(--gt-text-muted);">Lossless HD & 4K quality</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEATURE BLOCK 2 — BLOG (Visual Left / Text Right) -->
+            <div class="gt-feature-block gt-feature-block--reverse gt-feature-block--blog reveal-on-scroll" data-feature="blog">
+                <div class="gt-feature-text">
+                    <h2 class="gt-feature-heading gt-heading">
+                        Learn & Explore with GToolix
+                    </h2>
+                    <p class="gt-feature-p">
+                        Explore step-by-step guides, tutorials, and practical articles on web tools and digital solutions.
+                    </p>
+                    <ul class="gt-checklist">
+                        <li class="gt-checklist-item stagger-item stagger-delay-1">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Step-by-step guides</span>
+                        </li>
+                        <li class="gt-checklist-item stagger-item stagger-delay-2">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Actionable tutorials</span>
+                        </li>
+                        <li class="gt-checklist-item stagger-item stagger-delay-3">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Articles & guides</span>
+                        </li>
+                        <li class="gt-checklist-item stagger-item stagger-delay-4">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Useful productivity tips</span>
+                        </li>
+                    </ul>
+                    <a href="/en/blog" class="gt-btn gt-btn-outline gt-magnetic-btn" aria-label="Browse Articles">
+                        <span>Browse Articles →</span>
+                    </a>
+                </div>
+
+                <div class="gt-feature-visual-wrap">
+                    <div class="gt-floating-pill gt-parallax-badge">
+                        <span class="gt-pill-pulse-dot" style="background: #A855F7; box-shadow: 0 0 8px #A855F7;"></span>
+                        <span>Regular Updates</span>
+                    </div>
+                    <div class="gt-mockup-card">
+                        <div class="gt-highlight-tile">
+                            <div class="gt-tool-icon-wrap gt-parallax-icon" style="background: rgba(168, 85, 247, 0.2); color: #C084FC; border: 1px solid rgba(168, 85, 247, 0.4);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                </svg>
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <div style="font-weight: 700; font-size: 0.95rem; color: var(--gt-text);">Modern Web Tools & Privacy</div>
+                                <div style="font-size: 0.8rem; color: var(--gt-text-muted);">Detailed guides & real applications</div>
+                            </div>
+                            <span class="gt-parallax-badge" style="font-size: 0.75rem; color: #C084FC; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.3); padding: 0.2rem 0.6rem; border-radius: 9999px;">Guide</span>
+                        </div>
+
+                        <div class="gt-sub-tile gt-parallax-sub" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+                            <div class="gt-parallax-tags" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                <span style="font-size: 0.75rem; background: rgba(168, 85, 247, 0.12); color: #C084FC; border: 1px solid rgba(168, 85, 247, 0.25); padding: 0.2rem 0.5rem; border-radius: 6px;"># AI</span>
+                                <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.12); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 0.2rem 0.5rem; border-radius: 6px;"># Privacy</span>
+                                <span style="font-size: 0.75rem; background: rgba(56, 189, 248, 0.12); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.25); padding: 0.2rem 0.5rem; border-radius: 6px;"># WebTools</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEATURE BLOCK 3 — PROGRAMS (Text Left / Visual Right) -->
+            <div class="gt-feature-block gt-feature-block--programs reveal-on-scroll" data-feature="programs">
+                <div class="gt-feature-text">
+                    <h2 class="gt-feature-heading gt-heading">
+                        Discover GToolix Software
+                    </h2>
+                    <p class="gt-feature-p">
+                        Explore downloadable applications and utilities tailored for offline digital needs.
+                    </p>
+                    <ul class="gt-checklist">
+                        <li class="gt-checklist-item stagger-item stagger-delay-1">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Downloadable applications</span>
+                        </li>
+                        <li class="gt-checklist-item stagger-item stagger-delay-2">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Handy utilities</span>
+                        </li>
+                        <li class="gt-checklist-item stagger-item stagger-delay-3">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Clear documentation & specs</span>
+                        </li>
+                        <li class="gt-checklist-item stagger-item stagger-delay-4">
+                            <span class="gt-check-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                            <span>Organized software library</span>
+                        </li>
+                    </ul>
+                    <a href="/en/programs" class="gt-btn gt-btn-outline gt-magnetic-btn" aria-label="Explore Programs">
+                        <span>Explore Programs →</span>
+                    </a>
+                </div>
+
+                <div class="gt-feature-visual-wrap">
+                    <div class="gt-floating-pill gt-parallax-badge">
+                        <span class="gt-pill-pulse-dot" style="background: #22C55E; box-shadow: 0 0 8px #22C55E;"></span>
+                        <span>Verified Software</span>
+                    </div>
+                    <div class="gt-mockup-card">
+                        <div class="gt-highlight-tile">
+                            <div class="gt-tool-icon-wrap gt-parallax-icon" style="background: rgba(34, 197, 94, 0.2); color: #4ADE80; border: 1px solid rgba(34, 197, 94, 0.4);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <div style="font-weight: 700; font-size: 0.95rem; color: var(--gt-text);">Offline Software & Utilities</div>
+                                <div style="font-size: 0.8rem; color: var(--gt-text-muted);">Direct & verified download links</div>
+                            </div>
+                            <span class="gt-parallax-badge" style="font-size: 0.75rem; color: #4ADE80; background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.3); padding: 0.2rem 0.6rem; border-radius: 9999px;">Verified</span>
+                        </div>
+
+                        <div class="gt-sub-tile gt-parallax-sub">
+                            <div class="gt-tool-icon-wrap gt-parallax-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <div style="font-weight: 700; font-size: 0.95rem; color: var(--gt-text);">Clean & Secure Scan</div>
+                                <div style="font-size: 0.8rem; color: var(--gt-text-muted);">No adware or bloatware</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================== 404 NOT FOUND (For Legacy Hashes) ===================== -->
+    <div id="page-404" class="page-view" style="display: none;">
+        <div class="container" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; padding: 4rem 1rem;">
+            <div class="card glass-card" style="max-width: 600px; width: 100%; text-align: center; padding: 3rem 2rem;">
+                <div style="font-size: 5rem; font-weight: 800; line-height: 1; color: var(--gt-primary); margin-bottom: 1rem;">
+                    404
+                </div>
+                <h2 style="font-size: 1.75rem; margin-bottom: 0.75rem;">Page Not Found</h2>
+                <p style="color: var(--gt-text-muted); margin-bottom: 2rem; font-size: 1rem;">
+                    Sorry, the page you are looking for does not exist or has been moved.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/en/" class="gt-btn gt-btn-primary">Home</a>
+                    <a href="/en/tools" class="gt-btn gt-btn-outline">All Tools</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+                    <a class="footer-brand" href="/en/" aria-label="GToolix Home">
+                        <span class="site-nav__brand-mark">
+                            <picture>
+                                <source srcset="/static/img/logo.webp" type="image/webp">
+                                <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38" height="38" loading="lazy">
+                            </picture>
+                        </span>
+                        <span>GToolix</span>
+                    </a>
+                    <p class="footer-note">GToolix is intended for personal use with content you own or licensed for public use.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">Featured Tools</h4>
+                    <nav class="footer-links">
+                        <a href="/en/tools/qr-code-generator">QR Code Generator</a>
+                        <a href="/en/tools/youtube-thumbnail-downloader">YouTube Thumbnail Downloader</a>
+                        <a href="/en/tools/screen-recorder-studio">Screen Recorder</a>
+                        <a href="/en/tools/image-compressor">Image Compressor & Converter</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">Platform Sections</h4>
+                    <nav class="footer-links">
+                        <a href="/en/tools">Tools</a>
+                        <a href="/en/blog">Articles</a>
+                        <a href="/en/programs">Programs</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">About Platform & Trust</h4>
+                    <nav class="footer-links">
+                        <a href="/en/about">About Us</a>
+                        <a href="/en/faq">FAQ</a>
+                        <a href="/en/contact">Contact Us</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">Privacy & Terms</h4>
+                    <nav class="footer-links">
+                        <a href="/en/privacy-policy">Privacy Policy</a>
+                        <a href="/en/terms-of-service">Terms of Service</a>
+                        <a href="/en/cookies-policy">Cookies Policy</a>
+                        <a href="/en/disclaimer">Disclaimer</a>
+                        <a href="/en/dmca">Copyright (DMCA)</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 GToolix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== JAVASCRIPT LOGIC ===================== -->
+    <script>
+        // Language System
+        let currentLang = (typeof window.getGToolixLanguage === 'function') ? window.getGToolixLanguage() : (function () {
+            try {
+                var saved = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
+                if (saved === 'ar' || saved === 'en') return saved;
+                var langs = (navigator.languages && navigator.languages.length) ? navigator.languages : (navigator.language ? [navigator.language] : []);
+                for (var i = 0; i < langs.length; i++) {
+                    var code = (langs[i] || '').toLowerCase();
+                    if (code.indexOf('ar') === 0) return 'ar';
+                    if (code.indexOf('en') === 0) return 'en';
+                }
+            } catch (e) { }
+            return 'en';
+        })();
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            try {
+                localStorage.setItem('gtoolix_language', lang);
+                localStorage.setItem('siteLang', lang);
+            } catch (e) { }
+            if (typeof window.updateI18n === 'function') {
+                window.updateI18n(lang);
+            }
+            if (typeof loadPopularTools === 'function') {
+                loadPopularTools();
+            }
+        }
+
+        // Mobile Nav Drawer Toggle
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            const backdrop = document.getElementById('nav-backdrop');
+            if (!links || !btn) return;
+            const shouldOpen = forceClose === true ? false : !links.classList.contains('is-open');
+            links.classList.toggle('is-open', shouldOpen);
+            if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+            document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+
+        // Scroll Reveal Observer
+        function initScrollReveal() {
+            const elements = document.querySelectorAll('.reveal-on-scroll, .reveal');
+            if (!elements.length) return;
+
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion || !('IntersectionObserver' in window)) {
+                elements.forEach(el => el.classList.add('in-view'));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        // Also trigger stagger children if any
+                        entry.target.querySelectorAll('.stagger-item').forEach(child => {
+                            child.classList.add('in-view');
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.08,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            elements.forEach(el => observer.observe(el));
+        }
+
+        // =====================================================================
+        // REUSABLE FEATURE BLOCKS (4 MICRO-INTERACTIONS)
+        // =====================================================================
+        function initFeatureInteractions() {
+            const isReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+            // 1. Clip-Path Word-by-Word Text Reveal for Headings
+            function prepareWordMasks() {
+                document.querySelectorAll('.gt-feature-heading').forEach(heading => {
+                    const text = heading.textContent.trim();
+                    if (!text || heading.querySelector('.gt-word-mask')) return;
+                    if (isReducedMotion) return;
+
+                    const words = text.split(/\s+/).filter(Boolean);
+                    heading.innerHTML = words.map((word, i) => {
+                        const delay = (i * 65) + 'ms';
+                        return `<span class="gt-word-mask"><span class="gt-word-inner" style="transition-delay:${delay}">${word}</span></span>`;
+                    }).join(' ');
+                });
+            }
+
+            window.prepareFeatureHeadings = prepareWordMasks;
+            prepareWordMasks();
+
+            if (isReducedMotion || !canHover || window.innerWidth < 960) return;
+
+            // 2. Mouse-Following Spotlight Glow & 3D Internal Parallax
+            document.querySelectorAll('.gt-feature-visual-wrap').forEach(wrap => {
+                const card = wrap.querySelector('.gt-mockup-card');
+                if (!card) return;
+
+                const badge = wrap.querySelector('.gt-parallax-badge');
+                const icons = wrap.querySelectorAll('.gt-parallax-icon');
+                const sub = wrap.querySelector('.gt-parallax-sub');
+                const tags = wrap.querySelector('.gt-parallax-tags');
+
+                let rafId = null;
+                let targetRotX = 0, targetRotY = 0;
+                let currentRotX = 0, currentRotY = 0;
+                let targetX = 0, targetY = 0;
+                let currentX = 0, currentY = 0;
+                let isHovering = false;
+
+                function updateParallax() {
+                    if (!isHovering && Math.abs(currentRotX) < 0.01 && Math.abs(currentRotY) < 0.01) {
+                        card.style.transform = '';
+                        if (badge) badge.style.transform = '';
+                        icons.forEach(ic => ic.style.transform = '');
+                        if (sub) sub.style.transform = '';
+                        if (tags) tags.style.transform = '';
+                        rafId = null;
+                        return;
+                    }
+
+                    // Smooth damping
+                    currentRotX += (targetRotX - currentRotX) * 0.12;
+                    currentRotY += (targetRotY - currentRotY) * 0.12;
+                    currentX += (targetX - currentX) * 0.12;
+                    currentY += (targetY - currentY) * 0.12;
+
+                    card.style.transform = `perspective(1000px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+
+                    if (badge) {
+                        badge.style.transform = `translate3d(${(currentX * -10).toFixed(2)}px, ${(currentY * -10).toFixed(2)}px, 35px)`;
+                    }
+                    icons.forEach(ic => {
+                        ic.style.transform = `translate3d(${(currentX * 6).toFixed(2)}px, ${(currentY * 6).toFixed(2)}px, 20px)`;
+                    });
+                    if (sub) {
+                        sub.style.transform = `translate3d(${(currentX * 4).toFixed(2)}px, ${(currentY * 4).toFixed(2)}px, 15px)`;
+                    }
+                    if (tags) {
+                        tags.style.transform = `translate3d(${(currentX * 5).toFixed(2)}px, ${(currentY * 5).toFixed(2)}px, 20px)`;
+                    }
+
+                    rafId = requestAnimationFrame(updateParallax);
+                }
+
+                wrap.addEventListener('mouseenter', () => {
+                    isHovering = true;
+                    card.style.setProperty('--spot-opacity', '1');
+                    if (!rafId) rafId = requestAnimationFrame(updateParallax);
+                });
+
+                wrap.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    card.style.setProperty('--spot-x', `${x.toFixed(1)}px`);
+                    card.style.setProperty('--spot-y', `${y.toFixed(1)}px`);
+
+                    const cx = rect.width / 2;
+                    const cy = rect.height / 2;
+                    targetX = (x - cx) / cx;
+                    targetY = (y - cy) / cy;
+
+                    targetRotX = targetY * -7;
+                    targetRotY = targetX * 7;
+                });
+
+                wrap.addEventListener('mouseleave', () => {
+                    isHovering = false;
+                    targetRotX = 0;
+                    targetRotY = 0;
+                    targetX = 0;
+                    targetY = 0;
+                    card.style.setProperty('--spot-opacity', '0');
+                });
+            });
+
+            // 3. Magnetic CTA Buttons
+            document.querySelectorAll('.gt-feature-block .gt-btn').forEach(btn => {
+                let bRaf = null;
+                let targetBX = 0, targetBY = 0;
+                let currentBX = 0, currentBY = 0;
+                let isBtnHovered = false;
+
+                function updateMagnetic() {
+                    if (!isBtnHovered && Math.abs(currentBX) < 0.05 && Math.abs(currentBY) < 0.05) {
+                        btn.style.transform = '';
+                        bRaf = null;
+                        return;
+                    }
+
+                    currentBX += (targetBX - currentBX) * 0.2;
+                    currentBY += (targetBY - currentBY) * 0.2;
+
+                    btn.style.transform = `translate3d(${currentBX.toFixed(2)}px, ${currentBY.toFixed(2)}px, 0)`;
+                    bRaf = requestAnimationFrame(updateMagnetic);
+                }
+
+                btn.addEventListener('mouseenter', () => {
+                    isBtnHovered = true;
+                    if (!bRaf) bRaf = requestAnimationFrame(updateMagnetic);
+                });
+
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const cx = rect.left + rect.width / 2;
+                    const cy = rect.top + rect.height / 2;
+                    targetBX = (e.clientX - cx) * 0.32;
+                    targetBY = (e.clientY - cy) * 0.32;
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    isBtnHovered = false;
+                    targetBX = 0;
+                    targetBY = 0;
+                });
+            });
+        }
+
+        // Sticky Navbar scroll opacity effect
+        function initNavbarScroll() {
+            const header = document.getElementById('site-header');
+            if (!header) return;
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('is-scrolled', window.scrollY > 20);
+            }, { passive: true });
+        }
+
+        async function loadPopularTools() {
+            if (!window.GToolixContent) return;
+            const grid = document.querySelector('.gt-preview-grid');
+            if (!grid) return;
+
+            try {
+                const rawTools = await GToolixContent.getTools();
+                const activeSlugs = new Set(['qr-code-generator', 'youtube-thumbnail-downloader', 'screen-recorder-studio', 'image-compressor']);
+                const tools = (rawTools || []).filter(t => t && t.slug && activeSlugs.has(t.slug) && !t.slug.includes('gemini'));
+                if (Array.isArray(tools) && tools.length > 0) {
+                    const isAr = currentLang === 'ar';
+                    const cardsHtml = tools.map((tool) => {
+                        const name = isAr ? (tool.name_ar || tool.nameAr || tool.name) : (tool.name_en || tool.name);
+                        const desc = isAr ? (tool.description_ar || tool.descriptionAr || tool.description) : (tool.description_en || tool.description);
+                        const badge = isAr ? (tool.badgeAr || tool.badge_text || tool.badge || '') : (tool.badge || tool.badge_text || '');
+                        const slug = tool.slug;
+                        const icon = tool.icon || 'qr';
+
+                        let iconSvg = '';
+                        let iconWrapClass = 'gt-tool-icon-wrap';
+                        let tileClass = `gt-tool-tile gt-tool-tile--${icon === 'youtube' ? 'thumb' : (icon === 'recorder' ? 'recorder' : (icon === 'compressor' ? 'compressor' : 'qr'))}`;
+                        
+                        if (icon === 'qr') {
+                            iconWrapClass += ' icon-qr';
+                            iconSvg = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><path d="M14 14h3v3h-3z" /><path d="M18 18h3v3h-3z" /><path d="M14 18h3v3h-3z" /><path d="M18 14h3v3h-3z" /></svg>`;
+                        } else if (icon === 'youtube' || icon === 'thumb') {
+                            iconWrapClass += ' icon-thumb';
+                            iconSvg = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon></svg>`;
+                        } else if (icon === 'recorder' || icon === 'rec') {
+                            iconWrapClass += ' icon-rec';
+                            iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>`;
+                        } else if (icon === 'compressor') {
+                            iconWrapClass += ' icon-compressor';
+                            iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>`;
+                        } else {
+                            iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>`;
+                        }
+
+                        const exploreBtn = isAr ? 'استكشف الأداة' : 'Explore Tool';
+                        const arrow = isAr ? '←' : '→';
+
+                        return `
+                            <a href="${isAr ? '' : '/en'}/tools/${slug}" class="${tileClass}" aria-label="${name}">
+                                <div class="gt-tool-tile-top">
+                                    <div class="${iconWrapClass}">
+                                        ${iconSvg}
+                                    </div>
+                                    ${badge ? `<span class="gt-tool-badge">${badge}</span>` : ''}
+                                </div>
+                                <h3 class="gt-tool-tile-title">${name}</h3>
+                                <p class="gt-tool-tile-desc">${desc}</p>
+                                <span class="gt-tool-tile-link">
+                                    <span>${exploreBtn}</span>
+                                    <span class="dir-arrow">${arrow}</span>
+                                </span>
+                            </a>
+                        `;
+                    }).join('');
+
+                    const viewAllLabel = isAr ? 'عرض جميع الأدوات' : 'View All Tools';
+                    const arrow = isAr ? '←' : '→';
+                    const allCardHtml = `
+                        <a href="${isAr ? '' : '/en'}/tools" class="gt-tool-tile gt-tool-tile--all" aria-label="${viewAllLabel}">
+                            <div class="gt-tool-all-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                                    <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                                    <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                                    <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                                </svg>
+                            </div>
+                            <span class="gt-tool-all-label">
+                                <span>${viewAllLabel}</span>
+                                <span class="dir-arrow">${arrow}</span>
+                            </span>
+                        </a>
+                    `;
+
+                    grid.innerHTML = cardsHtml + allCardHtml;
+                }
+            } catch (e) {
+                console.warn('Dynamic popular tools rendering fallback:', e);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const pc = document.getElementById('particles');
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (pc && !reduceMotion && window.innerWidth > 1023) {
+                const fragment = document.createDocumentFragment();
+                for (let i = 0; i < 25; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    p.style.left = Math.random() * 100 + '%';
+                    p.style.animationDelay = Math.random() * 8 + 's';
+                    p.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                    fragment.appendChild(p);
+                }
+                pc.appendChild(fragment);
+            }
+            initScrollReveal();
+            initFeatureInteractions();
+            initNavbarScroll();
+            loadPopularTools();
+            if (typeof window.updateI18n === 'function') {
+                window.updateI18n(currentLang);
+            }
+        });
+    </script>
+    <script src="/static/js/content-client.js"></script>
+    <script src="/static/js/theme.min.js" defer></script>
+    <script src="/static/js/client.min.js" defer></script>
+</body>
+</html>

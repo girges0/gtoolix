@@ -1,0 +1,64 @@
+[
+  {
+    "id": "qr-code-generator",
+    "name": "QR Code Generator",
+    "nameAr": "مولد كود QR",
+    "slug": "qr-code-generator",
+    "url": "/tools/qr-code-generator/",
+    "category": "utilities",
+    "description": "Create custom high-resolution QR codes for URLs, Wi-Fi, vCard contacts, SMS, and text — instant download in PNG and SVG vector.",
+    "descriptionAr": "أنشئ باركود QR مخصص للروابط والواي فاي والاتصال والنصوص بجودة عالية وبدون علامة مائية بصيغتي PNG و SVG.",
+    "icon": "qr",
+    "badge": "Instant & Free",
+    "badgeAr": "فوري ومجاني",
+    "featured": true,
+    "popular": true
+  },
+  {
+    "id": "youtube-thumbnail-downloader",
+    "name": "YouTube Thumbnail Downloader",
+    "nameAr": "تحميل صور اليوتيوب المصغرة",
+    "slug": "youtube-thumbnail-downloader",
+    "url": "/tools/youtube-thumbnail-downloader/",
+    "category": "media",
+    "description": "Extract and download YouTube video and Shorts thumbnails in HD, 1080p, and 4K Ultra HD resolution instantly.",
+    "descriptionAr": "استخرج وحمّل صور اليوتيوب وشورتس المصغرة بأعلى جودة HD و 1080p و 4K بضغطة زر واحدة.",
+    "icon": "youtube",
+    "badge": "4K Ready",
+    "badgeAr": "دقة 4K",
+    "featured": true,
+    "popular": true
+  },
+  {
+    "id": "screen-recorder-studio",
+    "name": "Screen Recorder Studio",
+    "nameAr": "مسجل الشاشة الاحترافي",
+    "slug": "screen-recorder-studio",
+    "url": "/tools/screen-recorder-studio/",
+    "category": "video",
+    "description": "Record screen, webcam overlay, and system/mic audio simultaneously in high quality directly in browser without upload.",
+    "descriptionAr": "سجّل شاشتك وكاميرا الويب والصوت بجودة عالية فورياً في متصفحك بمعالجة محلية بالكامل وبدون قيود.",
+    "icon": "recorder",
+    "badge": "Studio 4K",
+    "badgeAr": "شاشة + كاميرا",
+    "featured": true,
+    "popular": true
+  },
+  {
+    "id": "image-compressor",
+    "name": "Image Compressor & Converter",
+    "nameAr": "ضاغط ومحوّل الصور",
+    "slug": "image-compressor",
+    "url": "/tools/image-compressor/",
+    "category": "media",
+    "description": "Compress and convert JPG, PNG, WebP, and GIF images with high quality directly in your browser. 100% private client-side processing.",
+    "descriptionAr": "ضغط وتحويل صور JPG و PNG و WebP و GIF بجودة فائقة مباشرة في متصفحك بمعالجة محلية 100% بدون رفع أي ملفات.",
+    "icon": "compressor",
+    "badge": "JPG / PNG / WebP",
+    "badgeAr": "JPG / PNG / WebP",
+    "accent_color": "#2563EB",
+    "featured": true,
+    "popular": true
+  }
+]
+

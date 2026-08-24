@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<!--HTML_TAG-->
+
+<head>
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
+    <script src="/static/js/lang-detect.min.js"></script>
+    <script src="/static/js/content-client.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!--SEO_HEAD-->
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
+
+    <!-- ===================== Performance: Preconnect Hints & Web Fonts ===================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+
+<!--JSON_LD-->
+
+    <style>
+        :root {
+            --bg: #020817;
+            --bg-secondary: #0F172A;
+            --card: #111827;
+            --border: #1E293B;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.04);
+            --primary: #2563EB;
+            --text: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --radius-full: 9999px;
+            --radius-md: 1rem;
+            --nav-bg: rgba(2, 8, 23, 0.82)
+        }
+
+        [data-theme="light"] {
+            --bg: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --card: #FFFFFF;
+            --border: #E2E8F0;
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass: rgba(255, 255, 255, 0.7);
+            --primary: #2563EB;
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --nav-bg: rgba(248, 250, 252, 0.85)
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: clip;
+            scrollbar-gutter: stable;
+            width: 100%;
+            -webkit-text-size-adjust: 100%
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: clip;
+            width: 100%;
+            min-height: 100svh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html[dir="rtl"] body {
+            font-family: 'Cairo', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 1rem;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.5rem 1.15rem;
+            max-width: 1180px;
+            width: min(100% - 2rem, 1180px);
+            background: rgba(11, 19, 43, 0.68);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-full, 9999px);
+            min-height: 58px;
+            box-sizing: border-box;
+            box-shadow: 0 12px 36px -6px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .site-nav.is-scrolled {
+            background: rgba(11, 19, 43, 0.88);
+            box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        [data-theme="light"] .site-nav {
+            background: rgba(255, 255, 255, 0.78);
+            border-color: rgba(226, 232, 240, 0.85);
+            box-shadow: 0 12px 36px -6px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .site-nav.is-scrolled {
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(203, 213, 225, 0.9);
+            box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+        }
+
+        .site-nav__brand {
+            display: flex;
+            align-items: center;
+            direction: ltr;
+            gap: 0.65rem;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--text);
+            text-decoration: none;
+            background: none;
+            border: none;
+            min-height: 44px;
+            cursor: pointer;
+            letter-spacing: -0.01em;
+        }
+
+        .site-nav__logo-img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            border-radius: 10px;
+            display: block;
+            box-shadow: 0 0 16px rgba(37, 99, 235, 0.35);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .site-nav__right {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .page-view {
+            display: none;
+            position: relative;
+            z-index: 1
+        }
+
+        .page-view.active {
+            display: block
+        }
+
+        .gt-landing-wrap {
+            width: 100%;
+            overflow-x: clip;
+            position: relative;
+        }
+
+        .gt-hero-section {
+            position: relative;
+            padding-top: clamp(6.75rem, 12vw, 8.5rem);
+            padding-bottom: 2.5rem;
+            padding-inline: clamp(1rem, 4vw, 1.5rem);
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+    </style>
+    <link rel="preload" href="/static/css/main.min.css" as="style">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
+    <script>/* Theme init — prevent FOUC */
+        window.seoPageType = "";
+        (function () { var t = localStorage.getItem('theme'); if (!t) { t = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light' } document.documentElement.setAttribute('data-theme', t) })();
+    </script>
+    <!-- ===================== Google Consent Mode v2 & AdSense Engine ===================== -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted',
+            'wait_for_update': 500
+        });
+    </script>
+</head>
+
+<body>
+<!--SITE_NAV-->
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+
+    <!-- Background Ambience -->
+    <div class="background-gradient"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- ===================== HOME VIEW ===================== -->
+    <main id="page-home" class="page-view active gt-landing-wrap">
+
+        <!-- 1. HERO SECTION -->
+        <section class="gt-hero-section" id="hero">
+            <!-- Small pill badge -->
+            <div class="gt-hero-badge" id="hero-badge">
+                <span class="gt-badge-dot"></span>
+                <span><!--HERO_BADGE--></span>
+            </div>
+
+            <!-- Large centered headline (2 lines) -->
+            <h1 class="gt-hero-title gt-heading">
+                <!--HERO_TITLE-->
+            </h1>
+
+            <!-- Subheadline paragraph -->
+            <p class="gt-hero-sub">
+                <!--HERO_SUB-->
+            </p>
+
+            <!-- Two CTA buttons side by side -->
+            <div class="gt-hero-actions">
+                <a href="<!--HERO_CTA_TOOLS_HREF-->" class="gt-btn gt-btn-primary" aria-label="Explore Tools">
+                    <span><!--HERO_CTA_TOOLS_LABEL--></span>
+                </a>
+                <a href="<!--HERO_CTA_BLOG_HREF-->" class="gt-btn gt-btn-outline" aria-label="Explore Articles">
+                    <span><!--HERO_CTA_BLOG_LABEL--></span>
+                </a>
+            </div>
+
+            <!-- Glowing Circular Arc Graphic Container -->
+            <div class="gt-hero-arc-container">
+                <!-- Half circle glowing arc graphic behind cards -->
+                <div class="gt-glowing-arc" aria-hidden="true"></div>
+
+                <!-- 2. POPULAR TOOLS SECTION -->
+                <div class="gt-popular-tools-wrap reveal-on-scroll" id="popular-tools">
+                    <h2 class="gt-popular-heading gt-heading">
+                        <!--POPULAR_TOOLS_TITLE-->
+                    </h2>
+
+                    <!-- 5-card grid sitting directly on the glowing background -->
+                    <div class="gt-preview-grid">
+<!--POPULAR_TOOLS_GRID-->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PLATFORM SECTIONS SECTION -->
+        <section class="gt-sections-wrap" id="platform-sections">
+            <div class="gt-kicker-title reveal-on-scroll">
+                <!--SECTIONS_KICKER-->
+            </div>
+            <div class="gt-sections-grid reveal-on-scroll">
+<!--SECTIONS_GRID-->
+            </div>
+        </section>
+
+        <!-- 4. FEATURE SECTIONS (3 Alternating Blocks) -->
+        <section class="gt-features-container" id="features">
+<!--FEATURE_BLOCKS-->
+        </section>
+
+    </main>
+
+    <!-- ===================== 404 NOT FOUND (For Legacy Hashes) ===================== -->
+    <div id="page-404" class="page-view" style="display: none;">
+        <div class="container" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; padding: 4rem 1rem;">
+            <div class="card glass-card" style="max-width: 600px; width: 100%; text-align: center; padding: 3rem 2rem;">
+                <div style="font-size: 5rem; font-weight: 800; line-height: 1; color: var(--gt-primary); margin-bottom: 1rem;">
+                    404
+                </div>
+                <h2 style="font-size: 1.75rem; margin-bottom: 0.75rem;"><!--NOT_FOUND_TITLE--></h2>
+                <p style="color: var(--gt-text-muted); margin-bottom: 2rem; font-size: 1rem;">
+                    <!--NOT_FOUND_DESC-->
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="<!--BRAND_HREF-->" class="gt-btn gt-btn-primary"><!--NOT_FOUND_HOME_BTN--></a>
+                    <a href="<!--TOOLS_HREF-->" class="gt-btn gt-btn-outline"><!--NOT_FOUND_TOOLS_BTN--></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--SITE_FOOTER-->
+
+    <!-- ===================== JAVASCRIPT LOGIC ===================== -->
+    <script>
+        // Language System
+        let currentLang = (typeof window.getGToolixLanguage === 'function') ? window.getGToolixLanguage() : (function () {
+            try {
+                var saved = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
+                if (saved === 'ar' || saved === 'en') return saved;
+                var langs = (navigator.languages && navigator.languages.length) ? navigator.languages : (navigator.language ? [navigator.language] : []);
+                for (var i = 0; i < langs.length; i++) {
+                    var code = (langs[i] || '').toLowerCase();
+                    if (code.indexOf('ar') === 0) return 'ar';
+                    if (code.indexOf('en') === 0) return 'en';
+                }
+            } catch (e) { }
+            return '<!--DEFAULT_LANG-->';
+        })();
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            try {
+                localStorage.setItem('gtoolix_language', lang);
+                localStorage.setItem('siteLang', lang);
+            } catch (e) { }
+            if (typeof window.updateI18n === 'function') {
+                window.updateI18n(lang);
+            }
+            if (typeof loadPopularTools === 'function') {
+                loadPopularTools();
+            }
+        }
+
+        // Mobile Nav Drawer Toggle
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            const backdrop = document.getElementById('nav-backdrop');
+            if (!links || !btn) return;
+            const shouldOpen = forceClose === true ? false : !links.classList.contains('is-open');
+            links.classList.toggle('is-open', shouldOpen);
+            if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+            document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+
+        // Scroll Reveal Observer
+        function initScrollReveal() {
+            const elements = document.querySelectorAll('.reveal-on-scroll, .reveal');
+            if (!elements.length) return;
+
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion || !('IntersectionObserver' in window)) {
+                elements.forEach(el => el.classList.add('in-view'));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        // Also trigger stagger children if any
+                        entry.target.querySelectorAll('.stagger-item').forEach(child => {
+                            child.classList.add('in-view');
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.08,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            elements.forEach(el => observer.observe(el));
+        }
+
+        // =====================================================================
+        // REUSABLE FEATURE BLOCKS (4 MICRO-INTERACTIONS)
+        // =====================================================================
+        function initFeatureInteractions() {
+            const isReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+            // 1. Clip-Path Word-by-Word Text Reveal for Headings
+            function prepareWordMasks() {
+                document.querySelectorAll('.gt-feature-heading').forEach(heading => {
+                    const text = heading.textContent.trim();
+                    if (!text || heading.querySelector('.gt-word-mask')) return;
+                    if (isReducedMotion) return;
+
+                    const words = text.split(/\s+/).filter(Boolean);
+                    heading.innerHTML = words.map((word, i) => {
+                        const delay = (i * 65) + 'ms';
+                        return `<span class="gt-word-mask"><span class="gt-word-inner" style="transition-delay:${delay}">${word}</span></span>`;
+                    }).join(' ');
+                });
+            }
+
+            window.prepareFeatureHeadings = prepareWordMasks;
+            prepareWordMasks();
+
+            if (isReducedMotion || !canHover || window.innerWidth < 960) return;
+
+            // 2. Mouse-Following Spotlight Glow & 3D Internal Parallax
+            document.querySelectorAll('.gt-feature-visual-wrap').forEach(wrap => {
+                const card = wrap.querySelector('.gt-mockup-card');
+                if (!card) return;
+
+                const badge = wrap.querySelector('.gt-parallax-badge');
+                const icons = wrap.querySelectorAll('.gt-parallax-icon');
+                const sub = wrap.querySelector('.gt-parallax-sub');
+                const tags = wrap.querySelector('.gt-parallax-tags');
+
+                let rafId = null;
+                let targetRotX = 0, targetRotY = 0;
+                let currentRotX = 0, currentRotY = 0;
+                let targetX = 0, targetY = 0;
+                let currentX = 0, currentY = 0;
+                let isHovering = false;
+
+                function updateParallax() {
+                    if (!isHovering && Math.abs(currentRotX) < 0.01 && Math.abs(currentRotY) < 0.01) {
+                        card.style.transform = '';
+                        if (badge) badge.style.transform = '';
+                        icons.forEach(ic => ic.style.transform = '');
+                        if (sub) sub.style.transform = '';
+                        if (tags) tags.style.transform = '';
+                        rafId = null;
+                        return;
+                    }
+
+                    // Smooth damping
+                    currentRotX += (targetRotX - currentRotX) * 0.12;
+                    currentRotY += (targetRotY - currentRotY) * 0.12;
+                    currentX += (targetX - currentX) * 0.12;
+                    currentY += (targetY - currentY) * 0.12;
+
+                    card.style.transform = `perspective(1000px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+
+                    if (badge) {
+                        badge.style.transform = `translate3d(${(currentX * -10).toFixed(2)}px, ${(currentY * -10).toFixed(2)}px, 35px)`;
+                    }
+                    icons.forEach(ic => {
+                        ic.style.transform = `translate3d(${(currentX * 6).toFixed(2)}px, ${(currentY * 6).toFixed(2)}px, 20px)`;
+                    });
+                    if (sub) {
+                        sub.style.transform = `translate3d(${(currentX * 4).toFixed(2)}px, ${(currentY * 4).toFixed(2)}px, 15px)`;
+                    }
+                    if (tags) {
+                        tags.style.transform = `translate3d(${(currentX * 5).toFixed(2)}px, ${(currentY * 5).toFixed(2)}px, 20px)`;
+                    }
+
+                    rafId = requestAnimationFrame(updateParallax);
+                }
+
+                wrap.addEventListener('mouseenter', () => {
+                    isHovering = true;
+                    card.style.setProperty('--spot-opacity', '1');
+                    if (!rafId) rafId = requestAnimationFrame(updateParallax);
+                });
+
+                wrap.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    card.style.setProperty('--spot-x', `${x.toFixed(1)}px`);
+                    card.style.setProperty('--spot-y', `${y.toFixed(1)}px`);
+
+                    const cx = rect.width / 2;
+                    const cy = rect.height / 2;
+                    targetX = (x - cx) / cx;
+                    targetY = (y - cy) / cy;
+
+                    targetRotX = targetY * -7;
+                    targetRotY = targetX * 7;
+                });
+
+                wrap.addEventListener('mouseleave', () => {
+                    isHovering = false;
+                    targetRotX = 0;
+                    targetRotY = 0;
+                    targetX = 0;
+                    targetY = 0;
+                    card.style.setProperty('--spot-opacity', '0');
+                });
+            });
+
+            // 3. Magnetic CTA Buttons
+            document.querySelectorAll('.gt-feature-block .gt-btn').forEach(btn => {
+                let bRaf = null;
+                let targetBX = 0, targetBY = 0;
+                let currentBX = 0, currentBY = 0;
+                let isBtnHovered = false;
+
+                function updateMagnetic() {
+                    if (!isBtnHovered && Math.abs(currentBX) < 0.05 && Math.abs(currentBY) < 0.05) {
+                        btn.style.transform = '';
+                        bRaf = null;
+                        return;
+                    }
+
+                    currentBX += (targetBX - currentBX) * 0.2;
+                    currentBY += (targetBY - currentBY) * 0.2;
+
+                    btn.style.transform = `translate3d(${currentBX.toFixed(2)}px, ${currentBY.toFixed(2)}px, 0)`;
+                    bRaf = requestAnimationFrame(updateMagnetic);
+                }
+
+                btn.addEventListener('mouseenter', () => {
+                    isBtnHovered = true;
+                    if (!bRaf) bRaf = requestAnimationFrame(updateMagnetic);
+                });
+
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const cx = rect.left + rect.width / 2;
+                    const cy = rect.top + rect.height / 2;
+                    targetBX = (e.clientX - cx) * 0.32;
+                    targetBY = (e.clientY - cy) * 0.32;
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    isBtnHovered = false;
+                    targetBX = 0;
+                    targetBY = 0;
+                });
+            });
+        }
+
+        // Sticky Navbar scroll opacity effect
+        function initNavbarScroll() {
+            const header = document.getElementById('site-header');
+            if (!header) return;
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('is-scrolled', window.scrollY > 20);
+            }, { passive: true });
+        }
+
+        async function loadPopularTools() {
+            if (!window.GToolixContent) return;
+            const grid = document.querySelector('.gt-preview-grid');
+            if (!grid) return;
+
+            try {
+                const rawTools = await GToolixContent.getTools();
+                const activeSlugs = new Set(['qr-code-generator', 'youtube-thumbnail-downloader', 'screen-recorder-studio', 'image-compressor']);
+                const tools = (rawTools || []).filter(t => t && t.slug && activeSlugs.has(t.slug) && !t.slug.includes('gemini'));
+                if (Array.isArray(tools) && tools.length > 0) {
+                    const isAr = currentLang === 'ar';
+                    const cardsHtml = tools.map((tool) => {
+                        const name = isAr ? (tool.name_ar || tool.nameAr || tool.name) : (tool.name_en || tool.name);
+                        const desc = isAr ? (tool.description_ar || tool.descriptionAr || tool.description) : (tool.description_en || tool.description);
+                        const badge = isAr ? (tool.badgeAr || tool.badge_text || tool.badge || '') : (tool.badge || tool.badge_text || '');
+                        const slug = tool.slug;
+                        const icon = tool.icon || 'qr';
+
+                        let iconSvg = '';
+                        let iconWrapClass = 'gt-tool-icon-wrap';
+                        let tileClass = `gt-tool-tile gt-tool-tile--${icon === 'youtube' ? 'thumb' : (icon === 'recorder' ? 'recorder' : (icon === 'compressor' ? 'compressor' : 'qr'))}`;
+                        
+                        if (icon === 'qr') {
+                            iconWrapClass += ' icon-qr';
+                            iconSvg = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><path d="M14 14h3v3h-3z" /><path d="M18 18h3v3h-3z" /><path d="M14 18h3v3h-3z" /><path d="M18 14h3v3h-3z" /></svg>`;
+                        } else if (icon === 'youtube' || icon === 'thumb') {
+                            iconWrapClass += ' icon-thumb';
+                            iconSvg = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon></svg>`;
+                        } else if (icon === 'recorder' || icon === 'rec') {
+                            iconWrapClass += ' icon-rec';
+                            iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>`;
+                        } else if (icon === 'compressor') {
+                            iconWrapClass += ' icon-compressor';
+                            iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>`;
+                        } else {
+                            iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>`;
+                        }
+
+                        const exploreBtn = isAr ? 'استكشف الأداة' : 'Explore Tool';
+                        const arrow = isAr ? '←' : '→';
+
+                        return `
+                            <a href="${isAr ? '' : '/en'}/tools/${slug}" class="${tileClass}" aria-label="${name}">
+                                <div class="gt-tool-tile-top">
+                                    <div class="${iconWrapClass}">
+                                        ${iconSvg}
+                                    </div>
+                                    ${badge ? `<span class="gt-tool-badge">${badge}</span>` : ''}
+                                </div>
+                                <h3 class="gt-tool-tile-title">${name}</h3>
+                                <p class="gt-tool-tile-desc">${desc}</p>
+                                <span class="gt-tool-tile-link">
+                                    <span>${exploreBtn}</span>
+                                    <span class="dir-arrow">${arrow}</span>
+                                </span>
+                            </a>
+                        `;
+                    }).join('');
+
+                    const viewAllLabel = isAr ? 'عرض جميع الأدوات' : 'View All Tools';
+                    const arrow = isAr ? '←' : '→';
+                    const allCardHtml = `
+                        <a href="${isAr ? '' : '/en'}/tools" class="gt-tool-tile gt-tool-tile--all" aria-label="${viewAllLabel}">
+                            <div class="gt-tool-all-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                                    <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                                    <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                                    <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                                </svg>
+                            </div>
+                            <span class="gt-tool-all-label">
+                                <span>${viewAllLabel}</span>
+                                <span class="dir-arrow">${arrow}</span>
+                            </span>
+                        </a>
+                    `;
+
+                    grid.innerHTML = cardsHtml + allCardHtml;
+                }
+            } catch (e) {
+                console.warn('Dynamic popular tools rendering fallback:', e);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const pc = document.getElementById('particles');
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (pc && !reduceMotion && window.innerWidth > 1023) {
+                const fragment = document.createDocumentFragment();
+                for (let i = 0; i < 25; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    p.style.left = Math.random() * 100 + '%';
+                    p.style.animationDelay = Math.random() * 8 + 's';
+                    p.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                    fragment.appendChild(p);
+                }
+                pc.appendChild(fragment);
+            }
+            initScrollReveal();
+            initFeatureInteractions();
+            initNavbarScroll();
+            loadPopularTools();
+            if (typeof window.updateI18n === 'function') {
+                window.updateI18n(currentLang);
+            }
+        });
+    </script>
+    <script src="/static/js/content-client.js"></script>
+    <script src="/static/js/theme.min.js" defer></script>
+    <script src="/static/js/client.min.js" defer></script>
+</body>
+</html>

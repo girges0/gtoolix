@@ -12,11 +12,12 @@ const jsFiles = [
     'static/js/theme.js',
     'static/js/app-init.js',
     'static/js/client.js',
-    'static/js/gemini-watermark-remover.js',
     'static/js/screen-recorder-tool.js',
     'static/js/qr-tool.js',
+    'tools/qr-code-generator/qr-tool.js',
     'static/js/thumb-tool.js',
-    'static/js/qrcode.js'
+    'static/js/qrcode.js',
+    'tools/image-compressor/compressor.js'
 ];
 
 cssFiles.forEach(file => {
@@ -43,19 +44,5 @@ jsFiles.forEach(file => {
         });
     }
 });
-
-if (fs.existsSync('gemini-watermark-remover-main/src/sdk/index.js')) {
-    console.log('Building Gemini core engine bundle from reference source...');
-    esbuild.buildSync({
-        entryPoints: ['gemini-watermark-remover-main/src/sdk/index.js'],
-        bundle: true,
-        format: 'iife',
-        globalName: 'GeminiEngine',
-        minify: true,
-        outfile: 'static/js/gemini-engine.bundle.js'
-    });
-} else {
-    console.log('Using pre-bundled Gemini core engine (static/js/gemini-engine.bundle.js)');
-}
 
 console.log('Asset minification complete!');

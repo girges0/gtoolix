@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <script src="/static/js/lang-detect.min.js"></script>
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
+                var l = 'en';
+                if (saved === 'ar' || saved === 'en') {
+                    l = saved;
+                } else {
+                    var userLangs = (navigator.languages && navigator.languages.length) ? navigator.languages : (navigator.language ? [navigator.language] : []);
+                    for (var i = 0; i < userLangs.length; i++) {
+                        var code = (userLangs[i] || '').toLowerCase();
+                        if (code.indexOf('ar') === 0) { l = 'ar'; break; }
+                        if (code.indexOf('en') === 0) { l = 'en'; break; }
+                    }
+                }
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('lang', l);
+                document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>Programs &amp; Software Hub | GToolix</title>
+    <meta name="description" content="Fast, reliable offline desktop software engineered for maximum privacy and performance.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="GToolix">
+    <meta name="theme-color" content="#F8FAFC">
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+    <!-- Critical Styles -->
+    <style>
+        :root {
+            --bg: #020817;
+            --bg-secondary: #0F172A;
+            --card: #111827;
+            --border: #1E293B;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.04);
+            --primary: #2563EB;
+            --primary-hover: #3B82F6;
+            --accent: #06B6D4;
+            --text: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --radius-full: 9999px;
+            --radius-md: 1rem;
+            --nav-bg: rgba(2, 8, 23, 0.82);
+        }
+
+        [data-theme="light"] {
+            --bg: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --card: #FFFFFF;
+            --border: #E2E8F0;
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass: rgba(255, 255, 255, 0.7);
+            --primary: #2563EB;
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #64748B;
+            --nav-bg: rgba(248, 250, 252, 0.85);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100svh;
+            overflow-x: clip;
+        }
+
+        html[dir="rtl"] body {
+            font-family: 'Cairo', 'Inter', system-ui, sans-serif;
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 0.75rem;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.45rem 0.85rem;
+            max-width: 1180px;
+            width: min(100% - 2rem, 1180px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            min-height: 56px;
+        }
+
+        .site-nav__brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .site-nav__logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 9px;
+        }
+
+        .program-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 6.5rem 1.5rem 4rem;
+        }
+
+        .program-hero-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .program-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .program-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 0.85rem 1rem;
+            border-radius: 8px;
+        }
+
+        .spec-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .btn-download-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            padding: 0.75rem 1.75rem;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(37,99,235,0.3);
+            transition: all 0.2s;
+        }
+
+        .btn-download-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37,99,235,0.45);
+        }
+
+        .screenshots-scroll {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 0.5rem 0 1rem;
+            scrollbar-width: thin;
+        }
+
+        .screenshot-thumb {
+            max-height: 220px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            object-fit: cover;
+        }
+
+        .changelog-item {
+            border-inline-start: 2px solid var(--primary);
+            padding: 0 1rem 1rem;
+            position: relative;
+            margin-inline-start: 0.5rem;
+        }
+
+        .changelog-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            inset-inline-start: -5px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+    </style>
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="canonical" href="https://www.gtoolix.com/en/programs" />
+    <link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/programs" />
+    <link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/programs" />
+    <link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/programs" />
+    <meta property="og:type" content="software">
+    <meta property="og:site_name" content="GToolix">
+    <meta property="og:title" content="Programs &amp; Software Hub | GToolix">
+    <meta property="og:description" content="Fast, reliable offline desktop software engineered for maximum privacy and performance.">
+    <meta property="og:url" content="https://www.gtoolix.com/en/programs">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://www.gtoolix.com/static/img/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Programs &amp; Software Hub | GToolix">
+    <meta name="twitter:description" content="Fast, reliable offline desktop software engineered for maximum privacy and performance.">
+    <meta name="twitter:image" content="https://www.gtoolix.com/static/img/logo.png">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Header -->
+                                                                                                                                                                                                                                                                                            <header class="site-nav" id="site-header">
+        <a class="site-nav__brand" href="/en/" aria-label="GToolix Home">
+            <span class="site-nav__brand-mark">
+                <picture>
+                    <source srcset="/static/img/logo.webp" type="image/webp">
+                    <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38"
+                        height="38" loading="eager" fetchpriority="high">
+                </picture>
+            </span>
+            <span>GToolix</span>
+        </a>
+        <nav class="site-nav__links" id="site-nav-links" aria-label="Main Navigation">
+            <a href="/en/tools" class="nav-item-link" data-nav="tools">
+                <span class="nav-item-icon nav-icon-tools">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navTools">Tools</span>
+                    <span class="nav-item-desc" data-i18n="common.navToolsDesc">Free Interactive Smart Web Tools</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/en/blog" class="nav-item-link" data-nav="blog">
+                <span class="nav-item-icon nav-icon-blog">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="10" y1="6" x2="16" y2="6"></line><line x1="10" y1="10" x2="16" y2="10"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navBlog">Articles</span>
+                    <span class="nav-item-desc" data-i18n="common.navBlogDesc">Guides, Articles & Insights</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/en/programs" class="nav-item-link" data-nav="programs">
+                <span class="nav-item-icon nav-icon-programs">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M8 10l3 3-3 3"></path><line x1="13" y1="16" x2="17" y2="16"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navPrograms">Programs</span>
+                    <span class="nav-item-desc" data-i18n="common.navProgramsDesc">Desktop Apps & Software Hub</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+        </nav>
+        <div class="site-nav__right">
+            <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Toggle theme">
+                <span class="theme-toggle-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </span>
+            </button>
+            <div class="lang-switcher" aria-label="Language Switcher">
+                <a href="/en/programs/program.html" class="lang-btn active" id="lang-en-btn" onclick="try{localStorage.setItem('gtoolix_language','en');localStorage.setItem('siteLang','en');}catch(e){}">EN</a>
+                <a href="/programs/program.html" class="lang-btn" id="lang-ar-btn" onclick="try{localStorage.setItem('gtoolix_language','ar');localStorage.setItem('siteLang','ar');}catch(e){}">AR</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"
+                aria-controls="site-nav-links" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+
+    <main class="program-container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom:1.5rem;font-size:0.85rem;color:var(--text-muted);">
+            <a href="/en/" style="color:var(--text-muted);text-decoration:none;">الرئيسية</a> &gt;
+            <a href="/en/programs" style="color:var(--text-muted);text-decoration:none;">البرامج</a> &gt;
+            <span id="breadcrumb-prog-title" style="color:var(--text);">جاري التحميل...</span>
+        </nav>
+
+        <!-- Program Main State -->
+        <div id="prog-main-content">
+            <div class="program-hero-card">
+                <div class="program-logo" id="prog-logo-container">💻</div>
+                <div style="flex:1;">
+                    <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+                        <h1 id="prog-name" style="font-size:1.8rem;font-weight:800;margin:0;">تحميل البرنامج</h1>
+                        <span id="prog-version-badge" style="padding:0.2rem 0.6rem;background:rgba(37,99,235,0.15);border:1px solid #2563EB;color:#3B82F6;border-radius:9999px;font-size:0.8rem;font-weight:700;">v1.0.0</span>
+                    </div>
+                    <p id="prog-desc" style="color:var(--text-secondary);font-size:0.98rem;line-height:1.6;margin-bottom:1rem;"></p>
+                    <a id="prog-download-btn" href="#" target="_blank" class="btn-download-hero">
+                        ⬇️ <span id="prog-download-label">تحميل مجاني مباشر</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="program-specs-grid">
+                <div class="spec-card">
+                    <div class="spec-title">الإصدار (Version)</div>
+                    <div class="spec-val" id="prog-spec-version">1.0.0</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-title">الحجم (File Size)</div>
+                    <div class="spec-val" id="prog-spec-size">--</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-title">الأنظمة المدعومة (OS)</div>
+                    <div class="spec-val" id="prog-spec-os">Windows, macOS, Linux</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-title">المتطلبات (Requirements)</div>
+                    <div class="spec-val" id="prog-spec-reqs">--</div>
+                </div>
+            </div>
+
+            <!-- Screenshots Gallery -->
+            <div id="prog-screenshots-section" style="margin-top:2.5rem;display:none;">
+                <h2 style="font-size:1.35rem;font-weight:700;margin-bottom:1rem;">📸 لقطات الشاشة (Screenshots)</h2>
+                <div class="screenshots-scroll" id="prog-screenshots-list"></div>
+            </div>
+
+            <!-- Changelog Section -->
+            <div id="prog-changelog-section" style="margin-top:2.5rem;display:none;">
+                <h2 style="font-size:1.35rem;font-weight:700;margin-bottom:1rem;">📜 سجل التحديثات (Changelog)</h2>
+                <div id="prog-changelog-list"></div>
+            </div>
+        </div>
+
+        <!-- 404 State -->
+        <div id="prog-not-found" style="display:none;text-align:center;padding:4rem 1rem;">
+            <div style="font-size:3.5rem;margin-bottom:1rem;">💻❌</div>
+            <h1 style="font-size:2rem;font-weight:800;margin-bottom:0.75rem;">البرنامج غير موجود</h1>
+            <p style="color:var(--text-secondary);max-width:480px;margin:0 auto 1.5rem;">
+                عذراً، لم يتم العثور على هذا البرنامج أو ربما تم حذفه أو تغييره.
+            </p>
+            <a href="/en/programs" style="display:inline-block;padding:0.6rem 1.5rem;background:var(--primary);color:#fff;border-radius:9999px;text-decoration:none;font-weight:700;">
+                العودة إلى مركز البرامج
+            </a>
+        </div>
+    </main>
+
+    <!-- ===================== GLOBAL FOOTER ===================== -->
+                                                                                                                                                                                                                                                                                            <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+                    <a class="footer-brand" href="/en/" aria-label="GToolix Home">
+                        <span class="site-nav__brand-mark">
+                            <picture>
+                                <source srcset="/static/img/logo.webp" type="image/webp">
+                                <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38" height="38" loading="lazy">
+                            </picture>
+                        </span>
+                        <span>GToolix</span>
+                    </a>
+                    <p class="footer-note">GToolix is intended for personal use with content you own or licensed for public use.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">Featured Tools</h4>
+                    <nav class="footer-links">
+                        <a href="/en/tools/qr-code-generator">QR Code Generator</a>
+                        <a href="/en/tools/youtube-thumbnail-downloader">YouTube Thumbnail Downloader</a>
+                        <a href="/en/tools/screen-recorder-studio">Screen Recorder</a>
+                        <a href="/en/tools/image-compressor">Image Compressor & Converter</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">Platform Sections</h4>
+                    <nav class="footer-links">
+                        <a href="/en/tools">Tools</a>
+                        <a href="/en/blog">Articles</a>
+                        <a href="/en/programs">Programs</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">About Platform & Trust</h4>
+                    <nav class="footer-links">
+                        <a href="/en/about">About Us</a>
+                        <a href="/en/faq">FAQ</a>
+                        <a href="/en/contact">Contact Us</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">Privacy & Terms</h4>
+                    <nav class="footer-links">
+                        <a href="/en/privacy-policy">Privacy Policy</a>
+                        <a href="/en/terms-of-service">Terms of Service</a>
+                        <a href="/en/cookies-policy">Cookies Policy</a>
+                        <a href="/en/disclaimer">Disclaimer</a>
+                        <a href="/en/dmca">Copyright (DMCA)</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 GToolix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/static/js/content-client.js"></script>
+    <script src="/static/js/theme.min.js" defer></script>
+    <script>
+        let currentProgram = null;
+
+        function getSlugFromUrl() {
+            const path = window.location.pathname.replace(/\/+$/, '');
+            const segments = path.split('/').filter(Boolean);
+            if (segments.length >= 2 && segments[0] === 'programs') {
+                return segments[1];
+            }
+            return new URLSearchParams(window.location.search).get('slug') || '';
+        }
+
+        async function loadProgram() {
+            const slug = getSlugFromUrl();
+            if (!slug) {
+                showNotFound();
+                return;
+            }
+
+            try {
+                const program = await GToolixContent.getProgramBySlug(slug);
+                if (!program) {
+                    showNotFound();
+                    return;
+                }
+
+                currentProgram = program;
+                renderProgramData();
+            } catch (e) {
+                console.error('[Program] Load error:', e);
+                showNotFound();
+            }
+        }
+
+        function renderProgramData() {
+            if (!currentProgram) return;
+            const isAr = (document.documentElement.lang || 'ar').startsWith('ar');
+
+            const name = currentProgram.name || 'GToolix Program';
+            const desc = isAr ? (currentProgram.description_ar || currentProgram.description_en) : (currentProgram.description_en || currentProgram.description_ar);
+
+            document.getElementById('prog-page-title').textContent = `${name} – تحميل مباشر | GToolix`;
+            document.getElementById('prog-page-meta-desc').setAttribute('content', desc || name);
+            document.getElementById('breadcrumb-prog-title').textContent = name;
+            document.getElementById('prog-name').textContent = name;
+            document.getElementById('prog-desc').textContent = desc || '';
+            document.getElementById('prog-version-badge').textContent = `v${currentProgram.version || '1.0.0'}`;
+
+            document.getElementById('prog-spec-version').textContent = currentProgram.version || '1.0.0';
+            document.getElementById('prog-spec-size').textContent = currentProgram.file_size || '—';
+            document.getElementById('prog-spec-os').textContent = currentProgram.os_support || 'Windows, macOS, Linux';
+            document.getElementById('prog-spec-reqs').textContent = currentProgram.requirements || '—';
+
+            const dlBtn = document.getElementById('prog-download-btn');
+            if (currentProgram.download_url) {
+                dlBtn.href = currentProgram.download_url;
+                dlBtn.style.display = 'inline-flex';
+            } else {
+                dlBtn.style.display = 'none';
+            }
+
+            // Screenshots
+            const screenshotsSec = document.getElementById('prog-screenshots-section');
+            const screenshotsList = document.getElementById('prog-screenshots-list');
+            const screens = Array.isArray(currentProgram.screenshot_urls) ? currentProgram.screenshot_urls : [];
+            if (screens.length) {
+                screenshotsList.innerHTML = screens.map(s => `<img src="${s}" alt="${name}" class="screenshot-thumb" loading="lazy">`).join('');
+                screenshotsSec.style.display = 'block';
+            } else {
+                screenshotsSec.style.display = 'none';
+            }
+
+            // Changelog
+            const clSec = document.getElementById('prog-changelog-section');
+            const clList = document.getElementById('prog-changelog-list');
+            const changelog = Array.isArray(currentProgram.changelog) ? currentProgram.changelog : [];
+            if (changelog.length) {
+                clList.innerHTML = changelog.map(cl => `
+                    <div class="changelog-item">
+                        <div style="font-weight:700;font-size:0.95rem;">${cl.version || ''} <span style="font-size:0.8rem;color:var(--text-muted);font-weight:normal;">(${cl.date || ''})</span></div>
+                        <p style="color:var(--text-secondary);font-size:0.9rem;margin:0.25rem 0 0;">${cl.notes || ''}</p>
+                    </div>
+                `).join('');
+                clSec.style.display = 'block';
+            } else {
+                clSec.style.display = 'none';
+            }
+
+            document.getElementById('prog-main-content').style.display = 'block';
+            document.getElementById('prog-not-found').style.display = 'none';
+        }
+
+        function showNotFound() {
+            document.getElementById('prog-main-content').style.display = 'none';
+            document.getElementById('prog-not-found').style.display = 'block';
+            document.getElementById('prog-page-title').textContent = '404 - البرنامج غير موجود | GToolix';
+        }
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            try {
+                localStorage.setItem('gtoolix_language', lang);
+                localStorage.setItem('siteLang', lang);
+            } catch (e) {}
+
+            const langBtnEn = document.getElementById('lang-en-btn');
+            const langBtnAr = document.getElementById('lang-ar-btn');
+            if (langBtnEn) langBtnEn.classList.toggle('active', lang === 'en');
+            if (langBtnAr) langBtnAr.classList.toggle('active', lang === 'ar');
+
+            if (currentProgram) renderProgramData();
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProgram);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!--HTML_TAG-->
+
+<head>
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
+    <script src="/static/js/lang-detect.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!--SEO_HEAD-->
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
+
+    <!-- Performance: Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+
+    <!-- Critical Inline Styles -->
+    <style>
+        :root {
+            --bg: #020817;
+            --bg-secondary: #0F172A;
+            --card: #111827;
+            --border: #1E293B;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.04);
+            --primary: #2563EB;
+            --primary-hover: #3B82F6;
+            --accent: #06B6D4;
+            --text: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --radius-full: 9999px;
+            --radius-md: 1rem;
+            --nav-bg: rgba(2, 8, 23, 0.82);
+        }
+
+        [data-theme="light"] {
+            --bg: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --card: #FFFFFF;
+            --border: #E2E8F0;
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass: rgba(255, 255, 255, 0.7);
+            --primary: #2563EB;
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --nav-bg: rgba(248, 250, 252, 0.85);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: clip;
+            scrollbar-gutter: stable;
+            width: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: clip;
+            width: 100%;
+            min-height: 100svh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html[dir="rtl"] body {
+            font-family: 'Cairo', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 0.75rem;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.45rem 0.85rem;
+            margin: 0 auto;
+            max-width: 1180px;
+            width: min(100% - 2rem, 1180px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            min-height: 56px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .site-nav__brand {
+            display: flex;
+            align-items: center;
+            direction: ltr;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+            background: none;
+            border: none;
+            min-height: 44px;
+            cursor: pointer;
+        }
+
+        .site-nav__logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 9px;
+            display: block;
+        }
+
+        .site-nav__right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+    <link rel="preload" href="/static/css/main.min.css" as="style">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
+    <script>
+        window.seoPageType = "blog";
+    </script>
+
+    <!--JSON_LD-->
+</head>
+
+<body>
+    <!--SITE_NAV-->
+
+    <div class="background-gradient"></div>
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="particles" id="particles"></div>
+
+    <main class="container" style="max-width: 1180px; padding-top: clamp(6.75rem, 11vw, 8.5rem); padding-bottom: 4rem; margin: 0 auto; padding-inline: max(1rem, 3.5vw);">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="<!--BRAND_HREF-->"><!--BREADCRUMB_HOME--></a></li>
+                <li class="separator" aria-hidden="true">/</li>
+                <li aria-current="page"><!--BREADCRUMB_BLOG--></li>
+            </ol>
+        </nav>
+
+        <!-- Header Section -->
+        <header class="section-head reveal in-view">
+            <span class="kicker"><!--BLOG_KICKER--></span>
+            <h1 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 0.85rem;">
+                <!--BLOG_H1-->
+            </h1>
+            <p style="color: var(--text-secondary); max-width: 680px; margin: 0 auto; font-size: 1.05rem; line-height: 1.65;">
+                <!--BLOG_LEAD-->
+            </p>
+        </header>
+
+        <!-- Search Controls -->
+        <div class="blog-search-wrapper reveal in-view" id="blog-search-wrapper">
+            <div class="search-box-wrapper" role="search">
+                <svg class="search-box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" inputmode="search" class="search-box-input" id="blog-search-input" placeholder="<!--SEARCH_PLACEHOLDER-->" aria-label="Search articles" autocomplete="off">
+                <button type="button" class="search-box-clear" id="blog-search-clear" aria-label="Clear search" onclick="clearBlogSearch()" style="display: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="search-meta-bar" id="blog-search-meta">
+                <span class="search-count-badge" id="blog-results-count"><!--TOTAL_ARTICLES_COUNT--></span>
+            </div>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="articles-grid" id="articles-catalog-grid">
+            <!--BLOG_GRID_CARDS-->
+        </div>
+
+        <!-- No Results Fallback State -->
+        <div class="no-results-state" id="no-results-state" aria-live="polite">
+            <div style="margin-bottom: 0.75rem; color: var(--text-secondary);">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;"><!--NO_RESULTS_TITLE--></h3>
+            <p style="color: var(--text-secondary); max-width: 480px; margin: 0 auto 1.5rem; font-size: 0.95rem; line-height: 1.6;"><!--NO_RESULTS_DESC--></p>
+            <button type="button" class="btn btn-primary" onclick="clearBlogSearch()"><!--RESET_BTN--></button>
+        </div>
+    </main>
+
+    <!--SITE_FOOTER-->
+
+    <script>
+        let blogSearchQuery = '';
+
+        function clearBlogSearch() {
+            const input = document.getElementById('blog-search-input');
+            if (input) {
+                input.value = '';
+                input.focus();
+            }
+            blogSearchQuery = '';
+            filterArticles();
+        }
+
+        function filterArticles() {
+            const cards = document.querySelectorAll('#articles-catalog-grid .article-card');
+            const clearBtn = document.getElementById('blog-search-clear');
+            const countBadge = document.getElementById('blog-results-count');
+            const noResultsEl = document.getElementById('no-results-state');
+
+            if (clearBtn) {
+                clearBtn.style.display = blogSearchQuery ? 'inline-flex' : 'none';
+            }
+
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+                const text = card.textContent.toLowerCase();
+
+                const matches = !blogSearchQuery || keywords.includes(blogSearchQuery) || text.includes(blogSearchQuery);
+
+                if (matches) {
+                    card.style.display = 'flex';
+                    requestAnimationFrame(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    });
+                    visibleCount++;
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.96)';
+                    card.style.display = 'none';
+                }
+            });
+
+            if (countBadge) {
+                const isAr = document.documentElement.getAttribute('lang') === 'ar' || document.documentElement.getAttribute('dir') === 'rtl';
+                if (blogSearchQuery) {
+                    countBadge.textContent = isAr ? `تم العثور على ${visibleCount} مقال` : `Found ${visibleCount} articles`;
+                } else {
+                    countBadge.textContent = isAr ? `إجمالي المقالات: ${visibleCount}` : `Total Guides: ${visibleCount}`;
+                }
+            }
+
+            if (noResultsEl) {
+                noResultsEl.classList.toggle('visible', visibleCount === 0);
+            }
+        }
+
+        function setupBlogSearch() {
+            const searchInput = document.getElementById('blog-search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    blogSearchQuery = e.target.value.trim().toLowerCase();
+                    filterArticles();
+                });
+                searchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        clearBlogSearch();
+                    }
+                });
+            }
+        }
+
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            const backdrop = document.getElementById('nav-backdrop');
+            if (!links || !btn) return;
+            const shouldOpen = forceClose === true ? false : !links.classList.contains('is-open');
+            links.classList.toggle('is-open', shouldOpen);
+            if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+            document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setupBlogSearch();
+        });
+    </script>
+    <script src="/static/js/theme.min.js" defer></script>
+    <script src="/static/js/client.min.js" defer></script>
+</body>
+</html>

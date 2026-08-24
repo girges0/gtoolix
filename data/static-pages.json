@@ -1,0 +1,394 @@
+{
+  "about": {
+    "title_ar": "عن منصة GToolix – الرؤية والمهمة والالتزام | GToolix",
+    "title_en": "About GToolix – Mission, Vision & Engineering Standards | GToolix",
+    "meta_desc_ar": "تعرّف على منصة GToolix، الأداة الرقمية السريعة والآمنة لتوليد أكواد QR وتنزيل صور يوتيوب المصغرة بدون تسجيل ولا علامة مائية.",
+    "meta_desc_en": "Learn about GToolix, a privacy-first web platform delivering ultra-fast QR code generation, YouTube thumbnail extraction, and social utilities.",
+    "h1_ar": "عن منصة GToolix",
+    "h1_en": "About GToolix",
+    "lead_ar": "نحن نصمم أدوات ويب فائقة السرعة، آمنة ومجانية بالكامل، تمنحك النتيجة في ثوانٍ معدودة وبدون أي عوائق.",
+    "lead_en": "We build lightning-fast, privacy-first web utilities engineered to deliver results in seconds with zero friction.",
+    "sections_ar": [
+      {
+        "title": "مقدمة عن المنصة",
+        "content": "تأسست منصة GToolix لتكون الوجهة الرقمية الموثوقة للمستخدمين وصنّاع المحتوى والشركات حول العالم. نؤمن بأن أدوات الويب اليومية يجب أن تكون بسيطة، مريحة، ولا تتطلب إنشاء حسابات أو إدخال بيانات شخصية."
+      },
+      {
+        "title": "مهمتنا (Mission)",
+        "content": "مهمتنا هي تمكين كل مستخدم من إنهاء مهامه الرقمية بسهولة وأمان — بدءًا من إنشاء أكواد QR مخصصة عالية الدقة وحتى استخراج غلاف الفيديوهات وتحميل المحتوى الشخصي بأعلى جودة ممكنة دون أي برامج إضافية."
+      },
+      {
+        "title": "رؤيتنا (Vision)",
+        "content": "نسعى لبناء أفضل منظومة أدوات ويب خفيفة وسريعة على شبكة الإنترنت، تعتمد على التكنولوجيا الحديثة مع الامتثال الكامل لأعلى معايير الخصوصية والأمان العالمية."
+      },
+      {
+        "title": "لماذا تختار GToolix؟",
+        "content": "• مجاني بالكامل بدون رسوم خفية أو باقات مدفوعة.\n• احترام مطلق لخصوصية المستخدم: لا نطلب تسجيل الدخول ولا نخزن بياناتك الإدخالية.\n• سرعة استجابة استثنائية بفضل البنية التحتية المتطورة.\n• تصميم عصري متوافق تمامًا مع كافة الهواتف والأجهزة المكتبية."
+      },
+      {
+        "title": "التكنولوجيا والمعايير الهندسية",
+        "content": "تم بناء المنصة باستخدام أحدث تقنيات الويب المستقرة، مع تطبيق معايير الأمان المتقدمة (SSL/TLS Encryption) والتحميل الديناميكي المباشر من المتصفح للحفاظ على السرعة والأمان."
+      },
+      {
+        "title": "الالتزام بالأمان والخصوصية",
+        "content": "نحن نلتزم بالقوانين الدولية للخصوصية مثل GDPR وCCPA. جميع المعالجات تتم بشكل فوري ولحظي، ويتم مسح أي ملفات مؤقتة فوريًا بعد التحميل."
+      }
+    ],
+    "sections_en": [
+      {
+        "title": "Company Overview",
+        "content": "GToolix was engineered to be the definitive, privacy-conscious utility hub for creators, developers, and internet users worldwide. We believe everyday web tools should be frictionless, transparent, and completely accessible without forced account registration."
+      },
+      {
+        "title": "Our Mission",
+        "content": "Our mission is to empower users with reliable, high-performance web utilities — enabling seamless QR code creation, ultra-HD YouTube thumbnail extraction, and social media downloading with absolute clarity and security."
+      },
+      {
+        "title": "Our Vision",
+        "content": "To build the internet’s most dependable, weightless toolbox by leveraging modern cloud architecture, strict user data protection, and flawless mobile UX."
+      },
+      {
+        "title": "Why Choose GToolix?",
+        "content": "• 100% Free with zero hidden subscription walls.\n• Privacy-first model: No signups, no personal data collection.\n• Ultra-fast execution powered by lightweight infrastructure.\n• Fully responsive, glassmorphic UI optimized for mobile and desktop."
+      },
+      {
+        "title": "Engineering & Performance Standards",
+        "content": "Engineered using modern, asynchronous web stacks and strict client-side optimizations. We maintain strict SSL/TLS encryption across all client-server communications."
+      },
+      {
+        "title": "Security & Compliance Guarantee",
+        "content": "We strictly adhere to global privacy frameworks including GDPR, CCPA, and Google AdSense publisher quality guidelines."
+      }
+    ]
+  },
+  "faq": {
+    "title_ar": "الأسئلة الشائعة وتدريب الأداة | GToolix",
+    "title_en": "Frequently Asked Questions (FAQ) | GToolix",
+    "meta_desc_ar": "إجابات شاملة لكافة الأسئلة الشائعة حول مولد كود QR، تنزيل صور يوتيوب المصغرة، والأمان.",
+    "meta_desc_en": "Comprehensive FAQ guide answering questions about QR code generation, 4K YouTube thumbnail grabber, security, and limits.",
+    "h1_ar": "الأسئلة الشائعة (FAQ)",
+    "h1_en": "Frequently Asked Questions",
+    "lead_ar": "إجابات سريعة وشاملة لأكثر الأسئلة تكرارًا حول كيفية استخدام الأدوات والأمان والخصوصية.",
+    "lead_en": "Quick, comprehensive answers to common questions regarding tool usage, security, resolution limits, and browser support.",
+    "faqs": [
+      {
+        "q_ar": "هل الأدوات مجانية بالكامل أم توجد حدود مخفية؟",
+        "q_en": "Are the tools 100% free or are there hidden limits?",
+        "a_ar": "جميع الأدوات على منصة GToolix مجانية 100% وبشكل دائم. لا توجد أي اشتراكات شهرية، ولا حدود يومية للاستخدام، ولا نطلب منك تسجيل حساب أو إدخال بطاقتك الائتمانية.",
+        "a_en": "All tools on GToolix are 100% free forever. There are zero subscriptions, no daily limits, and no account registrations required."
+      },
+      {
+        "q_ar": "هل يتم رفع صوري أو بياناتي إلى خوادم خارجية؟",
+        "q_en": "Are my images or data uploaded to external servers?",
+        "a_ar": "كافة عمليات توليد أكواد QR واستخراج الصور ومعالجة الفيديو تتم محلياً بنسبة 100% داخل متصفحك عبر تقنيات Canvas وJavaScript. لا تمر أي بيانات حساسة عبر خوادمنا إطلاقاً.",
+        "a_en": "All operations such as QR code generation, thumbnail extraction, and recording happen 100% locally inside your browser via Canvas and Web APIs. No private data is ever sent to our servers."
+      },
+      {
+        "q_ar": "كيف أحصل على أعلى دقة 4K لصور اليوتيوب المصغرة؟",
+        "q_en": "How do I get the maximum 4K resolution for YouTube thumbnails?",
+        "a_ar": "تقوم أداة استخراج صور يوتيوب بالبحث التلقائي عن أعلى جودة متوفرة (Maxresdefault 1080p/4K) وعرضها للتحميل بضغطة زر واحدة.",
+        "a_en": "Our YouTube thumbnail tool automatically retrieves the highest available native resolution (Maxresdefault 1080p/4K) for one-click downloading."
+      },
+      {
+        "q_ar": "ما هي صيغ التصدير المدعومة في مولد كود QR؟",
+        "q_en": "What export formats are supported in the QR Code Generator?",
+        "a_ar": "يدعم التصدير بصيغة PNG عالية الدقة للاستخدام الرقمي، وصيغة الفكتور SVG القابلة للتكبير اللانهائي للطباعة الورقية والتجارية.",
+        "a_en": "We support crisp PNG images up to 600x600px for digital usage and infinite-scale SVG vector formats ideal for printing."
+      },
+      {
+        "q_ar": "هل مسجل الشاشة يضع علامة مائية على الفيديو؟",
+        "q_en": "Does the Screen Recorder place a watermark on my videos?",
+        "a_ar": "لا، مسجل الشاشة الاستوديو ينتج فيديوهات نظيفة تماماً بدون أي علامات مائية أو شعارات وبأعلى دقة تلتقطها شاشتك وكاميرتك.",
+        "a_en": "No, our Screen Recorder Studio exports pure, watermark-free recordings in original crisp resolution directly to your device."
+      }
+    ]
+  },
+  "privacy-policy": {
+    "title_ar": "سياسة الخصوصية وحماية البيانات | GToolix",
+    "title_en": "Privacy Policy & Data Protection | GToolix",
+    "meta_desc_ar": "اقرأ سياسة الخصوصية الخاصة بمنصة GToolix. توضيح شامل لكيفية المعالجة المحلية للبيانات، ملفات الكوكيز، إعلانات Google AdSense، وامتثالنا لمعايير GDPR.",
+    "meta_desc_en": "GToolix Privacy Policy detailing zero-upload local browser processing, cookie usage, Google AdSense guidelines, analytics, and GDPR compliance.",
+    "h1_ar": "سياسة الخصوصية وحماية البيانات",
+    "h1_en": "Privacy Policy & Data Protection",
+    "lead_ar": "تلتزم منصة GToolix بحماية خصوصيتك وبياناتك الشخصية بأعلى المستويات. توضح هذه وثيقة كيفية المعالجة المحلية الشفافة والاحترام الكامل لخصوصية المستخدم.",
+    "lead_en": "GToolix is dedicated to protecting your privacy. This policy details our transparent local processing model, cookie usage, and data protection practices.",
+    "sections_ar": [
+      {
+        "title": "1. نطاق الخدمات المتاحة على المنصة",
+        "content": "تقدم منصة GToolix أدوات ويب محددة ومجانية تشمل: (1) مولد أكواد QR، (2) أداة استخراج صور اليوتيوب المصغرة، (3) مسجل الشاشة الاحترافي، و(4) ضاغط ومحوّل الصور الرقمي."
+      },
+      {
+        "title": "2. المعالجة المحلية الشاملة وعدم رفع الصور",
+        "content": "تعتمد جميع أدواتنا على المعالجة المحلية 100% داخل متصفح المستخدم (Client-side Processing) باستخدام تقنيات HTML5 Canvas و JavaScript الحديثة. عند استخدام مولد أكواد QR، ضاغط ومحوّل الصور، أو مسجل الشاشة، يتم التعديل والمعالجة فورياً على جهازك دون رفع أو تخزين أي صور أو بيانات على خوادمنا نهائياً."
+      },
+      {
+        "title": "3. استخراج صور اليوتيوب المصغرة",
+        "content": "عند استخدام أداة استخراج صور اليوتيوب المصغرة، يقوم النظام باستيراد رابط الصورة المصغرة المتاحة للعامة مباشرة من خوادم YouTube الرسمية. نحن لا نستضيف أو نخزن صوراً أو فيديوهات على خوادمنا."
+      },
+      {
+        "title": "4. ملفات تعريف الارتباط (Cookies)",
+        "content": "نستخدم ملفات الكوكيز الأساسية والتحليلية لتحسين تجربة تصفحك وتذكر تفضيلات اللغة (العربية/الإنجليزية) والوضع الساطع/الداكن. يمكنك التحكم في الكوكيز أو تعطيلها من إعدادات متصفحك في أي وقت."
+      },
+      {
+        "title": "5. إعلانات Google AdSense وشركاء الطرف الثالث",
+        "content": "تستخدم منصتنا خدمات Google AdSense لعرض الإعلانات. قد تستخدم Google وشركاؤها ملفات تعريف الارتباط (مثل DART cookie) لتقديم إعلانات مخصصة أو غير مخصصة بناءً على زياراتك السابقة. يمكنك إلغاء تتبع الإعلانات المخصصة عبر إعدادات إعلانات Google."
+      },
+      {
+        "title": "6. التحليلات والامتثال لـ GDPR & CCPA",
+        "content": "نستخدم أدوات تحليلات قياسية متوافقة مع Google Consent Mode v2 لقياس زيارات الصفحات وتحسين الأداء بدون جمع معلومات تعريف شخصية. تلتزم GToolix بمعايير حماية البيانات العالمية (GDPR & CCPA) ولا نبيع أو نشارك بيانات المستخدمين مع أي جهة."
+      }
+    ],
+    "sections_en": [
+      {
+        "title": "1. Scope of Services",
+        "content": "GToolix operates specialized web utilities: QR Code Generator, YouTube Thumbnail Extractor, Screen Recorder Studio, and Image Compressor & Converter."
+      },
+      {
+        "title": "2. 100% Local Client-Side Processing",
+        "content": "Our tools execute entirely within the user's local web browser via HTML5 Canvas and JavaScript APIs. All image and media processing occurs directly on your personal device with zero server storage."
+      },
+      {
+        "title": "3. YouTube Thumbnail Retrieval",
+        "content": "The YouTube Thumbnail Extractor dynamically references publicly available thumbnail image URLs directly hosted on official YouTube servers. GToolix does not host video or audio files."
+      },
+      {
+        "title": "4. Cookie Technologies",
+        "content": "We deploy essential functional cookies to preserve your preferred user interface language (Arabic/English) and color theme (Light/Dark mode)."
+      },
+      {
+        "title": "5. Google AdSense & Third-Party Advertising",
+        "content": "GToolix partners with Google AdSense for programmatic ad delivery. Google uses cookies to serve ads based on user interactions. Users may opt out of personalized advertising by visiting Google Ad Settings."
+      },
+      {
+        "title": "6. Privacy Compliance (GDPR & CCPA)",
+        "content": "We integrate Google Consent Mode v2 to ensure privacy preferences are strictly honored. GToolix does not collect, sell, lease, or monetize user personal data."
+      }
+    ]
+  },
+  "terms-of-service": {
+    "title_ar": "الشروط والأحكام واشتراطات الاستخدام | GToolix",
+    "title_en": "Terms & Conditions of Service | GToolix",
+    "meta_desc_ar": "اقرأ الشروط والأحكام المنظمة لاستخدام منصة GToolix. قواعد الاستخدام المقبول، مسؤولية المستخدم، وحماية حقوق الملكية الفكرية.",
+    "meta_desc_en": "GToolix Terms of Service detailing acceptable usage, user intellectual property responsibilities, and limitation of service liabilities.",
+    "h1_ar": "الشروط والأحكام واشتراطات الاستخدام",
+    "h1_en": "Terms & Conditions of Service",
+    "lead_ar": "تحكم هذه الاتفاقية استخدامك لمنصة GToolix والأدوات المتاحة عليها. يرجى قراءة الشروط بعناية قبل استخدام خدماتنا.",
+    "lead_en": "These Terms of Service govern your access to GToolix and its available web tools. Please review these terms carefully.",
+    "sections_ar": [
+      {
+        "title": "1. قبول الشروط ونطاق الخدمة",
+        "content": "بوصولك واستخدامك لمنصة GToolix، فإنك توافق على الالتزام الكامل بهذه الشروط والأحكام. تنحصر خدمات المنصة في أدوات ويب مجانية تشمل: (1) مولد أكواد QR، (2) أداة استخراج صور اليوتيوب المصغرة، (3) مسجل الشاشة الاحترافي، و(4) ضاغط ومحوّل الصور الرقمي."
+      },
+      {
+        "title": "2. الاستخدام المقبول والسلوك المحظور",
+        "content": "يلتزم المستخدم بعدم إساءة استخدام المنصة. يحظر القيام بأي هجمات آلية (Automated Attacks)، أو إغراق الخوادم بالطلبات (DDoS)، أو استخدام أدوات الكشط الآلي (Scraping Bots)، أو استخدام الأدوات لأي أغراض غير قانونية أو ضارة."
+      },
+      {
+        "title": "3. مسؤولية المستخدم عن المحتوى والأكواد",
+        "content": "يتحمل المستخدم وحده الكفاءة والمسؤولية القانونية الكاملة عن الروابط والنصوص التي يدخلها في مولد أكواد QR أو الصور التي يقوم بتعديلها أو تسجيلات الشاشة. لا تتحمل GToolix أي مسؤولية عن المحتوى الناتج عن إدخالات المستخدم."
+      },
+      {
+        "title": "4. استخدام أداة استخراج مصغرات اليوتيوب",
+        "content": "تتيح أداة استخراج مصغرات اليوتيوب عرض واستخراج روابط الصور المصغرة المتاحة علنًا عبر YouTube. يجب على المستخدم احترام حقوق الملكية الفكرية لصناع المحتوى وعدم استخدام الصور لأغراض تجارية غير مصرح بها."
+      },
+      {
+        "title": "5. المعالجة المحلية للوسائط",
+        "content": "تُنفذ أدوات GToolix عملياتها محلياً داخل المتصفح لتنظيف الصور وتوليد الأكواد والتسجيل. يتحمل المستخدم مسؤولية الامتثال لتراخيص المحتوى وشروط الاستخدام."
+      },
+      {
+        "title": "6. تقديم الخدمة \"كما هي\" وتحديد المسؤولية",
+        "content": "تُقدم جميع أدوات GToolix \"كما هي\" (As Is) و\"حسب توفرها\" دون أي ضمانات صريحة أو ضمنية باستمرار الخدمة أو خلوها من الأخطاء. لا تتحمل المنصة أي مسؤولية عن أي أضرار مباشرة أو غير مباشرة ناتجة عن استخدام الخدمة."
+      },
+      {
+        "title": "7. التعديلات والقانون الساري",
+        "content": "تحتفظ GToolix بالحق في تعديل هذه الشروط في أي وقت. يخضع استخدام الموقع للقوانين والأنظمة الجاري بها العمل، ولأي استفسارات يمكن التواصل عبر صفحة اتصل بنا."
+      }
+    ],
+    "sections_en": [
+      {
+        "title": "1. Acceptance of Terms & Scope",
+        "content": "By accessing or using GToolix, you agree to be bound by these Terms of Service. Our scope includes free browser utilities: QR Code Generator, YouTube Thumbnail Extractor, Screen Recorder Studio, and Image Compressor & Converter."
+      },
+      {
+        "title": "2. Acceptable Use & Prohibited Actions",
+        "content": "Users must access the platform lawfully. Prohibited conduct includes executing automated bot attacks, denial-of-service (DDoS) flooding, malicious scraping, or utilizing the tools for illicit or fraudulent activities."
+      },
+      {
+        "title": "3. User Content & Generated Outputs",
+        "content": "Users retain sole legal ownership and responsibility for the URLs, texts, and assets encoded into QR codes or processed in the tools. GToolix assumes zero liability for user-generated inputs."
+      },
+      {
+        "title": "4. YouTube Thumbnail Extraction Usage",
+        "content": "The YouTube Thumbnail Extractor dynamically retrieves public thumbnail image links hosted on YouTube servers. Users must respect creator copyright and trademark rights."
+      },
+      {
+        "title": "5. Local Media Processing Compliance",
+        "content": "Our tools process operations locally on the user device. Users are responsible for adhering to applicable content generation and usage licenses."
+      },
+      {
+        "title": "6. Service Provided \"As Is\" & Limitation of Liability",
+        "content": "All tools are provided on an \"As Is\" and \"As Available\" basis without warranties of any kind. GToolix is not liable for indirect, incidental, or consequential damages resulting from tool usage."
+      },
+      {
+        "title": "7. Modifications & Inquiries",
+        "content": "GToolix reserves the right to update these terms at any time. For formal inquiries, please contact us via our Contact page."
+      }
+    ]
+  },
+  "disclaimer": {
+    "title_ar": "إخلاء المسؤولية والتنبيه القانوني | GToolix",
+    "title_en": "Disclaimer & Legal Notice | GToolix",
+    "meta_desc_ar": "إخلاء المسؤولية القانوني لمنصة GToolix: توضيح استقلالية المنصة وعدم التبعية لـ Google أو YouTube ومسؤولية المستخدم الكاملة.",
+    "meta_desc_en": "GToolix Disclaimer detailing non-affiliation with Google or YouTube, tool usage disclaimers, and user content legal boundaries.",
+    "h1_ar": "إخلاء المسؤولية والتنبيه القانوني",
+    "h1_en": "Disclaimer & Legal Notice",
+    "lead_ar": "توضح هذه الصفحة حدود مسؤولية منصة GToolix واستقلالية خدمات الويب المتاحة عليها بدون أي ضمانات صريحة أو ضمنية.",
+    "lead_en": "This page details GToolix's disclaimer of warranties, platform independence, and trademark non-affiliation policy.",
+    "sections_ar": [
+      {
+        "title": "1. تقديم الأدوات بدون ضمانات (\"كما هي\")",
+        "content": "جميع الأدوات المتاحة على GToolix (مولد أكواد QR، استخراج مصغرات اليوتيوب، مسجل الشاشة، وضاغط ومحوّل الصور) تُقدم مجاناً وأدوات مساعدة \"كما هي\" (As-Is) دون أي ضمانات صريحة أو ضمنية بالدقة الكاملة أو الاستمرارية غير المنقطعة."
+      },
+      {
+        "title": "2. عدم التبعية والتبرؤ من العلامات التجارية",
+        "content": "GToolix موقع مستقل تماماً. نحن غير تابعين ولا ترعينا ولا تربطنا أي شراكة رسمية بشبكة Google LLC أو YouTube أو Alphabet Inc. أو أي شركة تجارية أخرى. جميع العلامات والشعارات المذكورة هي ملك لأصحابها الأصليين."
+      },
+      {
+        "title": "3. مسؤولية استخدام الأكواد والصور",
+        "content": "يتحمل المستخدم وحده المسئولية الكاملة عن محتوى الرابط المضمن في كود الـ QR، وعن استخدام الصور المصغرة المأخوذة من يوتيوب أو الصور المضغوطة أو تسجيلات الفيديو. يجب احترام حقوق الملكية الفكرية وتراخيص النشر."
+      },
+      {
+        "title": "4. الروابط الخارجية والإعلانات",
+        "content": "قد يحتوي موقعنا على إعلانات شبكات طرف ثالث مثل Google AdSense. لا نتحمل المسؤولية عن محتوى الروابط الخارجية أو الخدمات والمعاملات المنجزة من خلال الإعلانات."
+      }
+    ],
+    "sections_en": [
+      {
+        "title": "1. Tools Provided \"As Is\"",
+        "content": "All services on GToolix (QR Code Generator, YouTube Thumbnail Extractor, Screen Recorder Studio, Image Compressor & Converter) are provided free of charge on an \"As Is\" basis without warranties of uninterrupted performance."
+      },
+      {
+        "title": "2. Non-Affiliation & Trademark Disclaimer",
+        "content": "GToolix is an independent utility platform. We are NOT affiliated, endorsed, associated, or certified by Google LLC, YouTube, Alphabet Inc., or any third-party corporate entity. All trademarks belong to their respective copyright holders."
+      },
+      {
+        "title": "3. User Content & Usage Responsibility",
+        "content": "Users hold 100% legal responsibility for the destinations embedded inside generated QR codes and the intellectual property compliance of fetched YouTube thumbnails, processed images, or screen recordings."
+      },
+      {
+        "title": "4. External Links & Ads Disclaimer",
+        "content": "GToolix displays programmatic third-party ads. We do not inspect, endorse, or assume responsibility for external web content linked via advertising partners."
+      }
+    ]
+  },
+  "cookies-policy": {
+    "title_ar": "سياسة ملفات تعريف الارتباط (Cookies) | GToolix",
+    "title_en": "Cookie Policy & Web Storage | GToolix",
+    "meta_desc_ar": "اقرأ سياسة الكوكيز الخاصة بمنصة GToolix. توضيح شامل لملفات تعريف الارتباط الضرورية، التحليلية، وإعلانات Google AdSense.",
+    "meta_desc_en": "GToolix Cookie Policy explaining essential browser cookies, user theme preferences, analytics telemetry, and Google AdSense ad cookies.",
+    "h1_ar": "سياسة ملفات تعريف الارتباط (Cookies)",
+    "h1_en": "Cookie Policy & Web Storage",
+    "lead_ar": "تشرح هذه السياسة كيفية استخدام منصة GToolix لملفات تعريف الارتباط وتقنيات التخزين المحلي لتحسين تجربتك وضمان تشغيل الأدوات بسلاسة.",
+    "lead_en": "This policy explains how GToolix uses browser cookies and local web storage to deliver a seamless user experience.",
+    "sections_ar": [
+      {
+        "title": "1. ما هي ملفات تعريف الارتباط (Cookies)؟",
+        "content": "ملفات الكوكيز هي ملفات نصية صغيرة يتم حفظها على جهازك عند زيارة مواقع الويب. تساعد الكوكيز في تذكر تفضيلاتك وتسهيل التصفح وتأمين أداء الموقع."
+      },
+      {
+        "title": "2. الكوكيز الضرورية والوظيفية (Essential Cookies)",
+        "content": "نستخدم التخزين المحلي (LocalStorage) لحفظ تفضيلاتك الأساسية مثل اختيار اللغة (العربية/الإنجليزية) ووضع التصفح (الداكن/الساطع). هذه الملفات ضرورية لعمل الموقع بالشكل المطلوب."
+      },
+      {
+        "title": "3. كوكيز التحليلات والأداء (Analytics Cookies)",
+        "content": "نستخدم كوكيز تحليلات قياسية لمعرفة عدد الزيارات وكيفية تصفح المستخدمين للصفحات بدون تتبع هويتك. نلتزم بمعايير Google Consent Mode v2 لاحترام خيارات الخصوصية."
+      },
+      {
+        "title": "4. كوكيز الإعلانات من Google AdSense",
+        "content": "تُستخدم كوكيز الإعلانات من قبل Google والشركاء المعتمدين لعرض إعلانات ملائمة. تتيح لك Google التحكم في الإعلانات المخصصة أو إيقافها من خلال إعدادات إعلانات Google."
+      },
+      {
+        "title": "5. كيفية التحكم في ملفات الكوكيز وإدارتها",
+        "content": "يمكنك مسح الكوكيز أو تعطيلها كلياً عبر إعدادات متصفحك (Chrome, Firefox, Safari, Edge). يرجى ملاحظة أن تعطيل بعض الكوكيز قد يؤثر على تذكر تفضيلاتك على الموقع."
+      }
+    ],
+    "sections_en": [
+      {
+        "title": "1. What Are Cookies?",
+        "content": "Cookies are small data files stored on your web browser when visiting websites. They help websites remember user preferences and optimize browsing security."
+      },
+      {
+        "title": "2. Essential Functional Storage",
+        "content": "GToolix uses local browser storage (LocalStorage) strictly to remember your site settings, including interface language choice (Arabic/English) and color theme mode (Light/Dark mode)."
+      },
+      {
+        "title": "3. Performance & Analytics Cookies",
+        "content": "We deploy privacy-focused analytics cookies to evaluate traffic metrics and optimize page responsiveness via Google Consent Mode v2."
+      },
+      {
+        "title": "4. Google AdSense Advertising Cookies",
+        "content": "Google AdSense uses cookies to deliver contextual advertisements. Users may customize or opt out of personalized ad targeting via Google's Ad Settings."
+      },
+      {
+        "title": "5. Managing & Disabling Cookies",
+        "content": "You can modify your browser settings (Chrome, Firefox, Safari, Edge) to block or delete cookies at any time. Note that clearing storage may reset your saved theme and language preferences."
+      }
+    ]
+  },
+  "dmca": {
+    "title_ar": "سياسة حقوق النشر (DMCA) والملكية الفكرية | GToolix",
+    "title_en": "DMCA Copyright Policy & Intellectual Property | GToolix",
+    "meta_desc_ar": "سياسة حقوق النشر وطريقة تقديم إخطارات DMCA لمنصة GToolix. توضيح التعامل مع حقوق الصور المصغرة والعلامات التجارية وإجراءات الإخطار والإشعار المضاد.",
+    "meta_desc_en": "GToolix DMCA Copyright Policy detailing complaint reporting procedures for copyrighted images, trademark notices, and counter-notification process.",
+    "h1_ar": "سياسة حقوق النشر (DMCA)",
+    "h1_en": "DMCA Copyright Policy",
+    "lead_ar": "تلتزم منصة GToolix باحترام حقوق الملكية الفكرية والامتثال لعدالة قانون الألفية الرقمية لحقوق الطبع والنشر (DMCA).",
+    "lead_en": "GToolix respects the intellectual property of content owners and complies with the Digital Millennium Copyright Act (DMCA).",
+    "sections_ar": [
+      {
+        "title": "1. طبيعة الأدوات والالتزام بحقوق الملكية",
+        "content": "GToolix لا تستضيف ولا تخزن ولا تنزل وسائط أو فيديوهات أو ملفات محمية بحقوق الطبع والنشر على خوادمها. تنحصر خدمات الموقع في أدوات تحويل وتوليد محلية (مولد QR، ضاغط ومحوّل الصور المحلي، مسجل الشاشة)، بالإضافة إلى استخراج رابط الصورة المصغرة المتاحة علنياً من خوادم YouTube."
+      },
+      {
+        "title": "2. شكاوى حقوق الصور والعلامات التجارية",
+        "content": "إذا كنت مالكاً لحقوق طبع ونشر أو علامة تجارية أو وكيلاً معتمداً وتعتقد أن أي صورة أو رابط متاح عبر أدواتنا ينتهك حقوقك، يمكنك ارسال إخطار انتهاك رسمي وسنقوم بمعالجة طلبك فورياً."
+      },
+      {
+        "title": "3. متطلبات تقديم إخطار الانتهاك (DMCA Takedown Notice)",
+        "content": "يجب أن يتضمن إخطار الانتهاك البيانات التالية: (1) توقيع إلكتروني أو فعلي لمالك الحقوق، (2) وصف دقيق للعمل المحمي المستهدف، (3) الرابط المباشر (URL) للصفحة محل النزاع على موقعنا، (4) بيانات الاتصال بالمدعي (البريد، الهاتف)، و(5) إقرار بحسن النية."
+      },
+      {
+        "title": "4. إجراءات الإخطار المضاد (Counter-Notice)",
+        "content": "في حال تلقينا إخطاراً مضاداً مطابقاً للشروط القانونية من مستخدم ينفي الانتهاك، سنتخذ الإجراءات المنصوص عليها في قانون DMCA لإخطار صاحب الشكوى الأول بالرد."
+      }
+    ],
+    "sections_en": [
+      {
+        "title": "1. Platform Boundaries & Copyright Commitment",
+        "content": "GToolix does not host, store, or stream copyrighted video, audio, or media files. Our tools run locally in the browser (QR Generator, Image Compressor, Screen Recorder) or display publicly accessible thumbnail image URLs from YouTube servers."
+      },
+      {
+        "title": "2. Copyrighted Images & Trademark Complaints",
+        "content": "If you are a copyright owner, trademark holder, or authorized agent and believe that content accessible via our platform infringes your intellectual property, you may submit a formal notification."
+      },
+      {
+        "title": "3. Formal DMCA Notice Requirements",
+        "content": "A valid DMCA takedown notice must include: (1) Physical or electronic signature of the authorized copyright owner, (2) Description of the copyrighted work claimed to be infringed, (3) Exact URL of the disputed content on our site, (4) Contact details of the claimant, and (5) A statement of good faith belief."
+      },
+      {
+        "title": "4. Counter-Notification Procedure",
+        "content": "If a user believes content was mistakenly flagged, they may submit a counter-notice adhering to statutory DMCA requirements."
+      }
+    ]
+  },
+  "contact": {
+    "title_ar": "اتصل بنا والدعم الفني | GToolix",
+    "title_en": "Contact Us & Support | GToolix",
+    "meta_desc_ar": "تواصل مع فريق الدعم الفني والاستفسارات الخاصة بمنصة GToolix. نحن هنا لمساعدتك والإجابة على تساؤلاتك خلال 24 ساعة.",
+    "meta_desc_en": "Contact the GToolix technical support team. We are here to assist you with inquiries within 24 hours.",
+    "h1_ar": "اتصل بنا والدعم الفني",
+    "h1_en": "Contact Us & Support",
+    "lead_ar": "نحن هنا لمساعدتك! يسعدنا تلقي استفساراتك واقتراحاتك وملاحظاتك حول المنصة.",
+    "lead_en": "We are here to help! Send us your inquiries, feedback, or suggestions anytime."
+  }
+}

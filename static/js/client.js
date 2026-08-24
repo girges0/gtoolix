@@ -17,6 +17,7 @@
     let currentSessionId = null;
     let currentVisitorId = null;
     let heartbeatTimer = null;
+    let sessionInitialized = false;
 
     // Timezone to Country Code Map for Zero-Latency Local Fallback
     const TIMEZONE_COUNTRY_MAP = {
@@ -137,8 +138,20 @@
         return { deviceType, browser, os, userAgent: ua.substring(0, 250) };
     }
 
+    // Helper: Check if running on local development environment
+    function isLocalDev() {
+        try {
+            if (window.GTOOLIX_ENABLE_LOCAL_MONITORING === true) return false;
+            const h = window.location.hostname;
+            return h === 'localhost' || h === '127.0.0.1' || h === '[::1]' || h.endsWith('.local') || window.location.protocol === 'file:';
+        } catch (e) {
+            return false;
+        }
+    }
+
     // Initialize Supabase client
     function initSupabase() {
+        if (isLocalDev()) return null;
         if (supabaseClient) return supabaseClient;
         if (window.supabase && typeof window.supabase.createClient === 'function') {
             try {
@@ -154,8 +167,10 @@
     // REST fallback insert
     async function directRestInsert(table, data) {
         try {
-            if (!CONFIG.SUPABASE_URL || CONFIG.SUPABASE_URL === 'YOUR_SUPABASE_URL') return false;
-            const url = `${CONFIG.SUPABASE_URL}/rest/v1/${table}`;
+            if (isLocalDev()) return true;
+            if (!CONFIG.SUPABASE_URL || CONFIG.SUPABASE_URL === 'YOUR_SUPABASE_URL' || !CONFIG.SUPABASE_URL.startsWith('http')) return false;
+            const cleanTable = encodeURIComponent(String(table).trim().replace(/\s+/g, '_'));
+            const url = `${CONFIG.SUPABASE_URL}/rest/v1/${cleanTable}`;
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -175,8 +190,10 @@
     // REST fallback update
     async function directRestUpdate(table, filterCol, filterVal, data) {
         try {
-            if (!CONFIG.SUPABASE_URL || CONFIG.SUPABASE_URL === 'YOUR_SUPABASE_URL') return false;
-            const url = `${CONFIG.SUPABASE_URL}/rest/v1/${table}?${filterCol}=eq.${filterVal}`;
+            if (isLocalDev()) return true;
+            if (!CONFIG.SUPABASE_URL || CONFIG.SUPABASE_URL === 'YOUR_SUPABASE_URL' || !CONFIG.SUPABASE_URL.startsWith('http')) return false;
+            const cleanTable = encodeURIComponent(String(table).trim().replace(/\s+/g, '_'));
+            const url = `${CONFIG.SUPABASE_URL}/rest/v1/${cleanTable}?${filterCol}=eq.${encodeURIComponent(filterVal)}`;
             const response = await fetch(url, {
                 method: 'PATCH',
                 headers: {
@@ -276,6 +293,9 @@
 
     // Ensure session in DB with silent fail-over
     async function ensureSession() {
+        if (sessionInitialized) return;
+        sessionInitialized = true;
+
         currentVisitorId = getVisitorId();
         currentSessionId = getSessionId();
 
@@ -350,10 +370,10 @@
         }, CONFIG.HEARTBEAT_INTERVAL_MS || 25000);
     }
 
-    // Page leave beacon
     function sendUnloadBeacon() {
         try {
-            const url = `${CONFIG.SUPABASE_URL}/rest/v1/sessions?id=eq.${currentSessionId}`;
+            if (!CONFIG.SUPABASE_URL || CONFIG.SUPABASE_URL === 'YOUR_SUPABASE_URL' || !CONFIG.SUPABASE_URL.startsWith('http') || !currentSessionId) return;
+            const url = `${CONFIG.SUPABASE_URL}/rest/v1/sessions?id=eq.${encodeURIComponent(currentSessionId)}`;
             const data = JSON.stringify({ last_seen_at: new Date().toISOString() });
             if (navigator.sendBeacon) {
                 const blob = new Blob([data], { type: 'application/json' });
@@ -499,16 +519,9 @@
                 };
                 const sb = initSupabase();
                 if (sb) {
-                    const { error } = await sb.from('performance_metrics').insert(payload);
-                    if (error) {
-                        // Fallback gracefully if performance_metrics table is not created yet
-                        await SDK.trackToolUsage(`perf_${metricName}`, { value: value, device: dev });
-                    }
+                    await sb.from('performance_metrics').insert(payload);
                 } else {
-                    const ok = await directRestInsert('performance_metrics', payload);
-                    if (!ok) {
-                        await SDK.trackToolUsage(`perf_${metricName}`, { value: value, device: dev });
-                    }
+                    await directRestInsert('performance_metrics', payload);
                 }
             } catch (err) {}
         },

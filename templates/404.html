@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--HTML_TAG-->
+
+<head>
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
+    <script src="/static/js/lang-detect.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title><!--PAGE_TITLE--></title>
+    <meta name="description" content="<!--PAGE_DESC-->">
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
+
+    <!-- Performance: Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+
+    <!-- Critical Inline Styles -->
+    <style>
+        :root {
+            --bg: #020817;
+            --bg-secondary: #0F172A;
+            --card: #111827;
+            --border: #1E293B;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.04);
+            --primary: #2563EB;
+            --primary-hover: #3B82F6;
+            --accent: #06B6D4;
+            --text: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --radius-full: 9999px;
+            --radius-md: 1rem;
+            --nav-bg: rgba(2, 8, 23, 0.82);
+        }
+
+        [data-theme="light"] {
+            --bg: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --card: #FFFFFF;
+            --border: #E2E8F0;
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass: rgba(255, 255, 255, 0.7);
+            --primary: #2563EB;
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --nav-bg: rgba(248, 250, 252, 0.85);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: clip;
+            scrollbar-gutter: stable;
+            width: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: clip;
+            width: 100%;
+            min-height: 100svh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html[dir="rtl"] body {
+            font-family: 'Cairo', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 0.75rem;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.45rem 0.85rem;
+            margin: 0 auto;
+            max-width: 1180px;
+            width: min(100% - 2rem, 1180px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            min-height: 56px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .site-nav__brand {
+            display: flex;
+            align-items: center;
+            direction: ltr;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+            background: none;
+            border: none;
+            min-height: 44px;
+            cursor: pointer;
+        }
+
+        .site-nav__logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 9px;
+            display: block;
+        }
+
+        .site-nav__right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+    <link rel="preload" href="/static/css/main.min.css" as="style">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
+</head>
+
+<body>
+    <!--SITE_NAV-->
+
+    <div class="background-gradient"></div>
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="particles" id="particles"></div>
+
+    <main class="container" style="max-width: 700px; padding-top: clamp(8rem, 14vw, 11rem); padding-bottom: 5rem; margin: 0 auto; text-align: center; padding-inline: max(1rem, 3.5vw);">
+        <div style="font-size: clamp(5rem, 12vw, 8.5rem); font-weight: 900; line-height: 1; margin-bottom: 1rem; background: linear-gradient(135deg, #2563EB, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            404
+        </div>
+        <h1 style="font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; margin-bottom: 1rem;">
+            <!--ERR_TITLE-->
+        </h1>
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; max-width: 520px; margin-inline: auto;">
+            <!--ERR_DESC-->
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="<!--HOME_HREF-->" class="btn btn-primary" style="padding: 0.75rem 1.5rem; text-decoration: none; font-weight: 600;"><!--BTN_HOME--></a>
+            <a href="<!--TOOLS_HREF-->" class="btn btn-outline" style="padding: 0.75rem 1.5rem; text-decoration: none; font-weight: 600;"><!--BTN_TOOLS--></a>
+        </div>
+    </main>
+
+    <!--SITE_FOOTER-->
+
+    <script>
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            const backdrop = document.getElementById('nav-backdrop');
+            if (!links || !btn) return;
+            const shouldOpen = forceClose === true ? false : !links.classList.contains('is-open');
+            links.classList.toggle('is-open', shouldOpen);
+            if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+            document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+    </script>
+    <script src="/static/js/theme.min.js" defer></script>
+    <script src="/static/js/client.min.js" defer></script>
+</body>
+</html>

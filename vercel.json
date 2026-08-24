@@ -2,66 +2,243 @@
   "version": 2,
   "outputDirectory": ".",
   "cleanUrls": true,
-  "rewrites": [
+  "redirects": [
     {
-      "source": "/monitoring/:path*",
-      "destination": "/gtoolix-monitoring-site/:path*"
+      "source": "/downloads",
+      "destination": "/programs",
+      "permanent": true
     },
     {
-      "source": "/monitoring",
-      "destination": "/gtoolix-monitoring-site/"
+      "source": "/downloads/:match*",
+      "destination": "/programs",
+      "permanent": true
+    },
+    {
+      "source": "/en/downloads",
+      "destination": "/en/programs",
+      "permanent": true
+    },
+    {
+      "source": "/en/downloads/:match*",
+      "destination": "/en/programs",
+      "permanent": true
     },
     {
       "source": "/qr-code-generator",
-      "destination": "/qr-code-generator/"
+      "destination": "/tools/qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/qr-code-generator/:match*",
+      "destination": "/tools/qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/en/qr-code-generator",
+      "destination": "/en/tools/qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/en/qr-code-generator/:match*",
+      "destination": "/en/tools/qr-code-generator",
+      "permanent": true
     },
     {
       "source": "/youtube-thumbnail-downloader",
-      "destination": "/youtube-thumbnail-downloader/"
+      "destination": "/tools/youtube-thumbnail-downloader",
+      "permanent": true
     },
     {
-      "source": "/gemini/watermark-remover",
-      "destination": "/gemini/watermark-remover/"
+      "source": "/youtube-thumbnail-downloader/:match*",
+      "destination": "/tools/youtube-thumbnail-downloader",
+      "permanent": true
     },
     {
-      "source": "/gemini-watermark-remover",
-      "destination": "/gemini/watermark-remover/"
+      "source": "/en/youtube-thumbnail-downloader",
+      "destination": "/en/tools/youtube-thumbnail-downloader",
+      "permanent": true
     },
     {
-      "source": "/about",
-      "destination": "/about/"
-    },
-    {
-      "source": "/privacy-policy",
-      "destination": "/privacy-policy/"
-    },
-    {
-      "source": "/terms-of-service",
-      "destination": "/terms-of-service/"
-    },
-    {
-      "source": "/disclaimer",
-      "destination": "/disclaimer/"
-    },
-    {
-      "source": "/cookies-policy",
-      "destination": "/cookies-policy/"
-    },
-    {
-      "source": "/dmca",
-      "destination": "/dmca/"
-    },
-    {
-      "source": "/faq",
-      "destination": "/faq/"
+      "source": "/en/youtube-thumbnail-downloader/:match*",
+      "destination": "/en/tools/youtube-thumbnail-downloader",
+      "permanent": true
     },
     {
       "source": "/screen-recorder-studio",
-      "destination": "/screen-recorder-studio/"
+      "destination": "/tools/screen-recorder-studio",
+      "permanent": true
+    },
+    {
+      "source": "/screen-recorder-studio/:match*",
+      "destination": "/tools/screen-recorder-studio",
+      "permanent": true
+    },
+    {
+      "source": "/en/screen-recorder-studio",
+      "destination": "/en/tools/screen-recorder-studio",
+      "permanent": true
+    },
+    {
+      "source": "/en/screen-recorder-studio/:match*",
+      "destination": "/en/tools/screen-recorder-studio",
+      "permanent": true
+    },
+    {
+      "source": "/tools/qr",
+      "destination": "/tools/qr-code-generator",
+      "permanent": true
+    },
+    {
+      "source": "/tools/thumbnail",
+      "destination": "/tools/youtube-thumbnail-downloader",
+      "permanent": true
+    },
+    {
+      "source": "/tools/screen-recorder",
+      "destination": "/tools/screen-recorder-studio",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/tools",
+      "destination": "/tools/index.html"
+    },
+    {
+      "source": "/tools/qr-code-generator",
+      "destination": "/tools/qr-code-generator/index.html"
+    },
+    {
+      "source": "/tools/youtube-thumbnail-downloader",
+      "destination": "/tools/youtube-thumbnail-downloader/index.html"
+    },
+    {
+      "source": "/tools/screen-recorder-studio",
+      "destination": "/tools/screen-recorder-studio/index.html"
+    },
+    {
+      "source": "/tools/image-compressor",
+      "destination": "/tools/image-compressor/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/index.html"
+    },
+    {
+      "source": "/blog/:slug((?!index$).+)",
+      "destination": "/blog/article.html"
+    },
+    {
+      "source": "/programs",
+      "destination": "/programs/index.html"
+    },
+    {
+      "source": "/programs/:slug((?!index$).+)",
+      "destination": "/programs/program.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about/index.html"
     },
     {
       "source": "/contact",
-      "destination": "/contact/"
+      "destination": "/contact/index.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq/index.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy/index.html"
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/terms-of-service/index.html"
+    },
+    {
+      "source": "/disclaimer",
+      "destination": "/disclaimer/index.html"
+    },
+    {
+      "source": "/cookies-policy",
+      "destination": "/cookies-policy/index.html"
+    },
+    {
+      "source": "/dmca",
+      "destination": "/dmca/index.html"
+    },
+    {
+      "source": "/en",
+      "destination": "/en/index.html"
+    },
+    {
+      "source": "/en/tools",
+      "destination": "/en/tools/index.html"
+    },
+    {
+      "source": "/en/tools/qr-code-generator",
+      "destination": "/en/tools/qr-code-generator/index.html"
+    },
+    {
+      "source": "/en/tools/youtube-thumbnail-downloader",
+      "destination": "/en/tools/youtube-thumbnail-downloader/index.html"
+    },
+    {
+      "source": "/en/tools/screen-recorder-studio",
+      "destination": "/en/tools/screen-recorder-studio/index.html"
+    },
+    {
+      "source": "/en/tools/image-compressor",
+      "destination": "/en/tools/image-compressor/index.html"
+    },
+    {
+      "source": "/en/blog",
+      "destination": "/en/blog/index.html"
+    },
+    {
+      "source": "/en/blog/:slug((?!index$).+)",
+      "destination": "/en/blog/article.html"
+    },
+    {
+      "source": "/en/programs",
+      "destination": "/en/programs/index.html"
+    },
+    {
+      "source": "/en/programs/:slug((?!index$).+)",
+      "destination": "/en/programs/program.html"
+    },
+    {
+      "source": "/en/about",
+      "destination": "/en/about/index.html"
+    },
+    {
+      "source": "/en/contact",
+      "destination": "/en/contact/index.html"
+    },
+    {
+      "source": "/en/faq",
+      "destination": "/en/faq/index.html"
+    },
+    {
+      "source": "/en/privacy-policy",
+      "destination": "/en/privacy-policy/index.html"
+    },
+    {
+      "source": "/en/terms-of-service",
+      "destination": "/en/terms-of-service/index.html"
+    },
+    {
+      "source": "/en/disclaimer",
+      "destination": "/en/disclaimer/index.html"
+    },
+    {
+      "source": "/en/cookies-policy",
+      "destination": "/en/cookies-policy/index.html"
+    },
+    {
+      "source": "/en/dmca",
+      "destination": "/en/dmca/index.html"
     }
   ],
   "headers": [
@@ -69,28 +246,20 @@
       "source": "/(.*)",
       "headers": [
         {
-          "key": "X-Frame-Options",
-          "value": "DENY"
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://tpc.googlesyndication.com https://adservice.google.com https://www.googletagservices.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://*.supabase.co wss://*.supabase.co https://get.geojs.io https://api.country.is https://ipapi.co https://ipwho.is; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://pagead2.googlesyndication.com https://www.google.com; worker-src 'self' blob:; frame-ancestors 'none';"
         },
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
         },
         {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
+          "key": "X-Frame-Options",
+          "value": "DENY"
         },
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "geolocation=(), microphone=(self), camera=(self)"
-        },
-        {
-          "key": "Strict-Transport-Security",
-          "value": "max-age=31536000; includeSubDomains; preload"
         },
         {
           "key": "Cross-Origin-Opener-Policy",
@@ -108,24 +277,20 @@
       ]
     },
     {
-      "source": "/sitemap.xml",
+      "source": "/tools/(.*)\\.(js|css|bundle\\.js)",
       "headers": [
         {
-          "key": "Content-Type",
-          "value": "application/xml; charset=utf-8"
-        },
-        {
           "key": "Cache-Control",
-          "value": "public, max-age=86400"
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     },
     {
-      "source": "/(.*)\\.xml",
+      "source": "/ads.txt",
       "headers": [
         {
           "key": "Content-Type",
-          "value": "application/xml; charset=utf-8"
+          "value": "text/plain; charset=utf-8"
         },
         {
           "key": "Cache-Control",
@@ -142,20 +307,20 @@
         },
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600"
+          "value": "public, max-age=86400"
         }
       ]
     },
     {
-      "source": "/ads.txt",
+      "source": "/sitemap.xml",
       "headers": [
         {
           "key": "Content-Type",
-          "value": "text/plain; charset=utf-8"
+          "value": "application/xml; charset=utf-8"
         },
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600"
+          "value": "public, max-age=86400"
         }
       ]
     }

@@ -1,0 +1,47 @@
+{
+  "maintenance_mode": {
+    "enabled": false,
+    "title_ar": "الموقع قيد الصيانة والتحديث الدوري",
+    "title_en": "Under Scheduled Maintenance",
+    "message_ar": "نقوم حالياً بإجراء بعض التحسينات الهامة وتحديثات الأمان على منصة GToolix لتقديم تجربة أسرع وأكثر استقراراً. سنعود للعمل قريباً جداً!",
+    "message_en": "We are performing scheduled improvements and security updates to GToolix to deliver superior performance. We will be back online shortly!",
+    "estimated_reopen": "",
+    "support_contact": "gtoolix@gmail.com",
+    "admin_bypass_key": "gtoolix_admin_bypass_2026"
+  },
+  "announcement_banner": {
+    "enabled": true,
+    "theme": "feature",
+    "text_ar": "🚀 أدوات ويب عالية الأداء تعمل محلياً 100% في متصفحك وبدون تسجيل مجاناً للأبد!",
+    "text_en": "🚀 High-performance web tools running 100% locally in your browser with zero accounts required!",
+    "link": "/tools",
+    "button_label_ar": "استكشف الأدوات ↗",
+    "button_label_en": "Explore Tools ↗",
+    "open_new_tab": false,
+    "dismissible": true,
+    "sticky": false,
+    "target_pages": "all"
+  },
+  "homepage_featured_tool_slugs": [
+    "qr-code-generator",
+    "youtube-thumbnail-downloader",
+    "screen-recorder-studio"
+  ],
+  "seo_meta": {
+    "site_name_ar": "GToolix – أدوات ويب تفاعلية ذكية ومجانية",
+    "site_name_en": "GToolix – Smart Free Web Tools & Utilities",
+    "default_description_ar": "منصة شاملة تقدم أدوات ويب ذكية ومجانية: منشئ رموز QR عالي النقاء، محمل صور يوتيوب المصغرة 4K، ومسجل الشاشة باحترافية وبسرعة فائقة وبخصوصية 100%.",
+    "default_description_en": "Comprehensive suite of fast, privacy-focused online web tools: vector QR code generator, 4K YouTube thumbnail extractor, and browser screen recorder studio.",
+    "default_og_image": "/static/img/og-preview.jpg",
+    "google_analytics_id": "G-GTOOLIXDEMO1",
+    "adsense_enabled": true
+  },
+  "social_links": {
+    "support_email": "gtoolix@gmail.com",
+    "telegram": "https://t.me/gtoolix",
+    "twitter": "https://twitter.com/gtoolix",
+    "facebook": "https://facebook.com/gtoolix",
+    "github": "https://github.com/gtoolix",
+    "copyright_text": "© 2026 GToolix. جميع الحقوق محفوظة."
+  }
+}

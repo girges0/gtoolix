@@ -1,115 +1,16 @@
 [build]
-  command = "node scripts/build-assets.js"
   publish = "."
 
-[build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.html]
-  pretty_urls = true
-
-# Route Redirects
-[[redirects]]
-  from = "/monitoring/*"
-  to = "/gtoolix-monitoring-site/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/monitoring"
-  to = "/gtoolix-monitoring-site/"
-  status = 200
-
-[[redirects]]
-  from = "/qr-code-generator"
-  to = "/qr-code-generator/"
-  status = 200
-
-[[redirects]]
-  from = "/youtube-thumbnail-downloader"
-  to = "/youtube-thumbnail-downloader/"
-  status = 200
-
-[[redirects]]
-  from = "/gemini/watermark-remover"
-  to = "/gemini/watermark-remover/"
-  status = 200
-
-[[redirects]]
-  from = "/gemini-watermark-remover"
-  to = "/gemini/watermark-remover/"
-  status = 200
-
-[[redirects]]
-  from = "/about"
-  to = "/about/"
-  status = 200
-
-[[redirects]]
-  from = "/privacy-policy"
-  to = "/privacy-policy/"
-  status = 200
-
-[[redirects]]
-  from = "/terms-of-service"
-  to = "/terms-of-service/"
-  status = 200
-
-[[redirects]]
-  from = "/disclaimer"
-  to = "/disclaimer/"
-  status = 200
-
-[[redirects]]
-  from = "/cookies-policy"
-  to = "/cookies-policy/"
-  status = 200
-
-[[redirects]]
-  from = "/dmca"
-  to = "/dmca/"
-  status = 200
-
-[[redirects]]
-  from = "/faq"
-  to = "/faq/"
-  status = 200
-
-[[redirects]]
-  from = "/screen-recorder-studio"
-  to = "/screen-recorder-studio/"
-  status = 200
-
-[[redirects]]
-  from = "/contact"
-  to = "/contact/"
-  status = 200
-
-# Custom 404 page
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
-
-# Hardened Security & Privacy Headers
+# ==============================================================================
+# Security & Performance Headers
+# ==============================================================================
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(self), camera=(self)"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Cross-Origin-Opener-Policy = "same-origin-allow-popups"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.google.com https://*.doubleclick.net https://*.supabase.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://get.geojs.io https://api.country.is https://ipapi.co https://ipwho.is https://*.google.com https://*.doubleclick.net; frame-src 'self' https://googleads.g.doubleclick.net https://*.google.com; frame-ancestors 'none'; object-src 'none';"
 
 [[headers]]
   for = "/static/*"
@@ -117,14 +18,445 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/*.xml"
+  for = "/tools/*.js"
   [headers.values]
-    Content-Type = "application/xml; charset=utf-8"
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/tools/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/ads.txt"
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
     Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+    Cache-Control = "public, max-age=86400"
+
+# ==============================================================================
+# 301 Permanent Redirects (Highest Priority)
+# ==============================================================================
+[[redirects]]
+  from = "/downloads"
+  to = "/programs"
+  status = 301
+
+[[redirects]]
+  from = "/downloads/*"
+  to = "/programs"
+  status = 301
+
+[[redirects]]
+  from = "/en/downloads"
+  to = "/en/programs"
+  status = 301
+
+[[redirects]]
+  from = "/en/downloads/*"
+  to = "/en/programs"
+  status = 301
+
+[[redirects]]
+  from = "/qr-code-generator"
+  to = "/tools/qr-code-generator"
+  status = 301
+
+[[redirects]]
+  from = "/qr-code-generator/*"
+  to = "/tools/qr-code-generator"
+  status = 301
+
+[[redirects]]
+  from = "/en/qr-code-generator"
+  to = "/en/tools/qr-code-generator"
+  status = 301
+
+[[redirects]]
+  from = "/en/qr-code-generator/*"
+  to = "/en/tools/qr-code-generator"
+  status = 301
+
+[[redirects]]
+  from = "/youtube-thumbnail-downloader"
+  to = "/tools/youtube-thumbnail-downloader"
+  status = 301
+
+[[redirects]]
+  from = "/youtube-thumbnail-downloader/*"
+  to = "/tools/youtube-thumbnail-downloader"
+  status = 301
+
+[[redirects]]
+  from = "/en/youtube-thumbnail-downloader"
+  to = "/en/tools/youtube-thumbnail-downloader"
+  status = 301
+
+[[redirects]]
+  from = "/en/youtube-thumbnail-downloader/*"
+  to = "/en/tools/youtube-thumbnail-downloader"
+  status = 301
+
+[[redirects]]
+  from = "/screen-recorder-studio"
+  to = "/tools/screen-recorder-studio"
+  status = 301
+
+[[redirects]]
+  from = "/screen-recorder-studio/*"
+  to = "/tools/screen-recorder-studio"
+  status = 301
+
+[[redirects]]
+  from = "/en/screen-recorder-studio"
+  to = "/en/tools/screen-recorder-studio"
+  status = 301
+
+[[redirects]]
+  from = "/en/screen-recorder-studio/*"
+  to = "/en/tools/screen-recorder-studio"
+  status = 301
+
+[[redirects]]
+  from = "/tools/qr"
+  to = "/tools/qr-code-generator"
+  status = 301
+
+[[redirects]]
+  from = "/tools/thumbnail"
+  to = "/tools/youtube-thumbnail-downloader"
+  status = 301
+
+[[redirects]]
+  from = "/tools/screen-recorder"
+  to = "/tools/screen-recorder-studio"
+  status = 301
+
+# ==============================================================================
+# 200 Transparent Rewrites to Tools & Section Directories (Arabic)
+# ==============================================================================
+[[redirects]]
+  from = "/tools"
+  to = "/tools/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/"
+  to = "/tools/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/qr-code-generator"
+  to = "/tools/qr-code-generator/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/qr-code-generator/"
+  to = "/tools/qr-code-generator/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/youtube-thumbnail-downloader"
+  to = "/tools/youtube-thumbnail-downloader/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/youtube-thumbnail-downloader/"
+  to = "/tools/youtube-thumbnail-downloader/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/screen-recorder-studio"
+  to = "/tools/screen-recorder-studio/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/screen-recorder-studio/"
+  to = "/tools/screen-recorder-studio/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/image-compressor"
+  to = "/tools/image-compressor/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/image-compressor/"
+  to = "/tools/image-compressor/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/"
+  to = "/blog/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/qr-code"
+  to = "/blog/qr-code/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/qr-code/"
+  to = "/blog/qr-code/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/image-compression-guide"
+  to = "/blog/image-compression-guide/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/image-compression-guide/"
+  to = "/blog/image-compression-guide/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/jpg-vs-png-vs-webp"
+  to = "/blog/jpg-vs-png-vs-webp/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/jpg-vs-png-vs-webp/"
+  to = "/blog/jpg-vs-png-vs-webp/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/article.html"
+  status = 200
+
+[[redirects]]
+  from = "/programs"
+  to = "/programs/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/programs/"
+  to = "/programs/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/programs/*"
+  to = "/programs/program.html"
+  status = 200
+
+# Legal & Static Pages (Arabic)
+[[redirects]]
+  from = "/about"
+  to = "/about/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/faq"
+  to = "/faq/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy-policy/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms-of-service"
+  to = "/terms-of-service/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/disclaimer"
+  to = "/disclaimer/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/cookies-policy"
+  to = "/cookies-policy/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/dmca"
+  to = "/dmca/index.html"
+  status = 200
+
+# ==============================================================================
+# 200 Transparent Rewrites (English)
+# ==============================================================================
+[[redirects]]
+  from = "/en"
+  to = "/en/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/"
+  to = "/en/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools"
+  to = "/en/tools/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools/"
+  to = "/en/tools/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools/qr-code-generator"
+  to = "/en/tools/qr-code-generator/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools/qr-code-generator/"
+  to = "/en/tools/qr-code-generator/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools/youtube-thumbnail-downloader"
+  to = "/en/tools/youtube-thumbnail-downloader/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools/youtube-thumbnail-downloader/"
+  to = "/en/tools/youtube-thumbnail-downloader/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools/screen-recorder-studio"
+  to = "/en/tools/screen-recorder-studio/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools/screen-recorder-studio/"
+  to = "/en/tools/screen-recorder-studio/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools/image-compressor"
+  to = "/en/tools/image-compressor/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools/image-compressor/"
+  to = "/en/tools/image-compressor/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/blog"
+  to = "/en/blog/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/blog/"
+  to = "/en/blog/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/blog/qr-code"
+  to = "/en/blog/qr-code/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/blog/qr-code/"
+  to = "/en/blog/qr-code/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/blog/image-compression-guide"
+  to = "/en/blog/image-compression-guide/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/blog/image-compression-guide/"
+  to = "/en/blog/image-compression-guide/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/blog/jpg-vs-png-vs-webp"
+  to = "/en/blog/jpg-vs-png-vs-webp/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/blog/jpg-vs-png-vs-webp/"
+  to = "/en/blog/jpg-vs-png-vs-webp/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/blog/*"
+  to = "/en/blog/article.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/programs"
+  to = "/en/programs/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/programs/"
+  to = "/en/programs/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/programs/*"
+  to = "/en/programs/program.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/about"
+  to = "/en/about/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/contact"
+  to = "/en/contact/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/faq"
+  to = "/en/faq/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/privacy-policy"
+  to = "/en/privacy-policy/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/terms-of-service"
+  to = "/en/terms-of-service/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/disclaimer"
+  to = "/en/disclaimer/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/cookies-policy"
+  to = "/en/cookies-policy/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/dmca"
+  to = "/en/dmca/index.html"
+  status = 200
 

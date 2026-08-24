@@ -8,7 +8,7 @@
     // ===================================================================
     // Legacy Hash Detection — displays 404 UI for deprecated hash URLs
     // ===================================================================
-    const LEGACY_TOOL_HASHES = ['#qr-code', '#youtube-thumbnail', '#gemini-watermark', '#screen-recorder', '#qr', '#thumb', '#gemini', '#recorder'];
+    const LEGACY_TOOL_HASHES = ['#qr-code', '#youtube-thumbnail', '#screen-recorder', '#qr', '#thumb', '#recorder'];
     function handleLegacyHash() {
         const hash = (window.location.hash || '').toLowerCase();
         const isLegacy = LEGACY_TOOL_HASHES.includes(hash);
@@ -155,7 +155,7 @@
     // 3D Card Interactive Light Tilt (Desktop hover only)
     (function cardTilt() {
         if (reduceMotion || !canHover) return;
-        document.querySelectorAll('.tool-card, .tiktok-showcase-card, .tool-chip-card').forEach(card => {
+        document.querySelectorAll('.tool-card, .hero-tool-card').forEach(card => {
             let rect = null;
             let ticking = false;
             card.addEventListener('mouseenter', () => { rect = card.getBoundingClientRect(); });
@@ -182,7 +182,100 @@
         });
     })();
 
-    // Scroll Entrance & Counter Animate
+    // High-Performance Zero-Jank Count-Up Animation
+    function initStatsCounter() {
+        const statsBar = document.getElementById('stats-bar');
+        if (!statsBar) return;
+
+        const counters = statsBar.querySelectorAll('.counter-val');
+        if (!counters.length) return;
+
+        let hasAnimated = false;
+
+        function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
+        }
+
+        function runCountUp() {
+            if (hasAnimated) return;
+            hasAnimated = true;
+
+            const duration = 1800;
+            const startTime = performance.now();
+
+            const items = Array.from(counters).map(el => {
+                const target = parseFloat(el.getAttribute('data-target')) || 0;
+                const prefix = el.getAttribute('data-prefix') || '';
+                const suffix = el.getAttribute('data-suffix') || '';
+                const format = el.getAttribute('data-format') || '';
+                const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+                return { el, target, prefix, suffix, format, decimals };
+            });
+
+            function tick(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = easeOutCubic(progress);
+
+                items.forEach(item => {
+                    const current = item.target * eased;
+                    let displayVal = '';
+                    if (item.decimals > 0) {
+                        displayVal = current.toFixed(item.decimals);
+                    } else if (item.format === 'comma') {
+                        displayVal = Math.round(current).toLocaleString('en-US');
+                    } else {
+                        displayVal = String(Math.round(current));
+                    }
+                    item.el.textContent = `${item.prefix}${displayVal}${item.suffix}`;
+                });
+
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                } else {
+                    items.forEach(item => {
+                        let finalVal = '';
+                        if (item.decimals > 0) {
+                            finalVal = item.target.toFixed(item.decimals);
+                        } else if (item.format === 'comma') {
+                            finalVal = Math.round(item.target).toLocaleString('en-US');
+                        } else {
+                            finalVal = String(Math.round(item.target));
+                        }
+                        item.el.textContent = `${item.prefix}${finalVal}${item.suffix}`;
+                    });
+                }
+            }
+
+            requestAnimationFrame(tick);
+        }
+
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+            counters.forEach(el => {
+                const target = parseFloat(el.getAttribute('data-target')) || 0;
+                const prefix = el.getAttribute('data-prefix') || '';
+                const suffix = el.getAttribute('data-suffix') || '';
+                const format = el.getAttribute('data-format') || '';
+                const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+                let finalVal = (decimals > 0) ? target.toFixed(decimals) : (format === 'comma' ? Math.round(target).toLocaleString('en-US') : String(Math.round(target)));
+                el.textContent = `${prefix}${finalVal}${suffix}`;
+            });
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    runCountUp();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '50px 0px' });
+
+        observer.observe(statsBar);
+    }
+
+    // Scroll Entrance & Reveal Animate
     (function revealOnScroll() {
         const items = document.querySelectorAll('.reveal');
         if (reduceMotion || !('IntersectionObserver' in window)) {
@@ -212,6 +305,7 @@
             }
             pc.appendChild(fragment);
         }
+        initStatsCounter();
         if (typeof window.applyTranslations === 'function') window.applyTranslations();
         handleLegacyHash();
     });

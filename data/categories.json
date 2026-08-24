@@ -1,0 +1,37 @@
+[
+  {
+    "id": "all",
+    "slug": "all",
+    "name": "All Tools",
+    "nameAr": "جميع الأدوات",
+    "icon": "sparkles"
+  },
+  {
+    "id": "ai",
+    "slug": "ai-tools",
+    "name": "AI Tools",
+    "nameAr": "أدوات الذكاء الاصطناعي",
+    "icon": "cpu"
+  },
+  {
+    "id": "media",
+    "slug": "social-media",
+    "name": "Social & Media",
+    "nameAr": "السوشيال ميديا والوسائط",
+    "icon": "video"
+  },
+  {
+    "id": "utilities",
+    "slug": "utilities",
+    "name": "Utilities & QR",
+    "nameAr": "الأدوات والمولدات",
+    "icon": "grid"
+  },
+  {
+    "id": "video",
+    "slug": "screen-recording",
+    "name": "Screen & Recording",
+    "nameAr": "تسجيل الشاشة والفيديو",
+    "icon": "camera"
+  }
+]

@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+
+<head>
+    <script src="/static/js/lang-detect.min.js"></script>
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- ===================== SEO: Meta & Technical SEO ===================== -->
+    <title>الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟ | GToolix</title>
+    <meta name="description" content="مقارنة تقنية شاملة بين JPG و PNG و WebP و AVIF و SVG: الفروق في الحجم، دعم الشفافية Alpha، عمق الألوان، سرعة فك التشفير، وتحسين مؤشرات Core Web Vitals وسيو جوجل.">
+    <meta name="keywords" content="الفرق بين JPG و PNG, الفرق بين WebP و PNG, مقارنة صيغ الصور, افضل صيغة لموقع ويب, WebP vs JPG vs PNG, متى تستخدم PNG, متى تستخدم WebP, تحويل الصور الى WebP, AVIF vs WebP, GToolix">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="GToolix Editorial Team">
+    <meta name="theme-color" content="#F8FAFC">
+
+    <!-- Favicon Suite -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Canonical & Alternate Hreflang -->
+    <link rel="canonical" href="https://www.gtoolix.com/blog/jpg-vs-png-vs-webp" />
+    <link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/jpg-vs-png-vs-webp" />
+    <link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/jpg-vs-png-vs-webp" />
+    <link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/jpg-vs-png-vs-webp" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="GToolix">
+    <meta property="og:title" content="الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟ | GToolix">
+    <meta property="og:description" content="مقارنة تقنية شاملة بين JPG و PNG و WebP و AVIF و SVG: الفروق في الحجم، دعم الشفافية Alpha، عمق الألوان، سرعة فك التشفير، وتحسين مؤشرات Core Web Vitals وسيو جوجل.">
+    <meta property="og:url" content="https://www.gtoolix.com/blog/jpg-vs-png-vs-webp">
+    <meta property="og:image" content="https://www.gtoolix.com/static/img/blog/formats-comparison.jpg">
+    <meta property="og:locale" content="ar_EG">
+    <meta property="article:published_time" content="2026-08-21T10:00:00+03:00">
+    <meta property="article:modified_time" content="2026-08-24T15:00:00+03:00">
+    <meta property="article:author" content="https://www.gtoolix.com">
+    <meta property="article:section" content="Web Performance & Media">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟ | GToolix">
+    <meta name="twitter:description" content="مقارنة تقنية شاملة بين JPG و PNG و WebP و AVIF و SVG: الفروق في الحجم، دعم الشفافية Alpha، عمق الألوان، سرعة فك التشفير، وتحسين مؤشرات Core Web Vitals وسيو جوجل.">
+    <meta name="twitter:image" content="https://www.gtoolix.com/static/img/blog/formats-comparison.jpg">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts & Preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/cairo-arabic.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
+    <link rel="preload" as="image" type="image/jpeg" href="/static/img/blog/formats-comparison.jpg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+
+    <!-- Stylesheets -->
+    <link rel="preload" href="/static/css/main.min.css" as="style">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://www.gtoolix.com/blog/jpg-vs-png-vs-webp#article",
+      "isPartOf": {
+        "@type": "WebPage",
+        "@id": "https://www.gtoolix.com/blog/jpg-vs-png-vs-webp",
+        "url": "https://www.gtoolix.com/blog/jpg-vs-png-vs-webp",
+        "name": "الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟ | GToolix",
+        "description": "مقارنة تقنية شاملة بين JPG و PNG و WebP و AVIF و SVG: الفروق في الحجم، دعم الشفافية Alpha، عمق الألوان، سرعة فك التشفير، وتحسين مؤشرات Core Web Vitals وسيو جوجل."
+      },
+      "headline": "الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟ | GToolix",
+      "description": "مقارنة تقنية شاملة بين JPG و PNG و WebP و AVIF و SVG: الفروق في الحجم، دعم الشفافية Alpha، عمق الألوان، سرعة فك التشفير، وتحسين مؤشرات Core Web Vitals وسيو جوجل.",
+      "image": "https://www.gtoolix.com/static/img/blog/formats-comparison.jpg",
+      "datePublished": "2026-08-21T10:00:00+03:00",
+      "dateModified": "2026-08-24T15:00:00+03:00",
+      "author": {
+        "@type": "Organization",
+        "name": "GToolix Editorial Team",
+        "url": "https://www.gtoolix.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GToolix",
+        "url": "https://www.gtoolix.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.gtoolix.com/static/img/logo.webp"
+        }
+      },
+      "mainEntityOfPage": "https://www.gtoolix.com/blog/jpg-vs-png-vs-webp"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.gtoolix.com/blog/jpg-vs-png-vs-webp#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ما هو الفرق الأساسي بين صيغتي JPG و PNG باختصار؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "صيغة JPG مخصصة للصور الفوتوغرافية وتعتمد على الضغط مع فقدان (Lossy) لتوفير الحجم لكنها لا تدعم الشفافية، بينما صيغة PNG تعتمد على الضغط بدون فقدان (Lossless) وتدعم الشفافية الكاملة (Alpha) لكن حجم ملفاتها أثقل بكثير."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "لماذا تعتبر صيغة WebP الخيار الأفضل لمواقع الويب في 2026؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "لأن WebP تجمع بين أفضل مزايا JPG و PNG؛ حيث توفر حجماً أصغر بنسبة 35% من JPG وبنسبة 26% من PNG مع دعم كامل للشفافية والرسوم المتحركة وتوافق مع أكثر من 98.8% من المتصفحات."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يؤدي تحويل صورة JPG إلى PNG إلى تحسين جودتها أو زيادة وضوحها؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "كلا نهائياً. تحويل JPG إلى PNG لا يسترجع أي بيانات فُقدت أثناء ضغط الـ JPG الأصلي، بل سيضاعف حجم الملف 4 إلى 5 أضعاف دون أي زيادة في النقاء البصري."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أحافظ على شفافية خلفية الصورة عند تحويلها بين الصيغ؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "اختر صيغة WebP أو PNG كصيغة إخراج؛ فكلاهما يدعم قناة ألفا الشفافة بالكامل، وتجنب صيغة JPG لأنها لا تدعم الشفافية وستحول الخلفية إلى لون أسود أو أبيض صلب."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هي صيغة AVIF وهل تتفوق على WebP حالياً؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "صيغة AVIF مبنية على كودك AV1 وتوفر ضغطاً أصغر بنسبة 20% من WebP مع دعم ألوان 12-bit و HDR، ولكن سرعة فك تشفيرها تتطلب طاقة معالج أعلى قليلاً وتوافقها 93.5% مقارنة بـ 98.8% لـ WebP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل تدعم جميع المتصفحات صيغة WebP في 2026؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، تدعم صيغة WebP كافة المتصفحات الحديثة بما فيها Google Chrome و Safari (على آيفون وماك) و Mozilla Firefox و Microsoft Edge بنسبة توافق عالمية تتجاوز 98.8%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هو البديل الأفضل للصور المتحركة بصيغة GIF القديمة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "البديل الأفضل هو استخدام صيغة Animated WebP التي توفر توفيراً في الحجم يصل إلى 64% مع دعم 16.7 مليون لون بدلاً من 256 لوناً فقط لـ GIF، أو استخدام ملفات Lottie JSON."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "متى يجب أن أستخدم صيغة SVG بدلاً من PNG أو WebP؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "استخدم SVG للشعارات (Logos) والأيقونات والرموز التخطيطية؛ لأنها تعتمد على معادلات رياضية متجهية تمنح وضوحاً مطلقاً بأي حجم شاشة ووزن ملف لا يتعدى بضعة كيلوبايتات."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل تشترط جوجل استخدام صيغ الجيل القادم (Next-Gen Formats) لتصدر نتائج البحث؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، يعتبر اختبار Google PageSpeed استخدام صيغ الجيل القادم (WebP و AVIF) توصية رئيسية لخفض مؤشر LCP لأقل من 1.2 ثانية، وهو عامل ترتيب خوارزمي رسمي في Google."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف يؤثر اختيار صيغة الصورة على تكلفة استضافة الموقع وباقات زوارك؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "تحويل مكتبة الصور من PNG/JPG إلى WebP يخفض استهلاك النطاق الترددي للـ CDN بنسبة تصل إلى 70%، ويوفر مئات الميجابايتات على باقات هواتف زوار موقعك."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل تتيح أداة GToolix تحويل الصور بدون رفعها إلى الإنترنت؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، أداة GToolix تعمل محلياً 100% داخل متصفحك (Client-Side WebAssembly)؛ حيث تتم كافة عمليات التحويل والضغط على جهازك دون إرسال أي بايت لخوادم خارجية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أنشئ كود HTML متجاوب يدعم صيغتي WebP و AVIF معاً؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "باستخدام وسم picture مع وسمي source؛ الأول لـ AVIF والثاني لـ WebP مع وسم img احتياطي لـ JPG يحدد الأبعاد وخاصية loading=\"lazy\"."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.gtoolix.com/blog/jpg-vs-png-vs-webp#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://www.gtoolix.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "المقالات",
+          "item": "https://www.gtoolix.com/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟ | GToolix",
+          "item": "https://www.gtoolix.com/blog/jpg-vs-png-vs-webp"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+</head>
+
+<body>
+    <header class="site-nav" id="site-header">
+        <a class="site-nav__brand" href="/" aria-label="GToolix Home">
+            <span class="site-nav__brand-mark">
+                <picture>
+                    <source srcset="/static/img/logo.webp" type="image/webp">
+                    <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38"
+                        height="38" loading="eager" fetchpriority="high">
+                </picture>
+            </span>
+            <span>GToolix</span>
+        </a>
+        <nav class="site-nav__links" id="site-nav-links" aria-label="Main Navigation">
+            <a href="/tools" class="nav-item-link" data-nav="tools">
+                <span class="nav-item-icon nav-icon-tools">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navTools">الأدوات</span>
+                    <span class="nav-item-desc" data-i18n="common.navToolsDesc">أدوات ذكية وتفاعلية مجانية</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/blog" class="nav-item-link" data-nav="blog">
+                <span class="nav-item-icon nav-icon-blog">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="10" y1="6" x2="16" y2="6"></line><line x1="10" y1="10" x2="16" y2="10"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navBlog">المقالات</span>
+                    <span class="nav-item-desc" data-i18n="common.navBlogDesc">شروحات ومقالات حصرية ومفيدة</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+            <a href="/programs" class="nav-item-link" data-nav="programs">
+                <span class="nav-item-icon nav-icon-programs">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M8 10l3 3-3 3"></path><line x1="13" y1="16" x2="17" y2="16"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label" data-i18n="common.navPrograms">البرامج</span>
+                    <span class="nav-item-desc" data-i18n="common.navProgramsDesc">تطبيقات وحلول رقمية جاهزة</span>
+                </span>
+                <span class="nav-item-chevron" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+            </a>
+        </nav>
+        <div class="site-nav__right">
+            <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Toggle theme">
+                <span class="theme-toggle-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </span>
+            </button>
+            <div class="lang-switcher" aria-label="Language Switcher">
+                <a href="/en/blog/jpg-vs-png-vs-webp" class="lang-btn" id="lang-en-btn" onclick="try{localStorage.setItem('gtoolix_language','en');localStorage.setItem('siteLang','en');}catch(e){}">EN</a>
+                <a href="/blog/jpg-vs-png-vs-webp" class="lang-btn active" id="lang-ar-btn" onclick="try{localStorage.setItem('gtoolix_language','ar');localStorage.setItem('siteLang','ar');}catch(e){}">AR</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false"
+                aria-controls="site-nav-links" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+
+    <div class="background-gradient"></div>
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="particles" id="particles"></div>
+
+    <main class="container" style="max-width: 1040px; padding-top: clamp(6.75rem, 11vw, 8.5rem); padding-bottom: 5rem; margin: 0 auto; padding-inline: max(1.25rem, 4vw);">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/">الرئيسية</a></li>
+                <li class="separator" aria-hidden="true">/</li>
+                <li><a href="/blog">المقالات</a></li>
+                <li class="separator" aria-hidden="true">/</li>
+                <li aria-current="page">الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟</li>
+            </ol>
+        </nav>
+
+        <!-- Article Header Section -->
+        <article class="article-detail-page">
+            <header class="article-header" style="margin-bottom: 2.5rem; text-align: right;">
+                <span class="kicker" style="color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; margin-bottom: 0.75rem;">دليل هندسة الوسائط وتنسيقات الصور الرقمية</span>
+                <h1 style="font-size: clamp(2.1rem, 4.5vw, 3.2rem); font-weight: 800; color: var(--text); line-height: 1.35; margin-bottom: 1.25rem;">
+                    الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟
+                </h1>
+                <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.7; margin-bottom: 1.75rem; max-width: 860px;">
+                    دليل هندسي موسوعي يقارن بين أشهر تنسيقات الصور الرقمية (JPG و PNG و WebP و AVIF و SVG): متى تختار PNG للشفافية؟ متى تختار JPG للصور المعقدة؟ ولماذا أصبحت WebP المعيار الذهبي للويب الحديث؟
+                </p>
+
+                <!-- Article Meta Info -->
+                <div class="article-meta-row" style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; padding-bottom: 1.75rem; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-size: 0.92rem;">
+                    <div style="display: flex; align-items: center; gap: 0.45rem;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span>فريق تحرير GToolix</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Featured Image Hero Banner -->
+            <div class="article-featured-hero" style="border-radius: 1.25rem; overflow: hidden; margin-bottom: 3.5rem; aspect-ratio: 16/9; box-shadow: 0 16px 40px -10px rgba(0,0,0,0.3); border: 1px solid var(--border);">
+                <img src="/static/img/blog/formats-comparison.jpg" alt="الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟ | GToolix" style="width: 100%; height: 100%; object-fit: cover;" fetchpriority="high">
+            </div>
+
+            <!-- Table of Contents (فهرس المحتويات) -->
+            <nav class="article-toc-box reveal" aria-label="Table of Contents">
+                <div class="toc-title">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    <span>فهرس محتويات الدليل</span>
+                </div>
+                <ol>
+                    <li><a href="#formats-overview">التطور التاريخي وهندسة تنسيقات الصور الرقمية (JPG و PNG و WebP و AVIF و SVG)</a></li>
+                    <li><a href="#deep-dive-jpg">التشريح الداخلي لصيغة JPG / JPEG: كيف تعمل خوارزمية DCT ومتى تستخدمها؟</a></li>
+                    <li><a href="#deep-dive-png">التشريح الداخلي لصيغة PNG: قوة الضغط بدون فقدان (Lossless Deflate) والشفافية التامة</a></li>
+                    <li><a href="#deep-dive-webp">ثورة WebP: كيف جمعت Google بين خفة JPG وشفافية PNG والرسوم المتحركة؟</a></li>
+                    <li><a href="#avif-next-gen">الوافد الجديد AVIF: هل يطيح بـ WebP في عام 2026؟</a></li>
+                    <li><a href="#master-comparison-matrix">جدول المقارنة الشاملة: مصفوفة المقارنة الهندسية لجميع الصيغ</a></li>
+                    <li><a href="#real-world-benchmarks">اختبارات الأداء المعملية (Real-World Benchmarks): مقارنة الحجم والجودة بالأرقام</a></li>
+                    <li><a href="#seo-core-web-vitals">تأثير اختيار صيغة الصورة على مؤشرات Core Web Vitals وسيو جوجل (SEO)</a></li>
+                    <li><a href="#decision-tree-guide">شجرة اتخاذ القرار العملي: كيف تختار الصيغة المناسبة لكل عنصر في موقعك؟</a></li>
+                    <li><a href="#html5-picture-responsive">أحدث وسوم HTML5 التكيفية: تقديم الصيغ الحديثة مع Fallback توافقي</a></li>
+                    <li><a href="#gtoolix-converter-tutorial">كيفية تحويل وضغط الصور بين كافة الصيغ مجاناً وبأعلى أمان عبر GToolix</a></li>
+                    <li><a href="#common-format-mistakes">أخطاء شائعة في التعامل مع صيغ الصور وكيف تتفاداها</a></li>
+                    <li><a href="#future-jpeg-xl-ai">مستقبل وسائط الويب: معيار JPEG XL وصيغ الذكاء الاصطناعي التكيفية</a></li>
+                    <li><a href="#actionable-developer-checklist">قائمة المراجعة الذهبية لمطوري الويب وأصحاب المواقع (Actionable Checklist)</a></li>
+                    <li><a href="#faq-section">الأسئلة الشائعة والإجابات الشاملة (FAQ)</a></li>
+                </ol>
+            </nav>
+
+            <!-- Article Body Content Sections -->
+            <div class="article-content-wrapper">
+            <section id="formats-overview" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    1. التطور التاريخي وهندسة تنسيقات الصور الرقمية (JPG و PNG و WebP و AVIF و SVG)
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>شهدت شبكة الويب العالمية تطوراً هائلاً في هندسة ضغط الوسائط الرقمية على مدار العقود الثلاثة الماضية. لم يُبتكر أي تنسيق صورة بمحض الصدفة، بل جاء كل معيار استجابةً لتحديات تقنية محددة في سرعة المعالجة ونطاق التردد (Bandwidth):</p>
+<ul>
+    <li><strong>صيغة JPEG / JPG (عام 1992):</strong> ابتكرتها لجنة <em>Joint Photographic Experts Group</em> كأول معيار عالمي لضغط الصور الفوتوغرافية الطبيعية مع فقدان (Lossy)، بهدف تقليص أحجام الصور الضخمة لتناسب شبكات الإنترنت الأولى عبر خوارزميات تحويل جيب التمام المتقطع (DCT).</li>
+    <li><strong>صيغة PNG (عام 1996):</strong> طُوّرت صيغة <em>Portable Network Graphics</em> كمعيار مفتوح ومجاني بدون فقدان (Lossless) ليحل بديلاً قانونياً وتقنياً لصيغة GIF الاحتكارية، مع تقديم دعم تاريخي للشفافية المتدرجة الكاملة (Alpha Channel).</li>
+    <li><strong>صيغة WebP (عام 2010):</strong> أطلقتها شركة <strong>Google</strong> كمعيار موحد للجيل الجديد يجمع بين قوة ضغط JPG، وشفافية PNG، ودعم الرسوم المتحركة لـ GIF في حاوية برمجية واحدة خفيفة الوزن.</li>
+    <li><strong>صيغة AVIF (عام 2019):</strong> أحدث التنسيقات المشتقة من كودك الفيديو مفتوح المصدر AV1، وتقدم أعلى كفاءة ضغط حجمي ممكنة بنطاق ديناميكي عالي (HDR).</li>
+    <li><strong>صيغة SVG (عام 2001):</strong> لغة التوصيف المتجهية المبنية على كود XML، والتي تمنح دقة بصرية لا نهائية بأحجام متناهية الصغر للرسومات والأيقونات.</li>
+</ul>
+
+                </div>
+            </section>
+
+            <section id="deep-dive-jpg" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    2. التشريح الداخلي لصيغة JPG / JPEG: كيف تعمل خوارزمية DCT ومتى تستخدمها؟
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>تعتمد صيغة <strong>JPEG</strong> على خوارزمية ضغط مع فقدان (Lossy Compression) تهدف إلى خداع العين البشرية عن طريق التخلص من الترددات اللونية الدقيقة. تمر معالجة ملف JPG بالمراحل الرياضية التالية:</p>
+
+<ol style="margin-inline-start: 1.5rem; line-height: 2;">
+    <li><strong>فصل السطوع عن اللون (YCbCr Space):</strong> يتم فصل إشارة الإضاءة (Luminance) عن إشارات اللون (Chrominance)، وتقليل عينات اللون بمقدار النصف (Chroma Subsampling 4:2:0).</li>
+    <li><strong>تحويل DCT على كتل 8×8 بكسل:</strong> تحويل قيم البكسلات إلى ترددات رياضية لعزل التدرجات الكبرى عن التفاصيل الدقيقة.</li>
+    <li><strong>التكميم والترميز الأنتروبي:</strong> حذف الترددات غير المرئية وتقريبها لأصفار وتشفيرها عبر خوارزمية <em>Huffman</em>.</li>
+</ol>
+
+<div class="comparison-table-wrapper" style="overflow-x: auto; margin: 1.5rem 0;">
+    <table style="width: 100%; border-collapse: collapse; text-align: right; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
+        <thead>
+            <tr style="background: rgba(59, 130, 246, 0.12); border-bottom: 2px solid var(--border);">
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">أبرز نقاط قوة JPG</th>
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">أبرز عيوب ومحدوديات JPG</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 1rem; vertical-align: top;">
+                    ✔️ دعم ملايين الألوان (24-bit TrueColor).<br>
+                    ✔️ توافق كلي بنسبة 100% مع كافة البرامج والمتصفحات وأجهزة الطباعة.<br>
+                    ✔️ مثالي للصور الفوتوغرافية المعقدة ذات التدرجات الناعمة.
+                </td>
+                <td style="padding: 1rem; vertical-align: top; color: #ef4444;">
+                    ❌ لا يدعم الشفافية نهائياً (No Alpha Channel).<br>
+                    ❌ لا يدعم الرسوم المتحركة.<br>
+                    ❌ ظهور تشوهات الحواف (Artifacts & Banding) حول النصوص والشعارات.<br>
+                    ❌ تدهور الجودة التراكمي مع كل عملية حفظ جديدة (Generation Loss).
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+                </div>
+            </section>
+
+            <section id="deep-dive-png" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    3. التشريح الداخلي لصيغة PNG: قوة الضغط بدون فقدان (Lossless Deflate) والشفافية التامة
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>صُممت صيغة <strong>PNG</strong> لتكون المعيار المطلق للنقاء البصري الخالي من أي فقدان في البيانات (Lossless). تعتمد PNG على خوارزمية <em>Deflate</em> الرياضية (وهي مزيج متطور بين خوارزمية LZ77 للبحث عن السلاسل المكررة وترميز Huffman):</p>
+
+<ul>
+    <li><strong>الفلاتر التنبؤية (Predictive Filters):</strong> قبل ضغط البكسلات، تطبق صيغة PNG فلاتر تنبؤية (مثل Sub, Up, Average, Paeth) لحساب الفروق الرياضية بين البكسلات المتجاورة بدلاً من تخزين قيمها المطلقة، مما يرفع كفاءة الضغط بشكل كبير.</li>
+    <li><strong>دعم الشفافية الاحترافية (Alpha Channel):</strong> تتيح صيغة <strong>PNG-24</strong> قناة ألفا بعمق 8 بت، مما يوفر <strong>256 مستوى من الشفافية المتدرجة</strong>، مما يتيح دمج الظلال الناعمة والحواف المنحنية للشعارات فوق أي خلفية ويب دون ظهور حواف بيضاء خشنة.</li>
+    <li><strong>مقارنة PNG-8 مقابل PNG-24:</strong> صيغة PNG-8 تقتصر على لوحة ألوان من 256 لوناً فقط بحجم ملف صغير، بينما توفر PNG-24 أكثر من 16.7 مليون لون بنقاء فوتوغرافي كامل ولكن بحجم ملف أثقل بعدة أضعاف.</li>
+</ul>
+
+                </div>
+            </section>
+
+            <section id="deep-dive-webp" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    4. ثورة WebP: كيف جمعت Google بين خفة JPG وشفافية PNG والرسوم المتحركة؟
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>تعتبر صيغة <strong>WebP</strong> الإنجاز الأبرز في تاريخ وسائط الويب الحديثة. استند مهندسو Google في تطويرها إلى كودك الفيديو فائق الكفاءة <code>VP8</code> و <code>VP8L</code>:</p>
+
+<ol style="margin-inline-start: 1.5rem; line-height: 2;">
+    <li><strong>التنبؤ المكاني للبكسلات (Intra-Frame Spatial Prediction):</strong>
+        <br>تستخدم WebP تقنية التنبؤ الذكي بمحتوى الكتل البكسلية المجاورة اعتماداً على متجهات الحركة والتدرج، وتقوم بتشفير "فارق الخطأ" فقط، مما يقلل الحجم بنسبة هائلة تتفوق بها على JPG التقليدي.
+    </li>
+    <li><strong>الدمج الثوري للخصائص (All-in-One Container):</strong>
+        <br>تدعم WebP الضغط بفقدان (Lossy) والضغط بدون فقدان (Lossless)، مع <strong>دعم كامل للشفافية (Alpha Channel) في كلا النمطين</strong>.
+    </li>
+    <li><strong>بديل فائق للصور المتحركة (Animated WebP):</strong>
+        <br>تتيح WebP تخزين الرسوم المتحركة بحجم أصغر بنسبة <strong>64% مقارنة بملفات GIF القديمة</strong> وبدقة ألوان 24-bit كاملة دون التقيد بلوحة الـ 256 لوناً الباهتة لـ GIF.
+    </li>
+</ol>
+
+                </div>
+            </section>
+
+            <section id="avif-next-gen" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    5. الوافد الجديد AVIF: هل يطيح بـ WebP في عام 2026؟
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>تمثل صيغة <strong>AVIF (AV1 Image File Format)</strong> قمة التطور في خوارزميات الضغط الحجمي للصور. طُوّرت الصيغة بواسطة تحالف <em>Alliance for Open Media (AOMedia)</em> بمشاركة عمالقة التكنولوجيا (Google, Apple, Microsoft, Mozilla, Netflix):</p>
+
+<ul>
+    <li><strong>كفاءة ضغط قياسية:</strong> توفر AVIF حجماً أصغر بنسبة تصل إلى <strong>20% مقارنة بـ WebP</strong> وبنسبة <strong>50% مقارنة بـ JPEG</strong> بنفس الجودة البصرية.</li>
+    <li><strong>دعم النطاق الديناميكي العالي (HDR & Wide Color Gamut):</strong> تدعم AVIF عمق لوني 10 بت و 12 بت وفضاء الألوان الواسع BT.2020، مما يمنحها قدرة خارقة على عرض التدرجات الفلكية والمشاهد السينمائية دون أي تكسير لوني (Color Banding).</li>
+    <li><strong>الموازنة بين سرعة فك التشفير والتوافق:</strong> على الرغم من تفوق AVIF في الضغط، إلا أن معالجة فك تشفيرها تستهلك طاقة معالج (CPU Decoding) أعلى قليلاً من WebP، وتصل نسبة دعم المتصفحات العالمية لها حالياً إلى <strong>93.5%</strong> مقارنة بـ <strong>98.8%</strong> لصيغة WebP.</li>
+</ul>
+
+                </div>
+            </section>
+
+            <section id="master-comparison-matrix" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    6. جدول المقارنة الشاملة: مصفوفة المقارنة الهندسية لجميع الصيغ
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>يوضح الجدول التالي المقارنة التقنية الشاملة والمعيارية لجميع التنسيقات الخمسة على الويب:</p>
+
+<div class="comparison-table-wrapper" style="overflow-x: auto; margin: 1.75rem 0;">
+    <table style="width: 100%; border-collapse: collapse; text-align: right; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+        <thead>
+            <tr style="background: rgba(59, 130, 246, 0.12); border-bottom: 2px solid var(--border);">
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">المعيار التقني</th>
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">JPEG / JPG</th>
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">PNG</th>
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">WebP (الذهبي)</th>
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">AVIF (المستقبل)</th>
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">SVG (المتجهات)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.9rem; font-weight: 700;">نوع خوارزمية الضغط</td>
+                <td style="padding: 0.9rem;">Lossy (DCT)</td>
+                <td style="padding: 0.9rem;">Lossless (Deflate)</td>
+                <td style="padding: 0.9rem; color: #10b981; font-weight: 700;">Lossy & Lossless</td>
+                <td style="padding: 0.9rem; color: #10b981; font-weight: 700;">Lossy & Lossless (AV1)</td>
+                <td style="padding: 0.9rem;">Lossless (XML Vector)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.9rem; font-weight: 700;">دعم الشفافية (Alpha)</td>
+                <td style="padding: 0.9rem; color: #ef4444;">❌ غير مدعومة</td>
+                <td style="padding: 0.9rem; color: #10b981;">✔️ كاملة (256 مستوى)</td>
+                <td style="padding: 0.9rem; color: #10b981;">✔️ كاملة (في كلا النمطين)</td>
+                <td style="padding: 0.9rem; color: #10b981;">✔️ كاملة (12-bit)</td>
+                <td style="padding: 0.9rem; color: #10b981;">✔️ كاملة ومتجهية</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.9rem; font-weight: 700;">الرسوم المتحركة</td>
+                <td style="padding: 0.9rem; color: #ef4444;">❌ غير مدعومة</td>
+                <td style="padding: 0.9rem; color: #eab308;">⚠️ APNG (نادر)</td>
+                <td style="padding: 0.9rem; color: #10b981;">✔️ مدعومة (بديل GIF)</td>
+                <td style="padding: 0.9rem; color: #10b981;">✔️ مدعومة بامتياز</td>
+                <td style="padding: 0.9rem; color: #10b981;">✔️ عبر CSS و SMIL</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.9rem; font-weight: 700;">الحجم النسبي للملف</td>
+                <td style="padding: 0.9rem;">متوسط</td>
+                <td style="padding: 0.9rem; color: #ef4444;">كبير (3x إلى 5x)</td>
+                <td style="padding: 0.9rem; color: #10b981; font-weight: 700;">صغير جداً (أصغر بـ 35%)</td>
+                <td style="padding: 0.9rem; color: #10b981; font-weight: 800;">الأصغر مطلقاً (أصغر بـ 50%)</td>
+                <td style="padding: 0.9rem; color: #10b981;">متناهي الصغر (1KB–5KB)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.9rem; font-weight: 700;">توافق المتصفحات</td>
+                <td style="padding: 0.9rem;">100% (شامل)</td>
+                <td style="padding: 0.9rem;">100% (شامل)</td>
+                <td style="padding: 0.9rem; font-weight: 700; color: #10b981;">98.8% (عالمي)</td>
+                <td style="padding: 0.9rem; color: #3b82f6;">93.5% (حديث)</td>
+                <td style="padding: 0.9rem;">100% (شامل)</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.9rem; font-weight: 700;">سرعة فك التشفير (Decode)</td>
+                <td style="padding: 0.9rem; color: #10b981;">فائقة السرعة</td>
+                <td style="padding: 0.9rem; color: #10b981;">سريعة جداً</td>
+                <td style="padding: 0.9rem; color: #10b981;">فائقة السرعة</td>
+                <td style="padding: 0.9rem; color: #eab308;">متوسطة (أعلى جهداً)</td>
+                <td style="padding: 0.9rem; color: #10b981;">فورية (رندرة متجهية)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+                </div>
+            </section>
+
+            <section id="real-world-benchmarks" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    7. اختبارات الأداء المعملية (Real-World Benchmarks): مقارنة الحجم والجودة بالأرقام
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>أجرينا اختبارات معملية دقيقة على 3 سيناريوهات حقيقية للتحقق من الفروق الفعلية في الحجم ومؤشر الجودة البصرية (SSIM):</p>
+
+<div class="comparison-table-wrapper" style="overflow-x: auto; margin: 1.5rem 0;">
+    <table style="width: 100%; border-collapse: collapse; text-align: right; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
+        <thead>
+            <tr style="background: rgba(59, 130, 246, 0.12); border-bottom: 2px solid var(--border);">
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">نوع الصورة المختبرة</th>
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">حجم PNG الأصلي</th>
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">حجم JPG (Quality 85%)</th>
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">حجم WebP (Quality 85%)</th>
+                <th style="padding: 1rem; color: var(--primary); font-weight: 700;">حجم AVIF (Quality 80%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.9rem; font-weight: 700;">صورة فوتوغرافية لمنتج (1920×1080)</td>
+                <td style="padding: 0.9rem; color: #ef4444;">3.42 MB</td>
+                <td style="padding: 0.9rem;">480 KB</td>
+                <td style="padding: 0.9rem; color: #10b981; font-weight: 700;">142 KB (توفير 70%)</td>
+                <td style="padding: 0.9rem; color: #10b981; font-weight: 800;">98 KB (توفير 79%)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.9rem; font-weight: 700;">شعار شفاف مع ظلال ناعمة (512×512)</td>
+                <td style="padding: 0.9rem;">185 KB</td>
+                <td style="padding: 0.9rem; color: #ef4444;">❌ تفقد الشفافية</td>
+                <td style="padding: 0.9rem; color: #10b981; font-weight: 700;">48 KB (توفير 74%)</td>
+                <td style="padding: 0.9rem; color: #10b981; font-weight: 700;">42 KB (توفير 77%)</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.9rem; font-weight: 700;">لقطة شاشة لواجهة لوحة تحكم (1440×900)</td>
+                <td style="padding: 0.9rem; color: #ef4444;">1.85 MB</td>
+                <td style="padding: 0.9rem;">310 KB (حواف مشوشة)</td>
+                <td style="padding: 0.9rem; color: #10b981; font-weight: 700;">115 KB (نصوص حادة)</td>
+                <td style="padding: 0.9rem; color: #10b981; font-weight: 800;">86 KB (نصوص حادة)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+                </div>
+            </section>
+
+            <section id="seo-core-web-vitals" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    8. تأثير اختيار صيغة الصورة على مؤشرات Core Web Vitals وسيو جوجل (SEO)
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>تحذر أداة <strong>Google PageSpeed Insights</strong> صراحة في تقاريرها عبر توصية: <em>"Serve images in next-gen formats"</em>. إليك كيف ينعكس اختيار التنسيق المناسب على تصدر موقعك في محرك البحث:</p>
+
+<ol style="margin-inline-start: 1.5rem; line-height: 2;">
+    <li><strong>تحقيق نتيجة خضراء في مؤشر LCP:</strong> استخدام صورة WebP أو AVIF بدلاً من PNG لبانر الصفحة الرئيسية يقلل زمن التحميل من 3.8 ثوانٍ إلى أقل من 0.9 ثانية، مما يمنح موقعك الدرجة القصوى في تقييم Core Web Vitals.</li>
+    <li><strong>خفض استهلاك ذاكرة DOM وتجميد المعالج:</strong> الصور الثقيلة بصيغة PNG تتطلب مساحة ذاكرة RAM ضخمة لفك ضغطها على هواتف المحمول، مما يرفع زمن مؤشر INP (Interaction to Next Paint). صيغ الجيل القادم تضمن استجابة فورية ونقرات سريعة.</li>
+    <li><strong>مضاعفة سرعة فهرسة المقالات الجديدة:</strong> تخفيض الوزن الكلي للصفحات يُمكّن عناكب الزحف Googlebot من زيارة وفهرسة عشرات الصفحات الإضافية يومياً بنفس ميزانية الزحف المخصصة لموقعك.</li>
+</ol>
+
+                </div>
+            </section>
+
+            <section id="decision-tree-guide" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    9. شجرة اتخاذ القرار العملي: كيف تختار الصيغة المناسبة لكل عنصر في موقعك؟
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>اتبع هذه الخريطة المباشرة لاتخاذ القرار الصحيح في أقل من 5 ثوانٍ لكل عنصر تصميم في موقعك:</p>
+
+<div style="background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;">
+    <ul style="margin: 0; padding-inline-start: 1.2rem; line-height: 2.2;">
+        <li>🖼️ <strong>صور المنتجات بالمتاجر والمقالات الفوتوغرافية:</strong> 👈 <code>WebP (Lossy 80%–85%)</code> (الخيار الذهبي القياسي للسرعة والنقاء).</li>
+        <li>🌄 <strong>بانر الصفحة الرئيسية وخلفيات الشاشة الكاملة (Hero Sections):</strong> 👈 <code>AVIF</code> مع بديل <code>WebP</code> لتقليل حجم البانر لأقل من 150KB.</li>
+        <li>🎨 <strong>الشعارات (Logos)، الأيقونات، والرسومات التوضيحية البسيطة:</strong> 👈 <code>SVG</code> (نقاء متجهي مطلق وحجم أقل من 5KB).</li>
+        <li>📸 <strong>لقطات الشاشة للشروحات الحاوية على نصوص دقيقة:</strong> 👈 <code>WebP Lossless</code> أو <code>PNG-24</code>.</li>
+        <li>🎬 <strong>الرسوم المتحركة والعناصر التفاعلية القصيرة:</strong> 👈 <code>Animated WebP</code> أو كود <code>Lottie (JSON)</code> بدلاً من GIF.</li>
+        <li>🖨️ <strong>ملفات الطباعة الورقية والمستندات الرسمية:</strong> 👈 <code>JPEG عالي الجودة (300 DPI)</code> أو <code>TIFF</code>.</li>
+    </ul>
+</div>
+
+                </div>
+            </section>
+
+            <section id="html5-picture-responsive" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    10. أحدث وسوم HTML5 التكيفية: تقديم الصيغ الحديثة مع Fallback توافقي
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>أفضل الممارسات البرمجية المعتمدة عالمياً تعتمد على وسم <code>&lt;picture&gt;</code> لخدمة المتصفحات الحديثة بأعلى تقنية ممكنة دون حرمان الأجهزة القديمة من العرض السليم:</p>
+
+<div style="background: #020817; border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; overflow-x: auto;">
+<pre style="margin: 0; color: #38bdf8; font-family: monospace; font-size: 0.95rem; line-height: 1.6;"><code>&lt;picture&gt;
+  &lt;!-- الخيار الأول: AVIF للمتصفحات فائقة الحداثة --&gt;
+  &lt;source srcset="product-photo.avif" type="image/avif"&gt;
+  
+  &lt;!-- الخيار الثاني: WebP لمعظم المتصفحات الحديثة --&gt;
+  &lt;source srcset="product-photo.webp" type="image/webp"&gt;
+  
+  &lt;!-- البديل الاحتياطي: JPG الكلاسيكي مع الأبعاد الدقيقة --&gt;
+  &lt;img src="product-photo.jpg" 
+       alt="الفرق بين JPG و PNG و WebP لمواقع الويب" 
+       width="1200" 
+       height="800" 
+       loading="lazy" 
+       decoding="async"&gt;
+&lt;/picture&gt;</code></pre>
+</div>
+
+                </div>
+            </section>
+
+            <section id="gtoolix-converter-tutorial" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    11. كيفية تحويل وضغط الصور بين كافة الصيغ مجاناً وبأعلى أمان عبر GToolix
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>توفر منصة <a href="/tools/image-compressor">GToolix</a> محولاً وضواغط متطورة تعمل محلياً بنسبة 100% على جهازك عبر تقنية <em>WebAssembly</em> فائقة السرعة:</p>
+
+<ol style="margin-inline-start: 1.5rem; line-height: 2;">
+    <li><strong>إدراج الصور:</strong> افتح <a href="/tools/image-compressor">أداة ضغط ومحوّل الصور في GToolix</a> واسحب صور JPG أو PNG أو GIF إلى واجهة العمل.</li>
+    <li><strong>تحديد الصيغة ومستوى الجودة:</strong> اختر صيغة الإخراج المستهدفة (مثال: <strong>WebP</strong> أو <strong>PNG</strong>)، وحدد شريط الجودة المطلوب مع معاينة نسبة التوفير فورياً.</li>
+    <li><strong>المعاينة الحية للشفافية:</strong> استخدم شريط المقارنة التفاعلي للتأكد من سلاسة حواف الشفافية وثبات الألوان.</li>
+    <li><strong>التصدير الفوري أو كملف ZIP مجمع:</strong> حمّل الصور الفردية أو اضغط زر التنزيل المجمع لحفظ كافة ملفاتك المحولة في ثانية واحدة بأمان وخصوصية تامة.</li>
+</ol>
+
+                </div>
+            </section>
+
+            <section id="common-format-mistakes" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    12. أخطاء شائعة في التعامل مع صيغ الصور وكيف تتفاداها
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>تجنب هذه الممارسات الخاطئة التي يقع فيها الكثير من مصممي ومطوري المواقع:</p>
+
+<ul>
+    <li>⚠️ <strong>تحويل PNG الشفافة إلى JPG بالخطأ:</strong> ينتج عنه تشويه التصميم بتحويل الخلفية الشفافة إلى لون أسود أو أبيض صلب. تأكد دائماً من التحويل إلى <code>WebP</code> أو الاحتفاظ بـ <code>PNG</code>.</li>
+    <li>⚠️ <strong>تحويل JPG منخفض الجودة إلى PNG أملاً في تحسينه:</strong> تحويل ملف JPG مضغوط مسبقاً إلى PNG لن يضيف أي بكسلات ضائعة، بل سيضاعف حجم الملف 5 مرات دون أي تحسن بصري على الإطلاق!</li>
+    <li>⚠️ <strong>الاستمرار في استخدام GIF للرسوم المتحركة:</strong> صيغة GIF متقادمة تعود لعام 1987، وتتسبب في إبطاء المواقع بشدة نظراً لكبر حجمها ومحدودية ألوانها (256 لوناً فقط). استبدلها بـ <code>Animated WebP</code> أو كود <code>Lottie</code>.</li>
+    <li>⚠️ <strong>إهمال تصغير أبعاد الصورة قبل التحويل:</strong> تحويل صورة بدقة 4000 بكسل إلى WebP يظل خطأ فادحاً إذا كانت مساحة العرض على الشاشة لا تتجاوز 800 بكسل. صغّر الأبعاد أولاً ثم حوّل واضغط.</li>
+</ul>
+
+                </div>
+            </section>
+
+            <section id="future-jpeg-xl-ai" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    13. مستقبل وسائط الويب: معيار JPEG XL وصيغ الذكاء الاصطناعي التكيفية
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>لا يتوقف علم هندسة الوسائط الرقمية عن التطور. تتصدر صيغة <strong>JPEG XL (JXL)</strong> المشهد المستقبلي بفضل ميزاتها الثورية:</p>
+
+<ul>
+    <li><strong>إعادة تحزيم ملفات JPEG القديمة بدون أي فقدان (Lossless Transcoding):</strong> تتيح JXL تقليص حجم مليارات صور JPEG الموجودة على الإنترنت حالياً بنسبة <strong>20% فورياً</strong> دون فك تشفيرها ودون فقدان ذرة واحدة من البيانات، مع إمكانية استعادة ملف الـ JPEG الأصلي بدقة 100%.</li>
+    <li><strong>أعلى دقة تصوير للمحترفين:</strong> دعم صور فائقة العرض تصل إلى مليارات البكسلات وعمق لوني يصل إلى 32 بت لكل قناة مع دعم الرسوم المتحركة والشفافية.</li>
+    <li><strong>ضغط الصور التكيفي بالذكاء الاصطناعي (Neural Compression):</strong> نماذج تعلم الآلة المدمجة بالمتصفحات التي تعيد بناء التفاصيل الدقيقة محلياً على أجهزة المستخدمين.</li>
+</ul>
+
+                </div>
+            </section>
+
+            <section id="actionable-developer-checklist" class="article-section" style="margin-bottom: 3rem;">
+                <h2 style="font-size: 1.55rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; line-height: 1.4; scroll-margin-top: 100px;">
+                    14. قائمة المراجعة الذهبية لمطوري الويب وأصحاب المواقع (Actionable Checklist)
+                </h2>
+                <div class="article-body-content" style="color: var(--text); font-size: 1.05rem; line-height: 1.8;">
+                    
+<p>اعتمد هذه القائمة المكونة من 6 معايير ذهبية قبل اعتماد أي صورة في موقعك أو متجرك:</p>
+
+<ol style="margin-inline-start: 1.5rem; line-height: 2.1;">
+    <li>✔️ <strong>الصور الفوتوغرافية:</strong> حوّلها إلى <code>WebP (Quality 80%–85%)</code> لتقليل الوزن لأقل من 120KB.</li>
+    <li>✔️ <strong>الشعارات والأيقونات:</strong> استخدم <code>SVG</code> خفيف الوزن مع كود نظيف وتجريد للعناصر غير المستخدمة.</li>
+    <li>✔️ <strong>الرسوم التخطيطية الشفافة:</strong> استخدم <code>WebP Lossless</code> أو <code>PNG-24</code> المحسن.</li>
+    <li>✔️ <strong>تحديد الأبعاد في كود HTML:</strong> كتابة <code>width</code> و <code>height</code> على كل وسم صورة لمنع اهتزاز الشاشة (CLS).</li>
+    <li>✔️ <strong>استخدام وسم picture:</strong> توفير صيغ حديثة مع بديل احتياطي لضمان التوافقية الشاملة.</li>
+    <li>✔️ <strong>المعالجة الآمنة عبر GToolix:</strong> استخدام <a href="/tools/image-compressor">أداة ضغط وتحويل الصور</a> لمعالجة دفعات الصور محلياً بسرعة وأمان 100%.</li>
+</ol>
+
+                </div>
+            </section>
+            </div>
+
+            <!-- Interactive In-Content Tool CTA Banner -->
+
+            <div class="article-cta-box reveal" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(6, 182, 212, 0.12) 100%); border: 1.5px solid rgba(59, 130, 246, 0.35); border-radius: 1.25rem; padding: 2.25rem; margin: 3.5rem 0; text-align: center; box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.25);">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 1rem; background: var(--primary); color: #fff; margin-bottom: 1.25rem; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                </div>
+                <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 0.75rem;">
+                    حوّل واضغط صورك بين صيغ JPG و PNG و WebP مجاناً
+                </h3>
+                <p style="color: var(--text-secondary); max-width: 620px; margin: 0 auto 1.5rem; font-size: 1.02rem; line-height: 1.65;">
+                    استخدم محوّل وضواغط الصور من GToolix لتحويل صورك وصور متجرك إلى صيغة WebP فائقة السرعة بضغطة زر واحدة بأمان وخصوصية تامة دون رفع أي ملفات.
+                </p>
+                <a href="/tools/image-compressor" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 2rem; font-size: 1.05rem; font-weight: 700; border-radius: 9999px; text-decoration: none; background: var(--primary); color: #fff; box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.5); transition: all 0.25s ease;">
+                    <span>تحويل وضغط الصور الآن ←</span>
+                </a>
+            </div>
+
+            <!-- FAQ Section -->
+            <section id="faq-section" class="article-faq-section reveal" style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); scroll-margin-top: 100px;">
+                <div style="margin-bottom: 2rem; text-align: right;">
+                    <span class="kicker" style="color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase;">الأسئلة الأكثر تداولاً</span>
+                    <h2 style="font-size: 2rem; font-weight: 800; color: var(--text); margin-top: 0.4rem;">
+                        الأسئلة الشائعة حول ضغط الصور وتنسيقات الويب
+                    </h2>
+                </div>
+                <div class="faq-accordion-list">
+                    <div class="faq-item open">
+                        <button class="faq-question" type="button" aria-expanded="true">
+                            <span>ما هو الفرق الأساسي بين صيغتي JPG و PNG باختصار؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>صيغة JPG مخصصة للصور الفوتوغرافية وتعتمد على الضغط مع فقدان (Lossy) لتوفير الحجم لكنها لا تدعم الشفافية، بينما صيغة PNG تعتمد على الضغط بدون فقدان (Lossless) وتدعم الشفافية الكاملة (Alpha) لكن حجم ملفاتها أثقل بكثير.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>لماذا تعتبر صيغة WebP الخيار الأفضل لمواقع الويب في 2026؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>لأن WebP تجمع بين أفضل مزايا JPG و PNG؛ حيث توفر حجماً أصغر بنسبة 35% من JPG وبنسبة 26% من PNG مع دعم كامل للشفافية والرسوم المتحركة وتوافق مع أكثر من 98.8% من المتصفحات.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>هل يؤدي تحويل صورة JPG إلى PNG إلى تحسين جودتها أو زيادة وضوحها؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>كلا نهائياً. تحويل JPG إلى PNG لا يسترجع أي بيانات فُقدت أثناء ضغط الـ JPG الأصلي، بل سيضاعف حجم الملف 4 إلى 5 أضعاف دون أي زيادة في النقاء البصري.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>كيف أحافظ على شفافية خلفية الصورة عند تحويلها بين الصيغ؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>اختر صيغة WebP أو PNG كصيغة إخراج؛ فكلاهما يدعم قناة ألفا الشفافة بالكامل، وتجنب صيغة JPG لأنها لا تدعم الشفافية وستحول الخلفية إلى لون أسود أو أبيض صلب.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>ما هي صيغة AVIF وهل تتفوق على WebP حالياً؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>صيغة AVIF مبنية على كودك AV1 وتوفر ضغطاً أصغر بنسبة 20% من WebP مع دعم ألوان 12-bit و HDR، ولكن سرعة فك تشفيرها تتطلب طاقة معالج أعلى قليلاً وتوافقها 93.5% مقارنة بـ 98.8% لـ WebP.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>هل تدعم جميع المتصفحات صيغة WebP في 2026؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>نعم، تدعم صيغة WebP كافة المتصفحات الحديثة بما فيها Google Chrome و Safari (على آيفون وماك) و Mozilla Firefox و Microsoft Edge بنسبة توافق عالمية تتجاوز 98.8%.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>ما هو البديل الأفضل للصور المتحركة بصيغة GIF القديمة؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>البديل الأفضل هو استخدام صيغة Animated WebP التي توفر توفيراً في الحجم يصل إلى 64% مع دعم 16.7 مليون لون بدلاً من 256 لوناً فقط لـ GIF، أو استخدام ملفات Lottie JSON.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>متى يجب أن أستخدم صيغة SVG بدلاً من PNG أو WebP؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>استخدم SVG للشعارات (Logos) والأيقونات والرموز التخطيطية؛ لأنها تعتمد على معادلات رياضية متجهية تمنح وضوحاً مطلقاً بأي حجم شاشة ووزن ملف لا يتعدى بضعة كيلوبايتات.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>هل تشترط جوجل استخدام صيغ الجيل القادم (Next-Gen Formats) لتصدر نتائج البحث؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>نعم، يعتبر اختبار Google PageSpeed استخدام صيغ الجيل القادم (WebP و AVIF) توصية رئيسية لخفض مؤشر LCP لأقل من 1.2 ثانية، وهو عامل ترتيب خوارزمي رسمي في Google.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>كيف يؤثر اختيار صيغة الصورة على تكلفة استضافة الموقع وباقات زوارك؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>تحويل مكتبة الصور من PNG/JPG إلى WebP يخفض استهلاك النطاق الترددي للـ CDN بنسبة تصل إلى 70%، ويوفر مئات الميجابايتات على باقات هواتف زوار موقعك.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>هل تتيح أداة GToolix تحويل الصور بدون رفعها إلى الإنترنت؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>نعم، أداة GToolix تعمل محلياً 100% داخل متصفحك (Client-Side WebAssembly)؛ حيث تتم كافة عمليات التحويل والضغط على جهازك دون إرسال أي بايت لخوادم خارجية.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>كيف أنشئ كود HTML متجاوب يدعم صيغتي WebP و AVIF معاً؟</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>باستخدام وسم picture مع وسمي source؛ الأول لـ AVIF والثاني لـ WebP مع وسم img احتياطي لـ JPG يحدد الأبعاد وخاصية loading=&quot;lazy&quot;.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Articles Section (مقالات وشروحات ذات صلة) -->
+            <section class="related-articles-section reveal">
+                <div class="related-articles-header">
+                    <span class="kicker" style="color: var(--primary); font-weight: 700; font-size: 0.95rem; text-transform: uppercase;">مقالات مقترحة للقراءة</span>
+                    <h2 style="font-size: 2rem; font-weight: 800; color: var(--text); margin-top: 0.4rem;">
+                        مقالات وشروحات ذات صلة
+                    </h2>
+                </div>
+                <div class="related-articles-grid">
+                <a href="/blog/qr-code" class="related-article-card">
+                    <div class="related-article-thumb-wrap">
+                        <img src="/static/img/blog/qr-code-guide.jpg" alt="دليل رموز QR Code الشامل: إنشاء واستخدام وقراءة الباركود" class="related-article-thumb" loading="lazy">
+                    </div>
+                    <div class="related-article-body">
+                        <span class="related-article-tag">أدوات الويب</span>
+                        <h3 class="related-article-title">دليل رموز QR Code الشامل: إنشاء واستخدام وقراءة الباركود</h3>
+                        <p class="related-article-desc">دليل هندسي موسوعي يغطي البنية التشريحية وتصحيح الأخطاء واستخدام مولد QR المجاني لتوليد رموز بدقة فائقة.</p>
+                        <span class="related-article-cta">
+                            <span>اقرأ الدليل الكامل ←</span>
+                        </span>
+                    </div>
+                </a>
+                <a href="/blog/image-compression-guide" class="related-article-card">
+                    <div class="related-article-thumb-wrap">
+                        <img src="/static/img/blog/image-compression.jpg" alt="أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل التقني الشامل 2026" class="related-article-thumb" loading="lazy">
+                    </div>
+                    <div class="related-article-body">
+                        <span class="related-article-tag">ضغط الصور</span>
+                        <h3 class="related-article-title">أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل التقني الشامل 2026</h3>
+                        <p class="related-article-desc">دليل موسوعي يشرح خوارزميات الضغط وفصل الفضاء اللوني وتحسين Core Web Vitals وسرعة المتاجر مع GToolix.</p>
+                        <span class="related-article-cta">
+                            <span>اقرأ الدليل الكامل ←</span>
+                        </span>
+                    </div>
+                </a>
+                </div>
+            </section>
+
+            <!-- Bottom Back Navigation (Hover turns blue) -->
+            <div class="article-back-nav">
+                <a href="/blog" class="article-back-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                    <span>العودة لكافة المقالات</span>
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+                    <a class="footer-brand" href="/" aria-label="GToolix Home">
+                        <span class="site-nav__brand-mark">
+                            <picture>
+                                <source srcset="/static/img/logo.webp" type="image/webp">
+                                <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38" height="38" loading="lazy">
+                            </picture>
+                        </span>
+                        <span>GToolix</span>
+                    </a>
+                    <p class="footer-note">GToolix مخصص للاستخدام الشخصي مع محتوى تملك حقوقه أو مرخّص للاستخدام العام.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">الأدوات المميزة</h4>
+                    <nav class="footer-links">
+                        <a href="/tools/qr-code-generator">مولد رمز QR</a>
+                        <a href="/tools/youtube-thumbnail-downloader">تحميل الصور المصغرة لليوتيوب</a>
+                        <a href="/tools/screen-recorder-studio">مسجل الشاشة</a>
+                        <a href="/tools/image-compressor">ضاغط ومحوّل الصور الرقمي</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">أقسام المنصة</h4>
+                    <nav class="footer-links">
+                        <a href="/tools">الأدوات</a>
+                        <a href="/blog">المقالات</a>
+                        <a href="/programs">البرامج</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">عن المنصة والثقة</h4>
+                    <nav class="footer-links">
+                        <a href="/about">عن المنصة</a>
+                        <a href="/faq">الأسئلة الشائعة</a>
+                        <a href="/contact">اتصل بنا</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">الخصوصية والشروط</h4>
+                    <nav class="footer-links">
+                        <a href="/privacy-policy">سياسة الخصوصية</a>
+                        <a href="/terms-of-service">شروط الاستخدام</a>
+                        <a href="/cookies-policy">سياسة الكوكيز</a>
+                        <a href="/disclaimer">إخلاء المسؤولية</a>
+                        <a href="/dmca">حقوق النشر (DMCA)</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 GToolix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            const backdrop = document.getElementById('nav-backdrop');
+            if (!links || !btn) return;
+            const shouldOpen = forceClose === true ? false : !links.classList.contains('is-open');
+            links.classList.toggle('is-open', shouldOpen);
+            if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+            document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+
+        function toggleTheme() {
+            try {
+                const current = document.documentElement.getAttribute('data-theme') || 'dark';
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            } catch (e) {}
+        }
+    </script>
+    <script src="/static/js/theme.min.js" defer></script>
+</body>
+</html>

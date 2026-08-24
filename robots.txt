@@ -1,7 +1,8 @@
-User-agent: Mediapartners-Google
-Disallow:
-
 User-agent: *
 Allow: /
 
+User-agent: Mediapartners-Google
+Allow: /
+
+# Sitemaps
 Sitemap: https://www.gtoolix.com/sitemap.xml
