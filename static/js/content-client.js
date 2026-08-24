@@ -8,7 +8,7 @@
 
     if (window.GToolixContent) return;
 
-    const CACHE_PREFIX = 'gt_content_v9_';
+    const CACHE_PREFIX = 'gt_content_v11_';
     const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes in-memory/session cache
 
     // In-memory runtime cache
@@ -124,6 +124,11 @@
                 homepage_featured_tool_slugs: ['qr-code-generator', 'youtube-thumbnail-downloader', 'screen-recorder-studio', 'image-compressor']
             };
 
+            const remote = await fetchStaticData('site-settings.json');
+            if (remote && typeof remote === 'object' && !Array.isArray(remote)) {
+                settings = Object.assign(settings, remote);
+            }
+
             try {
                 const local = localStorage.getItem('gtoolix_site_settings');
                 if (local) settings = Object.assign(settings, JSON.parse(local));
@@ -160,6 +165,7 @@
 
                 // Announcement Banner Handler
                 const banner = settings.announcement_banner;
+                const existingBanner = document.getElementById('gt-announcement-banner');
                 if (banner && banner.enabled === true) {
                     let shouldShow = true;
                     if (banner.target_pages === 'homepage_only') {
@@ -172,7 +178,11 @@
 
                     if (shouldShow) {
                         this.renderAnnouncementBanner(banner, isArabic);
+                    } else if (existingBanner) {
+                        existingBanner.remove();
                     }
+                } else if (existingBanner) {
+                    existingBanner.remove();
                 }
             } catch (e) {
                 console.warn('[GToolixContent] Global settings application note:', e);

@@ -10,7 +10,7 @@
     "admin_bypass_key": "gtoolix_admin_bypass_2026"
   },
   "announcement_banner": {
-    "enabled": true,
+    "enabled": false,
     "theme": "feature",
     "text_ar": "🚀 أدوات ويب عالية الأداء تعمل محلياً 100% في متصفحك وبدون تسجيل مجاناً للأبد!",
     "text_en": "🚀 High-performance web tools running 100% locally in your browser with zero accounts required!",
