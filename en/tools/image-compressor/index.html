@@ -278,47 +278,6 @@
             color: #ffffff;
         }
 
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            color: var(--text);
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .nav-toggle span {
-            width: 22px;
-            height: 2px;
-            background: currentColor;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-
-        @media (max-width: 860px) {
-            .site-nav__links {
-                position: fixed;
-                top: 4.5rem;
-                left: 1rem;
-                right: 1rem;
-                background: var(--bg-secondary);
-                border: 1px solid var(--border);
-                border-radius: var(--radius-xl);
-                padding: 1.25rem;
-                flex-direction: column;
-                gap: 0.5rem;
-                display: none;
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            }
-            .site-nav__links.is-open {
-                display: flex;
-            }
-            .nav-item-link {
-                width: 100%;
-                padding: 0.75rem 1rem;
-            }
         /* Related Tools Cards Grid */
         .related-tools-block {
             margin-top: 3rem;
@@ -910,6 +869,11 @@
     
     
     
+    
+    
+    
+    
+    
     <link rel="canonical" href="https://www.gtoolix.com/en/tools/image-compressor" />
     <link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/image-compressor" />
     <link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/image-compressor" />
@@ -920,7 +884,7 @@
 
 <body>
     <!-- Site Navigation -->
-                                                                                                                                                                                                                                                                                                                                <header class="site-nav" id="site-header">
+                                                                                                                                                                                                                                                                                                                                    <header class="site-nav" id="site-header">
         <a class="site-nav__brand" href="/en/" aria-label="GToolix Home">
             <span class="site-nav__brand-mark">
                 <picture>
@@ -1342,7 +1306,7 @@
     </main>
 
         <!-- ===================== GLOBAL FOOTER ===================== -->
-                                                                                                                                                                                                                                                                                                                                <footer>
+                                                                                                                                                                                                                                                                                                                                    <footer>
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-col footer-col--brand">
@@ -1773,6 +1737,7 @@ function getNestedTranslation(obj, path) {
             links.classList.toggle('is-open', shouldOpen);
             if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
             document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
         }
 
         function initParticles() {

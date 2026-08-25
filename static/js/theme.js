@@ -752,6 +752,70 @@
     });
 })();
 
+/* ===================================================================
+   GToolix — Global Universal Mobile Navigation (Hamburger Menu) Handler
+   =================================================================== */
+(function () {
+    'use strict';
 
+    let lastToggleTime = 0;
 
+    function toggleNav(forceClose) {
+        const now = Date.now();
+        if (forceClose === undefined && (now - lastToggleTime < 200)) return;
+        lastToggleTime = now;
 
+        const links = document.getElementById('site-nav-links');
+        const btn = document.getElementById('nav-toggle') || document.querySelector('.nav-toggle');
+        const backdrop = document.getElementById('nav-backdrop') || document.querySelector('.nav-backdrop');
+        if (!links) return;
+
+        const isCurrentlyOpen = links.classList.contains('is-open');
+        const shouldOpen = forceClose === true ? false : !isCurrentlyOpen;
+
+        links.classList.toggle('is-open', shouldOpen);
+        if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+        document.body.classList.toggle('menu-open', shouldOpen);
+        if (btn) btn.setAttribute('aria-expanded', String(shouldOpen));
+    }
+
+    // Expose globally so inline onclick="toggleNav()" always works
+    window.toggleNav = toggleNav;
+
+    // Event Delegation: guarantees hamburger menu works reliably across all pages
+    document.addEventListener('click', function (e) {
+        const toggleBtn = e.target.closest('.nav-toggle');
+        if (toggleBtn) {
+            // Handled safely with debounce in toggleNav
+            toggleNav();
+            return;
+        }
+
+        const backdrop = e.target.closest('.nav-backdrop');
+        if (backdrop) {
+            e.preventDefault();
+            toggleNav(true);
+            return;
+        }
+
+        // Close menu drawer when clicking a navigation link inside it
+        const navLink = e.target.closest('.site-nav__links a');
+        if (navLink) {
+            toggleNav(true);
+        }
+    });
+
+    // Close mobile menu on Escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            toggleNav(true);
+        }
+    });
+
+    // Close mobile menu if window resized above mobile threshold
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 1080) {
+            toggleNav(true);
+        }
+    }, { passive: true });
+})();

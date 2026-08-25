@@ -346,6 +346,19 @@
             }
         }
 
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            const backdrop = document.getElementById('nav-backdrop');
+            if (!links || !btn) return;
+            const shouldOpen = forceClose === true ? false : !links.classList.contains('is-open');
+            links.classList.toggle('is-open', shouldOpen);
+            if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+            document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+        window.toggleNav = toggleNav;
+
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', setupToolsFilters);
         } else {
