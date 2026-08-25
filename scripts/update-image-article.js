@@ -17,19 +17,19 @@ const imageCompressionArticle = {
     author: 'GToolix Editorial Team',
     
     // Arabic Meta
-    title_ar: 'أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل التقني الشامل 2026 | GToolix',
+    title_ar: 'أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل | GToolix',
     meta_desc_ar: 'دليل موسوعي شامل لضغط الصور وتقليل حجم ملفات JPG و PNG و WebP و AVIF حتى 85% بدون فقدان الجودة. تعلم خوارزميات DCT والتكميم، تحسين Core Web Vitals وتصدر نتائج بحث جوجل.',
     keywords_ar: 'ضغط الصور, تقليل حجم الصور, ضغط الصور بدون فقدان الجودة, ضغط صور JPG, تصغير حجم PNG, تحويل الى WebP, Image Compressor, تسريع الموقع, سيو الصور, Core Web Vitals, GToolix',
     
     // English Meta
-    title_en: 'Best Way to Compress Images Without Losing Quality: Complete Technical Guide 2026 | GToolix',
+    title_en: 'Best Way to Compress Images Without Losing Quality: Complete Guide | GToolix',
     meta_desc_en: 'Master digital image compression: reduce JPG, PNG, WebP, and AVIF file sizes by up to 85% with zero perceptible quality loss. In-depth guide on DCT, quantization, Core Web Vitals, and responsive markup.',
     keywords_en: 'compress images, image compression without losing quality, reduce image size, compress JPG online, compress PNG transparent, convert to WebP, free image compressor, optimize images for web, Core Web Vitals LCP, image SEO, GToolix',
     
     // Breadcrumbs & Headers
     kicker_ar: 'دليل هندسة الوسائط الرقمية وتحسين الأداء',
     kicker_en: 'Digital Media Engineering & Performance Guide',
-    h1_ar: 'أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل التقني الشامل 2026',
+    h1_ar: 'أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل',
     h1_en: 'The Ultimate Guide to Image Compression Without Losing Quality (2026)',
     lead_ar: 'دليل هندسي موسوعي يشرح آليات ضغط الصور الرقمية (Lossy vs Lossless)، خوارزميات DCT والتكميم والترميز الأنتروبي، مقارنة صيغ WebP و AVIF و PNG و JPG، وكيفية تصغير حجم الصور حتى 85% لتسريع موقعك وتصدر نتائج بحث جوجل.',
     lead_en: 'An encyclopedic technical guide covering digital compression architectures (Lossy vs. Lossless), mathematical DCT algorithms, next-gen WebP/AVIF codecs, and reducing payload weights by up to 85% for blazing page speed and top Google rankings.',
@@ -46,7 +46,7 @@ const imageCompressionArticle = {
     sections_ar: [
         {
             id: 'what-is-compression',
-            title: '1. ما هو ضغط الصور الرقمية ولماذا هو العامل الحاسم لنجاح المواقع في 2026؟',
+            title: '1. ما هو ضغط الصور الرقمية ولماذا هو العامل الحاسم لنجاح المواقع ؟',
             content: \`
 <p>يُعد <strong>ضغط الصور الرقمية (Digital Image Compression)</strong> العلم الهندسي المتخصص في تقليص البصمة الرقمية لملفات الوسائط بالبايت (Bytes)، عن طريق إزالة البيانات المكررة مكانياً (Spatial Redundancy) والترددات الطيفية التي تعجز العين البشرية عن تمييزها (Psychovisual Redundancy)، مع الحفاظ التام على حدة التفاصيل ودقة التباين والعمق اللوني.</p>
 <p>في المشهد الرقمي لعام 2026، تشير تقارير أرشيف الويب العالمي (HTTP Archive) إلى أن الصور تمثل أكثر من <strong>65% من إجمالي الوزن الإجمالي لصفحات الإنترنت</strong>، بمتوسط حمولة يتجاوز 2.4 ميجابايت للصفحة الواحدة. ويترتب على إهمال تحسين الصور عواقب وخيمة ومباشرة:</p>
@@ -132,7 +132,7 @@ const imageCompressionArticle = {
             id: 'formats-comparison-matrix',
             title: '4. معركة صيغ الصور الرقمية: JPG مقابل PNG مقابل WebP مقابل AVIF مقابل SVG',
             content: \`
-<p>اختيار الصيغة الرقمية المناسبة يمثل نصف نجاح استراتيجية تحسين الأداء. يوضح الجدول التالي مقارنة تقنية معيارية شاملة بين أبرز 5 تنسيقات للويب في 2026:</p>
+<p>اختيار الصيغة الرقمية المناسبة يمثل نصف نجاح استراتيجية تحسين الأداء. يوضح الجدول التالي مقارنة تقنية معيارية شاملة بين أبرز 5 تنسيقات للويب :</p>
 
 <div class="comparison-table-wrapper" style="overflow-x: auto; margin: 1.75rem 0;">
     <table style="width: 100%; border-collapse: collapse; text-align: right; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
@@ -422,7 +422,7 @@ const imageCompressionArticle = {
     sections_en: [
         {
             id: 'what-is-compression',
-            title: '1. What is Digital Image Compression and Why Does It Define Web Success in 2026?',
+            title: '1. What is Digital Image Compression and Why Does It Define Web Success ?',
             content: \`
 <p><strong>Digital Image Compression</strong> is the specialized engineering discipline of reducing an image asset's byte footprint by eliminating spatial redundancy and psychovisual frequencies that fall outside the perception threshold of the human visual system, all while preserving sharpness, contrast, and chromatic depth.</p>
 <p>In 2026, data from the global HTTP Archive reveals that visual media accounts for over <strong>65% of total webpage payload weight</strong>, with average page transfers exceeding 2.4 MB. Failing to systematically optimize image assets produces severe commercial and technical penalties:</p>
@@ -508,7 +508,7 @@ const imageCompressionArticle = {
             id: 'formats-comparison-matrix',
             title: '4. Next-Gen Format Benchmark: WebP vs. AVIF vs. JPEG vs. PNG vs. SVG',
             content: \`
-<p>Selecting the optimal container format is pivotal to page load speed. The benchmark matrix below evaluates the web's 5 dominant image codecs in 2026:</p>
+<p>Selecting the optimal container format is pivotal to page load speed. The benchmark matrix below evaluates the web's 5 dominant image codecs :</p>
 
 <div class="comparison-table-wrapper" style="overflow-x: auto; margin: 1.75rem 0;">
     <table style="width: 100%; border-collapse: collapse; text-align: left; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">

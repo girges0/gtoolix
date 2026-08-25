@@ -25,8 +25,8 @@
   {
     "id": 2,
     "slug": "image-compression-guide",
-    "title_ar": "أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل 2026",
-    "title_en": "Best Way to Compress Images Without Losing Quality: Complete Guide 2026",
+    "title_ar": "أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل",
+    "title_en": "Best Way to Compress Images Without Losing Quality: Complete Guide",
     "excerpt_ar": "تعرف على أسرار ضغط الصور الرقمية، الفرق بين الضغط مع فقدان وبدون فقدان، وكيفية تصغير حجم صور JPG وPNG وWebP لسرعة موقعك.",
     "excerpt_en": "Learn the secrets of digital image compression, lossy vs lossless compression, and how to reduce image sizes for optimal web performance.",
     "content_ar": "دليل تقني مفصل حول آليات ضغط الصور وتقليل أحجام الملفات مع الحفاظ على النقاء البصري الأعلى.",
@@ -63,5 +63,27 @@
     ],
     "is_published": true,
     "published_at": "2026-08-21T10:00:00+03:00"
+  },
+  {
+    "id": 4,
+    "slug": "free-youtube-thumbnail-downloader-hd-4k",
+    "title_ar": "تحميل الصورة المصغرة لليوتيوب بجودة HD و4K: الدليل الشامل",
+    "title_en": "Free YouTube Thumbnail Downloader HD & 4K: Complete Guide",
+    "excerpt_ar": "دليل تقني وهندسي شامل لتحميل وفحص واستخراج الصور المصغرة لفيديوهات YouTube وشورتس بأعلى جودة HD و 4K بضغطة زر واحدة.",
+    "excerpt_en": "Master YouTube thumbnail downloading in HD & 4K: technical resolutions, aspect ratios, visual psychology, and instant extraction with GToolix.",
+    "content_ar": "دليل تقني مفصل لتحميل وفحص الصور المصغرة لليوتيوب بأعلى دقة وتجاوز مشاكل الدقة المنخفضة.",
+    "content_en": "Complete guide to extracting and downloading high-resolution YouTube thumbnails directly in browser.",
+    "featured_image_url": "/static/img/blog/youtube-thumbnails-guide.jpg",
+    "author_name": "GToolix Editorial Team",
+    "reading_time_minutes": 18,
+    "tags": [
+      "YouTube",
+      "Thumbnails",
+      "Design",
+      "Media",
+      "Video Tools"
+    ],
+    "is_published": true,
+    "published_at": "2026-08-25T10:00:00+03:00"
   }
 ]

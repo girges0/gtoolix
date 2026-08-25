@@ -1022,7 +1022,7 @@ const htmlContent = `<!DOCTYPE html>
                             </div>
                             <div class="related-article-body">
                                 <span class="related-article-tag">ضغط الصور</span>
-                                <h3 class="related-article-title">أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل التقني الشامل 2026</h3>
+                                <h3 class="related-article-title">أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل</h3>
                                 <p class="related-article-desc">دليل موسوعي يشرح خوارزميات الضغط وفصل الفضاء اللوني وتحسين Core Web Vitals مع GToolix.</p>
                                 <span class="related-article-cta">
                                     <span>اقرأ الدليل الكامل ←</span>
@@ -1035,7 +1035,7 @@ const htmlContent = `<!DOCTYPE html>
                             </div>
                             <div class="related-article-body">
                                 <span class="related-article-tag">تنسيقات الويب</span>
-                                <h3 class="related-article-title">الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟</h3>
+                                <h3 class="related-article-title">الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب ؟</h3>
                                 <p class="related-article-desc">مقارنة تقنية شاملة بين JPG و PNG و WebP و AVIF و SVG: الفروق في الحجم والشفافية والسرعة.</p>
                                 <span class="related-article-cta">
                                     <span>اقرأ الدليل الكامل ←</span>
@@ -1225,7 +1225,7 @@ const htmlContent = `<!DOCTYPE html>
                             </div>
                             <div class="related-article-body">
                                 <span class="related-article-tag">Image Optimization</span>
-                                <h3 class="related-article-title">Best Way to Compress Images Without Losing Quality: Complete Technical Guide 2026</h3>
+                                <h3 class="related-article-title">Best Way to Compress Images Without Losing Quality: Complete Guide</h3>
                                 <p class="related-article-desc">Encyclopedic guide on compression mathematics, SSIM fidelity metrics, and Core Web Vitals optimization.</p>
                                 <span class="related-article-cta">
                                     <span>Read Full Guide →</span>
@@ -1238,7 +1238,7 @@ const htmlContent = `<!DOCTYPE html>
                             </div>
                             <div class="related-article-body">
                                 <span class="related-article-tag">Web Formats</span>
-                                <h3 class="related-article-title">JPG vs PNG vs WebP: Which Image Format Should You Choose in 2026?</h3>
+                                <h3 class="related-article-title">JPG vs PNG vs WebP: Which Image Format Should You Choose ?</h3>
                                 <p class="related-article-desc">Technical benchmark comparing JPG, PNG, WebP, AVIF, and SVG for modern web performance and SEO.</p>
                                 <span class="related-article-cta">
                                     <span>Read Full Guide →</span>

@@ -125,6 +125,8 @@ async function runTests() {
         '/en/blog/image-compression-guide',
         '/blog/jpg-vs-png-vs-webp',
         '/en/blog/jpg-vs-png-vs-webp',
+        '/blog/free-youtube-thumbnail-downloader-hd-4k',
+        '/en/blog/free-youtube-thumbnail-downloader-hd-4k',
         '/programs',
         '/en/programs',
         '/about',

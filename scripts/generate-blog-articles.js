@@ -25,20 +25,20 @@ const imageCompressionArticle = {
     author: 'GToolix Editorial Team',
     
     // Arabic Meta
-    title_ar: 'أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل التقني الشامل 2026 | GToolix',
+    title_ar: 'أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل | GToolix',
     meta_desc_ar: 'دليل موسوعي شامل لضغط الصور وتقليل حجم ملفات JPG و PNG و WebP و AVIF حتى 85% بدون فقدان الجودة. تعلم خوارزميات DCT والتكميم، تحسين Core Web Vitals وتصدر نتائج بحث جوجل.',
     keywords_ar: 'ضغط الصور, تقليل حجم الصور, ضغط الصور بدون فقدان الجودة, ضغط صور JPG, تصغير حجم PNG, تحويل الى WebP, Image Compressor, تسريع الموقع, سيو الصور, Core Web Vitals, GToolix',
     
     // English Meta
-    title_en: 'Best Way to Compress Images Without Losing Quality: Complete Technical Guide 2026 | GToolix',
+    title_en: 'Best Way to Compress Images Without Losing Quality: Complete Guide | GToolix',
     meta_desc_en: 'Master digital image compression: reduce JPG, PNG, WebP, and AVIF file sizes by up to 85% with zero perceptible quality loss. In-depth guide on DCT, quantization, Core Web Vitals, and responsive markup.',
     keywords_en: 'compress images, image compression without losing quality, reduce image size, compress JPG online, compress PNG transparent, convert to WebP, free image compressor, optimize images for web, Core Web Vitals LCP, image SEO, GToolix',
     
     // Breadcrumbs & Headers
     kicker_ar: 'دليل هندسة الوسائط الرقمية وتحسين الأداء',
     kicker_en: 'Digital Media Engineering & Performance Guide',
-    h1_ar: 'أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل التقني الشامل 2026',
-    h1_en: 'The Ultimate Guide to Image Compression Without Losing Quality (2026)',
+    h1_ar: 'أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل',
+    h1_en: 'The Ultimate Guide to Image Compression Without Losing Quality',
     lead_ar: 'دليل هندسي موسوعي يشرح آليات ضغط الصور الرقمية (Lossy vs Lossless)، خوارزميات DCT والتكميم والترميز الأنتروبي، مقارنة صيغ WebP و AVIF و PNG و JPG، وكيفية تصغير حجم الصور حتى 85% لتسريع موقعك وتصدر نتائج بحث جوجل.',
     lead_en: 'An encyclopedic technical guide covering digital compression architectures (Lossy vs. Lossless), mathematical DCT algorithms, next-gen WebP/AVIF codecs, and reducing payload weights by up to 85% for blazing page speed and top Google rankings.',
 
@@ -54,10 +54,10 @@ const imageCompressionArticle = {
     sections_ar: [
         {
             id: 'what-is-compression',
-            title: '1. ما هو ضغط الصور الرقمية ولماذا هو العامل الحاسم لنجاح المواقع في 2026؟',
+            title: '1. ما هو ضغط الصور الرقمية ولماذا هو العامل الحاسم لنجاح المواقع الحديثة؟',
             content: `
 <p>يُعد <strong>ضغط الصور الرقمية (Digital Image Compression)</strong> العلم الهندسي المتخصص في تقليص البصمة الرقمية لملفات الوسائط بالبايت (Bytes)، عن طريق إزالة البيانات المكررة مكانياً (Spatial Redundancy) والترددات الطيفية التي تعجز العين البشرية عن تمييزها (Psychovisual Redundancy)، مع الحفاظ التام على حدة التفاصيل ودقة التباين والعمق اللوني.</p>
-<p>في المشهد الرقمي لعام 2026، تشير تقارير أرشيف الويب العالمي (HTTP Archive) إلى أن الصور تمثل أكثر من <strong>65% من إجمالي الوزن الإجمالي لصفحات الإنترنت</strong>، بمتوسط حمولة يتجاوز 2.4 ميجابايت للصفحة الواحدة. ويترتب على إهمال تحسين الصور عواقب وخيمة ومباشرة:</p>
+<p>في المشهد الرقمي المعاصر، تشير تقارير أرشيف الويب العالمي (HTTP Archive) إلى أن الصور تمثل أكثر من <strong>65% من إجمالي الوزن الإجمالي لصفحات الإنترنت</strong>، بمتوسط حمولة يتجاوز 2.4 ميجابايت للصفحة الواحدة. ويترتب على إهمال تحسين الصور عواقب وخيمة ومباشرة:</p>
 <ul>
     <li><strong>تدهور معدلات التحويل (Conversion Rate Drop):</strong> أثبتت أبحاث Google و Deloitte المشتركة أن تأخر تحميل الصفحة بمقدار 0.1 ثانية فقط يؤدي إلى انخفاض معدل إتمام عمليات الشراء في المتاجر الإلكترونية بنسبة <strong>8.4%</strong>.</li>
     <li><strong>ارتفاع معدل الارتداد السريع (Bounce Rate Surge):</strong> أكثر من <strong>53% من متصفحي الهواتف الذكية</strong> يغادرون الموقع فوراً إذا استغرق تحميل الصفحة أكثر من 3 ثوانٍ.</li>
@@ -140,7 +140,7 @@ const imageCompressionArticle = {
             id: 'formats-comparison-matrix',
             title: '4. معركة صيغ الصور الرقمية: JPG مقابل PNG مقابل WebP مقابل AVIF مقابل SVG',
             content: `
-<p>اختيار الصيغة الرقمية المناسبة يمثل نصف نجاح استراتيجية تحسين الأداء. يوضح الجدول التالي مقارنة تقنية معيارية شاملة بين أبرز 5 تنسيقات للويب في 2026:</p>
+<p>اختيار الصيغة الرقمية المناسبة يمثل نصف نجاح استراتيجية تحسين الأداء. يوضح الجدول التالي مقارنة تقنية معيارية شاملة بين أبرز 5 تنسيقات للويب الحديث:</p>
 
 <div class="comparison-table-wrapper" style="overflow-x: auto; margin: 1.75rem 0;">
     <table style="width: 100%; border-collapse: collapse; text-align: right; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
@@ -336,7 +336,7 @@ const imageCompressionArticle = {
   
   &lt;!-- البديل التوافقي العام JPG مع تحديد الأبعاد والتحميل الذكي --&gt;
   &lt;img src="hero-image.jpg" 
-       alt="أفضل طريقة لضغط الصور بدون فقدان الجودة 2026" 
+       alt="أفضل طريقة لضغط الصور بدون فقدان الجودة" 
        width="1280" 
        height="720" 
        loading="lazy" 
@@ -430,10 +430,10 @@ const imageCompressionArticle = {
     sections_en: [
         {
             id: 'what-is-compression',
-            title: '1. What is Digital Image Compression and Why Does It Define Web Success in 2026?',
+            title: '1. What is Digital Image Compression and Why Does It Define Modern Web Success?',
             content: `
 <p><strong>Digital Image Compression</strong> is the specialized engineering discipline of reducing an image asset's byte footprint by eliminating spatial redundancy and psychovisual frequencies that fall outside the perception threshold of the human visual system, all while preserving sharpness, contrast, and chromatic depth.</p>
-<p>In 2026, data from the global HTTP Archive reveals that visual media accounts for over <strong>65% of total webpage payload weight</strong>, with average page transfers exceeding 2.4 MB. Failing to systematically optimize image assets produces severe commercial and technical penalties:</p>
+<p>In the modern digital landscape, data from the global HTTP Archive reveals that visual media accounts for over <strong>65% of total webpage payload weight</strong>, with average page transfers exceeding 2.4 MB. Failing to systematically optimize image assets produces severe commercial and technical penalties:</p>
 <ul>
     <li><strong>Conversion Rate Degradation:</strong> Joint research by Google and Deloitte proves that every 0.1-second improvement in mobile loading speed drives an <strong>8.4% increase in e-commerce conversion rates</strong>.</li>
     <li><strong>Surging Bounce Rates:</strong> Over <strong>53% of mobile visitors</strong> abandon a website entirely if page rendering exceeds 3 seconds.</li>
@@ -516,7 +516,7 @@ const imageCompressionArticle = {
             id: 'formats-comparison-matrix',
             title: '4. Next-Gen Format Benchmark: WebP vs. AVIF vs. JPEG vs. PNG vs. SVG',
             content: `
-<p>Selecting the optimal container format is pivotal to page load speed. The benchmark matrix below evaluates the web's 5 dominant image codecs in 2026:</p>
+<p>Selecting the optimal container format is pivotal to page load speed. The benchmark matrix below evaluates the web's 5 dominant image codecs:</p>
 
 <div class="comparison-table-wrapper" style="overflow-x: auto; margin: 1.75rem 0;">
     <table style="width: 100%; border-collapse: collapse; text-align: left; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
@@ -712,7 +712,7 @@ const imageCompressionArticle = {
   
   &lt;!-- Backward-compatible JPG fallback with explicit dimensions --&gt;
   &lt;img src="hero-image.jpg" 
-       alt="Best Way to Compress Images Without Losing Quality 2026" 
+       alt="Best Way to Compress Images Without Losing Quality" 
        width="1280" 
        height="720" 
        loading="lazy" 
@@ -892,20 +892,20 @@ const formatsComparisonArticle = {
     author: 'GToolix Editorial Team',
     
     // Arabic Meta
-    title_ar: 'الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟ | GToolix',
+    title_ar: 'الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب؟ | GToolix',
     meta_desc_ar: 'مقارنة تقنية شاملة بين JPG و PNG و WebP و AVIF و SVG: الفروق في الحجم، دعم الشفافية Alpha، عمق الألوان، سرعة فك التشفير، وتحسين مؤشرات Core Web Vitals وسيو جوجل.',
     keywords_ar: 'الفرق بين JPG و PNG, الفرق بين WebP و PNG, مقارنة صيغ الصور, افضل صيغة لموقع ويب, WebP vs JPG vs PNG, متى تستخدم PNG, متى تستخدم WebP, تحويل الصور الى WebP, AVIF vs WebP, GToolix',
     
     // English Meta
-    title_en: 'JPG vs PNG vs WebP: Which Image Format Should You Choose in 2026? | GToolix',
+    title_en: 'JPG vs PNG vs WebP: Which Image Format Should You Choose? | GToolix',
     meta_desc_en: 'Comprehensive technical benchmark: JPG vs. PNG vs. WebP vs. AVIF vs. SVG. Deep analysis of compression efficiency, alpha transparency, decode speed, responsive HTML5, and Core Web Vitals.',
     keywords_en: 'JPG vs PNG vs WebP, image format comparison, best image format for web, WebP vs JPEG, PNG transparency, lossless vs lossy formats, AVIF vs WebP, convert PNG to WebP, Core Web Vitals, GToolix',
     
     // Breadcrumbs & Headers
     kicker_ar: 'دليل هندسة الوسائط وتنسيقات الصور الرقمية',
     kicker_en: 'Media Engineering & Digital Image Formats Guide',
-    h1_ar: 'الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟',
-    h1_en: 'JPG vs PNG vs WebP: Which Image Format Should You Choose in 2026?',
+    h1_ar: 'الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب؟',
+    h1_en: 'JPG vs PNG vs WebP: Which Image Format Should You Choose?',
     lead_ar: 'دليل هندسي موسوعي يقارن بين أشهر تنسيقات الصور الرقمية (JPG و PNG و WebP و AVIF و SVG): متى تختار PNG للشفافية؟ متى تختار JPG للصور المعقدة؟ ولماذا أصبحت WebP المعيار الذهبي للويب الحديث؟',
     lead_en: "An encyclopedic technical guide comparing the web's dominant image formats (JPG, PNG, WebP, AVIF, SVG): when to deploy PNG transparency, when to leverage JPG, and why WebP is the uncontested gold standard for modern web performance.",
 
@@ -1006,7 +1006,7 @@ const formatsComparisonArticle = {
         },
         {
             id: 'avif-next-gen',
-            title: '5. الوافد الجديد AVIF: هل يطيح بـ WebP في عام 2026؟',
+            title: '5. الوافد الجديد AVIF: هل يطيح بـ WebP في بيئات الويب الحديثة؟',
             content: `
 <p>تمثل صيغة <strong>AVIF (AV1 Image File Format)</strong> قمة التطور في خوارزميات الضغط الحجمي للصور. طُوّرت الصيغة بواسطة تحالف <em>Alliance for Open Media (AOMedia)</em> بمشاركة عمالقة التكنولوجيا (Google, Apple, Microsoft, Mozilla, Netflix):</p>
 
@@ -1337,7 +1337,7 @@ const formatsComparisonArticle = {
         },
         {
             id: 'avif-next-gen',
-            title: '5. The Next-Gen Challenger: Will AVIF Surpass WebP in 2026?',
+            title: '5. The Next-Gen Challenger: Will AVIF Surpass WebP in Modern Web Platforms?',
             content: `
 <p>Derived from the open-source AV1 video codec by the <em>Alliance for Open Media (AOMedia)</em>, <strong>AVIF</strong> represents the absolute frontier in visual media compression:</p>
 
@@ -1588,9 +1588,9 @@ const formatsComparisonArticle = {
             a_en: "JPG is a lossy format engineered for photographs with small file sizes but no transparency, while PNG is a lossless format with full alpha transparency but significantly larger file weights."
         },
         {
-            q_ar: "لماذا تعتبر صيغة WebP الخيار الأفضل لمواقع الويب في 2026؟",
+            q_ar: "لماذا تعتبر صيغة WebP الخيار الأفضل لمواقع الويب الحديثة؟",
             a_ar: "لأن WebP تجمع بين أفضل مزايا JPG و PNG؛ حيث توفر حجماً أصغر بنسبة 35% من JPG وبنسبة 26% من PNG مع دعم كامل للشفافية والرسوم المتحركة وتوافق مع أكثر من 98.8% من المتصفحات.",
-            q_en: "Why is WebP the recommended format for modern websites in 2026?",
+            q_en: "Why is WebP the recommended format for modern websites?",
             a_en: "WebP unifies high compression (35% smaller than JPG, 26% smaller than PNG) with full alpha transparency and animation support across 98.8% of global browsers."
         },
         {
@@ -1612,9 +1612,9 @@ const formatsComparisonArticle = {
             a_en: "AVIF delivers up to 20% smaller files than WebP with 12-bit HDR support, though it requires slightly more CPU decode power and has 93.5% browser support vs. WebP at 98.8%."
         },
         {
-            q_ar: "هل تدعم جميع المتصفحات صيغة WebP في 2026؟",
+            q_ar: "هل تدعم جميع المتصفحات صيغة WebP؟",
             a_ar: "نعم، تدعم صيغة WebP كافة المتصفحات الحديثة بما فيها Google Chrome و Safari (على آيفون وماك) و Mozilla Firefox و Microsoft Edge بنسبة توافق عالمية تتجاوز 98.8%.",
-            q_en: "Is WebP universally supported across all browsers in 2026?",
+            q_en: "Is WebP universally supported across all browsers?",
             a_en: "Yes. WebP is supported across 98.8% of global web traffic, including Chrome, Safari on iOS/macOS, Firefox, and Microsoft Edge."
         },
         {
@@ -1661,6 +1661,17 @@ const formatsComparisonArticle = {
 // ----------------------------------------------------
 const ALL_BLOG_ARTICLES_CATALOG = [
     {
+        slug: 'free-youtube-thumbnail-downloader-hd-4k',
+        title_ar: 'تحميل الصور المصغرة لليوتيوب بجودة HD و4K: الدليل الشامل',
+        title_en: 'Free YouTube Thumbnail Downloader HD & 4K: Complete Guide',
+        desc_ar: 'دليل شامل لاستخراج وتحميل صور اليوتيوب وشورتس بدقة 1080p و 720p MaxRes وهندسة الـ CTR وجداول الأبعاد.',
+        desc_en: 'Complete technical guide to downloading YouTube and Shorts thumbnails in MaxRes HD with zero software installation.',
+        tag_ar: 'يوتيوب',
+        tag_en: 'YouTube Tools',
+        img_ar: '/static/img/blog/youtube-thumbnails-guide.jpg',
+        img_en: '/static/img/blog/youtube-thumbnails-guide.jpg'
+    },
+    {
         slug: 'qr-code',
         title_ar: 'دليل رموز QR Code الشامل: إنشاء واستخدام وقراءة الباركود',
         title_en: 'QR Code: The Ultimate Guide to Creating, Scanning & Using QR Codes',
@@ -1673,8 +1684,8 @@ const ALL_BLOG_ARTICLES_CATALOG = [
     },
     {
         slug: 'image-compression-guide',
-        title_ar: 'أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل التقني الشامل 2026',
-        title_en: 'Best Way to Compress Images Without Losing Quality: Complete Technical Guide 2026',
+        title_ar: 'أفضل طريقة لضغط الصور بدون فقدان الجودة: الدليل الشامل',
+        title_en: 'Best Way to Compress Images Without Losing Quality: Complete Guide',
         desc_ar: 'دليل موسوعي يشرح خوارزميات الضغط وفصل الفضاء اللوني وتحسين Core Web Vitals وسرعة المتاجر مع GToolix.',
         desc_en: 'Encyclopedic guide on compression mathematics, SSIM fidelity metrics, responsive HTML5, and Core Web Vitals optimization.',
         tag_ar: 'ضغط الصور',
@@ -1684,8 +1695,8 @@ const ALL_BLOG_ARTICLES_CATALOG = [
     },
     {
         slug: 'jpg-vs-png-vs-webp',
-        title_ar: 'الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب في 2026؟',
-        title_en: 'JPG vs PNG vs WebP: Which Image Format Should You Choose in 2026?',
+        title_ar: 'الفرق بين JPG و PNG و WebP: أيهما تختار ولمواقع الويب؟',
+        title_en: 'JPG vs PNG vs WebP: Which Image Format Should You Choose?',
         desc_ar: 'مقارنة تقنية شاملة بين JPG و PNG و WebP و AVIF و SVG: الفروق في الحجم، دعم الشفافية، وعمق الألوان وسرعة التحميل.',
         desc_en: 'Technical benchmark comparing JPG, PNG, WebP, AVIF, and SVG for modern web performance, alpha transparency, and SEO.',
         tag_ar: 'تنسيقات الويب',
@@ -2097,9 +2108,19 @@ function buildAllBlogArticles() {
         console.warn('[WARN] Could not load qrCodeArticle:', e.message);
     }
 
+    let youtubeThumbnailArticle = null;
+    try {
+        youtubeThumbnailArticle = require('./create-youtube-thumbnail-article.js').youtubeThumbnailArticle;
+    } catch (e) {
+        console.warn('[WARN] Could not load youtubeThumbnailArticle:', e.message);
+    }
+
     const articles = [imageCompressionArticle, formatsComparisonArticle];
     if (qrCodeArticle) {
         articles.unshift(qrCodeArticle);
+    }
+    if (youtubeThumbnailArticle) {
+        articles.push(youtubeThumbnailArticle);
     }
 
     articles.forEach(art => {
