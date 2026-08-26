@@ -221,6 +221,11 @@ var ThumbTool = (function () {
 
     async function downloadThumbnail(imgUrl, videoId, resId) {
         try {
+            if (window.GToolixMonitor && typeof window.GToolixMonitor.trackToolUsage === 'function') {
+                window.GToolixMonitor.trackToolUsage('youtube-thumbnail-downloader', { action: 'download', res: resId });
+            }
+        } catch (e) {}
+        try {
             showToast(getStr('toastPreparing') || 'Downloading thumbnail...');
             const response = await fetch(imgUrl);
             const blob = await response.blob();

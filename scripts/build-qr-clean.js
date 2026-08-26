@@ -109,8 +109,8 @@ const qrCodeArticle = {
     meta_desc_ar: 'دليل موسوعي متكامل ومفصل حول رموز QR: تاريخها، بنيتها الهندسية، تصحيح الأخطاء Reed-Solomon، الفرق بين Static و Dynamic، وطريقة إنشاء باركود QR مجاني فائق النقاء.',
     keywords_ar: 'QR Code, ما هو QR Code, رمز QR, مولد QR Code, QR Code Generator, إنشاء QR Code, إنشاء رمز QR, عمل QR Code, تحويل رابط إلى QR Code, QR Code مجاني, Free QR Code Generator, GToolix',
 
-    title_en: 'QR Code: The Ultimate Guide to Creating, Using & Scanning QR Codes Online | GToolix',
-    meta_desc_en: 'Comprehensive guide to QR Codes: history, matrix architecture, Reed-Solomon error correction, static vs dynamic, and generating high-res vector QR codes for URLs, Wi-Fi, and vCards.',
+    title_en: 'QR Code: Complete Guide to Creating & Scanning Online | GToolix',
+    meta_desc_en: 'Comprehensive guide to QR Codes: history, matrix architecture, Reed-Solomon error correction, static vs dynamic, and vector QR codes with GToolix.',
     keywords_en: 'QR Code, QR Code Generator, create QR code online, free QR code, WiFi QR code, vCard QR code, vector SVG QR code, high resolution QR code, barcode vs QR code, GToolix',
 
     kicker_ar: 'دليل أدوات الويب والإنتاجية الرقمية',

@@ -419,96 +419,132 @@
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebSite",
+      "@id": "https://www.gtoolix.com/#website",
+      "name": "GToolix",
+      "url": "https://www.gtoolix.com/",
+      "inLanguage": [
+        "ar",
+        "en"
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.gtoolix.com/en/tools/image-compressor#webapp",
+      "url": "https://www.gtoolix.com/en/tools/image-compressor",
+      "name": "Image Compressor & Converter | GToolix",
+      "alternateName": "ضاغط ومحوّل الصور الرقمي",
+      "description": "100% client-side free tool to compress and convert JPG, PNG, WebP, and GIF images directly in browser without server upload.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isPartOf": {
+        "@id": "https://www.gtoolix.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "WebSite",
-          "@id": "https://www.gtoolix.com/#website",
-          "name": "GToolix",
-          "url": "https://www.gtoolix.com/",
-          "inLanguage": ["ar", "en"]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.gtoolix.com/en/"
         },
         {
-          "@type": "WebApplication",
-          "@id": "https://www.gtoolix.com/tools/image-compressor#webapp",
-          "url": "https://www.gtoolix.com/tools/image-compressor",
-          "name": "Image Compressor & Converter | GToolix",
-          "alternateName": "ضاغط ومحوّل الصور الرقمي",
-          "description": "100% client-side free tool to compress and convert JPG, PNG, WebP, and GIF images directly in browser without server upload.",
-          "applicationCategory": "MultimediaApplication",
-          "operatingSystem": "Any (Web Browser)",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          },
-          "isPartOf": { "@id": "https://www.gtoolix.com/#website" }
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://www.gtoolix.com/en/tools"
         },
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.gtoolix.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.gtoolix.com/tools" },
-            { "@type": "ListItem", "position": 3, "name": "Image Compressor", "item": "https://www.gtoolix.com/tools/image-compressor" }
-          ]
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Image Compressor & Converter",
+          "item": "https://www.gtoolix.com/en/tools/image-compressor"
+        }
+      ],
+      "@id": "https://www.gtoolix.com/en/tools/image-compressor#breadcrumb"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "هل يتم رفع صوري إلى أي خادم (Server)؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "لا، تتم معالجة وضغط الصور بنسبة 100% محلياً داخل متصفح جهازك باستخدام Canvas API. لا تغادر صورك جهازك أبداً."
+          }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "هل يتم رفع صوري إلى أي خادم (Server)؟",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "لا، تتم معالجة وضغط الصور بنسبة 100% محلياً داخل متصفح جهازك باستخدام Canvas API. لا تغادر صورك جهازك أبداً."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "ما هو الحد الأقصى لحجم وعدد الصور في الدفعة الواحدة؟",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "يمكنك رفع ملفات يصل حجم كل منها إلى 25 ميجابايت، ومعالجة عشرات الصور دفعة واحدة وتنزيلها كملف ZIP."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "ما هي الصيغ المدعومة للضغط والتحويل؟",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "تدعم الأداة صيغ JPG وPNG وWebP وGIF الثابتة، مع إمكانية التحويل المتبادل بينها واختيار جودة الضغط."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "هل يقلل الضغط من جودة ووضوح الصورة بشكل ملحوظ؟",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "تعتمد الأداة خوارزميات بصرية متقدمة تحتفظ بأعلى درجات النقاء وتزيل فقط البيانات غير المرئية لتوفير حتى 85% من الحجم."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "هل يمكن تغيير أبعاد الصورة (Resize) أثناء الضغط؟",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "نعم، يمكنك تفعيل خيار تغيير الأبعاد لتحديد أقصى عرض وارتفاع مع الحفاظ التلقائي على نسبة العرض إلى الارتفاع ومنع التكبير."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "هل استخدام أداة ضغط الصور مجاني بالكامل؟",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "نعم، الأداة مجانية تماماً مدى الحياة وبدون تسجيل حساب أو علامات مائية أو حدود استخدام."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "ما هو الحد الأقصى لحجم وعدد الصور في الدفعة الواحدة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يمكنك رفع ملفات يصل حجم كل منها إلى 25 ميجابايت، ومعالجة عشرات الصور دفعة واحدة وتنزيلها كملف ZIP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما هي الصيغ المدعومة للضغط والتحويل؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "تدعم الأداة صيغ JPG وPNG وWebP وGIF الثابتة، مع إمكانية التحويل المتبادل بينها واختيار جودة الضغط."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يقلل الضغط من جودة ووضوح الصورة بشكل ملحوظ؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "تعتمد الأداة خوارزميات بصرية متقدمة تحتفظ بأعلى درجات النقاء وتزيل فقط البيانات غير المرئية لتوفير حتى 85% من الحجم."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يمكن تغيير أبعاد الصورة (Resize) أثناء الضغط؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، يمكنك تفعيل خيار تغيير الأبعاد لتحديد أقصى عرض وارتفاع مع الحفاظ التلقائي على نسبة العرض إلى الارتفاع ومنع التكبير."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل استخدام أداة ضغط الصور مجاني بالكامل؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، الأداة مجانية تماماً مدى الحياة وبدون تسجيل حساب أو علامات مائية أو حدود استخدام."
+          }
         }
       ]
     }
+  ]
+}
     </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -889,7 +925,7 @@
 
 <body>
     <!-- Site Navigation -->
-                                                                                                                                                                                                                                                                                                                                        <header class="site-nav" id="site-header">
+                                                                                                                                                                                                                                                                                                                                                    <header class="site-nav" id="site-header">
         <a class="site-nav__brand" href="/en/" aria-label="GToolix Home">
             <span class="site-nav__brand-mark">
                 <picture>
@@ -1111,11 +1147,11 @@
                     <!-- 1. Split Slider Comparison View -->
                     <div class="preview-split-stage" id="previewSplitStage">
                         <div class="preview-image-layer preview-original-layer" id="previewOriginalLayer">
-                            <img id="previewOriginalImg" src="" alt="Original Image" draggable="false">
+                            <img id="previewOriginalImg" src="" alt="Original Image" width="400" height="300" draggable="false">
                             <span class="preview-layer-label label-original" data-i18n="compressor.originalLabel">Original</span>
                         </div>
                         <div class="preview-image-layer preview-compressed-layer" id="previewCompressedLayer">
-                            <img id="previewCompressedImg" src="" alt="Compressed Image" draggable="false">
+                            <img id="previewCompressedImg" src="" alt="Compressed Image" width="400" height="300" draggable="false">
                             <span class="preview-layer-label label-compressed" data-i18n="compressor.compressedLabel">Compressed</span>
                         </div>
                         
@@ -1140,7 +1176,7 @@
                                 <span class="preview-side-meta" id="previewSideOrigMeta">0 KB</span>
                             </div>
                             <div class="preview-side-img-wrap">
-                                <img id="previewSideOrigImg" src="" alt="Original Image" loading="lazy">
+                                <img id="previewSideOrigImg" src="" alt="Original Image" width="400" height="300" loading="lazy">
                             </div>
                         </div>
                         <div class="preview-side-box side-compressed">
@@ -1149,7 +1185,7 @@
                                 <span class="preview-side-meta" id="previewSideCompMeta">0 KB</span>
                             </div>
                             <div class="preview-side-img-wrap">
-                                <img id="previewSideCompImg" src="" alt="Compressed Image" loading="lazy">
+                                <img id="previewSideCompImg" src="" alt="Compressed Image" width="400" height="300" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -1157,7 +1193,7 @@
                     <!-- 3. Result Only View -->
                     <div class="preview-result-stage" id="previewResultStage" style="display: none;">
                         <div class="preview-result-img-wrap">
-                            <img id="previewResultOnlyImg" src="" alt="Processed Image" loading="lazy">
+                            <img id="previewResultOnlyImg" src="" alt="Processed Image" width="400" height="300" loading="lazy">
                         </div>
                     </div>
 
@@ -1257,6 +1293,36 @@
             <div class="faq-accordion" id="compressorFaqList"></div>
         </section>
 
+        <!-- Related Guides & Articles Section -->
+        <section class="related-tools-block" style="margin-top: 4rem; margin-bottom: 1.5rem;">
+            <h3 data-i18n="compressor.relatedGuidesTitle">Related Guides &amp; Articles</h3>
+            <div class="related-tools-grid">
+                <a href="/en/blog/image-compression-guide" class="related-tool-card">
+                    <div class="related-tool-text">
+                        <span class="related-tool-title" data-i18n="compressor.guide1Title">Compress Images Without Losing Quality: Complete Guide</span>
+                        <span class="related-tool-sub" data-i18n="compressor.guide1Sub">Reduce image payload up to 85% for lightning-fast page speed</span>
+                    </div>
+                    <div class="related-tool-icon-box icon-compressor">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                </a>
+                <a href="/en/blog/jpg-vs-png-vs-webp" class="related-tool-card">
+                    <div class="related-tool-text">
+                        <span class="related-tool-title" data-i18n="compressor.guide2Title">JPG vs PNG vs WebP: Which Format Should You Choose?</span>
+                        <span class="related-tool-sub" data-i18n="compressor.guide2Sub">In-depth technical comparison of modern web image formats</span>
+                    </div>
+                    <div class="related-tool-icon-box icon-compressor">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
         <!-- Related Tools Block -->
         <section class="related-tools-block" style="margin-top: 4.5rem;">
             <h3 data-i18n="common.relatedToolsTitle">Try Our Other Tools</h3>
@@ -1311,7 +1377,7 @@
     </main>
 
         <!-- ===================== GLOBAL FOOTER ===================== -->
-                                                                                                                                                                                                                                                                                                                                        <footer>
+                                                                                                                                                                                                                                                                                                                                                    <footer>
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-col footer-col--brand">
@@ -1615,7 +1681,12 @@
                         { q: "Does compression visibly reduce image quality?", a: "The tool uses advanced perceptual encoding that eliminates invisible redundant data, saving up to 85% in size without noticeable degradation." },
                         { q: "Can I resize image dimensions during compression?", a: "Yes, you can enable the resize option to specify maximum width and height while automatically locking aspect ratio." },
                         { q: "Is this image compression tool completely free?", a: "Yes, 100% free with no registration, no watermarks, and no usage limits." }
-                    ]
+                    ],
+                    relatedGuidesTitle: "Related Guides & Articles",
+                    guide1Title: "Compress Images Without Losing Quality: Complete Guide",
+                    guide1Sub: "Reduce image payload up to 85% for lightning-fast page speed",
+                    guide2Title: "JPG vs PNG vs WebP: Which Format Should You Choose?",
+                    guide2Sub: "In-depth technical comparison of modern web image formats"
                 }
             }
         };

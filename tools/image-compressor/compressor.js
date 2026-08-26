@@ -594,6 +594,12 @@
                             item.status = 'done';
                             item.error = null;
 
+                            try {
+                                if (window.GToolixMonitor && typeof window.GToolixMonitor.trackToolUsage === 'function') {
+                                    window.GToolixMonitor.trackToolUsage('image-compressor', { action: 'compress', savings: item.savingsPercent, format: targetMime });
+                                }
+                            } catch (e) {}
+
                             this.updateCard(item);
                             this.updateSummaryUI();
                             if (callback) callback(item);
@@ -793,6 +799,12 @@
             const item = state.queue.find(i => i.id === id);
             if (!item || !item.compressedBlob) return;
 
+            try {
+                if (window.GToolixMonitor && typeof window.GToolixMonitor.trackToolUsage === 'function') {
+                    window.GToolixMonitor.trackToolUsage('image-compressor', { action: 'download_single' });
+                }
+            } catch (e) {}
+
             const filename = getOutputFilename(item.name, item.targetMime || 'image/jpeg');
             const a = document.createElement('a');
             a.href = item.compressedUrl;
@@ -805,6 +817,12 @@
         async downloadAllZip() {
             const doneItems = state.queue.filter(i => i.status === 'done' && i.compressedBlob);
             if (doneItems.length === 0) return;
+
+            try {
+                if (window.GToolixMonitor && typeof window.GToolixMonitor.trackToolUsage === 'function') {
+                    window.GToolixMonitor.trackToolUsage('image-compressor', { action: 'download_zip', count: doneItems.length });
+                }
+            } catch (e) {}
 
             if (doneItems.length === 1) {
                 this.downloadSingle(doneItems[0].id);

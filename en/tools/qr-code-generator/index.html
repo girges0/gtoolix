@@ -594,93 +594,180 @@
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebSite",
+      "@id": "https://www.gtoolix.com/#website",
+      "url": "https://www.gtoolix.com/",
+      "name": "GToolix",
+      "description": "Free High-Performance Web Tools",
+      "inLanguage": [
+        "ar",
+        "en"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.gtoolix.com/#organization",
+      "name": "GToolix",
+      "url": "https://www.gtoolix.com/",
+      "logo": "https://www.gtoolix.com/favicon.svg"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.gtoolix.com/en/tools/qr-code-generator#software",
+      "name": "GToolix QR Code Generator",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "url": "https://www.gtoolix.com/en/tools/qr-code-generator"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.gtoolix.com/en/tools/qr-code-generator#webapp",
+      "name": "GToolix QR Generator Engine",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript",
+      "featureList": "PNG Export, SVG Vector Export, Custom Colors, Wi-Fi QR, vCard, No Watermark, 100% Client-Side Privacy",
+      "url": "https://www.gtoolix.com/en/tools/qr-code-generator"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.gtoolix.com/en/tools/qr-code-generator#webpage",
+      "url": "https://www.gtoolix.com/en/tools/qr-code-generator",
+      "name": "QR Code Generator Free Online | GToolix",
+      "description": "Create custom high-resolution QR codes for URLs, Wi-Fi, vCard contacts, SMS, and text — instant download in PNG and SVG vector.",
+      "isPartOf": {
+        "@id": "https://www.gtoolix.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.gtoolix.com/en/tools/qr-code-generator#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebSite",
-          "@id": "https://www.gtoolix.com/#website",
-          "url": "https://www.gtoolix.com/",
-          "name": "GToolix",
-          "description": "Free High-Performance Web Tools",
-          "inLanguage": ["ar", "en"]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.gtoolix.com/en/"
         },
         {
-          "@type": "Organization",
-          "@id": "https://www.gtoolix.com/#organization",
-          "name": "GToolix",
-          "url": "https://www.gtoolix.com/",
-          "logo": "https://www.gtoolix.com/favicon.svg"
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://www.gtoolix.com/en/tools"
         },
         {
-          "@type": "SoftwareApplication",
-          "@id": "https://www.gtoolix.com/tools/qr-code-generator#software",
-          "name": "GToolix QR Code Generator",
-          "applicationCategory": "UtilitiesApplication",
-          "operatingSystem": "All (Web Browser)",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.97",
-            "ratingCount": "19420"
+          "@type": "ListItem",
+          "position": 3,
+          "name": "QR Code Generator",
+          "item": "https://www.gtoolix.com/en/tools/qr-code-generator"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.gtoolix.com/tools/qr-code-generator#howto",
+      "name": "How to Create a Custom QR Code Online",
+      "description": "Step-by-step guide to generating a free custom QR code using GToolix.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Select QR Type & Enter Content",
+          "text": "Choose URL, Text, Wi-Fi, Phone, SMS, Location, or vCard, then enter your details."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Customize Colors & Resolution",
+          "text": "Select your custom foreground color, background color, error correction level, and pixel dimension."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Preview Live QR Code",
+          "text": "Inspect the generated QR code in real-time on the live preview canvas."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Download PNG or SVG",
+          "text": "Click Download PNG for digital use or SVG vector for crisp printing."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.gtoolix.com/tools/qr-code-generator#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ما هو كود QR وكيف يعمل؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "رمز الاستجابة السريعة (QR Code) هو باركود ثنائي الأبعاد يقوم بتخزين البيانات رقمياً ويُمسح بواسطة كاميرا الهاتف."
           }
         },
         {
-          "@type": "WebApplication",
-          "@id": "https://www.gtoolix.com/tools/qr-code-generator#webapp",
-          "name": "GToolix QR Generator Engine",
-          "browserRequirements": "Requires HTML5 Canvas and JavaScript",
-          "featureList": "PNG Export, SVG Vector Export, Custom Colors, Wi-Fi QR, vCard, No Watermark, 100% Client-Side Privacy"
+          "@type": "Question",
+          "name": "هل مولد QR Code في GToolix مجاني بالكامل؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، الأداة مجانية 100% بدون أي حدود أو علامات مائية أو رسوم مخفية."
+          }
         },
         {
-          "@type": "WebPage",
-          "@id": "https://www.gtoolix.com/tools/qr-code-generator#webpage",
-          "url": "https://www.gtoolix.com/tools/qr-code-generator",
-          "name": "مولد كود QR مجاني أونلاين | GToolix",
-          "description": "أداة إنشاء كود QR أونلاين مجاناً للروابط، الواي فاي، جهات الاتصال، والمقابلات بلمسة واحدة وبدون تسجيل.",
-          "isPartOf": { "@id": "https://www.gtoolix.com/#website" }
+          "@type": "Question",
+          "name": "هل تنتهي صلاحية أكواد QR المنشأة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "لا، جميع الأكواد التي يتم إنشاؤها هي أكواد ثابتة (Static) ولن تنتهي صلاحيتها أبداً."
+          }
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://www.gtoolix.com/tools/qr-code-generator#breadcrumb",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://www.gtoolix.com/" },
-            { "@type": "ListItem", "position": 2, "name": "الأدوات", "item": "https://www.gtoolix.com/tools" },
-            { "@type": "ListItem", "position": 3, "name": "مولد كود QR", "item": "https://www.gtoolix.com/tools/qr-code-generator" }
-          ]
+          "@type": "Question",
+          "name": "Is this QR code generator completely free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, GToolix QR Code Generator is 100% free with unlimited generation and zero watermarks."
+          }
         },
         {
-          "@type": "HowTo",
-          "@id": "https://www.gtoolix.com/tools/qr-code-generator#howto",
-          "name": "How to Create a Custom QR Code Online",
-          "description": "Step-by-step guide to generating a free custom QR code using GToolix.",
-          "step": [
-            { "@type": "HowToStep", "position": 1, "name": "Select QR Type & Enter Content", "text": "Choose URL, Text, Wi-Fi, Phone, SMS, Location, or vCard, then enter your details." },
-            { "@type": "HowToStep", "position": 2, "name": "Customize Colors & Resolution", "text": "Select your custom foreground color, background color, error correction level, and pixel dimension." },
-            { "@type": "HowToStep", "position": 3, "name": "Preview Live QR Code", "text": "Inspect the generated QR code in real-time on the live preview canvas." },
-            { "@type": "HowToStep", "position": 4, "name": "Download PNG or SVG", "text": "Click Download PNG for digital use or SVG vector for crisp printing." }
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://www.gtoolix.com/tools/qr-code-generator#faq",
-          "mainEntity": [
-            { "@type": "Question", "name": "ما هو كود QR وكيف يعمل؟", "acceptedAnswer": { "@type": "Answer", "text": "رمز الاستجابة السريعة (QR Code) هو باركود ثنائي الأبعاد يقوم بتخزين البيانات رقمياً ويُمسح بواسطة كاميرا الهاتف." } },
-            { "@type": "Question", "name": "هل مولد QR Code في GToolix مجاني بالكامل؟", "acceptedAnswer": { "@type": "Answer", "text": "نعم، الأداة مجانية 100% بدون أي حدود أو علامات مائية أو رسوم مخفية." } },
-            { "@type": "Question", "name": "هل تنتهي صلاحية أكواد QR المنشأة؟", "acceptedAnswer": { "@type": "Answer", "text": "لا، جميع الأكواد التي يتم إنشاؤها هي أكواد ثابتة (Static) ولن تنتهي صلاحيتها أبداً." } },
-            { "@type": "Question", "name": "Is this QR code generator completely free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, GToolix QR Code Generator is 100% free with unlimited generation and zero watermarks." } },
-            { "@type": "Question", "name": "Can I generate vector SVG QR codes for printing?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can export your QR code as scalable vector SVG for high-resolution printing." } }
-          ]
+          "@type": "Question",
+          "name": "Can I generate vector SVG QR codes for printing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can export your QR code as scalable vector SVG for high-resolution printing."
+          }
         }
       ]
     }
+  ]
+}
     </script>
     <link rel="preload" href="/static/css/main.min.css" as="style">
     <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -729,7 +816,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
 </head>
 <body>
-                                    <header class="site-nav" id="site-header">
+                                                <header class="site-nav" id="site-header">
         <a class="site-nav__brand" href="/en/" aria-label="GToolix Home">
             <span class="site-nav__brand-mark">
                 <picture>
@@ -1338,6 +1425,25 @@
                     </div>
                     <div id="qr-faq-list" class="faq-accordion"></div>
 
+                    <!-- Related Guides & Articles Section -->
+                    <div class="related-tools-block" style="margin-top: 3.5rem; margin-bottom: 2rem;">
+                        <h3 data-i18n="qr.relatedGuidesTitle">Related Guides &amp; Articles</h3>
+                        <div class="related-tools-grid">
+                            <a href="/en/blog/qr-code" class="related-tool-card">
+                                <div class="related-tool-text">
+                                    <span class="related-tool-title" data-i18n="qr.guide1Title">QR Code: The Ultimate Guide</span>
+                                    <span class="related-tool-sub" data-i18n="qr.guide1Sub">History, matrix architecture &amp; vector QR generation</span>
+                                </div>
+                                <div class="related-tool-icon-box icon-qr">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="related-tools-block" style="margin-top: 2.5rem;">
                         <h3 data-i18n="common.relatedToolsTitle">Try Our Other Tools</h3>
                         <div class="related-tools-grid">
@@ -1391,7 +1497,7 @@
     </main>
 
     <!-- ===================== GLOBAL FOOTER ===================== -->
-                                    <footer>
+                                                <footer>
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-col footer-col--brand">
@@ -1549,7 +1655,10 @@
                         { q: "Can I customize the QR code foreground and background colors?", a: "Yes, use the interactive color pickers to select any custom foreground and background colors." },
                         { q: "What is Error Correction Level (ECL)?", a: "Error correction allows the QR code to be read even if partially damaged or obscured (L=7%, M=15%, Q=25%, H=30%)." },
                         { q: "Are my links or Wi-Fi passwords stored on your servers?", a: "Never! All processing happens 100% locally inside your browser memory via HTML5 Canvas." }
-                    ]
+                    ],
+                    relatedGuidesTitle: "Related Guides & Articles",
+                    guide1Title: "QR Code: The Ultimate Guide",
+                    guide1Sub: "History, matrix architecture & vector QR generation"
                 }
             },
             ar: {

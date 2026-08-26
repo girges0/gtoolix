@@ -1,5 +1,14 @@
 User-agent: *
 Allow: /
+Disallow: /data/
+Disallow: /templates/
+Disallow: /scripts/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
 
 User-agent: Mediapartners-Google
 Allow: /

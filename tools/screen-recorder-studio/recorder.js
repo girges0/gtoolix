@@ -1004,6 +1004,11 @@
             state.mediaRecorder.start(1000); // chunk every 1s
             state.isRecording = true;
             state.isPaused = false;
+            try {
+                if (window.GToolixMonitor && typeof window.GToolixMonitor.trackToolUsage === 'function') {
+                    window.GToolixMonitor.trackToolUsage('screen-recorder-studio', { action: 'start_recording', mode: state.recordingMode });
+                }
+            } catch (e) {}
             updateUIState();
             startTimer();
 
@@ -1091,6 +1096,11 @@
 
     function downloadRecording() {
         if (!state.recordedBlob || !state.recordedUrl) return;
+        try {
+            if (window.GToolixMonitor && typeof window.GToolixMonitor.trackToolUsage === 'function') {
+                window.GToolixMonitor.trackToolUsage('screen-recorder-studio', { action: 'download_video', duration: state.secondsRecorded });
+            }
+        } catch (e) {}
         const mime = state.recordedBlob.type || '';
         const ext = mime.includes('mp4') ? 'mp4' : 'webm';
         const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);

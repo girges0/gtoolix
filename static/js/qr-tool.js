@@ -655,6 +655,11 @@ var QRTool = (function () {
     function downloadPNG() {
         const canvas = document.getElementById('qr-canvas');
         if (!canvas || !currentPayload) return;
+        try {
+            if (window.GToolixMonitor && typeof window.GToolixMonitor.trackToolUsage === 'function') {
+                window.GToolixMonitor.trackToolUsage('qr-code-generator', { action: 'download_png', tab: currentTab });
+            }
+        } catch (e) {}
         const link = document.createElement('a');
         link.download = `qrcode_${Date.now()}.png`;
         link.href = canvas.toDataURL('image/png');
@@ -666,6 +671,11 @@ var QRTool = (function () {
 
     function downloadSVG() {
         if (!currentSvgString) return;
+        try {
+            if (window.GToolixMonitor && typeof window.GToolixMonitor.trackToolUsage === 'function') {
+                window.GToolixMonitor.trackToolUsage('qr-code-generator', { action: 'download_svg', tab: currentTab });
+            }
+        } catch (e) {}
         const blob = new Blob([currentSvgString], { type: 'image/svg+xml;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');

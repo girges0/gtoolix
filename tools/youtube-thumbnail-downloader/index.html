@@ -430,94 +430,181 @@
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebSite",
+      "@id": "https://www.gtoolix.com/#website",
+      "url": "https://www.gtoolix.com/",
+      "name": "GToolix",
+      "description": "Free High-Performance Web Tools",
+      "inLanguage": [
+        "ar",
+        "en"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.gtoolix.com/#organization",
+      "name": "GToolix",
+      "url": "https://www.gtoolix.com/",
+      "logo": "https://www.gtoolix.com/favicon.svg"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#software",
+      "name": "YouTube Thumbnail Downloader",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "url": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#webapp",
+      "name": "GToolix Thumbnail Downloader Engine",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript",
+      "featureList": "4K Maxresdefault, HD 1080p, SD, HQ, MQ, Clean Crop, Zero Watermark, Instant Download",
+      "url": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#webpage",
+      "url": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader",
+      "name": "تحميل صور اليوتيوب المصغرة HD و 4K مجاناً | GToolix",
+      "description": "أداة استخراج وتحميل وتنزيل صور أغلفة فيديوهات يوتيوب والشورتس بجودة عالية وبدون علامة مائية.",
+      "isPartOf": {
+        "@id": "https://www.gtoolix.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebSite",
-          "@id": "https://www.gtoolix.com/#website",
-          "url": "https://www.gtoolix.com/",
-          "name": "GToolix",
-          "description": "Free High-Performance Web Tools",
-          "inLanguage": ["ar", "en"]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://www.gtoolix.com/"
         },
         {
-          "@type": "Organization",
-          "@id": "https://www.gtoolix.com/#organization",
-          "name": "GToolix",
-          "url": "https://www.gtoolix.com/",
-          "logo": "https://www.gtoolix.com/favicon.svg"
+          "@type": "ListItem",
+          "position": 2,
+          "name": "الأدوات",
+          "item": "https://www.gtoolix.com/tools"
         },
         {
-          "@type": "SoftwareApplication",
-          "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#software",
-          "name": "YouTube Thumbnail Downloader",
-          "applicationCategory": "UtilitiesApplication",
-          "operatingSystem": "All (Web Browser)",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.96",
-            "ratingCount": "15890"
+          "@type": "ListItem",
+          "position": 3,
+          "name": "تحميل صور اليوتيوب المصغرة",
+          "item": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#howto",
+      "name": "How to Download YouTube Thumbnails in Full HD / 4K",
+      "description": "Step-by-step guide to extract and download high-resolution YouTube video cover thumbnails using GToolix.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Copy YouTube Link",
+          "text": "Copy the video URL or Shorts link from your browser or the YouTube mobile app."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Paste in GToolix Extractor",
+          "text": "Paste the link in the input box and click the Extract Thumbnails button."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Preview Available Resolutions",
+          "text": "Preview the available original quality thumbnails (4K Ultra HD, HD, SD, MQ)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Download or Copy Image URL",
+          "text": "Click Download for instant saving to your device or Copy Link to share."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "كيف أحمل صورة مصغرة من فيديو يوتيوب؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "انسخ رابط فيديو يوتيوب أو الشورتس، الصقه في الخانة المخصصة بالأعلى، وستظهر لك جميع الجودات المتاحة للتحميل المباشر."
           }
         },
         {
-          "@type": "WebApplication",
-          "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#webapp",
-          "name": "GToolix Thumbnail Downloader Engine",
-          "browserRequirements": "Requires HTML5 Canvas and JavaScript",
-          "featureList": "4K Maxresdefault, HD 1080p, SD, HQ, MQ, Clean Crop, Zero Watermark, Instant Download"
+          "@type": "Question",
+          "name": "هل أداة تحميل صور يوتيوب مجانية؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، الأداة مجانية 100% بدون حدود أو تسجيل أو علامات مائية."
+          }
         },
         {
-          "@type": "WebPage",
-          "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#webpage",
-          "url": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader",
-          "name": "تحميل صور اليوتيوب المصغرة HD و 4K مجاناً | GToolix",
-          "description": "أداة استخراج وتحميل وتنزيل صور أغلفة فيديوهات يوتيوب والشورتس بجودة عالية وبدون علامة مائية.",
-          "isPartOf": { "@id": "https://www.gtoolix.com/#website" }
+          "@type": "Question",
+          "name": "هل يمكن تحميل صور مصغرة بدقة 4K؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، إذا قام منشئ الفيديو برفع صورة غلاف عالية الدقة، توفر الأداة التحميل بدقة 4K (Maxresdefault) فورياً."
+          }
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#breadcrumb",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://www.gtoolix.com/" },
-            { "@type": "ListItem", "position": 2, "name": "الأدوات", "item": "https://www.gtoolix.com/tools" },
-            { "@type": "ListItem", "position": 3, "name": "تحميل صور اليوتيوب المصغرة", "item": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader" }
-          ]
+          "@type": "Question",
+          "name": "Is GToolix YouTube Thumbnail Downloader completely free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, it is 100% free with unlimited downloads and zero watermarks."
+          }
         },
         {
-          "@type": "HowTo",
-          "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#howto",
-          "name": "How to Download YouTube Thumbnails in Full HD / 4K",
-          "description": "Step-by-step guide to extract and download high-resolution YouTube video cover thumbnails using GToolix.",
-          "step": [
-            { "@type": "HowToStep", "position": 1, "name": "Copy YouTube Link", "text": "Copy the video URL or Shorts link from your browser or the YouTube mobile app." },
-            { "@type": "HowToStep", "position": 2, "name": "Paste in GToolix Extractor", "text": "Paste the link in the input box and click the Extract Thumbnails button." },
-            { "@type": "HowToStep", "position": 3, "name": "Preview Available Resolutions", "text": "Preview the available original quality thumbnails (4K Ultra HD, HD, SD, MQ)." },
-            { "@type": "HowToStep", "position": 4, "name": "Download or Copy Image URL", "text": "Click Download for instant saving to your device or Copy Link to share." }
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://www.gtoolix.com/tools/youtube-thumbnail-downloader#faq",
-          "mainEntity": [
-            { "@type": "Question", "name": "كيف أحمل صورة مصغرة من فيديو يوتيوب؟", "acceptedAnswer": { "@type": "Answer", "text": "انسخ رابط فيديو يوتيوب أو الشورتس، الصقه في الخانة المخصصة بالأعلى، وستظهر لك جميع الجودات المتاحة للتحميل المباشر." } },
-            { "@type": "Question", "name": "هل أداة تحميل صور يوتيوب مجانية؟", "acceptedAnswer": { "@type": "Answer", "text": "نعم، الأداة مجانية 100% بدون حدود أو تسجيل أو علامات مائية." } },
-            { "@type": "Question", "name": "هل يمكن تحميل صور مصغرة بدقة 4K؟", "acceptedAnswer": { "@type": "Answer", "text": "نعم، إذا قام منشئ الفيديو برفع صورة غلاف عالية الدقة، توفر الأداة التحميل بدقة 4K (Maxresdefault) فورياً." } },
-            { "@type": "Question", "name": "Is GToolix YouTube Thumbnail Downloader completely free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it is 100% free with unlimited downloads and zero watermarks." } },
-            { "@type": "Question", "name": "Can I download thumbnails from YouTube Shorts?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, simply paste the YouTube Shorts URL and our extractor will retrieve the cover image automatically." } }
-          ]
+          "@type": "Question",
+          "name": "Can I download thumbnails from YouTube Shorts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, simply paste the YouTube Shorts URL and our extractor will retrieve the cover image automatically."
+          }
         }
       ]
     }
+  ]
+}
     </script>
 
     <link rel="preload" href="/static/css/main.min.css" as="style">
     <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -891,7 +978,7 @@
 </head>
 
 <body>
-                                                                                                                                                                                                                                                                                                                                    <header class="site-nav" id="site-header">
+                                                                                                                                                                                                                                                                                                                                                <header class="site-nav" id="site-header">
         <a class="site-nav__brand" href="/" aria-label="GToolix Home">
             <span class="site-nav__brand-mark">
                 <picture>
@@ -1214,6 +1301,36 @@
                     </div>
                     <div id="thumb-faq-list" class="faq-accordion"></div>
 
+                    <!-- Related Guides & Articles Section -->
+                    <div class="related-tools-block" style="margin-top: 3.5rem; margin-bottom: 2rem;">
+                        <h3 data-i18n="thumb.relatedGuidesTitle">شروحات وأدلة ذات صلة</h3>
+                        <div class="related-tools-grid">
+                            <a href="/blog/free-youtube-thumbnail-downloader-hd-4k" class="related-tool-card">
+                                <div class="related-tool-text">
+                                    <span class="related-tool-title" data-i18n="thumb.guide1Title">تحميل الصور المصغرة لليوتيوب: الدليل الشامل</span>
+                                    <span class="related-tool-sub" data-i18n="thumb.guide1Sub">استخراج وتحميل صور الغلاف بدقة 4K</span>
+                                </div>
+                                <div class="related-tool-icon-box icon-thumb">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                            <a href="/blog/youtube-thumbnail-dimensions-guide" class="related-tool-card">
+                                <div class="related-tool-text">
+                                    <span class="related-tool-title" data-i18n="thumb.guide2Title">مقاسات الصور المصغرة لليوتيوب ودليل التصميم</span>
+                                    <span class="related-tool-sub" data-i18n="thumb.guide2Sub">أبعاد 1280x720 ونسبة 16:9 وسيكولوجية الـ CTR</span>
+                                </div>
+                                <div class="related-tool-icon-box icon-thumb">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="related-tools-block">
                         <h3 data-i18n="common.relatedToolsTitle">جرب أدواتنا الأخرى</h3>
                         <div class="related-tools-grid">
@@ -1273,7 +1390,7 @@
     </main>
 
         <!-- ===================== GLOBAL FOOTER ===================== -->
-                                                                                                                                                                                                                                                                                                                                    <footer>
+                                                                                                                                                                                                                                                                                                                                                <footer>
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-col footer-col--brand">
@@ -1425,7 +1542,12 @@
                         { q: "Can I download thumbnails from YouTube Shorts?", a: "Yes, simply paste any YouTube Shorts URL and our extractor will retrieve the cover image automatically." },
                         { q: "Does GToolix add any watermark to the downloaded images?", a: "Never! You receive the 100% original, untouched image file directly from YouTube servers." },
                         { q: "Can I use downloaded thumbnails on my mobile phone?", a: "Yes, GToolix is fully responsive and optimized for iPhone, iPad, Android, and desktop browsers." }
-                    ]
+                    ],
+                    relatedGuidesTitle: "Related Guides & Articles",
+                    guide1Title: "YouTube Thumbnail Downloader: Complete Guide",
+                    guide1Sub: "Extract and download original 4K cover images",
+                    guide2Title: "YouTube Thumbnail Dimensions & Design Guide",
+                    guide2Sub: "1280x720 specs, 16:9 ratio & CTR psychology"
                 }
             },
             ar: {

@@ -450,8 +450,8 @@ function generateHomePage(lang) {
     const tpl = fs.readFileSync(templatePath, 'utf8');
 
     const title = isAr
-        ? 'GToolix – المنظومة الرقمية الشاملة للأدوات، البرامج، والمقالات | Free Web Tools & Software Hub'
-        : 'GToolix – All-in-One Digital Hub for Web Tools, Software & Guides';
+        ? 'GToolix – أدوات ويب تفاعلية مجانية، برامج ومقالات تقنية'
+        : 'GToolix – Free Online Web Tools, Software & Guides';
 
     const description = isAr
         ? 'منصة GToolix المتكاملة: استوديو أدوات ويب تفاعلية فائقة الأداء، مكتبة برامج وتطبيقات مكتبية موثوقة، ومقالات ودلائل متخصصة — مجاناً 100% وبأعلى معايير الخصوصية.'
@@ -915,8 +915,8 @@ function generateToolsIndexPage(lang) {
     const tpl = fs.readFileSync(templatePath, 'utf8');
 
     const title = isAr
-        ? 'جميع الأدوات الرقمية المجانية أونلاين | GToolix Web Tools Directory'
-        : 'All Free Online Tools Directory | High-Performance Utilities – GToolix';
+        ? 'جميع الأدوات الرقمية المجانية أونلاين | GToolix'
+        : 'All Free Online Web Tools Directory | GToolix';
 
     const description = isAr
         ? 'مكتبة شاملة للأدوات الرقمية المجانية: توليد أكواد QR، استخراج صور يوتيوب، تسجيل الشاشة، وضغط الصور — بدون تسجيل وبأعلى سرعة.'
@@ -1037,6 +1037,90 @@ function generateToolsIndexPage(lang) {
     ensureDir(path.dirname(outPath));
     fs.writeFileSync(outPath, rendered, 'utf8');
     console.log(`[GEN] Generated Tools Index: ${outPath}`);
+}
+
+function sanitizeAndLocalizeToolSchema(htmlContent, slug, lang, toolMeta) {
+    if (!htmlContent) return htmlContent;
+    const isAr = lang === 'ar';
+    const schemaMatch = htmlContent.match(/<script\s+type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/i);
+    if (!schemaMatch) return htmlContent;
+
+    try {
+        let schemaObj = JSON.parse(schemaMatch[1]);
+
+        function purgeFakeRatings(obj) {
+            if (!obj || typeof obj !== 'object') return;
+            if (obj.aggregateRating) {
+                delete obj.aggregateRating;
+            }
+            if (Array.isArray(obj)) {
+                obj.forEach(purgeFakeRatings);
+            } else {
+                for (const k in obj) {
+                    if (k === 'aggregateRating' || k === 'review') {
+                        delete obj[k];
+                    } else if (typeof obj[k] === 'object') {
+                        purgeFakeRatings(obj[k]);
+                    }
+                }
+            }
+        }
+        purgeFakeRatings(schemaObj);
+
+        const arBase = `https://www.gtoolix.com/tools/${slug}`;
+        const enBase = `https://www.gtoolix.com/en/tools/${slug}`;
+        const currentBase = isAr ? arBase : enBase;
+
+        if (schemaObj['@graph'] && Array.isArray(schemaObj['@graph'])) {
+            schemaObj['@graph'].forEach(entity => {
+                if (entity['@type'] === 'BreadcrumbList' && Array.isArray(entity.itemListElement)) {
+                    entity['@id'] = `${currentBase}#breadcrumb`;
+                    entity.itemListElement = [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": isAr ? "الرئيسية" : "Home",
+                            "item": isAr ? "https://www.gtoolix.com/" : "https://www.gtoolix.com/en/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": isAr ? "الأدوات" : "Tools",
+                            "item": isAr ? "https://www.gtoolix.com/tools" : "https://www.gtoolix.com/en/tools"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": isAr ? (toolMeta.nameAr || toolMeta.name) : (toolMeta.name || toolMeta.nameAr),
+                            "item": currentBase
+                        }
+                    ];
+                }
+
+                if (entity['@type'] === 'WebPage') {
+                    entity['@id'] = `${currentBase}#webpage`;
+                    entity.url = currentBase;
+                    if (!isAr) {
+                        entity.name = `${toolMeta.name || slug} Free Online | GToolix`;
+                        entity.description = toolMeta.description || 'Free high-performance online web utility by GToolix.';
+                    }
+                }
+
+                if (entity['@type'] === 'SoftwareApplication' || entity['@type'] === 'WebApplication') {
+                    entity.url = currentBase;
+                    if (entity['@id'] && entity['@id'].includes('/tools/')) {
+                        entity['@id'] = isAr ? entity['@id'].replace('/en/tools/', '/tools/') : entity['@id'].replace('https://www.gtoolix.com/tools/', 'https://www.gtoolix.com/en/tools/');
+                    }
+                }
+            });
+        }
+
+        const newJsonStr = JSON.stringify(schemaObj, null, 2);
+        return htmlContent.replace(/<script\s+type=["']application\/ld\+json["']>[\s\S]*?<\/script>/i, `<script type="application/ld+json">\n${newJsonStr}\n    </script>`);
+    } catch (e) {
+        console.warn(`[WARN] Failed to parse/localize schema for ${slug}:`, e.message);
+        return htmlContent;
+    }
 }
 
 // ==========================================
@@ -1160,6 +1244,7 @@ function generateToolPage(slug, lang) {
     }
 
     content = ensureOfficialAdSenseInHead(content);
+    content = sanitizeAndLocalizeToolSchema(content, slug, lang, toolMeta);
 
     const outPath = isAr
         ? path.join(ROOT_DIR, 'tools', slug, 'index.html')
@@ -1452,8 +1537,8 @@ function generateProgramsIndexPage(lang) {
     const tpl = fs.readFileSync(templatePath, 'utf8');
 
     const title = isAr
-        ? 'قسم البرامج والتطبيقات القابلة للتنزيل | GToolix Software Hub'
-        : 'Downloadable Software & Desktop Utilities | GToolix Programs Hub';
+        ? 'قسم البرامج والتطبيقات القابلة للتنزيل | GToolix'
+        : 'Downloadable Software & Desktop Utilities | GToolix';
 
     const description = isAr
         ? 'قسم البرامج والتطبيقات القابلة للتنزيل من GToolix: أدوات وتطبيقات مكتبية سريعة ومجانية، تعمل محلياً بخصوصية 100% وبدون اتصال بالإنترنت.'
@@ -1989,13 +2074,110 @@ function generate404Page(lang) {
 
     const pfx = isAr ? '' : '/en';
 
+    const searchPlaceholder = isAr ? 'ابحث عن أي أداة أو مقال... ثم اضغط Enter' : 'Search tools or guides... then press Enter';
+    const popToolsTitle = isAr ? 'أشهر الأدوات المجانية' : 'Popular Online Tools';
+
+    const catPills = isAr
+        ? `
+            <a href="/tools" class="gt-404-pill"><span>⚡</span><span>أدوات أونلاين</span></a>
+            <a href="/blog" class="gt-404-pill"><span>📚</span><span>المقالات والشروحات</span></a>
+            <a href="/programs" class="gt-404-pill"><span>💻</span><span>البرامج والتطبيقات</span></a>
+            <a href="/faq" class="gt-404-pill"><span>❓</span><span>الأسئلة الشائعة</span></a>
+            <a href="/contact" class="gt-404-pill"><span>📩</span><span>تواصل معنا</span></a>`
+        : `
+            <a href="/en/tools" class="gt-404-pill"><span>⚡</span><span>Online Tools</span></a>
+            <a href="/en/blog" class="gt-404-pill"><span>📚</span><span>Articles & Guides</span></a>
+            <a href="/en/programs" class="gt-404-pill"><span>💻</span><span>Desktop Programs</span></a>
+            <a href="/en/faq" class="gt-404-pill"><span>❓</span><span>FAQ</span></a>
+            <a href="/en/contact" class="gt-404-pill"><span>📩</span><span>Contact Us</span></a>`;
+
+    const popToolsCards = isAr
+        ? `
+            <a href="/tools/qr-code-generator" class="gt-404-card">
+                <div class="gt-404-card-icon icon-qr">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3z"/><path d="M18 18h3v3h-3z"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">مولد كود QR</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">إنشاء باركود فوري عالي الدقة</div>
+                </div>
+            </a>
+            <a href="/tools/youtube-thumbnail-downloader" class="gt-404-card">
+                <div class="gt-404-card-icon icon-thumb">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">تحميل صور يوتيوب</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">استخراج صور الغلاف بدقة 4K</div>
+                </div>
+            </a>
+            <a href="/tools/screen-recorder-studio" class="gt-404-card">
+                <div class="gt-404-card-icon icon-rec">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">مسجل الشاشة الاحترافي</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">تسجيل الشاشة والصوت والكاميرا</div>
+                </div>
+            </a>
+            <a href="/tools/image-compressor" class="gt-404-card">
+                <div class="gt-404-card-icon icon-compressor">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">ضاغط ومحوّل الصور</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">تقليل حجم JPG, PNG, WebP محلياً</div>
+                </div>
+            </a>`
+        : `
+            <a href="/en/tools/qr-code-generator" class="gt-404-card">
+                <div class="gt-404-card-icon icon-qr">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3z"/><path d="M18 18h3v3h-3z"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">QR Code Generator</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Instant vector & PNG QR codes</div>
+                </div>
+            </a>
+            <a href="/en/tools/youtube-thumbnail-downloader" class="gt-404-card">
+                <div class="gt-404-card-icon icon-thumb">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">YouTube Thumbnail Downloader</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">4K Maxres & HD cover grabber</div>
+                </div>
+            </a>
+            <a href="/en/tools/screen-recorder-studio" class="gt-404-card">
+                <div class="gt-404-card-icon icon-rec">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">Screen Recorder Studio</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Screen, audio & webcam capture</div>
+                </div>
+            </a>
+            <a href="/en/tools/image-compressor" class="gt-404-card">
+                <div class="gt-404-card-icon icon-compressor">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">Image Compressor</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Lossless JPG, PNG & WebP compression</div>
+                </div>
+            </a>`;
+
     let rendered = tpl
         .replace(/<!--HTML_TAG-->/g, htmlTag)
         .replace(/<!--PAGE_TITLE-->/g, title)
         .replace(/<!--PAGE_DESC-->/g, desc)
         .replace(/<!--SITE_NAV-->/g, siteNav)
         .replace(/<!--ERR_TITLE-->/g, isAr ? 'الصفحة غير موجودة' : 'Page Not Found')
-        .replace(/<!--ERR_DESC-->/g, isAr ? 'عذراً، الرابط الذي تحاول الوصول إليه غير متاح أو تم نقله. يمكنك العودة إلى الصفحة الرئيسية أو استكشاف مكتبة الأدوات.' : 'Sorry, the page you requested could not be found. You can return to the homepage or explore our tools catalog.')
+        .replace(/<!--ERR_DESC-->/g, isAr ? 'عذراً، الرابط الذي تحاول الوصول إليه غير متاح أو تم نقله. يمكنك البحث أو استكشاف مكتبة الأدوات والأقسام أدناه.' : 'Sorry, the page you requested could not be found. You can search or explore our tools catalog and categories below.')
+        .replace(/<!--SEARCH_PLACEHOLDER-->/g, searchPlaceholder)
+        .replace(/<!--CATEGORY_PILLS-->/g, catPills)
+        .replace(/<!--POPULAR_TOOLS_TITLE-->/g, popToolsTitle)
+        .replace(/<!--POPULAR_TOOLS_CARDS-->/g, popToolsCards)
         .replace(/<!--HOME_HREF-->/g, isAr ? '/' : '/en/')
         .replace(/<!--TOOLS_HREF-->/g, `${pfx}/tools`)
         .replace(/<!--BTN_HOME-->/g, isAr ? 'الصفحة الرئيسية' : 'Back to Home')
@@ -2121,6 +2303,15 @@ function generateSitemapXml() {
 // ==========================================
 function generateRobotsTxt() {
     const content = `User-agent: *
+Allow: /
+Disallow: /data/
+Disallow: /templates/
+Disallow: /scripts/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 User-agent: Mediapartners-Google

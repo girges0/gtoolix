@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr" data-theme="light">
 
 <head>
+    <script src="/static/js/lang-detect.min.js"></script>
     <script>
         (function () {
             try {
@@ -89,59 +90,103 @@
             font-family: 'Cairo', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
-        .site-nav {
-            position: fixed;
-            top: 0.75rem;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
-            padding: 0.45rem 0.85rem;
-            margin: 0 auto;
-            max-width: 1180px;
-            width: min(100% - 2rem, 1180px);
-            background: var(--nav-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-full);
-            min-height: 56px;
-            box-sizing: border-box;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+        .gt-404-search-box {
+            position: relative;
+            max-width: 480px;
+            margin: 1.75rem auto 2rem;
+            width: 100%;
         }
 
-        .site-nav__brand {
+        .gt-404-search-input {
+            width: 100%;
+            padding: 0.85rem 1.25rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+        }
+
+        .gt-404-search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+        }
+
+        .gt-404-pills {
             display: flex;
+            gap: 0.65rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .gt-404-pill {
+            display: inline-flex;
             align-items: center;
-            direction: ltr;
-            gap: 0.6rem;
-            font-weight: 700;
-            font-size: 1.1rem;
+            gap: 0.4rem;
+            padding: 0.5rem 1.1rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border);
+            background: var(--card);
             color: var(--text);
             text-decoration: none;
-            background: none;
-            border: none;
-            min-height: 44px;
-            cursor: pointer;
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
         }
 
-        .site-nav__logo-img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            border-radius: 9px;
-            display: block;
+        .gt-404-pill:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
         }
 
-        .site-nav__right {
+        .gt-404-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            max-width: 960px;
+            margin: 2rem auto 2.5rem;
+            text-align: start;
+        }
+
+        .gt-404-card {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
+            padding: 1.1rem 1.25rem;
+            border-radius: 1rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.25s ease;
         }
+
+        .gt-404-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.12);
+        }
+
+        .gt-404-card-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            flex-shrink: 0;
+            color: #fff;
+        }
+
+        .icon-qr { background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%); }
+        .icon-thumb { background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%); }
+        .icon-rec { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
+        .icon-compressor { background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%); }
     </style>
     <link rel="preload" href="/static/css/main.min.css" as="style">
     <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
@@ -235,17 +280,79 @@
     </div>
     <div class="particles" id="particles"></div>
 
-    <main class="container" style="max-width: 700px; padding-top: clamp(8rem, 14vw, 11rem); padding-bottom: 5rem; margin: 0 auto; text-align: center; padding-inline: max(1rem, 3.5vw);">
-        <div style="font-size: clamp(5rem, 12vw, 8.5rem); font-weight: 900; line-height: 1; margin-bottom: 1rem; background: linear-gradient(135deg, #2563EB, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+    <main class="container" style="max-width: 980px; padding-top: clamp(7.5rem, 13vw, 10.5rem); padding-bottom: 5rem; margin: 0 auto; text-align: center; padding-inline: max(1rem, 3.5vw);">
+        <div style="font-size: clamp(4.5rem, 11vw, 7.5rem); font-weight: 900; line-height: 1; margin-bottom: 0.75rem; background: linear-gradient(135deg, #2563EB, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             404
         </div>
-        <h1 style="font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; margin-bottom: 1rem;">
+        <h1 style="font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; margin-bottom: 0.75rem;">
             Page Not Found
         </h1>
-        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; max-width: 520px; margin-inline: auto;">
-            Sorry, the page you requested could not be found. You can return to the homepage or explore our tools catalog.
+        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.75rem; max-width: 580px; margin-inline: auto;">
+            Sorry, the page you requested could not be found. You can search or explore our tools catalog and categories below.
         </p>
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+
+        <!-- Search Bar -->
+        <div class="gt-404-search-box">
+            <input type="search" id="gt-404-search" class="gt-404-search-input" placeholder="Search tools or guides... then press Enter" aria-label="Search tools and guides" onkeyup="handle404Search(event)">
+        </div>
+
+        <!-- Quick Category Navigation Pills -->
+        <div class="gt-404-pills">
+            
+            <a href="/en/tools" class="gt-404-pill"><span>⚡</span><span>Online Tools</span></a>
+            <a href="/en/blog" class="gt-404-pill"><span>📚</span><span>Articles & Guides</span></a>
+            <a href="/en/programs" class="gt-404-pill"><span>💻</span><span>Desktop Programs</span></a>
+            <a href="/en/faq" class="gt-404-pill"><span>❓</span><span>FAQ</span></a>
+            <a href="/en/contact" class="gt-404-pill"><span>📩</span><span>Contact Us</span></a>
+        </div>
+
+        <!-- Popular Tools Grid -->
+        <div style="margin-top: 2rem;">
+            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.04em;">
+                Popular Online Tools
+            </h2>
+            <div class="gt-404-grid">
+                
+            <a href="/en/tools/qr-code-generator" class="gt-404-card">
+                <div class="gt-404-card-icon icon-qr">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3z"/><path d="M18 18h3v3h-3z"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">QR Code Generator</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Instant vector & PNG QR codes</div>
+                </div>
+            </a>
+            <a href="/en/tools/youtube-thumbnail-downloader" class="gt-404-card">
+                <div class="gt-404-card-icon icon-thumb">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">YouTube Thumbnail Downloader</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">4K Maxres & HD cover grabber</div>
+                </div>
+            </a>
+            <a href="/en/tools/screen-recorder-studio" class="gt-404-card">
+                <div class="gt-404-card-icon icon-rec">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">Screen Recorder Studio</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Screen, audio & webcam capture</div>
+                </div>
+            </a>
+            <a href="/en/tools/image-compressor" class="gt-404-card">
+                <div class="gt-404-card-icon icon-compressor">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <div>
+                    <div style="font-weight: 700; font-size: 0.98rem;">Image Compressor</div>
+                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Lossless JPG, PNG & WebP compression</div>
+                </div>
+            </a>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem;">
             <a href="/en/" class="btn btn-primary" style="padding: 0.75rem 1.5rem; text-decoration: none; font-weight: 600;">Back to Home</a>
             <a href="/en/tools" class="btn btn-outline" style="padding: 0.75rem 1.5rem; text-decoration: none; font-weight: 600;">Explore Tools</a>
         </div>
@@ -323,6 +430,16 @@
             if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
             document.body.classList.toggle('menu-open', shouldOpen);
             btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+
+        function handle404Search(e) {
+            if (e.key === 'Enter') {
+                const q = e.target.value.trim();
+                if (q) {
+                    const isEn = window.location.pathname.startsWith('/en');
+                    window.location.href = (isEn ? '/en/tools?q=' : '/tools?q=') + encodeURIComponent(q);
+                }
+            }
         }
     </script>
     <script src="/static/js/theme.min.js" defer></script>

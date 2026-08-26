@@ -457,8 +457,141 @@
             text-align: center;
             padding: 4rem 1rem;
         }
+
+        /* ── Rich Article Media & Layout Styling ── */
+        .responsive-video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            margin: 2rem 0;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+        }
+
+        .responsive-video-container iframe,
+        .responsive-video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .table-of-contents {
+            background: rgba(37, 99, 235, 0.05);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .article-callout {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0.85rem;
+            margin: 1.75rem 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .callout-note {
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            color: var(--text);
+        }
+        .callout-warning {
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            color: var(--text);
+        }
+        .callout-tip {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: var(--text);
+        }
+        .callout-important {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            color: var(--text);
+        }
+        .callout-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .article-figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .article-figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border);
+        }
+        .article-figure figcaption {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
     </style>
     <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -710,7 +843,7 @@
 
 <body>
     <!-- Navigation Header -->
-                                                                                                                                                                                                                                                                                                                                        <header class="site-nav" id="site-header">
+                                                                                                                                                                                                                                                                                                                                                    <header class="site-nav" id="site-header">
         <a class="site-nav__brand" href="/en/" aria-label="GToolix Home">
             <span class="site-nav__brand-mark">
                 <picture>
@@ -797,6 +930,9 @@
     <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
     <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
     <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
 <main class="article-container">
         <!-- Breadcrumbs -->
         <nav class="breadcrumb-nav" aria-label="Breadcrumb">
@@ -869,7 +1005,7 @@
 
     <!-- Complete Site Footer -->
         <!-- ===================== GLOBAL FOOTER ===================== -->
-                                                                                                                                                                                                                                                                                                                                        <footer>
+                                                                                                                                                                                                                                                                                                                                                    <footer>
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-col footer-col--brand">
@@ -988,7 +1124,7 @@
             return '';
         }
 
-        function parseMarkdownClient(md) {
+        function parseMarkdownClient(md, isAr = true) {
             if (!md) return '';
             let text = md.replace(/\r\n/g, '\n');
 
@@ -1008,7 +1144,71 @@
                 return id;
             });
 
-            // 2. Tables
+            // 2. Video Embeds [video:url "caption"] or [youtube:id]
+            text = text.replace(/\[(?:video|youtube):([^\s"\]]+)(?:\s+"([^"]+)")?\]/g, function (_, videoUrl, caption) {
+                let embed = '';
+                const ytMatch = videoUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|shorts\/))([\w-]{11})/i);
+                if (ytMatch) {
+                    embed = `<div class="responsive-video-container"><iframe src="https://www.youtube-nocookie.com/embed/${ytMatch[1]}" title="Video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`;
+                } else if (videoUrl.includes('vimeo.com')) {
+                    const vId = videoUrl.split('/').pop();
+                    embed = `<div class="responsive-video-container"><iframe src="https://player.vimeo.com/video/${vId}" allowfullscreen></iframe></div>`;
+                } else {
+                    embed = `<div class="responsive-video-container"><video controls src="${videoUrl}" preload="metadata"></video></div>`;
+                }
+                if (caption) {
+                    embed += `<div class="video-caption-label" style="text-align:center;font-size:0.82rem;color:var(--text-muted);margin-top:0.4rem;margin-bottom:1.5rem;">${escapeHtml(caption)}</div>`;
+                }
+                return embed;
+            });
+
+            // 3. Callout Boxes & Blockquotes
+            text = text.replace(/:::(note|warning|tip|important)\n([\s\S]*?)\n:::/g, function (_, type, content) {
+                const icons = { note: '💡', warning: '⚠️', tip: '✅', important: '🚨' };
+                return `<div class="article-callout callout-${type}"><span class="callout-icon">${icons[type] || '💡'}</span><div>${content.trim().replace(/\n/g, '<br>')}</div></div>`;
+            });
+
+            text = text.replace(/^>\s*\[!(NOTE|WARNING|TIP|IMPORTANT|CAUTION)\]\s*\n((?:>.*\n?)*)/gim, function (_, type, body) {
+                const t = type.toLowerCase() === 'caution' ? 'important' : type.toLowerCase();
+                const cleanBody = body.replace(/^>\s?/gm, '').trim();
+                const icons = { note: '💡', warning: '⚠️', tip: '✅', important: '🚨' };
+                return `<div class="article-callout callout-${t}"><span class="callout-icon">${icons[t] || '💡'}</span><div>${cleanBody.replace(/\n/g, '<br>')}</div></div>\n`;
+            });
+
+            text = text.replace(/(?:^|\n)(> [^\n]+(?:\n> [^\n]+)*)/g, (match, quoteContent) => {
+                const clean = quoteContent.split('\n').map(l => l.replace(/^>\s?/, '').trim()).join(' ');
+                if (clean.includes('💡') || clean.includes('نصيحة') || clean.includes('Tip')) {
+                    return `\n\n<div class="article-callout callout-tip"><span class="callout-icon">💡</span><div>${clean}</div></div>\n\n`;
+                }
+                return `\n\n<blockquote>${clean}</blockquote>\n\n`;
+            });
+
+            // 4. Table of Contents [TOC]
+            text = text.replace(/\[TOC\]/g, () => {
+                const lines = md.split('\n');
+                const headings = [];
+                lines.forEach(l => {
+                    const h2 = l.trim().match(/^##\s+(.+)$/);
+                    const h3 = l.trim().match(/^###\s+(.+)$/);
+                    if (h2) {
+                        const txt = h2[1].replace(/[*_~`]/g, '').trim();
+                        headings.push({ level: 2, text: txt, id: 'sec-' + txt.toLowerCase().replace(/[^\w\u0621-\u064A-]+/g, '-') });
+                    } else if (h3) {
+                        const txt = h3[1].replace(/[*_~`]/g, '').trim();
+                        headings.push({ level: 3, text: txt, id: 'sec-' + txt.toLowerCase().replace(/[^\w\u0621-\u064A-]+/g, '-') });
+                    }
+                });
+                if (headings.length < 2) return '';
+                const tocTitle = isAr ? '📑 فهرس محتويات الدليل الشامل' : '📑 Table of Contents';
+                let toc = `<div class="table-of-contents"><div class="toc-title" style="font-weight:800;font-size:1.05rem;margin-bottom:0.75rem;">${tocTitle}</div><ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.45rem;">`;
+                headings.forEach(h => {
+                    toc += `<li style="${h.level === 3 ? (isAr ? 'padding-right:1.25rem;font-size:0.85rem;' : 'padding-left:1.25rem;font-size:0.85rem;') : 'font-weight:700;font-size:0.92rem;'}"><a href="#${h.id}" style="color:var(--primary-hover);text-decoration:none;">${h.level === 3 ? '↳ ' : ''}${escapeHtml(h.text)}</a></li>`;
+                });
+                toc += `</ul></div>`;
+                return toc;
+            });
+
+            // 5. Tables
             text = text.replace(/((?:(?:\|[^\n]+\|)\n?)+)/g, (match) => {
                 const lines = match.trim().split('\n').map(l => l.trim()).filter(Boolean);
                 if (lines.length < 2) return match;
@@ -1034,30 +1234,22 @@
                 return '\n\n' + html + '\n\n';
             });
 
-            // 3. Callout Boxes & Blockquotes
-            text = text.replace(/(?:^|\n)(> [^\n]+(?:\n> [^\n]+)*)/g, (match, quoteContent) => {
-                const clean = quoteContent.split('\n').map(l => l.replace(/^>\s?/, '').trim()).join(' ');
-                if (clean.includes('💡') || clean.includes('نصيحة') || clean.includes('Tip')) {
-                    return `\n\n<div class="callout-box callout-box--tip"><p>${clean}</p></div>\n\n`;
-                }
-                return `\n\n<blockquote>${clean}</blockquote>\n\n`;
-            });
-
-            // 4. Headings
+            // 6. Headings with Anchors
             text = text.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
-            text = text.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-            text = text.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-            text = text.replace(/^# (.*$)/gim, '<h2>$1</h2>');
+            text = text.replace(/^### (.*$)/gim, (_, t) => `<h3 id="sec-${t.replace(/[*_~`]/g, '').trim().toLowerCase().replace(/[^\w\u0621-\u064A-]+/g, '-')}">${t}</h3>`);
+            text = text.replace(/^## (.*$)/gim, (_, t) => `<h2 id="sec-${t.replace(/[*_~`]/g, '').trim().toLowerCase().replace(/[^\w\u0621-\u064A-]+/g, '-')}">${t}</h2>`);
+            text = text.replace(/^# (.*$)/gim, (_, t) => `<h2 id="sec-${t.replace(/[*_~`]/g, '').trim().toLowerCase().replace(/[^\w\u0621-\u064A-]+/g, '-')}">${t}</h2>`);
 
-            // 5. Bold & Italic
+            // 7. Bold & Italic
             text = text.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
             text = text.replace(/\*(.*?)\*/gim, '<em>$1</em>');
+            text = text.replace(/~~(.*?)~~/gim, '<del>$1</del>');
 
-            // 6. Images & Links
-            text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<img src="$2" alt="$1" style="max-width:100%;border-radius:12px;margin:1.5rem 0;" loading="lazy">');
+            // 8. Images & Links
+            text = text.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]+)")?\)/gim, '<figure class="article-figure align-center" style="margin:2rem 0;text-align:center;"><img src="$2" alt="$1" style="max-width:100%;border-radius:12px;border:1px solid var(--border);" loading="lazy">$3 ? `<figcaption style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem;font-style:italic;">$3</figcaption>` : ""</figure>');
             text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" target="_blank" rel="noopener">$1</a>');
 
-            // 7. Lists
+            // 9. Lists
             text = text.replace(/(?:^|\n)((?:- [^\n]+\n?)+)/g, (match, list) => {
                 const items = list.trim().split('\n').map(l => l.replace(/^- /, '').trim());
                 return '\n\n<ul>' + items.map(it => `<li>${it}</li>`).join('') + '</ul>\n\n';
@@ -1067,12 +1259,12 @@
                 return '\n\n<ol>' + items.map(it => `<li>${it}</li>`).join('') + '</ol>\n\n';
             });
 
-            // 8. Paragraphs
+            // 10. Paragraphs
             const blocks = text.split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
             const finalHtml = blocks.map(block => {
                 if (block.startsWith('<h') || block.startsWith('<div') || block.startsWith('<table') || 
                     block.startsWith('<ul') || block.startsWith('<ol') || block.startsWith('<blockquote') ||
-                    block.startsWith('<pre') || block.startsWith('__CODEBLOCK_')) {
+                    block.startsWith('<pre') || block.startsWith('<figure') || block.startsWith('__CODEBLOCK_')) {
                     return block;
                 }
                 return `<p>${block.replace(/\n/g, '<br>')}</p>`;
@@ -1094,38 +1286,38 @@
                 return {
                     title: isAr ? 'أنشئ رمز QR مخصص فائق الدقة مجاناً' : 'Generate Free High-Res QR Codes Now',
                     desc: isAr ? 'مولد كود QR مجاني فائق الجودة يدعم الروابط، الواي فاي، وبطاقات الأعمال بصيغتي PNG و SVG.' : 'Free vector QR generator supporting URLs, Wi-Fi, and vCards with instant SVG export.',
-                    url: '/tools/qr-code-generator',
+                    url: '/tools/qr-code-generator/',
                     btn: isAr ? 'استخدم مولد QR الآن' : 'Open QR Generator'
                 };
             }
-            if (slug.includes('gemini')) {
-                return {
-                    title: isAr ? 'أزل العلامات المائية من صور Gemini في ثوانٍ' : 'Remove Gemini Watermarks in Seconds',
-                    desc: isAr ? 'أداة ذكية لإزالة علامات الذكاء الاصطناعي وترميم الصور محلياً بدقة 4K دون رفع الصور لأي خادم.' : 'Clean AI-generated imagery locally in full 4K without uploading files to external servers.',
-                    url: '/tools/gemini-watermark-remover',
-                    btn: isAr ? 'استخدم مزيل العلامة الآن' : 'Open Watermark Remover'
-                };
-            }
-            if (slug.includes('youtube')) {
+            if (slug.includes('youtube') || slug.includes('thumbnail')) {
                 return {
                     title: isAr ? 'استخرج وحمّل صور غلاف اليوتيوب بدقة 4K' : 'Download 4K YouTube Thumbnails Instantly',
                     desc: isAr ? 'أداة سريعة لتحميل صور اليوتيوب المصغرة الأصلية للفيديوهات والـ Shorts بأعلى دقة HD.' : 'Extract native maxres 1080p and 4K thumbnail covers from any video or Shorts URL.',
-                    url: '/tools/youtube-thumbnail-downloader',
+                    url: '/tools/youtube-thumbnail-downloader/',
                     btn: isAr ? 'حمّل الأغلفة الآن' : 'Open Thumbnail Grabber'
                 };
             }
-            if (slug.includes('screen')) {
+            if (slug.includes('screen') || slug.includes('record')) {
                 return {
                     title: isAr ? 'سجّل شاشتك وكاميرا الويب والصوت بدون برامج' : 'Record Screen & Webcam Directly from Browser',
                     desc: isAr ? 'ستوديو تسجيل الشاشة الاحترافي بجودة 60fps وخصوصية محلية 100% بدون قيود أو علامات مائية.' : 'Studio-grade 60fps screen & audio recorder with 100% client-side privacy and no watermarks.',
-                    url: '/tools/screen-recorder-studio',
+                    url: '/tools/screen-recorder-studio/',
                     btn: isAr ? 'ابدأ التسجيل الآن' : 'Open Screen Studio'
+                };
+            }
+            if (slug.includes('image') || slug.includes('compress') || slug.includes('jpg') || slug.includes('png') || slug.includes('webp')) {
+                return {
+                    title: isAr ? 'اضغط وحوّل صورك بدقة فائقة وبدون فقدان في الجودة' : 'Compress & Convert Images with Zero Quality Loss',
+                    desc: isAr ? 'أداة ضغط الصور وتحويلها بين JPG و PNG و WebP محلياً 100% في متصفحك وبأعلى سرعة.' : 'Smart client-side image compressor and format converter supporting JPG, PNG, and WebP.',
+                    url: '/tools/image-compressor/',
+                    btn: isAr ? 'استخدم ضاغط الصور الآن' : 'Open Image Compressor'
                 };
             }
             return {
                 title: isAr ? 'استكشف جميع أدوات GToolix المجانية' : 'Explore All Free GToolix Tools',
                 desc: isAr ? 'مجموعة متكاملة من الأدوات الذكية للإنتاجية والتصميم وصناعة المحتوى.' : 'Comprehensive suite of client-side web tools for productivity and design.',
-                url: '/tools',
+                url: '/tools/',
                 btn: isAr ? 'تصفح جميع الأدوات' : 'Explore Tools'
             };
         }
@@ -1165,18 +1357,28 @@
             const excerpt = isAr ? (currentArticle.excerpt_ar || currentArticle.excerpt_en) : (currentArticle.excerpt_en || currentArticle.excerpt_ar);
             const content = isAr ? (currentArticle.content_ar || currentArticle.content_en) : (currentArticle.content_en || currentArticle.content_ar);
 
-            document.getElementById('page-title').textContent = `${title} | GToolix`;
-            document.getElementById('page-meta-desc').setAttribute('content', excerpt || title);
-            document.getElementById('breadcrumb-current-title').textContent = title;
-            document.getElementById('article-title').textContent = title;
-            document.getElementById('article-excerpt').textContent = excerpt || '';
+            document.title = `${title} | GToolix`;
+            const titleEl = document.getElementById('page-title');
+            if (titleEl) titleEl.textContent = `${title} | GToolix`;
+            const metaDescEl = document.getElementById('page-meta-desc') || document.querySelector('meta[name="description"]');
+            if (metaDescEl) metaDescEl.setAttribute('content', excerpt || title);
+            const breadcrumbEl = document.getElementById('breadcrumb-current-title');
+            if (breadcrumbEl) breadcrumbEl.textContent = title;
+            const articleTitleEl = document.getElementById('article-title');
+            if (articleTitleEl) articleTitleEl.textContent = title;
+            const articleExcerptEl = document.getElementById('article-excerpt');
+            if (articleExcerptEl) articleExcerptEl.textContent = excerpt || '';
 
-            document.getElementById('article-author').textContent = currentArticle.author_name || (isAr ? 'فريق تحرير GToolix' : 'GToolix Editorial Team');
+            const authorEl = document.getElementById('article-author');
+            if (authorEl) authorEl.textContent = currentArticle.author_name || (isAr ? 'فريق تحرير GToolix' : 'GToolix Editorial Team');
 
-            if (currentArticle.published_at) {
-                document.getElementById('article-date').textContent = new Date(currentArticle.published_at).toLocaleDateString(isAr ? 'ar-EG' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            } else {
-                document.getElementById('article-date').textContent = isAr ? 'مقال حصري' : 'Featured';
+            const dateEl = document.getElementById('article-date');
+            if (dateEl) {
+                if (currentArticle.published_at) {
+                    dateEl.textContent = new Date(currentArticle.published_at).toLocaleDateString(isAr ? 'ar-EG' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                } else {
+                    dateEl.textContent = isAr ? 'مقال حصري' : 'Featured';
+                }
             }
 
             const coverEl = document.getElementById('article-cover');
@@ -1246,9 +1448,13 @@
         }
 
         function showNotFound() {
-            document.getElementById('article-main-content').style.display = 'none';
-            document.getElementById('article-not-found').style.display = 'block';
-            document.getElementById('page-title').textContent = '404 - المقال غير موجود | GToolix';
+            const mainContent = document.getElementById('article-main-content');
+            if (mainContent) mainContent.style.display = 'none';
+            const notFound = document.getElementById('article-not-found');
+            if (notFound) notFound.style.display = 'block';
+            document.title = '404 - المقال غير موجود | GToolix';
+            const titleEl = document.getElementById('page-title');
+            if (titleEl) titleEl.textContent = '404 - المقال غير موجود | GToolix';
         }
 
         function setLanguage(lang) {

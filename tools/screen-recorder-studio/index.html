@@ -375,91 +375,118 @@
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebSite",
+      "@id": "https://www.gtoolix.com/#website",
+      "url": "https://www.gtoolix.com/",
+      "name": "GToolix",
+      "description": "Free High-Performance Web Tools",
+      "inLanguage": [
+        "ar",
+        "en"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.gtoolix.com/tools/screen-recorder-studio#software",
+      "name": "Professional Screen Recorder",
+      "alternateName": "مسجل الشاشة الاحترافي",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free browser-based tool to record screen, camera, and audio simultaneously in high quality, with 100% local privacy and no upload.",
+      "url": "https://www.gtoolix.com/tools/screen-recorder-studio"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.gtoolix.com/tools/screen-recorder-studio#webapp",
+      "name": "Professional Screen Recorder Studio",
+      "browserRequirements": "Requires HTML5 Canvas, getDisplayMedia, MediaRecorder, and Web Audio API",
+      "featureList": "Screen Recording, Webcam PIP Overlay, Audio Mixer, 60 FPS, 100% Client-Side Privacy, No Watermarks",
+      "url": "https://www.gtoolix.com/tools/screen-recorder-studio"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.gtoolix.com/tools/screen-recorder-studio#breadcrumb",
+      "itemListElement": [
         {
-          "@type": "WebSite",
-          "@id": "https://www.gtoolix.com/#website",
-          "url": "https://www.gtoolix.com/",
-          "name": "GToolix",
-          "description": "Free High-Performance Web Tools",
-          "inLanguage": ["ar", "en"]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://www.gtoolix.com/"
         },
         {
-          "@type": "SoftwareApplication",
-          "@id": "https://www.gtoolix.com/tools/screen-recorder-studio#software",
-          "name": "Professional Screen Recorder",
-          "alternateName": "مسجل الشاشة الاحترافي",
-          "applicationCategory": "MultimediaApplication",
-          "operatingSystem": "Any (Web Browser)",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          },
-          "description": "Free browser-based tool to record screen, camera, and audio simultaneously in high quality, with 100% local privacy and no upload.",
-          "url": "https://www.gtoolix.com/tools/screen-recorder-studio",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "ratingCount": "1420",
-            "bestRating": "5",
-            "worstRating": "1"
+          "@type": "ListItem",
+          "position": 2,
+          "name": "الأدوات",
+          "item": "https://www.gtoolix.com/tools"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "مسجل الشاشة الاحترافي",
+          "item": "https://www.gtoolix.com/tools/screen-recorder-studio"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.gtoolix.com/tools/screen-recorder-studio#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is my recording uploaded to any server? / هل التسجيل بيترفع على أي سيرفر؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, recording happens entirely inside your browser — nothing is ever uploaded or stored externally."
           }
         },
         {
-          "@type": "WebApplication",
-          "@id": "https://www.gtoolix.com/tools/screen-recorder-studio#webapp",
-          "name": "Professional Screen Recorder Studio",
-          "browserRequirements": "Requires HTML5 Canvas, getDisplayMedia, MediaRecorder, and Web Audio API",
-          "featureList": "Screen Recording, Webcam PIP Overlay, Audio Mixer, 60 FPS, 100% Client-Side Privacy, No Watermarks"
+          "@type": "Question",
+          "name": "Can I record screen, camera, and system audio together?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all sources can be enabled simultaneously, each independently controllable."
+          }
         },
         {
-          "@type": "BreadcrumbList",
-          "@id": "https://www.gtoolix.com/tools/screen-recorder-studio#breadcrumb",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://www.gtoolix.com/" },
-            { "@type": "ListItem", "position": 2, "name": "الأدوات", "item": "https://www.gtoolix.com/tools" },
-            { "@type": "ListItem", "position": 3, "name": "مسجل الشاشة الاحترافي", "item": "https://www.gtoolix.com/tools/screen-recorder-studio" }
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://www.gtoolix.com/tools/screen-recorder-studio#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Is my recording uploaded to any server? / هل التسجيل بيترفع على أي سيرفر؟",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No, recording happens entirely inside your browser — nothing is ever uploaded or stored externally."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I record screen, camera, and system audio together?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, all sources can be enabled simultaneously, each independently controllable."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Does the exported video have a watermark?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No, the final video is completely clean, with no watermark or logo."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "Does the exported video have a watermark?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, the final video is completely clean, with no watermark or logo."
+          }
         }
       ]
     }
+  ]
+}
     </script>
 
     <link rel="preload" href="/static/css/main.min.css" as="style">
     <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -810,7 +837,7 @@
 </head>
 
 <body>
-                                                                                                                                                                                                                                                                                                                                    <header class="site-nav" id="site-header">
+                                                                                                                                                                                                                                                                                                                                                <header class="site-nav" id="site-header">
         <a class="site-nav__brand" href="/" aria-label="GToolix Home">
             <span class="site-nav__brand-mark">
                 <picture>
@@ -1373,6 +1400,25 @@
                     </div>
                     <div id="rec-faq-list" class="faq-accordion"></div>
 
+                    <!-- Related Guides & Articles Section -->
+                    <div class="related-tools-block" style="margin-top: 3.5rem; margin-bottom: 2rem;">
+                        <h3 data-i18n="rec.relatedGuidesTitle">شروحات وأدلة ذات صلة</h3>
+                        <div class="related-tools-grid">
+                            <a href="/blog/screen-recording-guide" class="related-tool-card">
+                                <div class="related-tool-text">
+                                    <span class="related-tool-title" data-i18n="rec.guide1Title">دليل تسجيل الشاشة أونلاين بالصوت والصورة</span>
+                                    <span class="related-tool-sub" data-i18n="rec.guide1Sub">الشرح الشامل لتسجيل الشاشة والصوت والكاميرا بجودة عالية</span>
+                                </div>
+                                <div class="related-tool-icon-box icon-rec">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="related-tools-block" style="margin-top: 2.5rem;">
                         <h3 data-i18n="common.relatedToolsTitle">جرب أدواتنا الأخرى</h3>
                         <div class="related-tools-grid">
@@ -1432,7 +1478,7 @@
     </main>
 
         <!-- ===================== GLOBAL FOOTER ===================== -->
-                                                                                                                                                                                                                                                                                                                                    <footer>
+                                                                                                                                                                                                                                                                                                                                                <footer>
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-col footer-col--brand">
@@ -1566,7 +1612,10 @@
                         { q: "Is there a maximum recording length limit?", a: "There is no artificial limit — duration depends only on your device capability and available storage." },
                         { q: "Does the exported video have a watermark?", a: "No, the final video is completely clean, with zero watermark or logo." },
                         { q: "Do I need to install software or create an account?", a: "No, the tool runs directly inside your web browser with no installation or sign-up required." }
-                    ]
+                    ],
+                    relatedGuidesTitle: "Related Guides & Articles",
+                    guide1Title: "How to Record Screen Online with Audio: Complete Guide",
+                    guide1Sub: "Full guide on screen, audio & webcam recording with studio quality"
                 }
             },
             ar: {
