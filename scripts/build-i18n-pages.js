@@ -2074,22 +2074,54 @@ function generate404Page(lang) {
 
     const pfx = isAr ? '' : '/en';
 
-    const searchPlaceholder = isAr ? 'ابحث عن أي أداة أو مقال... ثم اضغط Enter' : 'Search tools or guides... then press Enter';
-    const popToolsTitle = isAr ? 'أشهر الأدوات المجانية' : 'Popular Online Tools';
+    const errBadge = isAr ? 'خطأ 404 • الصفحة غير موجودة' : 'ERROR 404 • Page Not Found';
+    const searchPlaceholder = isAr ? 'ابحث عن أي أداة، مقال، أو برنامج...' : 'Search tools, articles, or programs...';
+    const popToolsTitle = isAr ? 'أشهر الأدوات المجانية' : 'Popular Free Tools';
+    const popToolsSub = isAr ? 'أدوات رقمية سريعة تعمل مباشرة من متصفحك بخصوصية تامة' : 'Smart, high-speed tools running directly in your browser with 100% privacy';
 
     const catPills = isAr
         ? `
-            <a href="/tools" class="gt-404-pill"><span>⚡</span><span>أدوات أونلاين</span></a>
-            <a href="/blog" class="gt-404-pill"><span>📚</span><span>المقالات والشروحات</span></a>
-            <a href="/programs" class="gt-404-pill"><span>💻</span><span>البرامج والتطبيقات</span></a>
-            <a href="/faq" class="gt-404-pill"><span>❓</span><span>الأسئلة الشائعة</span></a>
-            <a href="/contact" class="gt-404-pill"><span>📩</span><span>تواصل معنا</span></a>`
+            <a href="/tools" class="gt-404-pill" data-nav="tools">
+                <span class="gt-404-pill-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg></span>
+                <span data-i18n="error.pillTools">أدوات أونلاين</span>
+            </a>
+            <a href="/blog" class="gt-404-pill" data-nav="blog">
+                <span class="gt-404-pill-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="10" y1="6" x2="16" y2="6"></line><line x1="10" y1="10" x2="16" y2="10"></line></svg></span>
+                <span data-i18n="error.pillBlog">المقالات والشروحات</span>
+            </a>
+            <a href="/programs" class="gt-404-pill" data-nav="programs">
+                <span class="gt-404-pill-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M8 10l3 3-3 3"></path><line x1="13" y1="16" x2="17" y2="16"></line></svg></span>
+                <span data-i18n="error.pillPrograms">البرامج والتطبيقات</span>
+            </a>
+            <a href="/faq" class="gt-404-pill" data-nav="faq">
+                <span class="gt-404-pill-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></span>
+                <span data-i18n="error.pillFaq">الأسئلة الشائعة</span>
+            </a>
+            <a href="/contact" class="gt-404-pill" data-nav="contact">
+                <span class="gt-404-pill-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
+                <span data-i18n="error.pillContact">تواصل معنا</span>
+            </a>`
         : `
-            <a href="/en/tools" class="gt-404-pill"><span>⚡</span><span>Online Tools</span></a>
-            <a href="/en/blog" class="gt-404-pill"><span>📚</span><span>Articles & Guides</span></a>
-            <a href="/en/programs" class="gt-404-pill"><span>💻</span><span>Desktop Programs</span></a>
-            <a href="/en/faq" class="gt-404-pill"><span>❓</span><span>FAQ</span></a>
-            <a href="/en/contact" class="gt-404-pill"><span>📩</span><span>Contact Us</span></a>`;
+            <a href="/en/tools" class="gt-404-pill" data-nav="tools">
+                <span class="gt-404-pill-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg></span>
+                <span data-i18n="error.pillTools">Online Tools</span>
+            </a>
+            <a href="/en/blog" class="gt-404-pill" data-nav="blog">
+                <span class="gt-404-pill-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="10" y1="6" x2="16" y2="6"></line><line x1="10" y1="10" x2="16" y2="10"></line></svg></span>
+                <span data-i18n="error.pillBlog">Articles & Guides</span>
+            </a>
+            <a href="/en/programs" class="gt-404-pill" data-nav="programs">
+                <span class="gt-404-pill-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M8 10l3 3-3 3"></path><line x1="13" y1="16" x2="17" y2="16"></line></svg></span>
+                <span data-i18n="error.pillPrograms">Desktop Programs</span>
+            </a>
+            <a href="/en/faq" class="gt-404-pill" data-nav="faq">
+                <span class="gt-404-pill-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></span>
+                <span data-i18n="error.pillFaq">FAQ</span>
+            </a>
+            <a href="/en/contact" class="gt-404-pill" data-nav="contact">
+                <span class="gt-404-pill-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
+                <span data-i18n="error.pillContact">Contact Us</span>
+            </a>`;
 
     const popToolsCards = isAr
         ? `
@@ -2097,74 +2129,98 @@ function generate404Page(lang) {
                 <div class="gt-404-card-icon icon-qr">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3z"/><path d="M18 18h3v3h-3z"/></svg>
                 </div>
-                <div>
-                    <div style="font-weight: 700; font-size: 0.98rem;">مولد كود QR</div>
-                    <div style="font-size: 0.8rem; color: var(--text-secondary);">إنشاء باركود فوري عالي الدقة</div>
+                <div class="gt-404-card-body">
+                    <div class="gt-404-card-title"><span data-i18n="error.toolQrTitle">مولد رمز <bdi>QR</bdi></span></div>
+                    <div class="gt-404-card-desc"><span data-i18n="error.toolQrDesc">إنشاء وتخصيص باركود الاستجابة السريعة فورياً</span></div>
                 </div>
+                <span class="gt-404-card-arrow" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
             </a>
             <a href="/tools/youtube-thumbnail-downloader" class="gt-404-card">
                 <div class="gt-404-card-icon icon-thumb">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
                 </div>
-                <div>
-                    <div style="font-weight: 700; font-size: 0.98rem;">تحميل صور يوتيوب</div>
-                    <div style="font-size: 0.8rem; color: var(--text-secondary);">استخراج صور الغلاف بدقة 4K</div>
+                <div class="gt-404-card-body">
+                    <div class="gt-404-card-title"><span data-i18n="error.toolThumbTitle">تحميل صور يوتيوب</span></div>
+                    <div class="gt-404-card-desc"><span data-i18n="error.toolThumbDesc">استخراج صور الغلاف بدقة فائقة وجودة <bdi>4K</bdi></span></div>
                 </div>
+                <span class="gt-404-card-arrow" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
             </a>
             <a href="/tools/screen-recorder-studio" class="gt-404-card">
                 <div class="gt-404-card-icon icon-rec">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                 </div>
-                <div>
-                    <div style="font-weight: 700; font-size: 0.98rem;">مسجل الشاشة الاحترافي</div>
-                    <div style="font-size: 0.8rem; color: var(--text-secondary);">تسجيل الشاشة والصوت والكاميرا</div>
+                <div class="gt-404-card-body">
+                    <div class="gt-404-card-title"><span data-i18n="error.toolRecTitle">مسجل الشاشة الاحترافي</span></div>
+                    <div class="gt-404-card-desc"><span data-i18n="error.toolRecDesc">تسجيل الشاشة والصوت والكاميرا مباشرة من المتصفح</span></div>
                 </div>
+                <span class="gt-404-card-arrow" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
             </a>
             <a href="/tools/image-compressor" class="gt-404-card">
                 <div class="gt-404-card-icon icon-compressor">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                 </div>
-                <div>
-                    <div style="font-weight: 700; font-size: 0.98rem;">ضاغط ومحوّل الصور</div>
-                    <div style="font-size: 0.8rem; color: var(--text-secondary);">تقليل حجم JPG, PNG, WebP محلياً</div>
+                <div class="gt-404-card-body">
+                    <div class="gt-404-card-title"><span data-i18n="error.toolCompTitle">ضاغط ومحوّل الصور</span></div>
+                    <div class="gt-404-card-desc"><span data-i18n="error.toolCompDesc">تقليل حجم ملفات <bdi>JPG</bdi> و <bdi>PNG</bdi> و <bdi>WebP</bdi> محلياً</span></div>
                 </div>
+                <span class="gt-404-card-arrow" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
             </a>`
         : `
             <a href="/en/tools/qr-code-generator" class="gt-404-card">
                 <div class="gt-404-card-icon icon-qr">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3z"/><path d="M18 18h3v3h-3z"/></svg>
                 </div>
-                <div>
-                    <div style="font-weight: 700; font-size: 0.98rem;">QR Code Generator</div>
-                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Instant vector & PNG QR codes</div>
+                <div class="gt-404-card-body">
+                    <div class="gt-404-card-title"><span data-i18n="error.toolQrTitle">QR Code Generator</span></div>
+                    <div class="gt-404-card-desc"><span data-i18n="error.toolQrDesc">Instant vector & PNG QR codes with zero watermark</span></div>
                 </div>
+                <span class="gt-404-card-arrow" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
             </a>
             <a href="/en/tools/youtube-thumbnail-downloader" class="gt-404-card">
                 <div class="gt-404-card-icon icon-thumb">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/></svg>
                 </div>
-                <div>
-                    <div style="font-weight: 700; font-size: 0.98rem;">YouTube Thumbnail Downloader</div>
-                    <div style="font-size: 0.8rem; color: var(--text-secondary);">4K Maxres & HD cover grabber</div>
+                <div class="gt-404-card-body">
+                    <div class="gt-404-card-title"><span data-i18n="error.toolThumbTitle">YouTube Thumbnail Downloader</span></div>
+                    <div class="gt-404-card-desc"><span data-i18n="error.toolThumbDesc">4K Maxres & HD video cover grabber and extractor</span></div>
                 </div>
+                <span class="gt-404-card-arrow" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
             </a>
             <a href="/en/tools/screen-recorder-studio" class="gt-404-card">
                 <div class="gt-404-card-icon icon-rec">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                 </div>
-                <div>
-                    <div style="font-weight: 700; font-size: 0.98rem;">Screen Recorder Studio</div>
-                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Screen, audio & webcam capture</div>
+                <div class="gt-404-card-body">
+                    <div class="gt-404-card-title"><span data-i18n="error.toolRecTitle">Screen Recorder Studio</span></div>
+                    <div class="gt-404-card-desc"><span data-i18n="error.toolRecDesc">Screen, webcam & audio recording right in your browser</span></div>
                 </div>
+                <span class="gt-404-card-arrow" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
             </a>
             <a href="/en/tools/image-compressor" class="gt-404-card">
                 <div class="gt-404-card-icon icon-compressor">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                 </div>
-                <div>
-                    <div style="font-weight: 700; font-size: 0.98rem;">Image Compressor</div>
-                    <div style="font-size: 0.8rem; color: var(--text-secondary);">Lossless JPG, PNG & WebP compression</div>
+                <div class="gt-404-card-body">
+                    <div class="gt-404-card-title"><span data-i18n="error.toolCompTitle">Image Compressor & Converter</span></div>
+                    <div class="gt-404-card-desc"><span data-i18n="error.toolCompDesc">Lossless local compression for JPG, PNG & WebP</span></div>
                 </div>
+                <span class="gt-404-card-arrow" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
             </a>`;
 
     let rendered = tpl
@@ -2172,11 +2228,13 @@ function generate404Page(lang) {
         .replace(/<!--PAGE_TITLE-->/g, title)
         .replace(/<!--PAGE_DESC-->/g, desc)
         .replace(/<!--SITE_NAV-->/g, siteNav)
+        .replace(/<!--ERR_BADGE-->/g, errBadge)
         .replace(/<!--ERR_TITLE-->/g, isAr ? 'الصفحة غير موجودة' : 'Page Not Found')
-        .replace(/<!--ERR_DESC-->/g, isAr ? 'عذراً، الرابط الذي تحاول الوصول إليه غير متاح أو تم نقله. يمكنك البحث أو استكشاف مكتبة الأدوات والأقسام أدناه.' : 'Sorry, the page you requested could not be found. You can search or explore our tools catalog and categories below.')
+        .replace(/<!--ERR_DESC-->/g, isAr ? 'عذراً، الرابط الذي تحاول الوصول إليه غير متاح أو تم نقله. يمكنك البحث مباشرة أو استكشاف مكتبة الأدوات والأقسام أدناه.' : 'Sorry, the page you are looking for does not exist or has been moved. You can search directly or explore our tools catalog and categories below.')
         .replace(/<!--SEARCH_PLACEHOLDER-->/g, searchPlaceholder)
         .replace(/<!--CATEGORY_PILLS-->/g, catPills)
         .replace(/<!--POPULAR_TOOLS_TITLE-->/g, popToolsTitle)
+        .replace(/<!--POPULAR_TOOLS_SUB-->/g, popToolsSub)
         .replace(/<!--POPULAR_TOOLS_CARDS-->/g, popToolsCards)
         .replace(/<!--HOME_HREF-->/g, isAr ? '/' : '/en/')
         .replace(/<!--TOOLS_HREF-->/g, `${pfx}/tools`)

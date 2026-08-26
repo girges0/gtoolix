@@ -1703,28 +1703,6 @@ const ALL_BLOG_ARTICLES_CATALOG = [
         tag_en: 'Web Formats',
         img_ar: '/static/img/blog/formats-comparison.jpg',
         img_en: '/static/img/blog/formats-comparison.jpg'
-    },
-    {
-        slug: 'screen-recording-guide',
-        title_ar: 'دليل تسجيل الشاشة أونلاين بالصوت والصورة: الشرح الشامل',
-        title_en: 'How to Record Screen Online with Audio: Complete Guide',
-        desc_ar: 'دليل شامل لتسجيل الشاشة وكاميرا الويب والصوت أونلاين من المتصفح بجودة عالية وبدون برامج.',
-        desc_en: 'Comprehensive guide to recording screen, webcam, and audio online directly in your browser.',
-        tag_ar: 'تسجيل الشاشة',
-        tag_en: 'Screen Recording',
-        img_ar: '/static/img/blog/screen-recorder-guide.jpg',
-        img_en: '/static/img/blog/screen-recorder-guide.jpg'
-    },
-    {
-        slug: 'youtube-thumbnail-dimensions-guide',
-        title_ar: 'مقاسات الصور المصغرة لليوتيوب ودليل التصميم الكامل',
-        title_en: 'YouTube Thumbnail Dimensions & Design Guide',
-        desc_ar: 'دليل مقاسات صور غلاف اليوتيوب والشورتس بدقة 1280x720 ونسبة 16:9 وسيكولوجية رفع نسبة النقر CTR.',
-        desc_en: 'Complete guide to YouTube and Shorts thumbnail dimensions, safe zones, and CTR optimization.',
-        tag_ar: 'يوتيوب',
-        tag_en: 'YouTube Tools',
-        img_ar: '/static/img/blog/youtube-thumbnails-guide.jpg',
-        img_en: '/static/img/blog/youtube-thumbnails-guide.jpg'
     }
 ];
 
@@ -2137,32 +2115,12 @@ function buildAllBlogArticles() {
         console.warn('[WARN] Could not load youtubeThumbnailArticle:', e.message);
     }
 
-    let screenRecordingArticle = null;
-    try {
-        screenRecordingArticle = require('./create-screen-recording-article.js').screenRecordingArticle;
-    } catch (e) {
-        console.warn('[WARN] Could not load screenRecordingArticle:', e.message);
-    }
-
-    let thumbnailDimensionsArticle = null;
-    try {
-        thumbnailDimensionsArticle = require('./create-thumbnail-dimensions-article.js').thumbnailDimensionsArticle;
-    } catch (e) {
-        console.warn('[WARN] Could not load thumbnailDimensionsArticle:', e.message);
-    }
-
     const articles = [imageCompressionArticle, formatsComparisonArticle];
     if (qrCodeArticle) {
         articles.unshift(qrCodeArticle);
     }
     if (youtubeThumbnailArticle) {
         articles.push(youtubeThumbnailArticle);
-    }
-    if (screenRecordingArticle) {
-        articles.push(screenRecordingArticle);
-    }
-    if (thumbnailDimensionsArticle) {
-        articles.push(thumbnailDimensionsArticle);
     }
 
     articles.forEach(art => {

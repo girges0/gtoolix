@@ -27,7 +27,7 @@
     <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
     <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap">
 
     <!-- Critical Inline Styles -->
     <style>
@@ -91,29 +91,175 @@
             font-family: 'Cairo', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
+        .gt-404-container {
+            max-width: 980px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: clamp(6.5rem, 11vw, 9rem);
+            padding-bottom: 5rem;
+            padding-inline: max(1.25rem, 3.5vw);
+            position: relative;
+            z-index: 1;
+        }
+
+        .gt-404-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius-full);
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.22);
+            color: var(--primary-hover);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.08);
+        }
+
+        [data-theme="dark"] .gt-404-badge {
+            background: rgba(59, 130, 246, 0.12);
+            border-color: rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+        }
+
+        .gt-404-pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #2563eb;
+            box-shadow: 0 0 8px #2563eb;
+            animation: gtPulse 2s infinite ease-in-out;
+        }
+
+        [data-theme="dark"] .gt-404-pulse {
+            background: #38bdf8;
+            box-shadow: 0 0 8px #38bdf8;
+        }
+
+        @keyframes gtPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.45; }
+        }
+
+        .gt-404-num {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-size: clamp(5.5rem, 13vw, 8.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #2563EB 0%, #06B6D4 55%, #8B5CF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+            animation: gtFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes gtFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-7px); }
+        }
+
+        .gt-404-title {
+            font-size: clamp(1.65rem, 3.8vw, 2.35rem);
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 0.85rem;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        .gt-404-desc {
+            color: var(--text-secondary);
+            font-size: clamp(0.98rem, 2vw, 1.1rem);
+            line-height: 1.75;
+            margin: 0 auto 2rem;
+            max-width: 620px;
+        }
+
         .gt-404-search-box {
             position: relative;
-            max-width: 480px;
-            margin: 1.75rem auto 2rem;
+            max-width: 520px;
+            margin: 0 auto 1.5rem;
             width: 100%;
         }
 
+        .gt-404-search-icon-wrapper {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            pointer-events: none;
+            transition: color 0.2s ease;
+        }
+
+        html[dir="rtl"] .gt-404-search-icon-wrapper { right: 1.25rem; }
+        html[dir="ltr"] .gt-404-search-icon-wrapper { left: 1.25rem; }
+
         .gt-404-search-input {
             width: 100%;
-            padding: 0.85rem 1.25rem;
+            padding-block: 0.95rem;
             border-radius: var(--radius-full);
             border: 1px solid var(--border);
             background: var(--card);
             color: var(--text);
-            font-size: 1rem;
+            font-size: 0.98rem;
+            font-family: inherit;
             outline: none;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.07);
+        }
+
+        html[dir="rtl"] .gt-404-search-input {
+            padding-right: 3.25rem;
+            padding-left: 3.5rem;
+        }
+
+        html[dir="ltr"] .gt-404-search-input {
+            padding-left: 3.25rem;
+            padding-right: 3.5rem;
         }
 
         .gt-404-search-input:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18), 0 8px 24px -4px rgba(0, 0, 0, 0.12);
+        }
+
+        .gt-404-search-box:focus-within .gt-404-search-icon-wrapper {
+            color: var(--primary);
+        }
+
+        .gt-404-search-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--primary);
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        html[dir="rtl"] .gt-404-search-btn { left: 0.5rem; }
+        html[dir="ltr"] .gt-404-search-btn { right: 0.5rem; }
+
+        html[dir="rtl"] .gt-404-search-btn svg { transform: rotate(180deg); }
+
+        .gt-404-search-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-50%) scale(1.06);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
         }
 
         .gt-404-pills {
@@ -121,36 +267,118 @@
             gap: 0.65rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .gt-404-pill {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 1.1rem;
+            gap: 0.5rem;
+            padding: 0.55rem 1.15rem;
             border-radius: var(--radius-full);
             border: 1px solid var(--border);
             background: var(--card);
             color: var(--text);
             text-decoration: none;
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            transition: all 0.2s ease;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        .gt-404-pill-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: color 0.2s ease, transform 0.2s ease;
         }
 
         .gt-404-pill:hover {
             border-color: var(--primary);
             color: var(--primary);
             transform: translateY(-2px);
+            box-shadow: 0 6px 18px -3px rgba(37, 99, 235, 0.16);
+        }
+
+        .gt-404-pill:hover .gt-404-pill-icon {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .gt-404-actions {
+            display: flex;
+            gap: 0.85rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 0 auto 3rem;
+        }
+
+        .gt-404-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.8rem 1.6rem;
+            border-radius: var(--radius-full);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.22s ease;
+            cursor: pointer;
+        }
+
+        .gt-404-btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+            border: 1px solid var(--primary);
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        .gt-404-btn-primary:hover {
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+            color: #ffffff;
+        }
+
+        .gt-404-btn-outline {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .gt-404-btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .gt-404-section-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .gt-404-section-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.01em;
+            margin-bottom: 0.35rem;
+        }
+
+        .gt-404-section-sub {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
         .gt-404-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.25rem;
+            gap: 1.15rem;
             max-width: 960px;
-            margin: 2rem auto 2.5rem;
+            margin: 0 auto;
             text-align: start;
         }
 
@@ -158,36 +386,89 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1.1rem 1.25rem;
+            padding: 1.15rem 1.25rem;
             border-radius: 1rem;
             background: var(--card);
             border: 1px solid var(--border);
             text-decoration: none;
             color: var(--text);
-            transition: all 0.25s ease;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
         }
 
         .gt-404-card:hover {
             border-color: var(--primary);
             transform: translateY(-3px);
-            box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.25);
         }
 
         .gt-404-card-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
             border-radius: 12px;
             flex-shrink: 0;
             color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
         }
 
         .icon-qr { background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%); }
         .icon-thumb { background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%); }
         .icon-rec { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
         .icon-compressor { background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%); }
+
+        .gt-404-card-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .gt-404-card-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            color: var(--text);
+            margin-bottom: 0.2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .gt-404-card-desc {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .gt-404-card-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            opacity: 0.6;
+        }
+
+        html[dir="rtl"] .gt-404-card-arrow svg { transform: rotate(180deg); }
+
+        html[dir="rtl"] .gt-404-card:hover .gt-404-card-arrow {
+            color: var(--primary);
+            opacity: 1;
+            transform: translateX(-3px);
+        }
+
+        html[dir="ltr"] .gt-404-card:hover .gt-404-card-arrow {
+            color: var(--primary);
+            opacity: 1;
+            transform: translateX(3px);
+        }
     </style>
     <link rel="preload" href="/static/css/main.min.css" as="style">
     <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
@@ -204,40 +485,65 @@
     </div>
     <div class="particles" id="particles"></div>
 
-    <main class="container" style="max-width: 980px; padding-top: clamp(7.5rem, 13vw, 10.5rem); padding-bottom: 5rem; margin: 0 auto; text-align: center; padding-inline: max(1rem, 3.5vw);">
-        <div style="font-size: clamp(4.5rem, 11vw, 7.5rem); font-weight: 900; line-height: 1; margin-bottom: 0.75rem; background: linear-gradient(135deg, #2563EB, #06B6D4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+    <main class="gt-404-container">
+        <!-- Status Badge -->
+        <div class="gt-404-badge">
+            <span class="gt-404-pulse"></span>
+            <span data-i18n="error.badge"><!--ERR_BADGE--></span>
+        </div>
+
+        <!-- 404 Visual Heading -->
+        <div class="gt-404-num" aria-hidden="true">
             404
         </div>
-        <h1 style="font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; margin-bottom: 0.75rem;">
+        <h1 class="gt-404-title" data-i18n="error.title">
             <!--ERR_TITLE-->
         </h1>
-        <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.75rem; max-width: 580px; margin-inline: auto;">
+        <p class="gt-404-desc" data-i18n="error.desc">
             <!--ERR_DESC-->
         </p>
 
-        <!-- Search Bar -->
+        <!-- Interactive Search Bar -->
         <div class="gt-404-search-box">
-            <input type="search" id="gt-404-search" class="gt-404-search-input" placeholder="<!--SEARCH_PLACEHOLDER-->" aria-label="Search tools and guides" onkeyup="handle404Search(event)">
+            <div class="gt-404-search-icon-wrapper" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <input type="search" id="gt-404-search" class="gt-404-search-input" placeholder="<!--SEARCH_PLACEHOLDER-->" data-i18n-placeholder="error.searchPlaceholder" aria-label="Search tools and guides" onkeyup="handle404Search(event)">
+            <button type="button" class="gt-404-search-btn" id="gt-404-search-submit" onclick="execute404Search()" aria-label="Submit search">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 10 4 15 9 20"></polyline><path d="M20 4v7a4 4 0 0 1-4 4H4"></path></svg>
+            </button>
         </div>
 
-        <!-- Quick Category Navigation Pills -->
-        <div class="gt-404-pills">
+        <!-- Quick Category Navigation Pills (100% Emoji-Free SVG Icons) -->
+        <nav class="gt-404-pills" aria-label="Quick Category Navigation">
             <!--CATEGORY_PILLS-->
+        </nav>
+
+        <!-- Primary Action Buttons -->
+        <div class="gt-404-actions">
+            <a href="<!--HOME_HREF-->" class="gt-404-btn gt-404-btn-primary" id="gt-404-home-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span data-i18n="error.btnHome"><!--BTN_HOME--></span>
+            </a>
+            <a href="<!--TOOLS_HREF-->" class="gt-404-btn gt-404-btn-outline" id="gt-404-tools-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                <span data-i18n="error.btnTools"><!--BTN_TOOLS--></span>
+            </a>
         </div>
 
-        <!-- Popular Tools Grid -->
-        <div style="margin-top: 2rem;">
-            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.04em;">
-                <!--POPULAR_TOOLS_TITLE-->
-            </h2>
+        <!-- Popular Tools Section Grid -->
+        <div style="margin-top: 1rem;">
+            <div class="gt-404-section-header">
+                <h2 class="gt-404-section-title" data-i18n="error.popularTitle">
+                    <!--POPULAR_TOOLS_TITLE-->
+                </h2>
+                <p class="gt-404-section-sub" data-i18n="error.popularSub">
+                    <!--POPULAR_TOOLS_SUB-->
+                </p>
+            </div>
             <div class="gt-404-grid">
                 <!--POPULAR_TOOLS_CARDS-->
             </div>
-        </div>
-
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem;">
-            <a href="<!--HOME_HREF-->" class="btn btn-primary" style="padding: 0.75rem 1.5rem; text-decoration: none; font-weight: 600;"><!--BTN_HOME--></a>
-            <a href="<!--TOOLS_HREF-->" class="btn btn-outline" style="padding: 0.75rem 1.5rem; text-decoration: none; font-weight: 600;"><!--BTN_TOOLS--></a>
         </div>
     </main>
 
@@ -256,15 +562,55 @@
             btn.setAttribute('aria-expanded', String(shouldOpen));
         }
 
-        function handle404Search(e) {
-            if (e.key === 'Enter') {
-                const q = e.target.value.trim();
-                if (q) {
-                    const isEn = window.location.pathname.startsWith('/en');
-                    window.location.href = (isEn ? '/en/tools?q=' : '/tools?q=') + encodeURIComponent(q);
-                }
+        function execute404Search() {
+            const input = document.getElementById('gt-404-search');
+            if (!input) return;
+            const q = input.value.trim();
+            if (q) {
+                const docLang = document.documentElement.getAttribute('lang') || 'ar';
+                const isEn = docLang === 'en' || window.location.pathname.startsWith('/en');
+                window.location.href = (isEn ? '/en/tools?q=' : '/tools?q=') + encodeURIComponent(q);
             }
         }
+
+        function handle404Search(e) {
+            if (e.key === 'Enter') {
+                execute404Search();
+            }
+        }
+
+        // Language Switcher Smooth Delegation
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.lang-btn');
+            if (!btn) return;
+            const isEn = btn.id === 'lang-en-btn' || (btn.getAttribute('href') || '').includes('/en');
+            try {
+                localStorage.setItem('gtoolix_manual_lang', 'true');
+                localStorage.setItem('gtoolix_language', isEn ? 'en' : 'ar');
+                localStorage.setItem('siteLang', isEn ? 'en' : 'ar');
+            } catch (err) {}
+
+            const curPath = window.location.pathname || '';
+            if (curPath === '/404' || curPath === '/404.html' || curPath === '/en/404' || curPath === '/en/404.html') {
+                e.preventDefault();
+                window.location.href = isEn ? '/en/404.html' : '/404.html';
+            }
+        });
+
+        // Client-side auto language sync on initial load if path or preference differs
+        (function() {
+            try {
+                const p = window.location.pathname || '';
+                const isEnPath = p === '/en' || p.startsWith('/en/');
+                const savedLang = localStorage.getItem('gtoolix_language') || localStorage.getItem('siteLang');
+                const docLang = document.documentElement.getAttribute('lang') || 'ar';
+                if (isEnPath && docLang !== 'en') {
+                    if (typeof window.updateI18n === 'function') window.updateI18n('en');
+                } else if (!isEnPath && p.includes('404') && savedLang === 'en' && docLang !== 'en') {
+                    if (typeof window.updateI18n === 'function') window.updateI18n('en');
+                }
+            } catch (e) {}
+        })();
     </script>
     <script src="/static/js/theme.min.js" defer></script>
     <script src="/static/js/client.min.js" defer></script>

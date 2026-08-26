@@ -253,7 +253,6 @@ htmlFiles.forEach(filePath => {
 const toolPageMap = {
     'tools/qr-code-generator/index.html': '/blog/qr-code',
     'tools/youtube-thumbnail-downloader/index.html': '/blog/free-youtube-thumbnail-downloader-hd-4k',
-    'tools/screen-recorder-studio/index.html': '/blog/screen-recording-guide',
     'tools/image-compressor/index.html': '/blog/image-compression-guide'
 };
 

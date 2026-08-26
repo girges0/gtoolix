@@ -384,10 +384,27 @@
             'home.feat3Tile2Sub': 'خالٍ من البرمجيات الإعلانية',
 
             // Error / 404
+            'error.badge': 'خطأ 404 • الصفحة غير موجودة',
             'error.title': 'الصفحة غير موجودة',
-            'error.desc': 'عذراً، الصفحة التي تبحث عنها غير متوفرة أو ربما تم نقلها.',
-            'error.btnHome': 'الرئيسية',
-            'error.btnTools': 'الأدوات'
+            'error.desc': 'عذراً، الرابط الذي تحاول الوصول إليه غير متاح أو تم نقله. يمكنك البحث مباشرة أو استكشاف مكتبة الأدوات والأقسام أدناه.',
+            'error.searchPlaceholder': 'ابحث عن أي أداة، مقال، أو برنامج...',
+            'error.pillTools': 'أدوات أونلاين',
+            'error.pillBlog': 'المقالات والشروحات',
+            'error.pillPrograms': 'البرامج والتطبيقات',
+            'error.pillFaq': 'الأسئلة الشائعة',
+            'error.pillContact': 'تواصل معنا',
+            'error.btnHome': 'الصفحة الرئيسية',
+            'error.btnTools': 'مكتبة الأدوات',
+            'error.popularTitle': 'أشهر الأدوات المجانية',
+            'error.popularSub': 'أدوات رقمية سريعة تعمل مباشرة من متصفحك بخصوصية تامة',
+            'error.toolQrTitle': 'مولد رمز QR',
+            'error.toolQrDesc': 'إنشاء وتخصيص باركود الاستجابة السريعة فورياً',
+            'error.toolThumbTitle': 'تحميل صور يوتيوب',
+            'error.toolThumbDesc': 'استخراج صور الغلاف بدقة فائقة وجودة 4K',
+            'error.toolRecTitle': 'مسجل الشاشة الاحترافي',
+            'error.toolRecDesc': 'تسجيل الشاشة والصوت والكاميرا مباشرة من المتصفح',
+            'error.toolCompTitle': 'ضاغط ومحوّل الصور',
+            'error.toolCompDesc': 'تقليل حجم ملفات JPG و PNG و WebP محلياً'
         },
         en: {
             'common.breadcrumbHome': 'Home',
@@ -499,10 +516,27 @@
             'home.feat3Tile2Sub': 'No Bundled Software',
 
             // Error / 404
+            'error.badge': 'ERROR 404 • Page Not Found',
             'error.title': 'Page Not Found',
-            'error.desc': 'Sorry, the page you are looking for does not exist or has been moved.',
-            'error.btnHome': 'Home',
-            'error.btnTools': 'Tools'
+            'error.desc': 'Sorry, the page you are looking for does not exist or has been moved. You can search directly or explore our tools catalog and categories below.',
+            'error.searchPlaceholder': 'Search tools, articles, or programs...',
+            'error.pillTools': 'Online Tools',
+            'error.pillBlog': 'Articles & Guides',
+            'error.pillPrograms': 'Desktop Programs',
+            'error.pillFaq': 'FAQ',
+            'error.pillContact': 'Contact Us',
+            'error.btnHome': 'Back to Home',
+            'error.btnTools': 'Explore Tools',
+            'error.popularTitle': 'Popular Free Tools',
+            'error.popularSub': 'Smart, high-speed tools running directly in your browser with 100% privacy',
+            'error.toolQrTitle': 'QR Code Generator',
+            'error.toolQrDesc': 'Instant vector & PNG QR codes with zero watermark',
+            'error.toolThumbTitle': 'YouTube Thumbnail Downloader',
+            'error.toolThumbDesc': '4K Maxres & HD video cover grabber and extractor',
+            'error.toolRecTitle': 'Screen Recorder Studio',
+            'error.toolRecDesc': 'Screen, webcam & audio recording right in your browser',
+            'error.toolCompTitle': 'Image Compressor & Converter',
+            'error.toolCompDesc': 'Lossless local compression for JPG, PNG & WebP'
         }
     };
 
@@ -571,6 +605,14 @@
             en: { title: "Contact Us | GToolix", desc: "Get in touch with the GToolix support and development team." },
             ar: { title: "اتصل بنا | GToolix", desc: "تواصل مع فريق دعم وتطوير منصة GToolix للأسئلة والاستفسارات." }
         },
+        '/404': {
+            en: { title: "404 - Page Not Found | GToolix", desc: "Sorry, the page you requested could not be found. Explore free GToolix web tools." },
+            ar: { title: "404 - الصفحة غير موجودة | GToolix", desc: "عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. استكشف أدوات GToolix المجانية." }
+        },
+        '/404.html': {
+            en: { title: "404 - Page Not Found | GToolix", desc: "Sorry, the page you requested could not be found. Explore free GToolix web tools." },
+            ar: { title: "404 - الصفحة غير موجودة | GToolix", desc: "عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها. استكشف أدوات GToolix المجانية." }
+        },
         '/': {
             en: { title: "GToolix - Free High-Performance Web Tools Studio", desc: "All-in-one suite of free web tools: QR Code Generator, YouTube Thumbnail Downloader, and Screen Recorder Studio. Fast, client-side, zero signup." },
             ar: { title: "GToolix - استوديو الأدوات المجانية عالية الأداء", desc: "منصة GToolix تقدم أدوات ويب مجانية فائقة السرعة: مولد كود QR، تنزيل صور يوتيوب المصغرة، ومسجل الشاشة الاحترافي." }
@@ -604,6 +646,13 @@
             const key = el.getAttribute('data-i18n-html');
             if (dict[key]) {
                 el.innerHTML = dict[key];
+            }
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (dict[key]) {
+                el.setAttribute('placeholder', dict[key]);
             }
         });
 
@@ -646,7 +695,7 @@
                 card.setAttribute('href', href.replace(/^\/en/, ''));
             }
         });
-        document.querySelectorAll('.breadcrumb-nav a, .back-link, .related-tools-all-btn').forEach(link => {
+        document.querySelectorAll('.breadcrumb-nav a, .back-link, .related-tools-all-btn, .gt-404-card, .gt-404-pill, .gt-404-btn').forEach(link => {
             let href = link.getAttribute('href') || '';
             if (href === '/' || href === '/en' || href === '/en/') {
                 link.setAttribute('href', isEn ? '/en/' : '/');
