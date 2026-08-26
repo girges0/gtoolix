@@ -45,6 +45,12 @@
     Content-Type = "application/xml; charset=utf-8"
     Cache-Control = "public, max-age=86400"
 
+[[headers]]
+  for = "/sitemap.xsl"
+  [headers.values]
+    Content-Type = "text/xsl; charset=utf-8"
+    Cache-Control = "public, max-age=86400"
+
 # ==============================================================================
 # 301 Permanent Redirects (Highest Priority)
 # ==============================================================================
