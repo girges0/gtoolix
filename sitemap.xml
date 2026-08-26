@@ -1,401 +1,267 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.gtoolix.com/</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/tools</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/tools</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/blog</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/blog</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/programs</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/programs" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/programs" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/programs" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/programs</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/programs" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/programs" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/programs" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/tools/qr-code-generator</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/qr-code-generator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/qr-code-generator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools/qr-code-generator" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/tools/qr-code-generator</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/qr-code-generator" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/qr-code-generator" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools/qr-code-generator" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/tools/youtube-thumbnail-downloader</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/youtube-thumbnail-downloader" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/youtube-thumbnail-downloader" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools/youtube-thumbnail-downloader" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/tools/youtube-thumbnail-downloader</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/youtube-thumbnail-downloader" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/youtube-thumbnail-downloader" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools/youtube-thumbnail-downloader" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/tools/screen-recorder-studio</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/screen-recorder-studio" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/screen-recorder-studio" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools/screen-recorder-studio" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/tools/screen-recorder-studio</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/screen-recorder-studio" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/screen-recorder-studio" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools/screen-recorder-studio" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/tools/image-compressor</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/image-compressor" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/image-compressor" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools/image-compressor" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/tools/image-compressor</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/image-compressor" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/image-compressor" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools/image-compressor" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/blog/qr-code</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/qr-code" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/qr-code" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/qr-code" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/blog/qr-code</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/qr-code" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/qr-code" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/qr-code" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/blog/image-compression-guide</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/image-compression-guide" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/image-compression-guide" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/image-compression-guide" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/blog/image-compression-guide</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/image-compression-guide" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/image-compression-guide" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/image-compression-guide" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/blog/jpg-vs-png-vs-webp</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/jpg-vs-png-vs-webp" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/jpg-vs-png-vs-webp" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/jpg-vs-png-vs-webp" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/blog/jpg-vs-png-vs-webp</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/jpg-vs-png-vs-webp" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/jpg-vs-png-vs-webp" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/jpg-vs-png-vs-webp" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/blog/free-youtube-thumbnail-downloader-hd-4k</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/free-youtube-thumbnail-downloader-hd-4k" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/free-youtube-thumbnail-downloader-hd-4k" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/free-youtube-thumbnail-downloader-hd-4k" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/blog/free-youtube-thumbnail-downloader-hd-4k</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/free-youtube-thumbnail-downloader-hd-4k" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/free-youtube-thumbnail-downloader-hd-4k" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/free-youtube-thumbnail-downloader-hd-4k" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/blog/screen-recording-guide</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/screen-recording-guide" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/screen-recording-guide" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/screen-recording-guide" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/blog/screen-recording-guide</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/screen-recording-guide" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/screen-recording-guide" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/screen-recording-guide" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/blog/youtube-thumbnail-dimensions-guide</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/youtube-thumbnail-dimensions-guide" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/youtube-thumbnail-dimensions-guide" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/youtube-thumbnail-dimensions-guide" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/blog/youtube-thumbnail-dimensions-guide</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/blog/youtube-thumbnail-dimensions-guide" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/blog/youtube-thumbnail-dimensions-guide" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/blog/youtube-thumbnail-dimensions-guide" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/about</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/about" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/about" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/about" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/about</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/about" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/about" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/about" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/contact</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/contact" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/contact" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/contact</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/contact" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/contact" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/contact" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/faq</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/faq" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/faq" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/faq" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/faq</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/faq" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/faq" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/faq" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/privacy-policy</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/privacy-policy" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/privacy-policy" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/privacy-policy" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/privacy-policy</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/privacy-policy" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/privacy-policy" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/privacy-policy" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/terms-of-service</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/terms-of-service" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/terms-of-service" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/terms-of-service" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/terms-of-service</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/terms-of-service" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/terms-of-service" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/terms-of-service" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/disclaimer</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/disclaimer" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/disclaimer" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/disclaimer" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/disclaimer</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/disclaimer" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/disclaimer" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/disclaimer" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/cookies-policy</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/cookies-policy" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/cookies-policy" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/cookies-policy" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/cookies-policy</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/cookies-policy" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/cookies-policy" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/cookies-policy" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/dmca</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/dmca" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/dmca" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/dmca" />
   </url>
   <url>
     <loc>https://www.gtoolix.com/en/dmca</loc>
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/dmca" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/dmca" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/dmca" />
   </url>
 </urlset>

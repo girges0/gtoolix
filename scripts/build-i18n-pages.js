@@ -2260,9 +2260,7 @@ function generateSitemapXml() {
     });
 
     let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n`;
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
     urls.forEach(entry => {
         // Arabic entry
@@ -2271,11 +2269,6 @@ function generateSitemapXml() {
     <lastmod>${entry.lastmod}</lastmod>
     <changefreq>${entry.changefreq}</changefreq>
     <priority>${entry.priority}</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="${entry.urlAr}" />\n`;
-        if (entry.urlEn) {
-            xml += `    <xhtml:link rel="alternate" hreflang="en" href="${entry.urlEn}" />\n`;
-        }
-        xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${entry.urlAr}" />
   </url>\n`;
 
         // English entry (only if translation exists!)
@@ -2285,9 +2278,6 @@ function generateSitemapXml() {
     <lastmod>${entry.lastmod}</lastmod>
     <changefreq>${entry.changefreq}</changefreq>
     <priority>${entry.priority}</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="${entry.urlAr}" />
-    <xhtml:link rel="alternate" hreflang="en" href="${entry.urlEn}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${entry.urlAr}" />
   </url>\n`;
         }
     });
