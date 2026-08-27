@@ -59,6 +59,22 @@
     "accent_color": "#2563EB",
     "featured": true,
     "popular": true
+  },
+  {
+    "id": "pdf-compressor",
+    "name": "PDF Compressor",
+    "nameAr": "ضاغط ملفات PDF",
+    "slug": "pdf-compressor",
+    "url": "/tools/pdf-compressor/",
+    "category": "utilities",
+    "description": "Compress and reduce PDF file sizes online with balanced quality directly in your browser. 100% private client-side processing without uploading files.",
+    "descriptionAr": "ضغط وتصغير حجم ملفات PDF أونلاين بجودة متوازنة مباشرة في متصفحك بمعالجة محلية 100% بدون رفع أي ملفات.",
+    "icon": "pdf",
+    "badge": "100% Local & Free",
+    "badgeAr": "معالجة محلية 100%",
+    "accent_color": "#DC2626",
+    "featured": true,
+    "popular": true
   }
 ]
 

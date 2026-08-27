@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <script src="/static/js/lang-detect.min.js"></script>
+    <script>
+        (function () {
+            try {
+                var p = window.location.pathname || '';
+                var isEnRoute = p.indexOf('/en/') === 0 || p === '/en';
+                var l = isEnRoute ? 'en' : 'ar';
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('lang', l);
+                document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Compress PDF Online for Free | Reduce PDF File Size — GToolix</title>
+    <meta name="description" content="Free online tool to compress and reduce PDF file size instantly without signup. 100% private client-side processing in your browser keeps documents secure.">
+    <meta name="keywords" content="PDF compressor, compress PDF, compress PDF online, free PDF compressor, reduce PDF size, make PDF smaller, shrink PDF file size, PDF optimizer, compress PDF without uploading">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="GToolix">
+    <meta name="theme-color" content="#F8FAFC">
+
+    <!-- Canonical & Hreflang Alternates -->
+    <link rel="canonical" href="https://www.gtoolix.com/en/tools/pdf-compressor" />
+    <link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/pdf-compressor" />
+    <link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/pdf-compressor" />
+    <link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools/pdf-compressor" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gtoolix.com/en/tools/pdf-compressor">
+    <meta property="og:title" content="Compress PDF Online for Free | Reduce PDF File Size — GToolix">
+    <meta property="og:description" content="Compress and shrink PDF documents online quickly with balanced quality directly in your browser. 100% private client-side processing.">
+    <meta property="og:image" content="https://www.gtoolix.com/static/img/logo.webp">
+    <meta property="og:site_name" content="GToolix">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.gtoolix.com/en/tools/pdf-compressor">
+    <meta name="twitter:title" content="Compress PDF Online for Free | Reduce PDF File Size — GToolix">
+    <meta name="twitter:description" content="Reduce and optimize PDF file sizes in your browser with zero uploads and zero data collection. Free and instant.">
+    <meta name="twitter:image" content="https://www.gtoolix.com/static/img/logo.webp">
+
+    <!-- Performance Optimization: Preconnect & Preloads -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preconnect" href="https://fundingchoicesmessages.google.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/static/fonts/inter-latin.woff2" crossorigin>
+    <link rel="preload" as="image" type="image/webp" href="/static/img/logo.webp">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+
+    <!-- Critical Styles -->
+    <style>
+        :root {
+            --bg: #020817;
+            --bg-secondary: #0F172A;
+            --card: #111827;
+            --border: #1E293B;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.04);
+            --primary: #2563EB;
+            --primary-hover: #3B82F6;
+            --accent: #DC2626;
+            --accent-hover: #EF4444;
+            --text: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --radius-full: 9999px;
+            --radius-sm: 0.5rem;
+            --radius-md: 1rem;
+            --radius-lg: 1.125rem;
+            --radius-xl: 1.25rem;
+            --nav-bg: rgba(2, 8, 23, 0.82)
+        }
+
+        [data-theme="light"] {
+            --bg: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --card: #FFFFFF;
+            --border: #E2E8F0;
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass: rgba(255, 255, 255, 0.7);
+            --primary: #2563EB;
+            --primary-hover: #1D4ED8;
+            --accent: #DC2626;
+            --accent-hover: #B91C1C;
+            --text: #0F172A;
+            --text-secondary: #475569;
+            --nav-bg: rgba(248, 250, 252, 0.85)
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: clip;
+            scrollbar-gutter: stable;
+            width: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: clip;
+            width: 100%;
+            min-height: 100svh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .site-nav {
+            position: fixed;
+            top: 0.75rem;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.4rem 0.65rem 0.4rem 0.85rem;
+            width: calc(100% - 2rem);
+            max-width: 920px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        [data-theme="light"] .site-nav {
+            box-shadow: 0 4px 24px -2px rgba(15, 23, 42, 0.08);
+        }
+
+        .site-nav__brand {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text);
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .site-nav__brand-mark {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .site-nav__logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 9px;
+            display: block;
+        }
+
+        .site-nav__links {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .nav-item-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.85rem;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item-link:hover,
+        .nav-item-link.active {
+            color: var(--text);
+            background: var(--glass);
+        }
+
+        .nav-item-desc,
+        .nav-item-chevron {
+            display: none;
+        }
+
+        .site-nav__right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle-btn {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tool-header__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.35rem 0.95rem;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.25);
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #3B82F6;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22C55E;
+            box-shadow: 0 0 8px #22C55E;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Tool Workspace Styles */
+        .pdf-tool-app {
+            background: var(--card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
+        }
+
+        .pdf-dropzone {
+            border: 2px dashed rgba(220, 38, 38, 0.35);
+            border-radius: var(--radius-lg);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            background: var(--glass);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.85rem;
+        }
+
+        .pdf-dropzone:hover,
+        .pdf-dropzone.is-dragover {
+            border-color: var(--accent);
+            background: rgba(220, 38, 38, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .pdf-dropzone-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: rgba(220, 38, 38, 0.12);
+            color: #EF4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.25rem;
+        }
+
+        .pdf-dropzone-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .pdf-dropzone-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            max-width: 480px;
+        }
+
+        .pdf-browse-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.4rem;
+            background: var(--accent);
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease;
+            box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+        }
+
+        .pdf-browse-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .pdf-dropzone-footer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .pdf-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            background: var(--glass);
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--glass-border);
+        }
+
+        /* File Info Card */
+        .pdf-file-info-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+        }
+
+        .pdf-file-info-left {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            min-width: 0;
+        }
+
+        .pdf-file-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(220, 38, 38, 0.15);
+            color: #EF4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pdf-file-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            min-width: 0;
+        }
+
+        .pdf-file-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .pdf-file-sub {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        .pdf-file-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .pdf-action-btn {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text);
+            padding: 0.4rem 0.85rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .pdf-action-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Compression Levels */
+        .compression-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .compression-levels-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .compression-level-card {
+            border: 2px solid var(--border);
+            background: var(--card);
+            border-radius: var(--radius-md);
+            padding: 1.15rem;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .compression-level-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .compression-level-card.is-selected {
+            border-color: var(--accent);
+            background: rgba(220, 38, 38, 0.04);
+            box-shadow: 0 0 0 1px var(--accent);
+        }
+
+        .level-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .level-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .level-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            border-radius: var(--radius-full);
+            background: rgba(34, 197, 94, 0.12);
+            color: #22C55E;
+            border: 1px solid rgba(34, 197, 94, 0.25);
+        }
+
+        .level-badge.badge-accent {
+            background: rgba(220, 38, 38, 0.12);
+            color: #EF4444;
+            border-color: rgba(220, 38, 38, 0.25);
+        }
+
+        .level-desc {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        /* Progress Card */
+        .pdf-progress-card {
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .pdf-progress-bar {
+            width: 100%;
+            height: 10px;
+            background: var(--border);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+
+        .pdf-progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #EF4444, #F97316);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .pdf-progress-status {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        /* Result Card */
+        .pdf-result-card {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .pdf-result-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .pdf-result-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .pdf-result-stats {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+        }
+
+        .pdf-stat-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+        }
+
+        .pdf-stat-label {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.35rem;
+        }
+
+        .pdf-stat-val {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .pdf-stat-saved {
+            color: #22C55E;
+        }
+
+        .pdf-result-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-download-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            background: #16A34A;
+            color: #FFFFFF;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 18px rgba(22, 163, 74, 0.35);
+        }
+
+        .btn-download-pdf:hover {
+            background: #15803D;
+            transform: translateY(-2px);
+        }
+
+        .btn-compress-another {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.4rem;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-compress-another:hover {
+            background: var(--card);
+            border-color: var(--text-secondary);
+        }
+
+        /* Privacy Banner */
+        .privacy-notice-box {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 1.25rem;
+            background: rgba(34, 197, 94, 0.07);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-radius: var(--radius-md);
+            margin-bottom: 2rem;
+            color: var(--text);
+            font-size: 0.92rem;
+        }
+
+        .privacy-notice-box strong {
+            color: #22C55E;
+        }
+
+        /* Article & FAQ Styles */
+        .seo-article {
+            max-width: 860px;
+            margin: 0 auto;
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .toc-box {
+            background: var(--card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.75rem;
+            margin: 2.5rem 0;
+        }
+
+        .toc-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem 1.5rem;
+        }
+
+        @media (max-width: 650px) {
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .toc-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.94rem;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .toc-list a:hover {
+            color: var(--accent);
+        }
+
+        .article-section {
+            margin: 3rem 0;
+        }
+
+        .article-section h2 {
+            font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 0.4rem;
+        }
+
+        .article-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 45px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: var(--radius-full);
+        }
+
+        .article-section h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 1.5rem 0 0.6rem 0;
+            color: var(--text);
+        }
+
+        .article-section p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            line-height: 1.8;
+        }
+
+        .article-section ul,
+        .article-section ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .article-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin: 1.75rem 0;
+        }
+
+        @media (max-width: 650px) {
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step-item {
+            background: var(--card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: rgba(220, 38, 38, 0.15);
+            color: #EF4444;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-item h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            color: var(--text);
+        }
+
+        .step-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* FAQ Accordion */
+        .faq-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin: 2rem 0;
+        }
+
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 1.15rem 1.25rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .faq-chevron {
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.is-open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.25rem 1.25rem;
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.7;
+            display: none;
+        }
+
+        .faq-item.is-open .faq-answer {
+            display: block;
+        }
+
+        /* Related Tools */
+        .related-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .related-tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .related-tool-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.1rem 1.25rem;
+            background: var(--card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .related-tool-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .related-tool-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            text-align: left;
+        }
+
+        .related-tool-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .related-tool-sub {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        .related-tool-icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            flex-shrink: 0;
+        }
+
+        .icon-compressor { background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%); }
+        .icon-qr { background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%); }
+        .icon-thumb { background: linear-gradient(135deg, #e11d48 0%, #f43f5e 100%); }
+        .icon-rec { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: gap 0.2s ease, color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .back-link:hover {
+            gap: 0.7rem;
+            color: var(--primary-hover);
+        }
+    </style>
+
+    <link rel="preload" href="/static/css/main.min.css" as="style">
+    <link rel="stylesheet" href="/static/css/main.min.css" id="gtoolix-main-css" fetchpriority="high">
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.gtoolix.com/#website",
+      "name": "GToolix",
+      "url": "https://www.gtoolix.com/",
+      "inLanguage": ["ar", "en"]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.gtoolix.com/en/tools/pdf-compressor#webapp",
+      "url": "https://www.gtoolix.com/en/tools/pdf-compressor",
+      "name": "PDF Compressor | GToolix",
+      "description": "Free online tool to compress and reduce PDF file sizes directly in your browser. 100% private client-side processing without uploading files.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any (Web Browser)",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isPartOf": {
+        "@id": "https://www.gtoolix.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.gtoolix.com/en/tools/pdf-compressor#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.gtoolix.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://www.gtoolix.com/en/tools"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "PDF Compressor",
+          "item": "https://www.gtoolix.com/en/tools/pdf-compressor"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.gtoolix.com/en/tools/pdf-compressor#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I compress a PDF online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simply drag and drop your PDF into the upload area, choose your preferred compression level (Balanced, Maximum, or High Quality), click Compress, and download your optimized document in seconds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this PDF compressor free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, GToolix PDF Compressor is 100% free with no subscriptions, watermarks, usage limits, or hidden fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I compress a PDF without uploading it to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! All processing occurs client-side inside your web browser. Your confidential files never leave your computer or phone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does compressing a PDF reduce text and visual quality?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Text, vectors, and font definitions remain razor-sharp vector elements. The compression intelligently optimizes high-resolution raster images and strips invisible metadata."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my PDF still large after compression?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If a PDF consists purely of plain text or has already been tightly compressed by specialized publishing software, there are no unneeded streams to shrink further. The tool will notify you that your file is already optimized."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I compress scanned PDFs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Scanned PDFs benefit the most from compression because they are made of heavy raw images. The compressor resamples and re-encodes these images, often saving 60% to 80% of file size."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What compression level should I choose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use 'Balanced' for general sharing and emails. Choose 'Maximum Compression' when you must satisfy strict size caps (like 1 MB or 2 MB on government or university portals). Choose 'High Quality' for portfolio prints."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a file size limit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can comfortably process files up to 100 MB. Processing speed is determined by your device's memory and processor since everything runs locally."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9332457707004456" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Site Navigation -->
+    <header class="site-nav" id="site-header">
+        <a class="site-nav__brand" href="/en/" aria-label="GToolix Home">
+            <span class="site-nav__brand-mark">
+                <picture>
+                    <source srcset="/static/img/logo.webp" type="image/webp">
+                    <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38" height="38" loading="eager" fetchpriority="high">
+                </picture>
+            </span>
+            <span>GToolix</span>
+        </a>
+        <nav class="site-nav__links" id="site-nav-links" aria-label="Main Navigation">
+            <a href="/en/tools" class="nav-item-link active" data-nav="tools">
+                <span class="nav-item-icon nav-icon-tools">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label">Tools</span>
+                    <span class="nav-item-desc">Smart & interactive online tools</span>
+                </span>
+            </a>
+            <a href="/en/blog" class="nav-item-link" data-nav="blog">
+                <span class="nav-item-icon nav-icon-blog">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="10" y1="6" x2="16" y2="6"></line><line x1="10" y1="10" x2="16" y2="10"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label">Articles</span>
+                    <span class="nav-item-desc">Guides, articles & insights</span>
+                </span>
+            </a>
+            <a href="/en/programs" class="nav-item-link" data-nav="programs">
+                <span class="nav-item-icon nav-icon-programs">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M8 10l3 3-3 3"></path><line x1="13" y1="16" x2="17" y2="16"></line></svg>
+                </span>
+                <span class="nav-item-body">
+                    <span class="nav-item-label">Programs</span>
+                    <span class="nav-item-desc">Desktop software & solutions</span>
+                </span>
+            </a>
+        </nav>
+        <div class="site-nav__right">
+            <button class="theme-toggle-btn" id="theme-toggle-btn" type="button" aria-label="Toggle theme">
+                <span class="theme-toggle-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </span>
+            </button>
+            <div class="lang-switcher" aria-label="Language Switcher">
+                <a href="/en/tools/pdf-compressor" class="lang-btn active" id="lang-en-btn" onclick="try{localStorage.setItem('gtoolix_language','en');localStorage.setItem('siteLang','en');}catch(e){}">EN</a>
+                <a href="/tools/pdf-compressor" class="lang-btn" id="lang-ar-btn" onclick="try{localStorage.setItem('gtoolix_language','ar');localStorage.setItem('siteLang','ar');}catch(e){}">AR</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav-links" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="nav-backdrop" id="nav-backdrop" onclick="toggleNav(true)"></div>
+
+    <div class="background-gradient"></div>
+    <div class="particles" id="particles"></div>
+
+    <main class="container" style="max-width: 1080px; padding-top: 6rem; padding-bottom: 4rem; margin: 0 auto; padding-inline: max(1rem, 3.5vw);">
+        
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol>
+                <li><a href="/en/">Home</a></li>
+                <li class="separator" aria-hidden="true">/</li>
+                <li><a href="/en/tools">Tools</a></li>
+                <li class="separator" aria-hidden="true">/</li>
+                <li aria-current="page">PDF Compressor</li>
+            </ol>
+        </nav>
+
+        <!-- Header Section -->
+        <header class="section-head reveal in-view" style="text-align: center; margin-bottom: 2.5rem;">
+            <div class="tool-header__badge" style="margin-bottom: 0.85rem;">
+                <span class="pulse-dot"></span>
+                <span>100% Client-Side • No Server Uploads</span>
+            </div>
+            <h1 style="font-size: clamp(2rem, 4.2vw, 3.1rem); font-weight: 800; margin-bottom: 0.85rem; letter-spacing: -0.02em;">
+                <span>Compress PDF Online</span> <span class="gradient-text">for Free</span>
+            </h1>
+            <p style="color: var(--text-secondary); max-width: 680px; margin: 0 auto; font-size: 1.05rem; line-height: 1.65;">
+                Reduce and optimize PDF file sizes for easy email and chat sharing while keeping original text sharpness. Completely free with local in-browser processing.
+            </p>
+        </header>
+
+        <!-- Tool Interactive Workspace -->
+        <div class="pdf-tool-app" id="pdf-tool-app">
+            
+            <!-- 1. Dropzone Screen -->
+            <div class="pdf-dropzone" id="pdfDropzone" role="region" aria-label="PDF Upload Zone">
+                <input type="file" id="pdfFileInput" accept="application/pdf,.pdf" style="display: none;">
+                
+                <div class="pdf-dropzone-icon">
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="12" y1="18" x2="12" y2="12"></line>
+                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                    </svg>
+                </div>
+                
+                <h2 class="pdf-dropzone-title">Drop your PDF here or click to browse</h2>
+                <p class="pdf-dropzone-subtitle">Choose a PDF file from your device to start shrinking its size instantly (supports files up to 100 MB)</p>
+                
+                <button type="button" class="pdf-browse-btn" id="pdfBrowseBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                    <span>Choose PDF</span>
+                </button>
+
+                <div class="pdf-dropzone-footer">
+                    <span class="pdf-pill">🔒 100% Client-Side Privacy</span>
+                    <span class="pdf-pill">⚡ Instant In-Browser Processing</span>
+                    <span class="pdf-pill">📄 All PDF Documents</span>
+                </div>
+            </div>
+
+            <!-- 2. File Information Display Card -->
+            <div class="pdf-file-info-card" id="pdfFileInfoCard" style="display: none;">
+                <div class="pdf-file-info-left">
+                    <div class="pdf-file-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <div class="pdf-file-meta">
+                        <span class="pdf-file-name" id="pdfFileInfoName">document.pdf</span>
+                        <div class="pdf-file-sub">
+                            <span id="pdfFileInfoSize">4.8 MB</span>
+                            <span aria-hidden="true">&bull;</span>
+                            <span id="pdfFileInfoPages">12 pages</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pdf-file-actions" id="pdfFileInfoActions">
+                    <button type="button" class="pdf-action-btn" id="pdfReplaceBtn">Replace</button>
+                    <button type="button" class="pdf-action-btn" id="pdfRemoveBtn">Remove</button>
+                </div>
+            </div>
+
+            <!-- 3. Compression Level Selector Card -->
+            <div id="pdfOptionsCard" style="display: none;">
+                <label style="display: block; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text);">
+                    Select Compression Level:
+                </label>
+                <div class="compression-levels-grid">
+                    <!-- Option 1: Balanced (Recommended) -->
+                    <div class="compression-level-card is-selected" data-level="balanced" tabindex="0">
+                        <div class="level-header">
+                            <span class="level-title">
+                                <input type="radio" name="compression-level" value="balanced" checked style="accent-color: var(--accent);">
+                                Balanced
+                            </span>
+                            <span class="level-badge">Recommended</span>
+                        </div>
+                        <p class="level-desc">Good file size reduction with a balanced quality level for everyday sharing and readability.</p>
+                    </div>
+
+                    <!-- Option 2: Maximum Compression -->
+                    <div class="compression-level-card" data-level="maximum" tabindex="0">
+                        <div class="level-header">
+                            <span class="level-title">
+                                <input type="radio" name="compression-level" value="maximum" style="accent-color: var(--accent);">
+                                Maximum Compression
+                            </span>
+                            <span class="level-badge badge-accent">Smallest Size</span>
+                        </div>
+                        <p class="level-desc">Reduce the PDF size as much as possible for strict email and job portal upload limits.</p>
+                    </div>
+
+                    <!-- Option 3: High Quality -->
+                    <div class="compression-level-card" data-level="high-quality" tabindex="0">
+                        <div class="level-header">
+                            <span class="level-title">
+                                <input type="radio" name="compression-level" value="high-quality" style="accent-color: var(--accent);">
+                                High Quality
+                            </span>
+                            <span class="level-badge">Crisp Quality</span>
+                        </div>
+                        <p class="level-desc">Prioritize PDF visual quality while slightly reducing file size. Ideal for portfolios and print.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button type="button" class="pdf-browse-btn" id="pdfCompressBtn" style="padding: 0.85rem 2.5rem; font-size: 1.05rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M12 12v9"></path><path d="m8 17 4 4 4-4"></path></svg>
+                        <span>Compress PDF Now</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4. Progress Card -->
+            <div class="pdf-progress-card" id="pdfProgressCard" style="display: none;">
+                <div class="pdf-progress-bar">
+                    <div class="pdf-progress-bar-fill" id="pdfProgressBarFill"></div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem;">
+                    <span class="pdf-progress-status" id="pdfProgressStatus">Analyzing PDF document...</span>
+                    <strong style="font-size: 0.95rem; color: var(--text);" id="pdfProgressPct">0%</strong>
+                </div>
+            </div>
+
+            <!-- 5. Result Card -->
+            <div class="pdf-result-card" id="pdfResultCard" style="display: none;">
+                <h3 class="pdf-result-title">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    <span>Compression Complete</span>
+                </h3>
+                
+                <div class="pdf-result-stats">
+                    <div class="pdf-stat-item">
+                        <div class="pdf-stat-label">Original Size</div>
+                        <div class="pdf-stat-val" id="pdfResOrigSize">0 MB</div>
+                    </div>
+                    <div class="pdf-stat-item">
+                        <div class="pdf-stat-label">Compressed Size</div>
+                        <div class="pdf-stat-val" id="pdfResCompSize">0 MB</div>
+                    </div>
+                    <div class="pdf-stat-item">
+                        <div class="pdf-stat-label">You Saved</div>
+                        <div class="pdf-stat-val pdf-stat-saved" id="pdfResSavedPct">0%</div>
+                    </div>
+                </div>
+
+                <div id="pdfResNotice" style="display: none; margin-bottom: 1.25rem; font-size: 0.9rem; color: var(--text-secondary);"></div>
+
+                <div class="pdf-result-actions">
+                    <button type="button" class="btn-download-pdf" id="pdfDownloadBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <span>Download Compressed PDF</span>
+                    </button>
+                    <button type="button" class="btn-compress-another" id="pdfResetBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg>
+                        <span>Compress Another PDF</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Privacy & Local Processing Notice -->
+        <div class="privacy-notice-box">
+            <span style="font-size: 1.35rem;">🔒</span>
+            <div>
+                <strong>Your files stay on your device:</strong> Your PDF is processed locally in your browser without uploading it to a server. This client-side architecture guarantees complete privacy for your sensitive documents, financial forms, and private records.
+            </div>
+        </div>
+
+        <!-- Educational SEO Article -->
+        <article class="seo-article">
+            
+            <!-- Table of Contents -->
+            <div class="toc-box">
+                <div class="toc-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    <span>Table of Contents</span>
+                </div>
+                <ul class="toc-list">
+                    <li><a href="#what-is-pdf-compression">→ What Is PDF Compression?</a></li>
+                    <li><a href="#why-compress-pdf">→ Why Compress a PDF File?</a></li>
+                    <li><a href="#how-to-compress-pdf">→ How to Compress a PDF in 4 Steps</a></li>
+                    <li><a href="#choose-compression-level">→ Which Level Should You Choose?</a></li>
+                    <li><a href="#lossless-vs-lossy">→ Lossless vs. Lossy PDF Compression</a></li>
+                    <li><a href="#how-compression-works">→ How PDF Size Reduction Works Technically</a></li>
+                    <li><a href="#why-pdfs-are-large">→ Why Are PDF Files So Large?</a></li>
+                    <li><a href="#faq">→ Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+
+            <!-- Section 1 -->
+            <section class="article-section" id="what-is-pdf-compression">
+                <h2>What Is PDF Compression?</h2>
+                <p>
+                    <strong>PDF compression</strong> is the process of restructuring and optimizing the internal data of a Portable Document Format file to reduce its total storage size in megabytes without altering its visible layout or typography. PDF is one of the most reliable document formats on Earth because it guarantees identical visual reproduction across phones, laptops, and operating systems.
+                </p>
+                <p>
+                    However, unoptimized PDF files often contain redundant historical metadata, uncompressed image streams, duplicated embedded fonts, and editor snapshots. Compressing a PDF removes this unnecessary digital weight so your document opens quickly and transmits effortlessly.
+                </p>
+            </section>
+
+            <!-- Section 2 -->
+            <section class="article-section" id="why-compress-pdf">
+                <h2>Why Do You Need to Compress and Shrink PDF Files?</h2>
+                <p>
+                    Modern digital workflows frequently enforce strict file size limitations. Here are the most common scenarios where shrinking your PDF is essential:
+                </p>
+                <ul>
+                    <li><strong>Email Attachment Limits:</strong> Major email providers like Gmail, Microsoft Outlook, and Yahoo enforce a 20 MB to 25 MB cap on attachments. Compressing documents lets you send contracts and reports without messy cloud storage links.</li>
+                    <li><strong>Job Applications & Resumes:</strong> Most recruitment platforms and Applicant Tracking Systems (ATS) reject resumes and CV files exceeding 2 MB or 5 MB. A smaller file ensures your application is processed smoothly.</li>
+                    <li><strong>Government & Academic Portals:</strong> Official submission portals often maintain rigid upload thresholds (sometimes as low as 1 MB or 2 MB per document) for tax forms, admissions, and legal filings.</li>
+                    <li><strong>Messaging Apps & Mobile Data:</strong> Sharing documents on WhatsApp, Slack, or Telegram is significantly faster when files are optimized, saving cellular data for both sender and recipient.</li>
+                    <li><strong>Storage Conservation:</strong> When storing hundreds of invoices, presentation decks, or eBooks, optimizing PDFs frees up valuable gigabytes on your internal hard drive and backup vaults.</li>
+                </ul>
+            </section>
+
+            <!-- Section 3 -->
+            <section class="article-section" id="how-to-compress-pdf">
+                <h2>How to Compress a PDF in 4 Simple Steps</h2>
+                <p>
+                    GToolix is engineered to deliver instant results without technical friction. Follow these straightforward steps:
+                </p>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h4>Choose Your PDF</h4>
+                        <p>Drag and drop your file into the upload zone or click "Choose PDF" to pick a document from your computer or mobile device.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h4>Select Compression Level</h4>
+                        <p>Pick the mode that matches your priority: Balanced (Recommended), Maximum Compression, or High Quality.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h4>Compress Locally</h4>
+                        <p>Click "Compress PDF Now". Your browser processes the document in seconds without uploading any bytes to a remote server.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <h4>Download Your File</h4>
+                        <p>Review the calculated savings and your new file size, then hit download to retrieve your optimized PDF instantly.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section class="article-section" id="choose-compression-level">
+                <h2>Which Compression Level Should You Choose?</h2>
+                <p>
+                    To give you precise control over document clarity and file size, GToolix offers three calibrated compression profiles:
+                </p>
+                <h3>1. Balanced (Recommended)</h3>
+                <p>
+                    This is the optimal choice for over 90% of documents. It compresses embedded raster photos at 70% JPEG quality, downsamples oversized images exceeding 150 DPI, and strips all redundant document metadata. Text and vector graphics remain 100% untouched and sharp, making it perfect for invoices, reports, and everyday sharing.
+                </p>
+                <h3>2. Maximum Compression</h3>
+                <p>
+                    When meeting a strict file size limit is mandatory (such as government portals capping files at 1 MB), this profile applies strong image compression (45% quality) and downsamples images to 120 DPI while purging non-essential stream data. It yields the smallest possible file size.
+                </p>
+                <h3>3. High Quality</h3>
+                <p>
+                    If your document includes intricate diagrams, photography portfolios, or blueprints that will be printed in high resolution, this level preserves maximum visual fidelity (85% quality) while cleaning unnecessary metadata.
+                </p>
+            </section>
+
+            <!-- Section 5 -->
+            <section class="article-section" id="lossless-vs-lossy">
+                <h2>Can You Compress a PDF Without Quality Loss?</h2>
+                <p>
+                    Understanding PDF compression requires recognizing the distinction between two fundamental compression techniques:
+                </p>
+                <ul>
+                    <li><strong>Lossless Compression:</strong> Removes data that does not affect visual presentation. This includes document metadata (author, editor version, creation dates), Adobe Photoshop 8BIM editing data blocks, and Flate object stream recompression. In lossless compression, <em>not a single pixel or letter loses clarity</em>.</li>
+                    <li><strong>Lossy Compression:</strong> Applied strictly to embedded bitmap and raster images. It selectively removes microscopic color variations that the human eye cannot easily discern. This technique achieves dramatic file size reductions (often 50% to 75%), but involves a minor, calibrated reduction in raster image fidelity.</li>
+                </ul>
+                <p>
+                    GToolix harmonizes both worlds: all written text, typographic fonts, and vector paths remain crisp vector elements that stay sharp at any zoom level, while heavy photos are compressed visually to maximize storage savings.
+                </p>
+            </section>
+
+            <!-- Section 6 -->
+            <section class="article-section" id="how-compression-works">
+                <h2>How PDF Size Reduction Works Technically in Your Browser</h2>
+                <p>
+                    Behind the clean interface, GToolix utilizes advanced client-side Web APIs and PDF parsing engines:
+                </p>
+                <ol>
+                    <li><strong>Object Graph Enumeration:</strong> The parser traverses the document's cross-reference table and dictionary structure to identify image XObjects, fonts, and content streams.</li>
+                    <li><strong>Metadata Stripping:</strong> Clears the document Info dictionary (Title, Author, Producer, Creator), deletes catalog-level XML Metadata streams, and strips third-party editor data blocks.</li>
+                    <li><strong>Raster Image Re-encoding:</strong> Decompresses image streams using native browser DecompressionStreams, draws them onto high-performance offscreen canvases, resamples their pixel dimensions, and re-encodes them into compact JPEG or DeviceGray Flate streams.</li>
+                    <li><strong>Object Streams Generation:</strong> Consolidates indirect PDF objects into unified object streams to eliminate structural overhead and write a lean output file.</li>
+                </ol>
+            </section>
+
+            <!-- Section 7 -->
+            <section class="article-section" id="why-pdfs-are-large">
+                <h2>Why Do PDF Files Get So Large?</h2>
+                <p>
+                    If you have ever wondered why a 5-page PDF can swell to 30 MB or more, here are the most frequent culprits:
+                </p>
+                <ul>
+                    <li><strong>Uncompressed High-Resolution Photos:</strong> Placing raw smartphone or DSLR images directly into word processors without prior downscaling.</li>
+                    <li><strong>Scanned Document Pages:</strong> Office scanners often store each page as an uncompressed 300 DPI or 600 DPI full-page bitmap rather than searchable text.</li>
+                    <li><strong>Full Font Embedding:</strong> Including entire multi-megabyte font files with thousands of unused glyphs instead of embedding only the characters used in the text.</li>
+                    <li><strong>Design Software Overhead:</strong> Exporting from Adobe Photoshop, Illustrator, or InDesign with "Preserve Photoshop Editing Capabilities" checked embeds full layer histories into the PDF.</li>
+                </ul>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="article-section" id="faq">
+                <h2>Frequently Asked Questions About PDF Compression</h2>
+                <p>Answers to common questions regarding online PDF compression, security, and quality:</p>
+                
+                <div class="faq-accordion" id="pdfFaqAccordion">
+                    <div class="faq-item is-open">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>How do I compress a PDF online?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            Simply drag and drop your PDF into the upload area above, choose your preferred compression level (Balanced, Maximum, or High Quality), click "Compress PDF Now", and download your optimized document in seconds.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>Is this PDF compressor free to use?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            Yes, GToolix PDF Compressor is 100% free with no subscriptions, trial periods, watermarks, or credit card requirements.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>Can I compress a PDF without uploading it to a server?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            Yes! Unlike conventional web converters that upload your confidential files to remote servers, GToolix runs 100% client-side inside your browser. Your sensitive files never leave your device.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>Does compressing a PDF reduce quality?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            Text and vector drawings remain sharp vector shapes at any zoom level. The compression specifically optimizes heavy embedded raster photos and removes invisible metadata without compromising document readability.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>Why is my PDF still large after compression?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            If a PDF consists purely of plain vector text without images, or if the file was already tightly compressed by software like Adobe Acrobat Distiller, there may be no unneeded data to remove. In such cases, the tool will notify you that your file is already optimized.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>Can I compress scanned PDFs?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            Yes! Scanned PDFs benefit the most from compression because they are composed of full-page raster scans. Re-encoding these images typically achieves 60% to 80% size savings.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>What compression level should I choose?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            We recommend 'Balanced' for everyday documents and email attachments. Choose 'Maximum Compression' when you must satisfy strict portal upload thresholds (such as 1 MB or 2 MB caps). Choose 'High Quality' for portfolio prints.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>Is there a file size limit?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            You can comfortably process PDFs up to 100 MB. Processing speed is determined by your device's memory and CPU because the entire task executes in your browser.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Tools Section -->
+            <section class="related-tools-block" style="margin-top: 4.5rem; margin-bottom: 2rem;">
+                <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 1rem; color: var(--text);">Other Free Tools on GToolix</h3>
+                <div class="related-tools-grid">
+                    <a href="/en/tools/image-compressor" class="related-tool-card">
+                        <div class="related-tool-text">
+                            <span class="related-tool-title">Image Compressor</span>
+                            <span class="related-tool-sub">Compress JPG, PNG & WebP</span>
+                        </div>
+                        <div class="related-tool-icon-box icon-compressor">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                        </div>
+                    </a>
+
+                    <a href="/en/tools/qr-code-generator" class="related-tool-card">
+                        <div class="related-tool-text">
+                            <span class="related-tool-title">QR Code Generator</span>
+                            <span class="related-tool-sub">Custom vector & PNG QR codes</span>
+                        </div>
+                        <div class="related-tool-icon-box icon-qr">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><path d="M14 14h3v3h-3z" /><path d="M18 18h3v3h-3z" /></svg>
+                        </div>
+                    </a>
+
+                    <a href="/en/tools/screen-recorder-studio" class="related-tool-card">
+                        <div class="related-tool-text">
+                            <span class="related-tool-title">Screen Recorder</span>
+                            <span class="related-tool-sub">Studio screen & webcam capture</span>
+                        </div>
+                        <div class="related-tool-icon-box icon-rec">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                        </div>
+                    </a>
+                </div>
+                <div style="text-align: center; margin-top: 1.75rem;">
+                    <a href="/en/tools" class="back-link" data-i18n="common.backLink">Back to all tools →</a>
+                </div>
+            </section>
+
+        </article>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-col footer-col--brand">
+                    <a class="footer-brand" href="/en/" aria-label="GToolix Home">
+                        <span class="site-nav__brand-mark">
+                            <picture>
+                                <source srcset="/static/img/logo.webp" type="image/webp">
+                                <img src="/static/img/logo.webp" alt="GToolix Logo" class="site-nav__logo-img" width="38" height="38" loading="lazy">
+                            </picture>
+                        </span>
+                        <span>GToolix</span>
+                    </a>
+                    <p class="footer-note">GToolix is an advanced digital platform for smart online tools, guides, and software, engineered for privacy and performance.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">Featured Tools</h4>
+                    <nav class="footer-links">
+                        <a href="/en/tools/pdf-compressor">PDF Compressor</a>
+                        <a href="/en/tools/image-compressor">Image Compressor</a>
+                        <a href="/en/tools/qr-code-generator">QR Code Generator</a>
+                        <a href="/en/tools/youtube-thumbnail-downloader">YouTube Thumbnail Downloader</a>
+                        <a href="/en/tools/screen-recorder-studio">Screen Recorder Studio</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">Platform</h4>
+                    <nav class="footer-links">
+                        <a href="/en/tools">Tools</a>
+                        <a href="/en/blog">Articles</a>
+                        <a href="/en/programs">Programs</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">About & Trust</h4>
+                    <nav class="footer-links">
+                        <a href="/en/about">About Us</a>
+                        <a href="/en/faq">FAQ</a>
+                        <a href="/en/contact">Contact Us</a>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col__title">Privacy & Terms</h4>
+                    <nav class="footer-links">
+                        <a href="/en/privacy-policy">Privacy Policy</a>
+                        <a href="/en/terms-of-service">Terms of Service</a>
+                        <a href="/en/cookies-policy">Cookies Policy</a>
+                        <a href="/en/disclaimer">Disclaimer</a>
+                        <a href="/en/dmca">Copyright (DMCA)</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 GToolix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Navigation and FAQ Scripts -->
+    <script>
+        function toggleNav(forceClose) {
+            const links = document.getElementById('site-nav-links');
+            const btn = document.getElementById('nav-toggle');
+            const backdrop = document.getElementById('nav-backdrop');
+            if (!links || !btn) return;
+            const isOpen = links.classList.contains('is-open');
+            const shouldOpen = forceClose ? false : !isOpen;
+            links.classList.toggle('is-open', shouldOpen);
+            if (backdrop) backdrop.classList.toggle('is-open', shouldOpen);
+            document.body.classList.toggle('menu-open', shouldOpen);
+            btn.setAttribute('aria-expanded', String(shouldOpen));
+        }
+
+        function toggleFaqItem(button) {
+            const item = button.closest('.faq-item');
+            if (item) {
+                item.classList.toggle('is-open');
+            }
+        }
+
+        function initParticles() {
+            const container = document.getElementById('particles');
+            if (container && window.innerWidth > 1023) {
+                const fragment = document.createDocumentFragment();
+                for (let i = 0; i < 25; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    p.style.left = (Math.random() * 100) + '%';
+                    p.style.animationDelay = (Math.random() * 8) + 's';
+                    p.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                    fragment.appendChild(p);
+                }
+                container.appendChild(fragment);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initParticles);
+    </script>
+
+    <!-- PDF Lib & Compressor Scripts -->
+    <script src="/tools/pdf-compressor/vendor/pdf-lib.min.js"></script>
+    <script src="/tools/pdf-compressor/pdf-compressor.min.js"></script>
+    <script src="/static/js/content-client.js"></script>
+    <script src="/static/js/theme.min.js" defer></script>
+</body>
+
+</html>

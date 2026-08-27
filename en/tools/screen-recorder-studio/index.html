@@ -3,6 +3,19 @@
 
 <head>
     <script src="/static/js/lang-detect.min.js"></script>
+    <script>
+        (function () {
+            try {
+                var p = window.location.pathname || '';
+                var isEnRoute = p.indexOf('/en/') === 0 || p === '/en';
+                var l = isEnRoute ? 'en' : 'ar';
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('lang', l);
+                document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Screen Recorder Studio Free Online | GToolix</title>
@@ -84,7 +97,13 @@
         }
 
         html[dir="rtl"] body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Cairo', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .site-nav {
@@ -148,11 +167,29 @@
         }
 
         .tool-header h1 {
-            font-size: clamp(1.6rem, 5vw, 2.5rem);
+            font-size: clamp(1.8rem, 4.5vw, 2.75rem);
             font-weight: 800;
             line-height: 1.25;
             margin: 0.75rem 0 0.5rem;
-            color: var(--text);
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            -webkit-text-fill-color: var(--text) !important;
+            color: var(--text) !important;
+            opacity: 1 !important;
+        }
+
+        .tool-header h1 span {
+            color: var(--text) !important;
+            -webkit-text-fill-color: var(--text) !important;
+        }
+
+        .tool-header h1 .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            color: transparent !important;
         }
 
         .tool-header .tagline {
@@ -957,7 +994,9 @@
                     <span class="pulse-dot"></span>
                     <span data-i18n="rec.privacyBadge">Your recording stays on your device • 100% Client-Side Privacy</span>
                 </div>
-                <h1 data-i18n="rec.h1">Screen Recorder Studio</h1>
+                <h1 style="font-size: clamp(1.8rem, 4.5vw, 2.75rem); font-weight: 800; line-height: 1.25; margin: 0.75rem 0 0.5rem; letter-spacing: -0.02em;">
+                    <span data-i18n="rec.h1Base">Screen Recorder</span> <span class="gradient-text" data-i18n="rec.h1Highlight">Studio</span>
+                </h1>
                 <p class="tagline" data-i18n="rec.tagline">Record screen, webcam, and audio in high quality right from your browser — 100% private, zero upload, no signup.</p>
             </header>
 
@@ -1531,6 +1570,8 @@
                     breadcrumbCurrent: "Screen Recorder Studio",
                     privacyBadge: "Your recording stays on your device • 100% Client-Side Privacy",
                     h1: "Screen Recorder Studio",
+                    h1Base: "Screen Recorder",
+                    h1Highlight: "Studio",
                     tagline: "Record screen, webcam, and audio in high quality right from your browser — 100% private, zero upload, no signup.",
                     noticeBrowserText: "Your browser does not support full MediaRecorder capture. Please use desktop Google Chrome, Microsoft Edge, or Brave for best results.",
                     tabDevices: "Devices & Quality", tabDesign: "Webcam Design", tabOptions: "Timer & Audio",
@@ -1603,6 +1644,8 @@
                     breadcrumbCurrent: "مسجل الشاشة الاحترافي",
                     privacyBadge: "تسجيلك يحفظ محلياً على جهازك فقط • خصوصية كاملة 100%",
                     h1: "مسجل الشاشة الاحترافي",
+                    h1Base: "مسجل الشاشة",
+                    h1Highlight: "الاحترافي",
                     tagline: "سجّل شاشتك والكاميرا والصوت بجودة استوديو مباشرة من المتصفح — مجاني 100%، بدون رفع، وبدون تسجيل حساب.",
                     noticeBrowserText: "متصفحك لا يدعم تسجيل الشاشة الكامل عبر MediaRecorder. يرجى استخدام متصفح كروم، إيدج، أو بريف على الكمبيوتر للحصول على أفضل تجربة.",
                     tabDevices: "الأجهزة والجودة", tabDesign: "تصميم الكاميرا", tabOptions: "المؤقت والصوت",

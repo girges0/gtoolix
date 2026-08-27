@@ -197,6 +197,16 @@
   status = 200
 
 [[redirects]]
+  from = "/tools/pdf-compressor"
+  to = "/tools/pdf-compressor/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/tools/pdf-compressor/"
+  to = "/tools/pdf-compressor/index.html"
+  status = 200
+
+[[redirects]]
   from = "/blog"
   to = "/blog/index.html"
   status = 200
@@ -358,6 +368,16 @@
 [[redirects]]
   from = "/en/tools/image-compressor/"
   to = "/en/tools/image-compressor/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools/pdf-compressor"
+  to = "/en/tools/pdf-compressor/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/tools/pdf-compressor/"
+  to = "/en/tools/pdf-compressor/index.html"
   status = 200
 
 [[redirects]]

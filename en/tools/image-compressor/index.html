@@ -18,15 +18,18 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Image Compressor &amp; Converter Free Online | GToolix</title>
-    <meta name="description" content="Compress and convert JPG, PNG, WebP, and GIF images with high quality directly in your browser. 100% private client-side processing.">
-    <meta name="keywords" content="ضغط الصور, تصغير حجم الصور, ضغط الصور اون لاين, محول الصور, تحويل JPG الى WebP, ضغط PNG, ضغط WebP, image compressor, image converter, compress jpeg, compress png, convert images online">
+    <title>Free Image Compressor &amp; Converter Online | Optimize JPG, PNG &amp; WebP — GToolix</title>
+    <meta name="description" content="Free online image compressor and converter. Reduce image size up to 85% without losing quality. Convert JPG and PNG to WebP locally in your browser with 100% client-side privacy.">
+    <meta name="keywords" content="compress image online, image compressor, reduce image size, compress jpeg, compress png without losing quality, convert jpg to webp, bulk image optimizer, compress photos online, best free image compressor, image seo core web vitals">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="author" content="GToolix">
     <meta name="theme-color" content="#F8FAFC">
 
-    <!-- Canonical URL -->
-    
+    <!-- Canonical & Hreflang URLs -->
+    <link rel="canonical" href="https://www.gtoolix.com/en/tools/image-compressor" />
+    <link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/image-compressor" />
+    <link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/image-compressor" />
+    <link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools/image-compressor" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -412,6 +415,327 @@
             box-shadow: 0 4px 14px rgba(124, 58, 237, 0.45) !important;
             color: #ffffff !important;
         }
+    
+        /* Privacy Notice Box */
+        .privacy-notice-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.22);
+            border-radius: var(--radius-lg);
+            padding: 1.15rem 1.5rem;
+            margin: 3rem auto 2.5rem;
+            max-width: 860px;
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Article & SEO Guide Styles */
+        .seo-article {
+            max-width: 860px;
+            margin: 0 auto;
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .toc-box {
+            background: var(--card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.75rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .toc-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem 1.5rem;
+        }
+
+        @media (max-width: 650px) {
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .toc-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.94rem;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .toc-list a:hover {
+            color: var(--accent);
+        }
+
+        .article-section {
+            margin: 3.5rem 0;
+        }
+
+        .article-section h2 {
+            font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+            font-weight: 800;
+            margin-bottom: 1.1rem;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 0.5rem;
+            line-height: 1.35;
+        }
+
+        html[dir="rtl"] .article-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 45px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: var(--radius-full);
+        }
+
+        html[dir="ltr"] .article-section h2::after,
+        html[lang="en"] .article-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 45px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: var(--radius-full);
+        }
+
+        .article-section h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 1.6rem 0 0.65rem 0;
+            color: var(--text);
+        }
+
+        .article-section p {
+            margin-bottom: 1.15rem;
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            line-height: 1.8;
+        }
+
+        .article-section ul,
+        .article-section ol {
+            margin: 1rem 1.75rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        html[dir="rtl"] .article-section ul,
+        html[dir="rtl"] .article-section ol {
+            margin: 1rem 1.75rem 1.5rem 0;
+        }
+
+        .article-section li {
+            margin-bottom: 0.65rem;
+            line-height: 1.75;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step-item {
+            background: var(--card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 1.35rem;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            background: rgba(37, 99, 235, 0.15);
+            color: var(--primary-hover);
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .step-item h4 {
+            font-size: 1.08rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .step-item p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Comparison Tables */
+        .comparison-table-wrap {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--glass-border);
+            background: var(--card);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: inherit;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.03);
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        [data-theme="light"] .comparison-table th {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* FAQ Accordion */
+        .faq-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin: 2rem 0;
+        }
+
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: inherit;
+            padding: 1.2rem 1.35rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .faq-chevron {
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.is-open .faq-chevron {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
+
+        .faq-answer {
+            padding: 0 1.35rem 1.35rem;
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.75;
+            display: none;
+        }
+
+        .faq-item.is-open .faq-answer {
+            display: block;
+        }
+
+        .tool-header h1,
+        header.section-head h1 {
+            font-size: clamp(1.8rem, 4.5vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1.25;
+            margin: 0.75rem 0 0.5rem;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            -webkit-text-fill-color: var(--text) !important;
+            color: var(--text) !important;
+            opacity: 1 !important;
+        }
+
+        .tool-header h1 span,
+        header.section-head h1 span {
+            color: var(--text) !important;
+            -webkit-text-fill-color: var(--text) !important;
+        }
+
+        .tool-header h1 .gradient-text,
+        header.section-head h1 .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            color: transparent !important;
+        }
+
     </style>
 
     <link rel="preload" href="/static/css/main.min.css" as="style">
@@ -427,18 +751,15 @@
       "@id": "https://www.gtoolix.com/#website",
       "name": "GToolix",
       "url": "https://www.gtoolix.com/",
-      "inLanguage": [
-        "ar",
-        "en"
-      ]
+      "inLanguage": ["ar", "en"]
     },
     {
       "@type": "WebApplication",
       "@id": "https://www.gtoolix.com/en/tools/image-compressor#webapp",
       "url": "https://www.gtoolix.com/en/tools/image-compressor",
-      "name": "Image Compressor & Converter | GToolix",
-      "alternateName": "ضاغط ومحوّل الصور الرقمي",
-      "description": "100% client-side free tool to compress and convert JPG, PNG, WebP, and GIF images directly in browser without server upload.",
+      "name": "Free Image Compressor & Converter | GToolix",
+      "alternateName": "Online Photo Optimizer & Converter",
+      "description": "100% client-side free online image compressor and converter. Optimize JPG, PNG, WebP, and GIF photos directly in browser with zero server uploads and zero quality loss.",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "Any (Web Browser)",
       "offers": {
@@ -452,6 +773,7 @@
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.gtoolix.com/en/tools/image-compressor#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -468,61 +790,77 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Image Compressor & Converter",
+          "name": "Image Compressor",
           "item": "https://www.gtoolix.com/en/tools/image-compressor"
         }
-      ],
-      "@id": "https://www.gtoolix.com/en/tools/image-compressor#breadcrumb"
+      ]
     },
     {
       "@type": "FAQPage",
+      "@id": "https://www.gtoolix.com/en/tools/image-compressor#faq",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "هل يتم رفع صوري إلى أي خادم (Server)؟",
+          "name": "Are my private photos uploaded to any external server during compression?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "لا، تتم معالجة وضغط الصور بنسبة 100% محلياً داخل متصفح جهازك باستخدام Canvas API. لا تغادر صورك جهازك أبداً."
+            "text": "No, never. All image compression and format conversion processes execute 100% locally within your device's web browser using native Canvas and Web APIs. Your images never leave your hardware."
           }
         },
         {
           "@type": "Question",
-          "name": "ما هو الحد الأقصى لحجم وعدد الصور في الدفعة الواحدة؟",
+          "name": "What is the maximum file size and batch limit supported?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "يمكنك رفع ملفات يصل حجم كل منها إلى 25 ميجابايت، ومعالجة عشرات الصور دفعة واحدة وتنزيلها كملف ZIP."
+            "text": "You can upload individual files up to 25 MB each. GToolix supports simultaneous bulk compression of dozens of images in a single batch with instant ZIP download."
           }
         },
         {
           "@type": "Question",
-          "name": "ما هي الصيغ المدعومة للضغط والتحويل؟",
+          "name": "Which image formats are supported for compression and conversion?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "تدعم الأداة صيغ JPG وPNG وWebP وGIF الثابتة، مع إمكانية التحويل المتبادل بينها واختيار جودة الضغط."
+            "text": "The tool natively handles JPG, JPEG, PNG, WebP, and static GIF formats with cross-conversion capabilities such as converting JPG and PNG directly into WebP."
           }
         },
         {
           "@type": "Question",
-          "name": "هل يقلل الضغط من جودة ووضوح الصورة بشكل ملحوظ؟",
+          "name": "Does compressing an image cause visible loss in sharpness or clarity?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "تعتمد الأداة خوارزميات بصرية متقدمة تحتفظ بأعلى درجات النقاء وتزيل فقط البيانات غير المرئية لتوفير حتى 85% من الحجم."
+            "text": "No. When using the recommended quality range (75% to 85%), our intelligent perceptual encoding algorithms discard only invisible data overhead, saving up to 85% file size with crisp clarity."
           }
         },
         {
           "@type": "Question",
-          "name": "هل يمكن تغيير أبعاد الصورة (Resize) أثناء الضغط؟",
+          "name": "How do I convert JPG and PNG images into modern WebP format?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "نعم، يمكنك تفعيل خيار تغيير الأبعاد لتحديد أقصى عرض وارتفاع مع الحفاظ التلقائي على نسبة العرض إلى الارتفاع ومنع التكبير."
+            "text": "Drop your files into the tool, choose WebP from the Output Format dropdown, and process. The tool converts images instantly while preserving transparency."
           }
         },
         {
           "@type": "Question",
-          "name": "هل استخدام أداة ضغط الصور مجاني بالكامل؟",
+          "name": "Can I resize image pixel dimensions while compressing?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "نعم، الأداة مجانية تماماً مدى الحياة وبدون تسجيل حساب أو علامات مائية أو حدود استخدام."
+            "text": "Yes, enable the Resize Dimensions option to set maximum width or height. Proportional aspect ratio scaling prevents any visual distortion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does image optimization improve Google rankings and Core Web Vitals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Compressing images slashes the render time of Largest Contentful Paint (LCP), boosting your mobile PageSpeed score and organic Google search rankings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is GToolix Image Compressor truly free without watermarks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, absolutely. The tool is 100% free forever with no account required, no usage limits, and zero watermarks added to your downloads."
           }
         }
       ]
@@ -1265,48 +1603,305 @@
 
             <!-- 4. Results List -->
             <div class="compressor-results-list" id="compressorResultsList" aria-live="polite"></div>
-
         </div>
 
-        <!-- How To Use Section -->
-        <section style="margin-top: 4.5rem;" class="reveal in-view">
-            <div class="section-head" style="text-align: center; margin-bottom: 2rem;">
-                <span class="kicker" data-i18n="compressor.howKicker">Simple &amp; Fast</span>
-                <h2 data-i18n="compressor.howTitle" style="font-size: clamp(1.6rem, 3.2vw, 2.3rem); font-weight: 800;">How to Use Image Compressor?</h2>
+        <!-- Privacy & Local Processing Notice -->
+        <div class="privacy-notice-box">
+            <span style="font-size: 1.35rem;">🔒</span>
+            <div>
+                <strong>Your images and privacy are 100% protected:</strong> All image compression and format conversions take place locally inside your browser using HTML5 Canvas and modern Web APIs. No images or bytes are ever uploaded to remote servers, guaranteeing total data security and privacy.
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--primary-hover, #3B82F6); border: 1px solid rgba(37, 99, 235, 0.25);">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                    </div>
-                    <h3 data-i18n="compressor.step1Title">1. Upload or Drop Images</h3>
-                    <p data-i18n="compressor.step1Desc">Select single or multiple JPG, PNG, WebP, or GIF images at once.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--primary-hover, #3B82F6); border: 1px solid rgba(37, 99, 235, 0.25);">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                    </div>
-                    <h3 data-i18n="compressor.step2Title">2. Adjust Quality &amp; Format</h3>
-                    <p data-i18n="compressor.step2Desc">Set your target quality level or pick WebP for maximum compression savings.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--primary-hover, #3B82F6); border: 1px solid rgba(37, 99, 235, 0.25);">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    </div>
-                    <h3 data-i18n="compressor.step3Title">3. Download Instantly</h3>
-                    <p data-i18n="compressor.step3Desc">Download images individually or click 'Download All' to get a single organized ZIP.</p>
-                </div>
-            </div>
-        </section>
+        </div>
 
-        <!-- FAQ Section -->
-        <section style="margin-top: 4.5rem;" class="reveal in-view">
-            <div class="section-head" style="text-align: center; margin-bottom: 2rem;">
-                <span class="kicker" data-i18n="compressor.faqKicker">Everything You Need to Know</span>
-                <h2 data-i18n="compressor.faqTitle" style="font-size: clamp(1.6rem, 3.2vw, 2.3rem); font-weight: 800;">Frequently Asked Questions</h2>
+        <!-- Educational SEO Article -->
+        <article class="seo-article">
+            
+            <!-- Table of Contents -->
+            <div class="toc-box">
+                <div class="toc-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    <span>Complete Image Compression Guide Table of Contents</span>
+                </div>
+                <ul class="toc-list">
+                    <li><a href="#what-is-image-compression">→ What Is Digital Image Compression?</a></li>
+                    <li><a href="#why-compress-images">→ Why Image Optimization Is Crucial for SEO & Web Speed</a></li>
+                    <li><a href="#how-to-compress-images">→ How to Compress & Convert Images in 3 Simple Steps</a></li>
+                    <li><a href="#lossy-vs-lossless">→ Lossy vs. Lossless Compression: The Technical Differences</a></li>
+                    <li><a href="#image-formats-comparison">→ Modern Format Battle: WebP vs. JPG vs. PNG vs. AVIF vs. GIF</a></li>
+                    <li><a href="#image-seo-best-practices">→ Google Image SEO & Core Web Vitals Optimization Guide</a></li>
+                    <li><a href="#pro-tips-image-optimization">→ Pro Tips to Shrink File Size Without Quality Degradation</a></li>
+                    <li><a href="#faq">→ Frequently Asked Questions (FAQ)</a></li>
+                </ul>
             </div>
-            <div class="faq-accordion" id="compressorFaqList"></div>
-        </section>
+
+            <!-- Section 1 -->
+            <section class="article-section" id="what-is-image-compression">
+                <h2>What Is Digital Image Compression?</h2>
+                <p>
+                    <strong>Digital image compression</strong> is the process of applying specialized mathematical encoding algorithms to reduce the total file storage size of an image (in kilobytes or megabytes) while preserving its essential visual fidelity and perceived sharpness. Every digital image captured by a camera or crafted in design software consists of a dense grid of pixels, where each pixel stores color coordinate data across channels such as Red, Green, and Blue (RGB) with specific bit depth.
+                </p>
+                <p>
+                    In their unoptimized raw state, image files carry substantial amounts of non-essential overhead. This includes heavy camera metadata (EXIF tags containing shutter speed, GPS location, and camera serial numbers), embedded color spaces, thumbnail previews, and statistical pixel redundancy. An advanced client-side optimizer like <strong>GToolix Image Compressor</strong> analyzes pixel clusters, discards imperceptible data, and restructures encoding matrices to deliver up to <strong>85% file size savings</strong> with zero visible degradation to the naked eye.
+                </p>
+            </section>
+
+            <!-- Section 2 -->
+            <section class="article-section" id="why-compress-images">
+                <h2>Why Image Optimization Is Crucial for SEO & Web Speed</h2>
+                <p>
+                    According to the global HTTP Archive annual reports, images account for over <strong>65% of the total network payload</strong> of modern web pages. Serving bloated, unoptimized imagery is the leading cause of sluggish site performance, high bounce rates, and missed search engine rankings. Here is why compressing every image is essential:
+                </p>
+                <ul>
+                    <li><strong>Accelerating Page Load Speed:</strong> Google's landmark consumer studies show that as page load time extends from 1 to 3 seconds, the probability of a visitor bouncing increases by 32%. Compressing visual assets is the single most impactful lever to drastically cut latency.</li>
+                    <li><strong>Dominating Google Search Rankings & Core Web Vitals:</strong> Page speed is an explicit Google ranking signal. Heavy images directly cripple your <em>Largest Contentful Paint (LCP)</em> score—the benchmark measuring when the main page content renders. Optimizing images transforms red metrics into green 95+ scores on Google PageSpeed Insights.</li>
+                    <li><strong>Driving E-Commerce Conversions & Sales:</strong> In online retail, product photo clarity and instant load speed directly correlate with purchasing confidence. GToolix delivers featherweight, razor-sharp product images that keep your catalog browsing lightning fast.</li>
+                    <li><strong>Conserving Cellular Bandwidth for Mobile Users:</strong> More than 70% of global web traffic originates on smartphones over mobile networks (4G/5G). Serving compressed files respects your visitors' data plans and ensures smooth experiences even in low-reception environments.</li>
+                    <li><strong>Reducing Cloud Storage & Bandwidth Hosting Costs:</strong> Slashing media file sizes by 60% to 80% significantly reduces egress bandwidth charges on CDNs like Cloudflare, AWS CloudFront, Fastly, and cloud storage buckets like Amazon S3.</li>
+                </ul>
+            </section>
+
+            <!-- Section 3 -->
+            <section class="article-section" id="how-to-compress-images">
+                <h2>How to Compress & Convert Images in 3 Simple Steps</h2>
+                <p>
+                    GToolix is engineered for high performance with zero learning curve. Follow these straightforward steps to optimize your visuals:
+                </p>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h4>Upload or Drag & Drop</h4>
+                        <p>Drop your photos directly into the upload area or browse from your desktop or phone. Process dozens of JPG, PNG, WebP, and GIF files simultaneously up to 25 MB each.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h4>Select Format, Quality & Resize</h4>
+                        <p>Choose your target output format (we highly recommend WebP), fine-tune the quality slider (75%–85%), and optionally enable dimension resizing to cap maximum width and height.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h4>Preview & Instant Download</h4>
+                        <p>Use the interactive split-screen slider to compare before-and-after results in real time. Download images individually or click "Download All (.ZIP)" to grab the entire batch in one click.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section class="article-section" id="lossy-vs-lossless">
+                <h2>Lossy vs. Lossless Compression: The Technical Differences</h2>
+                <p>
+                    When optimizing digital media, two distinct engineering methodologies govern how redundant data is handled. Choosing the correct approach ensures maximum savings without undesirable visual artifacts:
+                </p>
+                <div class="comparison-table-wrap">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Comparison Criteria</th>
+                                <th>Lossy Compression</th>
+                                <th>Lossless Compression</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Mechanism</strong></td>
+                                <td>Identifies and permanently strips subtle color gradations and pixel details imperceptible to human vision.</td>
+                                <td>Rearranges and indexes data mathematically without eliminating a single original pixel or color value.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Storage Reduction</strong></td>
+                                <td>Massive compression ratios, typically saving <strong>60% to 85%</strong> of original file size.</td>
+                                <td>Moderate savings, generally yielding <strong>10% to 30%</strong> file reduction.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Visual Impact</strong></td>
+                                <td>Flawless visual clarity at balanced quality settings (75%–85%) with negligible noise.</td>
+                                <td>100% mathematically identical to source image with pixel-perfect retention.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Supported Formats</strong></td>
+                                <td>JPEG, JPG, WebP (Lossy mode)</td>
+                                <td>PNG, GIF, WebP (Lossless mode), SVG</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Best Practical Use</strong></td>
+                                <td>Blog header photos, hero banners, travel photography, product catalog shots, and social media media.</td>
+                                <td>Brand logos, vector graphics, transparent UI iconography, technical screenshots, and line art with typography.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 5 -->
+            <section class="article-section" id="image-formats-comparison">
+                <h2>Modern Format Battle: WebP vs. JPG vs. PNG vs. AVIF vs. GIF</h2>
+                <p>
+                    Selecting the proper image format is just as vital as choosing the correct compression ratio. Here is a definitive technical comparison of today's dominant web image formats:
+                </p>
+                <div class="comparison-table-wrap">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>Transparency</th>
+                                <th>Compression Efficiency</th>
+                                <th>Browser Support</th>
+                                <th>Recommended Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>WebP (Recommended)</strong></td>
+                                <td>✅ Full 8-bit Alpha</td>
+                                <td>🔥 Outstanding (25%–35% smaller than JPG/PNG)</td>
+                                <td>97%+ (All modern browsers)</td>
+                                <td>The undisputed gold standard for all modern web graphics, articles, and e-commerce stores.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>JPEG / JPG</strong></td>
+                                <td>❌ No support</td>
+                                <td>⚡ Very good for continuous-tone photos</td>
+                                <td>100% (Universal)</td>
+                                <td>Standard photography when legacy application and email client compatibility is mandatory.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PNG</strong></td>
+                                <td>✅ Crystal-clear Alpha</td>
+                                <td>⚖️ Fair (Produces large files)</td>
+                                <td>100% (Universal)</td>
+                                <td>Crisp transparent brand badges, interface buttons, and illustrations requiring ultra-sharp edges.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GIF</strong></td>
+                                <td>✅ 1-bit index only</td>
+                                <td>⚠️ Poor (Restricted to 256 colors)</td>
+                                <td>100% (Universal)</td>
+                                <td>Simple retro animations only; modern sites should replace animated GIFs with animated WebP or MP4 video.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 1.25rem;">
+                    💡 <strong>GToolix Pro Tip:</strong> Using our converter to transform existing JPG and PNG assets into <strong>WebP format</strong> at 80% quality delivers the sweet spot of microscopic file size, rich color depth, and full alpha transparency—exactly as mandated by Google's PageSpeed Insights guidelines.
+                </p>
+            </section>
+
+            <!-- Section 6 -->
+            <section class="article-section" id="image-seo-best-practices">
+                <h2>Google Image SEO & Core Web Vitals Optimization Guide</h2>
+                <p>
+                    Effective image SEO goes beyond file bytes. Properly configuring semantic HTML image attributes empowers Googlebot to crawl, understand, and index your visual content for top search visibility:
+                </p>
+                <ol>
+                    <li><strong>Descriptive Keyword-Rich File Naming:</strong> Avoid nondescript filenames like <code>DCIM_0091.jpg</code>. Use concise, hyphen-separated keywords that describe the visual subject, such as: <code>best-online-image-compressor.webp</code>.</li>
+                    <li><strong>Contextual & Descriptive Alt Text:</strong> Alternative text serves as a semantic beacon for search engines and accessibility screen readers. Accurately describe the subject matter while organically weaving in primary topic keywords without spammy keyword stuffing.</li>
+                    <li><strong>Explicit Width & Height Attributes:</strong> Always specify explicit <code>width</code> and <code>height</code> attributes in your HTML image elements. This allows the browser layout engine to pre-allocate aspect-ratio space before the image downloads, eliminating Cumulative Layout Shift (CLS).</li>
+                    <li><strong>Native Lazy Loading Implementation:</strong> Apply <code>loading="lazy"</code> to all images located below the fold. This ensures off-screen visual assets are only fetched as the visitor scrolls down, maximizing your initial viewport render speed.</li>
+                    <li><strong>XML Image Sitemaps:</strong> Include all key promotional and editorial imagery in your <code>sitemap.xml</code> index to expedite indexing and ensure prominent inclusion across Google Images search results.</li>
+                </ol>
+            </section>
+
+            <!-- Section 7 -->
+            <section class="article-section" id="pro-tips-image-optimization">
+                <h2>Pro Tips to Shrink File Size Without Quality Degradation</h2>
+                <p>
+                    Follow these three battle-tested optimization rules employed by elite web engineers:
+                </p>
+                <ul>
+                    <li><strong>Never Exceed Display Dimensions:</strong> If your blog article body container is 800 pixels wide, embedding a 4000-pixel camera photo is a massive waste of bandwidth. Enable GToolix's built-in "Resize Dimensions" feature to downsample physical dimensions to match actual display requirements.</li>
+                    <li><strong>Target the 80% Quality Sweet Spot:</strong> Compression tests consistently verify that WebP and JPEG quality between <strong>75% and 82%</strong> saves more than 70% of storage with 99% perceptual parity. Setting quality above 85% balloons file size with zero visible benefit.</li>
+                    <li><strong>Automatically Strip Superfluous EXIF Metadata:</strong> Cameras embed lens specifications, GPS coordinates, and exposure records into image headers. GToolix automatically strips this unneeded overhead during client-side processing, saving extra kilobytes while fortifying user privacy.</li>
+                </ul>
+            </section>
+
+            <!-- Section 8: FAQ -->
+            <section class="article-section" id="faq">
+                <h2>Frequently Asked Questions (FAQ)</h2>
+                <p>Get clear, authoritative answers to common inquiries regarding client-side image compression and privacy:</p>
+                
+                <div class="faq-accordion" id="staticFaqAccordion">
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>Are my private photos uploaded to any external server during compression?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            No, never. All image compression and format conversion processes execute 100% locally within your device's web browser using native Canvas and Web APIs. Your images, personal photos, and sensitive commercial assets never leave your hardware or travel across the internet.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>What is the maximum file size and batch limit supported?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            You can upload individual files up to 25 MB each. GToolix supports simultaneous bulk compression of dozens of images in a single batch, allowing you to download all optimized assets together in a clean ZIP archive with zero usage quotas.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>Which image formats are supported for compression and conversion?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            The tool natively handles JPG, JPEG, PNG, WebP, and static GIF formats. You can compress images within their native format or seamlessly cross-convert between formats, such as converting bulky PNG and JPG photos directly into modern, ultra-efficient WebP files.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>Does compressing an image cause visible loss in sharpness or clarity?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            No. When using the recommended quality range (75% to 85%), our intelligent perceptual encoding algorithms discard only invisible data overhead and imperceptible color redundancy. You achieve up to 85% size reduction while preserving crisp, professional visual fidelity.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>How do I convert JPG and PNG images into modern WebP format?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            Simply drag and drop your JPG or PNG files into the tool, select "WebP (Best Compression)" from the Output Format dropdown menu, and click process. GToolix will convert and optimize each image instantly while preserving full alpha transparency for PNGs.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>Can I resize image pixel dimensions while compressing?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            Yes. GToolix includes an advanced "Resize Dimensions" module. Enable the toggle and input your maximum target width or height. The tool calculates proportional aspect-ratio scaling to prevent distortion while shrinking file bytes.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>How does image optimization improve Google rankings and Core Web Vitals?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            Compressing images slashes the render time of the Largest Contentful Paint (LCP) element on your pages, directly raising your mobile PageSpeed score. Google rewards fast, lightweight websites with preferential search ranking and higher organic crawl frequency.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>Is GToolix Image Compressor truly free without watermarks?</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            Yes, absolutely. The tool is 100% free with lifetime unlimited usage. No registration, email signup, or subscription is required, and your processed images never contain watermarks or hidden branding.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
 
         <!-- Related Guides & Articles Section -->
         <section class="related-tools-block" style="margin-top: 4rem; margin-bottom: 1.5rem;">
@@ -1812,6 +2407,12 @@ function getNestedTranslation(obj, path) {
                     </div>
                 </div>
             `).join('');
+        }
+
+        
+        function toggleFaqItem(btn) {
+            const item = btn.closest('.faq-item');
+            if (item) item.classList.toggle('is-open');
         }
 
         function toggleFaq(idx) {

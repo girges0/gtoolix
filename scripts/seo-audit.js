@@ -27,7 +27,7 @@ function getHtmlFiles(dir) {
     let results = [];
     const list = fs.readdirSync(dir);
     list.forEach(file => {
-        if (file === 'node_modules' || file === '.git' || file === 'scratch' || file === 'templates' || file === 'gtoolix-monitoring-site' || file === 'archived_gemini_tool') return;
+        if (file === 'node_modules' || file === '.git' || file === 'scratch' || file === 'templates' || file === 'gtoolix-monitoring-site' || file === 'archived_gemini_tool' || file === 'pdf-compressor-web-main') return;
         const fullPath = path.join(dir, file);
         const stat = fs.statSync(fullPath);
         if (stat && stat.isDirectory()) {

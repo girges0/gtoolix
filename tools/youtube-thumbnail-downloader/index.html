@@ -3,6 +3,19 @@
 
 <head>
     <script src="/static/js/lang-detect.min.js"></script>
+    <script>
+        (function () {
+            try {
+                var p = window.location.pathname || '';
+                var isEnRoute = p.indexOf('/en/') === 0 || p === '/en';
+                var l = isEnRoute ? 'en' : 'ar';
+                var t = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('lang', l);
+                document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) { }
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>تحميل صور اليوتيوب المصغرة مجاناً أونلاين | GToolix</title>
@@ -83,8 +96,20 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        html[dir="rtl"] body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        html[dir="rtl"] body,
+        html[dir="rtl"] h1,
+        html[dir="rtl"] h2,
+        html[dir="rtl"] h3,
+        html[dir="rtl"] h4,
+        html[dir="rtl"] button,
+        html[dir="rtl"] input {
+            font-family: 'Cairo', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .site-nav {
@@ -197,12 +222,29 @@
         }
 
         .tool-header h1 {
-            font-size: clamp(1.6rem, 5vw, 2.5rem);
+            font-size: clamp(1.8rem, 4.5vw, 2.75rem);
             font-weight: 800;
             line-height: 1.25;
             margin: 0.75rem 0 0.5rem;
-            color: var(--text);
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            -webkit-text-fill-color: var(--text) !important;
+            color: var(--text) !important;
             opacity: 1 !important;
+        }
+
+        .tool-header h1 span {
+            color: var(--text) !important;
+            -webkit-text-fill-color: var(--text) !important;
+        }
+
+        .tool-header h1 .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            color: transparent !important;
         }
 
         .tool-header .tagline {
@@ -1093,7 +1135,9 @@
                     <span class="pulse-dot"></span>
                     <span data-i18n="thumb.badgeText">معالجة محلية 100% • استخراج فوري</span>
                 </div>
-                <h1 data-i18n="thumb.h1">تحميل صور اليوتيوب المصغرة HD و 4K مجاناً</h1>
+                <h1 style="font-size: clamp(1.6rem, 3.8vw, 2.4rem); font-weight: 800; line-height: 1.25; margin: 0.75rem 0 0.5rem; letter-spacing: -0.02em;">
+                    <span data-i18n="thumb.h1Base">تحميل صور اليوتيوب المصغرة</span> <span class="gradient-text" data-i18n="thumb.h1Highlight">HD و 4K مجاناً</span>
+                </h1>
                 <p class="tagline" data-i18n="thumb.tagline">استخرج وحمّل صور أغلفة فيديوهات يوتيوب والشورتس بجودات 4K و
                     Full HD و SD فورياً — مجاني 100%، معاينة مباشرة، وبدون علامة مائية.</p>
             </header>
@@ -1487,6 +1531,8 @@
                     breadcrumbCurrent: "YouTube Thumbnail Downloader",
                     badgeText: "100% Local Processing • Instant Extraction",
                     h1: "Free YouTube Thumbnail Downloader HD & 4K",
+                    h1Base: "YouTube Thumbnail Downloader",
+                    h1Highlight: "HD & 4K Free",
                     tagline: "Extract and download high-resolution cover images from YouTube videos & Shorts in 4K, Full HD, and SD — 100% free, instant live preview, zero watermark.",
                     inputPlaceholder: "Paste YouTube link (e.g. https://www.youtube.com/watch?v=...)",
                     btnPaste: "Paste Link",
@@ -1579,6 +1625,8 @@
                     breadcrumbCurrent: "تحميل صور اليوتيوب المصغرة",
                     badgeText: "معالجة محلية 100% • استخراج فوري",
                     h1: "تحميل صور اليوتيوب المصغرة HD و 4K مجاناً",
+                    h1Base: "تحميل صور اليوتيوب المصغرة",
+                    h1Highlight: "HD و 4K مجاناً",
                     tagline: "استخرج وحمّل صور أغلفة فيديوهات يوتيوب والشورتس بجودات 4K و Full HD و SD فورياً — مجاني 100%، معاينة مباشرة، وبدون علامة مائية.",
                     inputPlaceholder: "الصق رابط يوتيوب (مثال: https://www.youtube.com/watch?v=...)",
                     btnPaste: "لصق الرابط",

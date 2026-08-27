@@ -19,7 +19,8 @@ const jsFiles = [
     'tools/qr-code-generator/qr-tool.js',
     'static/js/thumb-tool.js',
     'static/js/qrcode.js',
-    'tools/image-compressor/compressor.js'
+    'tools/image-compressor/compressor.js',
+    'tools/pdf-compressor/pdf-compressor.js'
 ];
 
 cssFiles.forEach(file => {

@@ -808,6 +808,7 @@
                 <div class="footer-col">
                     <h4 class="footer-col__title">الأدوات المميزة</h4>
                     <nav class="footer-links">
+                        <a href="/tools/pdf-compressor">ضاغط ملفات PDF</a>
                         <a href="/tools/qr-code-generator">مولد رمز QR</a>
                         <a href="/tools/youtube-thumbnail-downloader">تحميل الصور المصغرة لليوتيوب</a>
                         <a href="/tools/screen-recorder-studio">مسجل الشاشة</a>
@@ -1094,7 +1095,7 @@
 
             try {
                 const rawTools = await GToolixContent.getTools();
-                const activeSlugs = new Set(['qr-code-generator', 'youtube-thumbnail-downloader', 'screen-recorder-studio', 'image-compressor']);
+                const activeSlugs = new Set(['qr-code-generator', 'youtube-thumbnail-downloader', 'screen-recorder-studio', 'image-compressor', 'pdf-compressor']);
                 const tools = (rawTools || []).filter(t => t && t.slug && activeSlugs.has(t.slug) && !t.slug.includes('gemini'));
                 if (Array.isArray(tools) && tools.length > 0) {
                     const isAr = currentLang === 'ar';

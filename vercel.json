@@ -121,6 +121,10 @@
       "destination": "/tools/image-compressor/index.html"
     },
     {
+      "source": "/tools/pdf-compressor",
+      "destination": "/tools/pdf-compressor/index.html"
+    },
+    {
       "source": "/blog",
       "destination": "/blog/index.html"
     },
@@ -191,6 +195,10 @@
     {
       "source": "/en/tools/image-compressor",
       "destination": "/en/tools/image-compressor/index.html"
+    },
+    {
+      "source": "/en/tools/pdf-compressor",
+      "destination": "/en/tools/pdf-compressor/index.html"
     },
     {
       "source": "/en/blog",

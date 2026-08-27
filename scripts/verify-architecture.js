@@ -28,7 +28,7 @@ assert(fs.existsSync(programsJsonPath), 'programs.json exists');
 
 try {
     const tools = JSON.parse(fs.readFileSync(toolsJsonPath, 'utf8'));
-    assert(Array.isArray(tools) && tools.length === 4, `tools.json contains exactly 4 active tools (found: ${tools.length})`);
+    assert(Array.isArray(tools) && tools.length === 5, `tools.json contains exactly 5 active tools (found: ${tools.length})`);
     tools.forEach(t => {
         assert(t.id && t.url && t.name && t.nameAr && t.description && t.descriptionAr && t.category, `Tool ${t.id} has complete metadata`);
         assert(t.url.startsWith('/tools/'), `Tool ${t.id} has tools-first URL (${t.url})`);
@@ -89,7 +89,8 @@ const modularTools = [
     { dir: 'tools/qr-code-generator', html: 'index.html', js: 'qr-tool.js', engine: 'qrcode.min.js' },
     { dir: 'tools/youtube-thumbnail-downloader', html: 'index.html', js: 'downloader.js' },
     { dir: 'tools/screen-recorder-studio', html: 'index.html', js: 'recorder.js' },
-    { dir: 'tools/image-compressor', html: 'index.html', js: 'compressor.js' }
+    { dir: 'tools/image-compressor', html: 'index.html', js: 'compressor.js' },
+    { dir: 'tools/pdf-compressor', html: 'index.html', js: 'pdf-compressor.js' }
 ];
 
 modularTools.forEach(mt => {
@@ -119,7 +120,8 @@ const expectedPublicRoutes = [
     '/tools/qr-code-generator',
     '/tools/youtube-thumbnail-downloader',
     '/tools/screen-recorder-studio',
-    '/tools/image-compressor'
+    '/tools/image-compressor',
+    '/tools/pdf-compressor'
 ];
 expectedPublicRoutes.forEach(r => {
     const hasVercel = vercelConfig.rewrites.some(rw => rw.source === r);

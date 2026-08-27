@@ -18,15 +18,18 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ضاغط ومحوّل الصور مجاناً أونلاين | GToolix</title>
-    <meta name="description" content="ضغط وتحويل صور JPG و PNG و WebP و GIF بجودة فائقة مباشرة في متصفحك بمعالجة محلية 100% بدون رفع أي ملفات.">
-    <meta name="keywords" content="ضغط الصور, تصغير حجم الصور, ضغط الصور اون لاين, محول الصور, تحويل JPG الى WebP, ضغط PNG, ضغط WebP, image compressor, image converter, compress jpeg, compress png, convert images online">
+    <title>ضاغط ومحوّل الصور مجاناً أونلاين | تقليل حجم الصور JPG و PNG و WebP — GToolix</title>
+    <meta name="description" content="أفضل أداة مجانية أونلاين لضغط وتصغير حجم الصور حتى 85% بدقة فائقة وبدون فقدان الجودة. حوّل صورك إلى صيغ WebP و JPG و PNG محلياً في متصفحك 100% بدون رفع أي ملفات.">
+    <meta name="keywords" content="ضغط الصور, تصغير حجم الصور, تقليل حجم الصور, ضغط الصور اون لاين, تقليل حجم الصورة بدون فقدان الجودة, تحويل JPG الى WebP, ضغط PNG, ضغط WebP, ضغط الصور لمواقع الويب, سيو الصور, image compressor, compress image online, compress jpg, compress png">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="author" content="GToolix">
     <meta name="theme-color" content="#F8FAFC">
 
-    <!-- Canonical URL -->
-    
+    <!-- Canonical & Hreflang URLs -->
+    <link rel="canonical" href="https://www.gtoolix.com/tools/image-compressor" />
+    <link rel="alternate" hreflang="ar" href="https://www.gtoolix.com/tools/image-compressor" />
+    <link rel="alternate" hreflang="en" href="https://www.gtoolix.com/en/tools/image-compressor" />
+    <link rel="alternate" hreflang="x-default" href="https://www.gtoolix.com/tools/image-compressor" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -141,8 +144,16 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        html[dir="rtl"] body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        html[dir="rtl"] body,
+        html[dir="rtl"] h1,
+        html[dir="rtl"] h2,
+        html[dir="rtl"] h3,
+        html[dir="rtl"] h4,
+        html[dir="rtl"] button,
+        html[dir="rtl"] input,
+        html[dir="rtl"] select,
+        html[dir="rtl"] textarea {
+            font-family: 'Cairo', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         .site-nav {
@@ -412,6 +423,327 @@
             box-shadow: 0 4px 14px rgba(124, 58, 237, 0.45) !important;
             color: #ffffff !important;
         }
+    
+        /* Privacy Notice Box */
+        .privacy-notice-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.22);
+            border-radius: var(--radius-lg);
+            padding: 1.15rem 1.5rem;
+            margin: 3rem auto 2.5rem;
+            max-width: 860px;
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Article & SEO Guide Styles */
+        .seo-article {
+            max-width: 860px;
+            margin: 0 auto;
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .toc-box {
+            background: var(--card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.75rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .toc-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem 1.5rem;
+        }
+
+        @media (max-width: 650px) {
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .toc-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.94rem;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .toc-list a:hover {
+            color: var(--accent);
+        }
+
+        .article-section {
+            margin: 3.5rem 0;
+        }
+
+        .article-section h2 {
+            font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+            font-weight: 800;
+            margin-bottom: 1.1rem;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 0.5rem;
+            line-height: 1.35;
+        }
+
+        html[dir="rtl"] .article-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 45px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: var(--radius-full);
+        }
+
+        html[dir="ltr"] .article-section h2::after,
+        html[lang="en"] .article-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 45px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: var(--radius-full);
+        }
+
+        .article-section h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 1.6rem 0 0.65rem 0;
+            color: var(--text);
+        }
+
+        .article-section p {
+            margin-bottom: 1.15rem;
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            line-height: 1.8;
+        }
+
+        .article-section ul,
+        .article-section ol {
+            margin: 1rem 1.75rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        html[dir="rtl"] .article-section ul,
+        html[dir="rtl"] .article-section ol {
+            margin: 1rem 1.75rem 1.5rem 0;
+        }
+
+        .article-section li {
+            margin-bottom: 0.65rem;
+            line-height: 1.75;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step-item {
+            background: var(--card);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 1.35rem;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            background: rgba(37, 99, 235, 0.15);
+            color: var(--primary-hover);
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .step-item h4 {
+            font-size: 1.08rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .step-item p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Comparison Tables */
+        .comparison-table-wrap {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--glass-border);
+            background: var(--card);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: inherit;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.03);
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        [data-theme="light"] .comparison-table th {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* FAQ Accordion */
+        .faq-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin: 2rem 0;
+        }
+
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: inherit;
+            padding: 1.2rem 1.35rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .faq-chevron {
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.is-open .faq-chevron {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
+
+        .faq-answer {
+            padding: 0 1.35rem 1.35rem;
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.75;
+            display: none;
+        }
+
+        .faq-item.is-open .faq-answer {
+            display: block;
+        }
+
+        .tool-header h1,
+        header.section-head h1 {
+            font-size: clamp(1.8rem, 4.5vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1.25;
+            margin: 0.75rem 0 0.5rem;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            -webkit-text-fill-color: var(--text) !important;
+            color: var(--text) !important;
+            opacity: 1 !important;
+        }
+
+        .tool-header h1 span,
+        header.section-head h1 span {
+            color: var(--text) !important;
+            -webkit-text-fill-color: var(--text) !important;
+        }
+
+        .tool-header h1 .gradient-text,
+        header.section-head h1 .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            color: transparent !important;
+        }
+
     </style>
 
     <link rel="preload" href="/static/css/main.min.css" as="style">
@@ -427,18 +759,15 @@
       "@id": "https://www.gtoolix.com/#website",
       "name": "GToolix",
       "url": "https://www.gtoolix.com/",
-      "inLanguage": [
-        "ar",
-        "en"
-      ]
+      "inLanguage": ["ar", "en"]
     },
     {
       "@type": "WebApplication",
       "@id": "https://www.gtoolix.com/tools/image-compressor#webapp",
       "url": "https://www.gtoolix.com/tools/image-compressor",
-      "name": "Image Compressor & Converter | GToolix",
-      "alternateName": "ضاغط ومحوّل الصور الرقمي",
-      "description": "100% client-side free tool to compress and convert JPG, PNG, WebP, and GIF images directly in browser without server upload.",
+      "name": "ضاغط ومحوّل الصور الرقمي | GToolix",
+      "alternateName": "Image Compressor & Converter Online",
+      "description": "أداة ويب مجانية 100% لمعالجة وضغط وتحويل صور JPG و PNG و WebP و GIF محلياً داخل المتصفح بدون رفع للسيرفر وبدون فقدان الجودة.",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "Any (Web Browser)",
       "offers": {
@@ -452,6 +781,7 @@
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.gtoolix.com/tools/image-compressor#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -471,18 +801,18 @@
           "name": "ضاغط ومحوّل الصور",
           "item": "https://www.gtoolix.com/tools/image-compressor"
         }
-      ],
-      "@id": "https://www.gtoolix.com/tools/image-compressor#breadcrumb"
+      ]
     },
     {
       "@type": "FAQPage",
+      "@id": "https://www.gtoolix.com/tools/image-compressor#faq",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "هل يتم رفع صوري إلى أي خادم (Server)؟",
+          "name": "هل يتم رفع صوري إلى أي سيرفر خارجي أثناء الضغط؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "لا، تتم معالجة وضغط الصور بنسبة 100% محلياً داخل متصفح جهازك باستخدام Canvas API. لا تغادر صورك جهازك أبداً."
+            "text": "لا نهائياً. تتم معالجة وضغط الصور بالكامل داخل متصفح جهازك باستخدام محرك Web APIs و Canvas محلي 100%. لا تغادر أي صورة جهازك أو هاتفك إلى أي خادم خارجي."
           }
         },
         {
@@ -490,39 +820,55 @@
           "name": "ما هو الحد الأقصى لحجم وعدد الصور في الدفعة الواحدة؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "يمكنك رفع ملفات يصل حجم كل منها إلى 25 ميجابايت، ومعالجة عشرات الصور دفعة واحدة وتنزيلها كملف ZIP."
+            "text": "يمكنك رفع صور فردية بحجم يصل إلى 25 ميجابايت لكل صورة، ومعالجة عشرات الصور في وقت واحد دفعة واحدة (Batch Compression) وتنزيلها معاً مجمعة في ملف ZIP واحد بضغطة زر."
           }
         },
         {
           "@type": "Question",
-          "name": "ما هي الصيغ المدعومة للضغط والتحويل؟",
+          "name": "ما هي صيغ الصور المدعومة للضغط والتحويل في GToolix؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "تدعم الأداة صيغ JPG وPNG وWebP وGIF الثابتة، مع إمكانية التحويل المتبادل بينها واختيار جودة الضغط."
+            "text": "تدعم الأداة صيغ JPG و JPEG و PNG و WebP و GIF الثابتة، مع إمكانية التحويل المتبادل الفوري بين هذه الصيغ مثل تحويل PNG أو JPG إلى WebP."
           }
         },
         {
           "@type": "Question",
-          "name": "هل يقلل الضغط من جودة ووضوح الصورة بشكل ملحوظ؟",
+          "name": "هل يؤدي الضغط إلى فقدان ملحوظ في جودة ونقاء الصورة؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "تعتمد الأداة خوارزميات بصرية متقدمة تحتفظ بأعلى درجات النقاء وتزيل فقط البيانات غير المرئية لتوفير حتى 85% من الحجم."
+            "text": "كلا، عند اختيار مستوى الجودة الموصى به (بين 75% إلى 85%)، تتخلص الأداة فقط من البيانات غير المرئية مما يوفر حتى 85% من الحجم دون تشويش ملحوظ."
           }
         },
         {
           "@type": "Question",
-          "name": "هل يمكن تغيير أبعاد الصورة (Resize) أثناء الضغط؟",
+          "name": "كيف أحول صوري من JPG أو PNG إلى صيغة WebP الحديثة؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "نعم، يمكنك تفعيل خيار تغيير الأبعاد لتحديد أقصى عرض وارتفاع مع الحفاظ التلقائي على نسبة العرض إلى الارتفاع ومنع التكبير."
+            "text": "ارفع صورك، ومن قائمة صيغة الإخراج اختر WebP. ستقوم الأداة بضغط وتحويل كل صورة فورياً مع الحفاظ على الشفافية وتنزيلها بصيغة webp جاهزة للاستخدام."
           }
         },
         {
           "@type": "Question",
-          "name": "هل استخدام أداة ضغط الصور مجاني بالكامل؟",
+          "name": "هل يمكن تصغير وتغيير أبعاد الصورة (Resize) مع الضغط معاً؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "نعم، الأداة مجانية تماماً مدى الحياة وبدون تسجيل حساب أو علامات مائية أو حدود استخدام."
+            "text": "نعم، تتيح الأداة خيار تغيير الأبعاد لتحديد أقصى عرض أو ارتفاع بالبكسل مع المحافظة التلقائية على تناسق الأبعاد لمنع التمدد أو التشوه."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف يساهم ضغط الصور في تصدر نتائج بحث جوجل وتحسين Core Web Vitals؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "تصغير الصور يقلل من زمن تحميل عنصر الصفحة الأكبر (LCP) ويحسن مؤشرات الأداء الكلية لموقعك في Google PageSpeed Insights مما يمنح موقعك أفضلية لتصدر الصفحة الأولى."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل استخدام ضاغط الصور في GToolix مجاني حقاً وبدون علامة مائية؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، الأداة مجانية بنسبة 100% مدى الحياة بدون تسجيل حساب أو إضافة علامات مائية وبلا حدود يومية للاستخدام."
           }
         }
       ]
@@ -1266,48 +1612,305 @@
 
             <!-- 4. Results List -->
             <div class="compressor-results-list" id="compressorResultsList" aria-live="polite"></div>
-
         </div>
 
-        <!-- How To Use Section -->
-        <section style="margin-top: 4.5rem;" class="reveal in-view">
-            <div class="section-head" style="text-align: center; margin-bottom: 2rem;">
-                <span class="kicker" data-i18n="compressor.howKicker">بسيط وسريع</span>
-                <h2 data-i18n="compressor.howTitle" style="font-size: clamp(1.6rem, 3.2vw, 2.3rem); font-weight: 800;">كيف تستخدم ضاغط ومحوّل الصور؟</h2>
+        <!-- Privacy & Local Processing Notice -->
+        <div class="privacy-notice-box">
+            <span style="font-size: 1.35rem;">🔒</span>
+            <div>
+                <strong>صورك وخصوصيتك في أمان تام:</strong> تتم معالجة وضغط الصور بالكامل داخل متصفح جهازك بواسطة تقنيات HTML5 Canvas و Web APIs الحديثة دون رفع أي بايت إلى خوادم خارجية. تضمن لك هذه الميزة سرعة فائقة وحماية مطلقة لصورك وملفاتك الشخصية والتجارية.
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--primary-hover, #3B82F6); border: 1px solid rgba(37, 99, 235, 0.25);">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                    </div>
-                    <h3 data-i18n="compressor.step1Title">1. ارفع أو اسحب الصور</h3>
-                    <p data-i18n="compressor.step1Desc">اختر صورة واحدة أو مجموعة صور دفعة واحدة بصيغ JPG أو PNG أو WebP أو GIF.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--primary-hover, #3B82F6); border: 1px solid rgba(37, 99, 235, 0.25);">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                    </div>
-                    <h3 data-i18n="compressor.step2Title">2. اضبط الجودة والصيغة</h3>
-                    <p data-i18n="compressor.step2Desc">حدد مستوى الجودة المطلوب أو الصيغة المستهدفة كـ WebP لتحقيق أقصى نسبة توفير في الحجم.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background: rgba(37, 99, 235, 0.12); color: var(--primary-hover, #3B82F6); border: 1px solid rgba(37, 99, 235, 0.25);">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    </div>
-                    <h3 data-i18n="compressor.step3Title">3. نزّل الصور فورياً</h3>
-                    <p data-i18n="compressor.step3Desc">حمّل الصور بشكل فردي أو اضغط "تنزيل الكل" للحصول عليها مجمعة في ملف ZIP واحد بضغطة زر.</p>
-                </div>
-            </div>
-        </section>
+        </div>
 
-        <!-- FAQ Section -->
-        <section style="margin-top: 4.5rem;" class="reveal in-view">
-            <div class="section-head" style="text-align: center; margin-bottom: 2rem;">
-                <span class="kicker" data-i18n="compressor.faqKicker">كل ما تود معرفته</span>
-                <h2 data-i18n="compressor.faqTitle" style="font-size: clamp(1.6rem, 3.2vw, 2.3rem); font-weight: 800;">الأسئلة الشائعة حول ضغط الصور</h2>
+        <!-- Educational SEO Article -->
+        <article class="seo-article">
+            
+            <!-- Table of Contents -->
+            <div class="toc-box">
+                <div class="toc-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    <span>محتويات الدليل الشامل لضغط الصور</span>
+                </div>
+                <ul class="toc-list">
+                    <li><a href="#what-is-image-compression">← ما هو ضغط وتصغير حجم الصور الرقمية؟</a></li>
+                    <li><a href="#why-compress-images">← لماذا تحتاج لتصغير الصور للمواقع والـ SEO؟</a></li>
+                    <li><a href="#how-to-compress-images">← كيفية ضغط وتحويل الصور في 3 خطوات بسيطة</a></li>
+                    <li><a href="#lossy-vs-lossless">← الضغط المنقوص (Lossy) مقابل غير المنقوص (Lossless)</a></li>
+                    <li><a href="#image-formats-comparison">← مقارنة صيغ الويب: JPG vs PNG vs WebP vs AVIF vs GIF</a></li>
+                    <li><a href="#image-seo-best-practices">← أفضل ممارسات سيو الصور (Image SEO) لتصدر جوجل</a></li>
+                    <li><a href="#pro-tips-image-optimization">← نصائح احترافية لتقليل الحجم بأعلى جودة بصرية</a></li>
+                    <li><a href="#faq">← الأسئلة الشائعة حول ضغط وتعديل الصور</a></li>
+                </ul>
             </div>
-            <div class="faq-accordion" id="compressorFaqList"></div>
-        </section>
+
+            <!-- Section 1 -->
+            <section class="article-section" id="what-is-image-compression">
+                <h2>ما هو ضغط وتصغير حجم الصور الرقمية؟</h2>
+                <p>
+                    تُعرف عملية <strong>ضغط الصور (Image Compression)</strong> بأنها تطبيق خوارزميات برمجية وهندسية متقدمة لإعادة هيكلة واختزال حجم ملف الصورة المخزن بالميجابايت أو الكيلوبايت، مع الحفاظ الكامل على مظهرها الجمالي وألوانها وتفاصيلها البصرية عند عرضها على شاشات الهواتف والحواسيب. تتكون كل صورة رقمية نلتقطها بهواتفنا أو نصممها من ملايين النقاط الضوئية المعروفة بالبكسلات (Pixels)، وكل بكسل يُعبّر عنه بمصفوفة قيم لونية (Red, Green, Blue) وعمق لوني محدد.
+                </p>
+                <p>
+                    في حالتها الأصلية غير المحسّنة، تحتوي ملفات الصور على كميات ضخمة من البيانات غير المرئية، مثل بيانات الكاميرا الوصفية (EXIF Metadata)، الموقع الجغرافي، توقيت الالتقاط، مساحات الألوان الاحترافية (Color Profiles)، بالإضافة إلى تكرار بيانات البكسلات المتجاورة ذات اللون الواحد. تعمل أدوات ضغط الصور الذكية مثل <strong>GToolix Image Compressor</strong> على فحص هذه البيانات وإزالة التكرارات الرياضية واقتطاع العناصر غير المرئية لتوفير حتى <strong>85% من حجم الملف الأصلي</strong> دون أن تلحظ العين البشرية أي فارق في الوضوح.
+                </p>
+            </section>
+
+            <!-- Section 2 -->
+            <section class="article-section" id="why-compress-images">
+                <h2>لماذا يُعد تصغير حجم الصور أمراً حاسماً للمواقع والـ SEO؟</h2>
+                <p>
+                    تُمثل الصور والرسوميات أكثر من <strong>65% من إجمالي وزن صفحات الإنترنت</strong> عالمياً وفقاً لإحصائيات أرشيف الويب (HTTP Archive). استخدام صور بحجمها الأصلي الكبير يُمثل العائق الأول أمام سرعة الموقع وتجربة المستخدم. إليك أبرز الأسباب التي تجعل تحسين وضغط الصور استثماراً حتمياً لكل صاحب موقع أو مدونة أو متجر:
+                </p>
+                <ul>
+                    <li><strong>تسريع تحميل صفحات الويب (Page Load Speed):</strong> أظهرت أبحاث جوجل أن زيادة وقت تحميل الصفحة من ثانية واحدة إلى 3 ثوانٍ ترفع احتمالية ارتداد الزائر (Bounce Rate) بنسبة 32%، وتصل إلى 90% إذا استغرق التحميل 5 ثوانٍ. ضغط الصور هو أسرع طريقة لتسريع موقعك فورياً.</li>
+                    <li><strong>تصدر نتائج محركات البحث وتحسين مقاييس Core Web Vitals:</strong> تعتمد خوارزميات ترتيب جوجل الرسمية على مقاييس أداء الويب الأساسية، وأهمها مؤشر <em>Largest Contentful Paint (LCP)</em> الذي يقيس سرعة تحميل العنصر البصري الأكبر في الصفحة (والذي غالباً ما يكون صورة الغلاف أو البانر). تقليل حجم الصورة يضمن حصول موقعك على درجات خضراء تتجاوز 95+ في أداة Google PageSpeed Insights.</li>
+                    <li><strong>رفع معدلات التحويل والمبيعات في المتاجر الإلكترونية:</strong> في مواقع التجارة الإلكترونية، يرتبط وضوح صور المنتجات وسرعة ظهورها مباشرة بقرار الشراء. تتيح لك أداة GToolix تقديم صور منتجات فائقة النقاء بحجم خفيف جداً يمنع ثقل التصفح أثناء تصفح كتالوج المنتجات.</li>
+                    <li><strong>توفير باقات الإنترنت لمستخدمي الهواتف الذكية:</strong> يتصفح أكثر من 70% من المستخدمين مواقع الويب عبر شبكات الهاتف المحمول (4G و 5G). تقديم صور مضغوطة يوفر استهلاك البيانات لزوارك ويضمن فتح صفحاتك بسلاسة حتى في المناطق ذات التغطية الضعيفة.</li>
+                    <li><strong>توفير تكاليف استضافة المواقع وسيرفرات التخزين السحابي:</strong> تقليص استهلاك الباندويث (Bandwidth) وتوفير مساحات التخزين على خدمات مثل AWS S3 أو Cloudflare أو الاستضافات المشتركة، مما يقلل فواتيرك التشغيلية بنسبة تتجاوز 60%.</li>
+                </ul>
+            </section>
+
+            <!-- Section 3 -->
+            <section class="article-section" id="how-to-compress-images">
+                <h2>كيفية ضغط وتحويل الصور في 3 خطوات بسيطة</h2>
+                <p>
+                    صُممت أداة GToolix لتوفر تجربة مستخدم فائقة السلاسة والسرعة للمحترفين والمبتدئين على حد سواء. يمكنك ضغط وتحويل صورك في ثوانٍ معدودة:
+                </p>
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h4>ارفع أو اسحب صورك</h4>
+                        <p>اسحب الصور وأفلتها مباشرة في مربع الرفع، أو اضغط للتصفح من جهازك. تدعم الأداة رفع عشرات الصور دفعة واحدة بصيغ JPG و PNG و WebP و GIF بحجم يصل إلى 25 ميجابايت لكل ملف.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h4>خصص الجودة والصيغة والأبعاد</h4>
+                        <p>اختر الصيغة المستهدفة (ننصح باختيار WebP لأفضل ضغط)، واضبط شريط الجودة (بين 70% إلى 85%)، كما يمكنك تفعيل خيار تغيير الأبعاد (Resize) لتحديد أقصى عرض وارتفاع ترغب به.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h4>عاين النتيجة وحمّل ملفاتك فوراً</h4>
+                        <p>استخدم شريط المقارنة التفاعلي (Split Slider) لمشاهدة الفرق بين الأصل والنتيجة قبل التنزيل، ثم حمّل الصور فرادى أو اضغط "تنزيل الكل (.ZIP)" لحفظ كل الصور في ملف مضغوط واحد.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section class="article-section" id="lossy-vs-lossless">
+                <h2>الضغط المنقوص (Lossy) مقابل الضغط غير المنقوص (Lossless): ما الفرق؟</h2>
+                <p>
+                    عند ضغط الصور، هناك منهجان تقنيان رئيسيان يحددان كيفية التخلص من البيانات الزائدة. فهم الفارق بينهما يساعدك على اختيار النمط المثالي لمشروعك:
+                </p>
+                <div class="comparison-table-wrap">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>وجه المقارنة</th>
+                                <th>الضغط المنقوص (Lossy Compression)</th>
+                                <th>الضغط غير المنقوص (Lossless Compression)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>طريقة العمل</strong></td>
+                                <td>يحذف البيانات والتدرجات اللونية الدقيقة جداً التي يصعب على العين البشرية ملاحظتها.</td>
+                                <td>يعيد هيكلة البيانات وترتيبها رياضياً دون حذف أي بكسل أو معلومة لونية أصلية.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>نسبة تقليل الحجم</strong></td>
+                                <td>توفير هائل يتراوح بين <strong>60% إلى 85%</strong> من الحجم الأصلي.</td>
+                                <td>توفير معتدل يتراوح بين <strong>10% إلى 30%</strong> فقط.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>تأثير الجودة</strong></td>
+                                <td>جودة بصرية ممتازة مع انخفاض طفيف غير محسوس عند النسب المعتدلة (75%-85%).</td>
+                                <td>جودة مطابقة للأصل بنسبة 100% بدون أي مساس بالبكسلات.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الصيغ المتوافقة</strong></td>
+                                <td>JPEG, JPG, WebP (Lossy mode)</td>
+                                <td>PNG, GIF, WebP (Lossless mode), SVG</td>
+                            </tr>
+                            <tr>
+                                <td><strong>أفضل استخدام</strong></td>
+                                <td>الصور الفوتوغرافية، مقالات المدونات، صور المنتجات، وخلفيات صفحات الويب.</td>
+                                <td>الشعارات (Logos)، الأيقونات، اللقطات التوضيحية (Screenshots)، والرسومات ذات النصوص الدقيقة.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 5 -->
+            <section class="article-section" id="image-formats-comparison">
+                <h2>مقارنة شاملة بين صيغ الصور الحديثة: متى تختار كل صيغة؟</h2>
+                <p>
+                    اختيار الصيغة المناسبة للصورة يوازي في أهميته ضبط نسبة الضغط. إليك تحليلاً تقنياً مبسطاً لأشهر الصيغ المستخدمة على الويب اليوم:
+                </p>
+                <div class="comparison-table-wrap">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>الصيغة</th>
+                                <th>دعم الشفافية</th>
+                                <th>كفاءة الضغط</th>
+                                <th>دعم المتصفحات</th>
+                                <th>الاستخدام الموصى به</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>WebP (الموصى بها)</strong></td>
+                                <td>✅ نعم كاملة</td>
+                                <td>🔥 فائقة (أصغر بـ 30% من JPG و PNG)</td>
+                                <td>97%+ (جميع المتصفحات الحديثة)</td>
+                                <td>الخيار الذهبي لجميع صور الويب، المقالات، والمتاجر الإلكترونية اليوم.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>JPG / JPEG</strong></td>
+                                <td>❌ لا يدعم</td>
+                                <td>⚡ جيدة جداً للصور الطبيعية</td>
+                                <td>100% (شامل وعام)</td>
+                                <td>الصور الفوتوغرافية عند الحاجة لأقصى توافقية مع البرامج القديمة والمراسلات.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PNG</strong></td>
+                                <td>✅ نعم فائقة النقاء</td>
+                                <td>⚖️ متوسطة (حجم كبير عادة)</td>
+                                <td>100% (شامل)</td>
+                                <td>الشعارات، الأيقونات الشفافة، والرسومات الخطية التي تتطلب حواف حادة جداً.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GIF</strong></td>
+                                <td>✅ نعم (لون واحد شفاف)</td>
+                                <td>⚠️ ضعيفة (محدود بـ 256 لوناً)</td>
+                                <td>100% (شامل)</td>
+                                <td>الرسوم المتحركة البسيطة فقط (ويُفضل استبداله بـ WebP المتحرك أو فيديو MP4).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 1.25rem;">
+                    💡 <strong>نصيحة خبراء GToolix:</strong> استخدام أداة التحويل لدينا لتحويل صور JPG و PNG الحالية إلى صيغة <strong>WebP</strong> مع جودة 80% يمنحك أفضل مزيج بين الحجم الصغير، النقاء الكريستالي، ودعم الشفافية الكامل، وهو ما توصي به جوجل صراحة في إرشادات PageSpeed Insights.
+                </p>
+            </section>
+
+            <!-- Section 6 -->
+            <section class="article-section" id="image-seo-best-practices">
+                <h2>أفضل ممارسات سيو الصور (Image SEO) لتصدر نتائج بحث جوجل</h2>
+                <p>
+                    لا يقتصر تحسين الصور على تقليل حجم الملفات فقط، بل يشمل تهيئة عناصر الصورة الدلالية لتفهمها عناكب البحث (Googlebot) وتتصدر في نتائج "صور جوجل" والنتائج العادية:
+                </p>
+                <ol>
+                    <li><strong>تسمية ملفات الصور بدقة ووضوح:</strong> تجنب الأسماء الافتراضية مثل <code>IMG_5829.jpg</code>. استخدم أسماء دلالية بالكلمات المفتاحية مفصولة بشرطات عادية، مثل: <code>free-image-compressor-online.webp</code>.</li>
+                    <li><strong>كتابة النص البديل (Alt Text) الوصفي:</strong> يُساعد النص البديل محركات البحث على فهم محتوى الصورة كما يدعم قارئات الشاشة للمكفوفين. صف ما تحتويه الصورة بدقة واعتدال واجعل الكلمة المفتاحية تندمج بسلاسة دون حشو مصطنع.</li>
+                    <li><strong>تحديد أبعاد الصورة (Width & Height) في كود HTML:</strong> يضمن تحديد العرض والارتفاع حجز المتصفح للمساحة قبل اكتمال تحميل الصورة، مما يمنع اهتزاز الصفحة وانزياح التصميم (Cumulative Layout Shift - CLS) الذي يؤثر سلباً على تجربة المستخدم وتقييم Core Web Vitals.</li>
+                    <li><strong>استخدام خاصية التحميل الكسول المدمجة (Native Lazy Loading):</strong> أضف الوسم <code>loading="lazy"</code> لجميع الصور التي لا تظهر في الجزء العلوي الأول من الصفحة (Below the fold). هذا يمنع تحميل الصور إلا عندما يقترب المستخدم من التمرير إليها، مما يوفر سرعة تحميل أولية خاطفة.</li>
+                    <li><strong>تضمين الصور في خريطة الموقع (Image Sitemap):</strong> إذا كنت تدير موقعاً كبيراً أو متجراً إلكترونياً، تأكد من إدراج روابط صورك داخل خريطة <code>sitemap.xml</code> لتسريع اكتشافها وأرشفتها بواسطة جوجل.</li>
+                </ol>
+            </section>
+
+            <!-- Section 7 -->
+            <section class="article-section" id="pro-tips-image-optimization">
+                <h2>نصائح احترافية لتقليل حجم الصور بأعلى كفاءة بدون تشويه</h2>
+                <p>
+                    إليك 3 نصائح عملية يطبقها كبار مصممي الويب لتقليص أحجام الصور لأقصى حد:
+                </p>
+                <ul>
+                    <li><strong>لا ترفع أبعاداً تفوق شاشات العرض:</strong> إذا كانت مساحة عرض المقال على موقعك بعرض 800 بكسل، فإن رفع صورة بعرض 4000 بكسل يعد إهداراً كبيراً للباندويث حتى لو قمت بضغطها. استخدم خيار "تغيير الأبعاد" في أداة GToolix لضبط أقصى عرض بما يناسب تصميمك.</li>
+                    <li><strong>القاعدة الذهبية للجودة (The 80% Sweet Spot):</strong> أظهرت الاختبارات المعملية أن ضغط صور JPEG و WebP بنسبة جودة بين <strong>75% إلى 82%</strong> يوفر أكثر من 70% من حجم الملف مع ثبات دقة العين بنسبة 99%. أي زيادة فوق 85% تزيد حجم الملف أضعافاً مضاعفة دون فائدة بصرية مرئية.</li>
+                    <li><strong>احذف بيانات EXIF غير الضرورية:</strong> تحتفظ الكاميرات ببيانات الموقع والعدسة والغالق داخل ملف الصورة، وهو ما قد يضيف عشرات الكيلوبايتات للملف الواحد ويهدد الخصوصية. أداة GToolix تحذف هذه البيانات تلقائياً أثناء المعالجة المحلية.</li>
+                </ul>
+            </section>
+
+            <!-- Section 8: FAQ -->
+            <section class="article-section" id="faq">
+                <h2>الأسئلة الشائعة حول ضغط وتعديل الصور (FAQ)</h2>
+                <p>إليك إجابات تفصيلية ودقيقة عن أكثر الأسئلة تداولاً حول تقنيات ضغط الصور وحماية الخصوصية:</p>
+                
+                <div class="faq-accordion" id="staticFaqAccordion">
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>هل يتم رفع صوري إلى أي سيرفر خارجي أثناء الضغط؟</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            لا نهائياً. تتم معالجة وضغط الصور بالكامل داخل متصفح جهازك باستخدام محرك Web APIs و Canvas محلي 100%. لا تغادر أي صورة جهازك أو هاتفك إلى أي خادم خارجي، مما يوفر أقصى درجات الأمان والخصوصية لصورك الشخصية ومستنداتك وملفات أعمالك الحساسة.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>ما هو الحد الأقصى لحجم وعدد الصور في الدفعة الواحدة؟</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            يمكنك رفع صور فردية بحجم يصل إلى 25 ميجابايت لكل صورة، ومعالجة عشرات الصور في وقت واحد دفعة واحدة (Batch Compression) وتنزيلها معاً مجمعة في ملف ZIP واحد بضغطة زر دون أي قيود على عدد المرات.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>ما هي صيغ الصور المدعومة للضغط والتحويل في GToolix؟</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            تدعم الأداة صيغ JPG و JPEG و PNG و WebP و GIF الثابتة. كما تتيح لك إمكانية التحويل المتبادل الفوري بين هذه الصيغ، مثل تحويل PNG أو JPG إلى صيغة WebP الحديثة للحصول على أقصى توفير في المساحة.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>هل يؤدي الضغط إلى فقدان ملحوظ في جودة ونقاء الصورة؟</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            كلا، عند اختيار مستوى الجودة الموصى به (بين 75% إلى 85%)، تطبق الأداة خوارزميات استعيان لوني ذكية تتخلص فقط من البيانات غير المرئية، مما يوفر حتى 85% من حجم الملف دون أن تلاحظ العين البشرية أي فارق في التفاصيل أو الألوان.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>كيف أحول صوري من JPG أو PNG إلى صيغة WebP الحديثة؟</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            ببساطة ارفع صورك، ومن قائمة "صيغة الإخراج (Output Format)" اختر WebP. ستقوم الأداة بضغط وتحويل كل صورة فورياً مع الحفاظ على الشفافية في حال كانت الصورة الأصلية PNG، وتنزيلها بصيغة .webp جاهزة للاستخدام في المواقع.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>هل يمكن تصغير وتغيير أبعاد الصورة (Resize) مع الضغط معاً؟</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            نعم، تحتوي الأداة على خيار متقدم لتغيير الأبعاد (Resize Dimensions). عند تفعيله يمكنك إدخال أقصى عرض أو ارتفاع تريده بالبكسل، وستقوم الأداة بتحجيم الصورة بنسب متناسقة تحميها من التشوه أو التمدد مع ضغط حجمها بالكامل.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>كيف يساهم ضغط الصور في تصدر نتائج بحث جوجل وتحسين Core Web Vitals؟</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            تعتبر سرعة الصفحة عاملاً معتمداً في ترتيب نتائج بحث جوجل. تصغير حجم الصور يقلل من زمن تحميل عنصر الصفحة الأكبر (LCP) ويحسن مؤشرات الأداء الكلية لموقعك في Google PageSpeed Insights، مما يمنح موقعك أفضلية تنافسية للظهور في الصفحة الأولى.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" onclick="toggleFaqItem(this)">
+                            <span>هل استخدام ضاغط الصور في GToolix مجاني حقاً وبدون علامة مائية؟</span>
+                            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            نعم، الأداة مجانية بنسبة 100% مدى الحياة، بدون الحاجة لإنشاء حساب أو تسجيل بريدك، وبدون إضافة أي علامات مائية أو شروط مخفية، ويمكنك استخدامها بعدد غير محدود من الصور يومياً.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
 
         <!-- Related Guides & Articles Section -->
         <section class="related-tools-block" style="margin-top: 4rem; margin-bottom: 1.5rem;">
@@ -1813,6 +2416,12 @@ function getNestedTranslation(obj, path) {
                     </div>
                 </div>
             `).join('');
+        }
+
+        
+        function toggleFaqItem(btn) {
+            const item = btn.closest('.faq-item');
+            if (item) item.classList.toggle('is-open');
         }
 
         function toggleFaq(idx) {

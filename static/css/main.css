@@ -6273,7 +6273,6 @@ html[lang="en"] .related-tool-text {
 
 /* Modern Gradient Headlines */
 .header h1,
-.tool-header h1,
 .hero h1 {
     background: linear-gradient(135deg, var(--text) 30%, var(--primary) 70%, var(--accent) 100%);
     -webkit-background-clip: text;
